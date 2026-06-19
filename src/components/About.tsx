@@ -63,6 +63,16 @@ const projectsData = [
   }
 ];
 
+// Certifications data array
+const certifications = [
+  { title: "AWS Cloud Practitioner Essentials", issuer: "Amazon Web Services", date: "Apr 2026", pdfLink: "/certs/aws.pdf" },
+  { title: "Kubernetes for the Absolute Beginners", issuer: "KodeKloud", date: "Mar 2026", pdfLink: "/certs/kubernetes.pdf" },
+  { title: "Docker Training Course for the Absolute Beginner", issuer: "KodeKloud", date: "Mar 2026", pdfLink: "/certs/docker.pdf" },
+  { title: "Hands-on Introduction to Linux Commands and Shell Scripting", issuer: "IBM", date: "Mar 2026", pdfLink: "/certs/linux.pdf" },
+  { title: "Developing Back-End Apps with Node.js and Express", issuer: "IBM", date: "Mar 2026", pdfLink: "/certs/node.pdf" },
+  { title: "Introduction to Information Security", issuer: "HashX", date: "Mar 2026", pdfLink: "/certs/security.pdf" }
+];
+
 // Accordion-style Education Timeline sub-component
 function EducationTimeline() {
   const [activeNode, setActiveNode] = useState(0);
@@ -462,20 +472,36 @@ export default function About() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.3 }}
-                className="overflow-hidden"
+                className="w-full"
               >
-                <div className="animate-scroll gap-6">
-                  {/* Replace images with actual certificate URLs or local public images */}
-                  {[1, 2, 3].map((item) => (
-                    <div key={item} className="min-w-[300px] h-[200px] bg-slate-800 border border-slate-700 rounded-xl flex items-center justify-center relative group">
-                      <FaAward className="text-slate-600 text-6xl group-hover:text-emerald-400 transition-colors" />
-                      <div className="absolute inset-0 bg-emerald-500/90 text-slate-950 font-bold opacity-0 group-hover:opacity-100 flex items-center justify-center rounded-xl transition-opacity duration-300">
-                        View Certificate
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {certifications.map((cert, index) => (
+                    <a
+                      key={index}
+                      href={cert.pdfLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-slate-800/40 backdrop-blur-md rounded-xl p-6 border border-slate-700/50 flex flex-col justify-between min-h-[170px] hover:border-cyan-300 hover:shadow-[0_0_15px_rgba(103,232,249,0.3)] transition-all duration-300 group"
+                    >
+                      <div className="flex flex-col gap-2">
+                        <h3 className="text-lg font-semibold text-slate-200 group-hover:text-cyan-300 transition-colors leading-snug">
+                          {cert.title}
+                        </h3>
+                        <p className="text-sm text-slate-400">
+                          {cert.issuer}
+                        </p>
                       </div>
-                    </div>
+                      <div className="flex items-center justify-between mt-4">
+                        <span className="text-xs text-slate-500">
+                          {cert.date}
+                        </span>
+                        <span className="text-xs text-cyan-400/80 font-medium group-hover:text-cyan-300 transition-colors flex items-center gap-1">
+                          View Certificate ↗
+                        </span>
+                      </div>
+                    </a>
                   ))}
                 </div>
-                <p className="text-center text-slate-400 mt-6 text-sm">Hover over certifications to view details.</p>
               </motion.div>
             )}
 
