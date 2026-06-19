@@ -362,8 +362,8 @@ export default function About() {
                       >
                         <div>
                           <span className={`absolute top-4 right-4 text-xs font-bold px-3 py-1 rounded-full border ${project.status === "Finished"
-                              ? "bg-emerald-500/20 text-emerald-400 border-emerald-500/30"
-                              : "bg-yellow-500/20 text-yellow-400 border-yellow-500/30"
+                            ? "bg-emerald-500/20 text-emerald-400 border-emerald-500/30"
+                            : "bg-yellow-500/20 text-yellow-400 border-yellow-500/30"
                             }`}>
                             {project.status}
                           </span>
@@ -416,8 +416,8 @@ export default function About() {
                       >
                         <div>
                           <span className={`absolute top-4 right-4 text-xs font-bold px-3 py-1 rounded-full border ${project.status === "Finished"
-                              ? "bg-emerald-500/20 text-emerald-400 border-emerald-500/30"
-                              : "bg-yellow-500/20 text-yellow-400 border-yellow-500/30"
+                            ? "bg-emerald-500/20 text-emerald-400 border-emerald-500/30"
+                            : "bg-yellow-500/20 text-yellow-400 border-yellow-500/30"
                             }`}>
                             {project.status}
                           </span>
@@ -472,35 +472,68 @@ export default function About() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.3 }}
-                className="w-full"
+                className="overflow-hidden relative w-full min-h-[300px] md:min-h-[320px] flex flex-col justify-center"
               >
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {certifications.map((cert, index) => (
-                    <a
-                      key={index}
-                      href={cert.pdfLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-slate-800/40 backdrop-blur-md rounded-xl p-6 border border-slate-700/50 flex flex-col justify-between min-h-[170px] hover:border-cyan-300 hover:shadow-[0_0_15px_rgba(103,232,249,0.3)] transition-all duration-300 group"
-                    >
-                      <div className="flex flex-col gap-2">
-                        <h3 className="text-lg font-semibold text-slate-200 group-hover:text-cyan-300 transition-colors leading-snug">
-                          {cert.title}
-                        </h3>
-                        <p className="text-sm text-slate-400">
-                          {cert.issuer}
-                        </p>
-                      </div>
-                      <div className="flex items-center justify-between mt-4">
-                        <span className="text-xs text-slate-500">
-                          {cert.date}
-                        </span>
-                        <span className="text-xs text-cyan-400/80 font-medium group-hover:text-cyan-300 transition-colors flex items-center gap-1">
-                          View Certificate ↗
-                        </span>
-                      </div>
-                    </a>
-                  ))}
+                <div className="animate-scroll hover:[animation-play-state:paused] py-4">
+                  {/* First copy */}
+                  <div className="flex gap-6 pr-6 shrink-0">
+                    {certifications.map((cert, index) => (
+                      <a
+                        key={`first-${index}`}
+                        href={cert.pdfLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-slate-800/40 backdrop-blur-md rounded-xl p-6 border border-slate-700/50 flex flex-col justify-between min-h-[220px] w-[400px] shrink-0 grow-0 hover:border-cyan-300 hover:shadow-[0_0_15px_rgba(103,232,249,0.3)] transition-all duration-300 group"
+                      >
+                        <div className="flex flex-col gap-2">
+                          <h3 className="text-lg font-semibold text-slate-200 group-hover:text-cyan-300 transition-colors leading-snug">
+                            {cert.title}
+                          </h3>
+                          <p className="text-sm text-slate-400">
+                            {cert.issuer}
+                          </p>
+                        </div>
+                        <div className="flex items-center justify-between mt-4">
+                          <span className="text-xs text-slate-500">
+                            {cert.date}
+                          </span>
+                          <span className="text-xs text-cyan-400/80 font-medium group-hover:text-cyan-300 transition-colors flex items-center gap-1">
+                            View Certificate ↗
+                          </span>
+                        </div>
+                      </a>
+                    ))}
+                  </div>
+
+                  {/* Second copy */}
+                  <div className="flex gap-6 pr-6 shrink-0">
+                    {certifications.map((cert, index) => (
+                      <a
+                        key={`second-${index}`}
+                        href={cert.pdfLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-slate-800/40 backdrop-blur-md rounded-xl p-6 border border-slate-700/50 flex flex-col justify-between min-h-[220px] w-[400px] shrink-0 grow-0 hover:border-cyan-300 hover:shadow-[0_0_15px_rgba(103,232,249,0.3)] transition-all duration-300 group"
+                      >
+                        <div className="flex flex-col gap-2">
+                          <h3 className="text-lg font-semibold text-slate-200 group-hover:text-cyan-300 transition-colors leading-snug">
+                            {cert.title}
+                          </h3>
+                          <p className="text-sm text-slate-400">
+                            {cert.issuer}
+                          </p>
+                        </div>
+                        <div className="flex items-center justify-between mt-4">
+                          <span className="text-xs text-slate-500">
+                            {cert.date}
+                          </span>
+                          <span className="text-xs text-cyan-400/80 font-medium group-hover:text-cyan-300 transition-colors flex items-center gap-1">
+                            View Certificate ↗
+                          </span>
+                        </div>
+                      </a>
+                    ))}
+                  </div>
                 </div>
               </motion.div>
             )}
