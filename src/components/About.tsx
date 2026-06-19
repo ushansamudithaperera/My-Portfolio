@@ -118,7 +118,6 @@ export default function About() {
   return (
     <section id="about" className="py-20 bg-slate-950 min-h-screen px-6 overflow-hidden">
 
-      {/* Moving Carousel Effect ekata oni CSS tika methana inline danawa */}
       <style dangerouslySetInnerHTML={{
         __html: `
         @keyframes scroll {
@@ -127,7 +126,7 @@ export default function About() {
         }
         .animate-scroll {
           display: flex;
-          width: 200%;
+          width: max-content;
           animation: scroll 20s linear infinite;
         }
         .animate-scroll:hover {
@@ -203,20 +202,92 @@ export default function About() {
                 transition={{ duration: 0.3 }}
                 className="space-y-6 overflow-hidden"
               >
-
                 {[
-                  { title: "Programming Languages", items: [<SiJavascript />, <SiTypescript />, <SiPython />, <FaJava />, <SiC />, <SiCplusplus />, <SiSharp />, <SiPhp />] },
-                  { title: "Frontend Technologies", items: [<SiReact />, <SiHtml5 />, <SiCss />, <SiTailwindcss />, <SiBootstrap />] },
-                  { title: "Backend & Databases", items: [<SiNodedotjs />, <SiExpress />, <SiSpringboot />, <SiDotnet />, <SiMongodb />, <SiMysql />, <FaDatabase />] },
-                  { title: "Cloud, DevOps & Tools", items: [<FaAws />, <SiDocker />, <SiKubernetes />, <SiLinux />, <SiPrometheus />, <SiGrafana />, <SiGit />, <SiGithub />] }
+                  {
+                    title: "Programming Languages",
+                    items: [
+                      { name: "JavaScript", icon: <SiJavascript size={32} /> },
+                      { name: "TypeScript", icon: <SiTypescript size={32} /> },
+                      { name: "Python", icon: <SiPython size={32} /> },
+                      { name: "Java", icon: <FaJava size={32} /> },
+                      { name: "C", icon: <SiC size={32} /> },
+                      { name: "C++", icon: <SiCplusplus size={32} /> },
+                      { name: "C#", icon: <SiSharp size={32} /> },
+                      { name: "PHP", icon: <SiPhp size={32} /> }
+                    ]
+                  },
+                  {
+                    title: "Frontend Technologies",
+                    items: [
+                      { name: "React", icon: <SiReact size={32} /> },
+                      { name: "HTML5", icon: <SiHtml5 size={32} /> },
+                      { name: "CSS3", icon: <SiCss size={32} /> },
+                      { name: "Tailwind CSS", icon: <SiTailwindcss size={32} /> },
+                      { name: "Bootstrap", icon: <SiBootstrap size={32} /> }
+                    ]
+                  },
+                  {
+                    title: "Backend & Databases",
+                    items: [
+                      { name: "Node.js", icon: <SiNodedotjs size={32} /> },
+                      { name: "Express.js", icon: <SiExpress size={32} /> },
+                      { name: "Spring Boot", icon: <SiSpringboot size={32} /> },
+                      { name: ".NET", icon: <SiDotnet size={32} /> },
+                      { name: "MongoDB", icon: <SiMongodb size={32} /> },
+                      { name: "MySQL", icon: <SiMysql size={32} /> },
+                      { name: "Databases", icon: <FaDatabase size={32} /> }
+                    ]
+                  },
+                  {
+                    title: "Cloud, DevOps & Tools",
+                    items: [
+                      { name: "AWS", icon: <FaAws size={32} /> },
+                      { name: "Docker", icon: <SiDocker size={32} /> },
+                      { name: "Kubernetes", icon: <SiKubernetes size={32} /> },
+                      { name: "Linux", icon: <SiLinux size={32} /> },
+                      { name: "Prometheus", icon: <SiPrometheus size={32} /> },
+                      { name: "Grafana", icon: <SiGrafana size={32} /> },
+                      { name: "Git", icon: <SiGit size={32} /> },
+                      { name: "GitHub", icon: <SiGithub size={32} /> }
+                    ]
+                  }
                 ].map((category, index) => (
                   <div key={index} className="bg-slate-800/30 p-4 rounded-xl border border-slate-700">
                     <h3 className="text-emerald-400 font-semibold mb-3">{category.title}</h3>
-                    <div className="overflow-hidden relative">
-                      <div className="animate-scroll gap-8 text-4xl text-slate-400">
-                        {/* Render items twice to create seamless loop */}
-                        {category.items.map((icon, i) => <div key={i} className="hover:text-emerald-400 transition-colors">{icon}</div>)}
-                        {category.items.map((icon, i) => <div key={`loop-${i}`} className="hover:text-emerald-400 transition-colors">{icon}</div>)}
+                    <div className="overflow-hidden relative w-full [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
+                      <div className="animate-scroll py-2">
+                        {/* Render first copy */}
+                        <div className="flex gap-6 pr-6 shrink-0">
+                          {category.items.map((item, i) => (
+                            <div
+                              key={`first-${i}`}
+                              className="flex flex-col items-center justify-center min-w-[100px] h-[90px] gap-2 p-3 rounded-xl bg-slate-800/40 border border-slate-700/50 backdrop-blur-md hover:border-cyan-300 hover:shadow-[0_0_15px_rgba(103,232,249,0.3)] transition-all duration-300 group"
+                            >
+                              <div className="text-slate-400 group-hover:text-cyan-300 transition-colors">
+                                {item.icon}
+                              </div>
+                              <span className="text-xs text-slate-400 font-medium tracking-wide">
+                                {item.name}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                        {/* Render second copy */}
+                        <div className="flex gap-6 pr-6 shrink-0">
+                          {category.items.map((item, i) => (
+                            <div
+                              key={`second-${i}`}
+                              className="flex flex-col items-center justify-center min-w-[100px] h-[90px] gap-2 p-3 rounded-xl bg-slate-800/40 border border-slate-700/50 backdrop-blur-md hover:border-cyan-300 hover:shadow-[0_0_15px_rgba(103,232,249,0.3)] transition-all duration-300 group"
+                            >
+                              <div className="text-slate-400 group-hover:text-cyan-300 transition-colors">
+                                {item.icon}
+                              </div>
+                              <span className="text-xs text-slate-400 font-medium tracking-wide">
+                                {item.name}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
                       </div>
                     </div>
                   </div>
