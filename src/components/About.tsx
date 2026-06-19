@@ -497,7 +497,7 @@ export default function About() {
                           <span className="text-xs text-slate-500">
                             {cert.date}
                           </span>
-                          <span className="text-xs text-cyan-400/80 font-medium group-hover:text-cyan-300 transition-colors flex items-center gap-1">
+                          <span className="text-xs text-emerald-400 font-medium group-hover:text-emerald-300 transition-colors flex items-center gap-1">
                             View Certificate ↗
                           </span>
                         </div>
@@ -527,7 +527,7 @@ export default function About() {
                           <span className="text-xs text-slate-500">
                             {cert.date}
                           </span>
-                          <span className="text-xs text-cyan-400/80 font-medium group-hover:text-cyan-300 transition-colors flex items-center gap-1">
+                          <span className="text-xs text-emerald-400 font-medium group-hover:text-emerald-300 transition-colors flex items-center gap-1">
                             View Certificate ↗
                           </span>
                         </div>
