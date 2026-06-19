@@ -1,42 +1,105 @@
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear(); // Auto current year eka gannawa
+  const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-slate-950 border-t border-slate-800 py-8 px-6">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+    <footer className="bg-slate-950 border-t border-slate-900/80 py-12 px-6">
+      <div className="max-w-6xl mx-auto">
         
-        {/* Copyright Part */}
-        <div className="text-slate-400 text-sm">
-          &copy; {currentYear} <span className="text-emerald-400 font-semibold">Ushan Perera</span>. All rights reserved.
+        {/* Top Section: 3-Column Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          {/* Column 1: Brand */}
+          <div className="flex flex-col gap-4">
+            <div>
+              <h3 className="text-xl font-bold text-white tracking-wide">
+                Ushan <span className="text-cyan-300">Perera</span>
+              </h3>
+              <p className="text-slate-400 text-sm mt-2 leading-relaxed">
+                Building scalable automated software systems and modern web applications.
+              </p>
+            </div>
+            
+            {/* Social Links */}
+            <div className="flex gap-4">
+              <a 
+                href="https://github.com/ushan-perera"
+                target="_blank" 
+                rel="noreferrer" 
+                className="w-10 h-10 rounded-full bg-slate-900/80 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-emerald-400 hover:border-emerald-400/40 hover:shadow-[0_0_10px_rgba(52,211,153,0.15)] transition-all duration-300"
+                aria-label="GitHub"
+              >
+                <FaGithub size={18} />
+              </a>
+              <a 
+                href="https://linkedin.com/in/ushan-perera"
+                target="_blank" 
+                rel="noreferrer" 
+                className="w-10 h-10 rounded-full bg-slate-900/80 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-cyan-300 hover:border-cyan-300/40 hover:shadow-[0_0_10px_rgba(103,232,249,0.15)] transition-all duration-300"
+                aria-label="LinkedIn"
+              >
+                <FaLinkedin size={18} />
+              </a>
+            </div>
+          </div>
+
+          {/* Column 2: Quick Links */}
+          <div className="flex flex-col gap-4">
+            <h4 className="text-sm font-semibold text-white uppercase tracking-wider">Quick Links</h4>
+            <ul className="flex flex-col gap-2.5">
+              {[
+                { name: 'Home', href: '#home' },
+                { name: 'About', href: '#about' },
+                { name: 'Skills', href: '#skills' },
+                { name: 'Projects', href: '#projects' },
+                { name: 'Certifications', href: '#certifications' },
+              ].map((link) => (
+                <li key={link.name}>
+                  <a 
+                    href={link.href}
+                    className="text-slate-400 hover:text-cyan-300 text-sm font-medium transition-colors duration-200"
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 3: Contact Info */}
+          <div className="flex flex-col gap-4">
+            <h4 className="text-sm font-semibold text-white uppercase tracking-wider">Contact Info</h4>
+            <div className="flex flex-col gap-3">
+              <a 
+                href="tel:+94711742319"
+                className="flex items-center gap-3 text-slate-400 group w-fit transition-colors duration-300"
+              >
+                <div className="flex flex-shrink-0 items-center justify-center w-10 h-10 rounded-full bg-emerald-400/10 text-emerald-400 border border-emerald-400/30 hover:bg-emerald-400/20 hover:border-emerald-400 hover:shadow-[0_0_15px_rgba(52,211,153,0.3)] group-hover:bg-emerald-400/20 group-hover:border-emerald-400 group-hover:shadow-[0_0_15px_rgba(52,211,153,0.3)] transition-all duration-300">
+                  <FaPhoneAlt size={14} />
+                </div>
+                <span className="text-sm font-medium group-hover:text-cyan-300 transition-colors duration-300">+94 71 174 2319</span>
+              </a>
+              <a 
+                href="mailto:your.email@example.com"
+                className="flex items-center gap-3 text-slate-400 group w-fit transition-colors duration-300"
+              >
+                <div className="flex flex-shrink-0 items-center justify-center w-10 h-10 rounded-full bg-emerald-400/10 text-emerald-400 border border-emerald-400/30 hover:bg-emerald-400/20 hover:border-emerald-400 hover:shadow-[0_0_15px_rgba(52,211,153,0.3)] group-hover:bg-emerald-400/20 group-hover:border-emerald-400 group-hover:shadow-[0_0_15px_rgba(52,211,153,0.3)] transition-all duration-300">
+                  <FaEnvelope size={14} />
+                </div>
+                <span className="text-sm font-medium group-hover:text-cyan-300 transition-colors duration-300">your.email@example.com</span>
+              </a>
+            </div>
+          </div>
+
         </div>
 
-        {/* Social Links */}
-        <div className="flex gap-6">
-          <a 
-            href="https://github.com/ushan-perera" // Oyaage GitHub link eka danna
-            target="_blank" 
-            rel="noreferrer" 
-            className="text-slate-400 hover:text-emerald-400 transition-colors duration-300"
-          >
-            <span className="sr-only">GitHub</span>
-            <FaGithub size={22} />
-          </a>
-          <a 
-            href="https://linkedin.com/in/ushan-perera" // Oyaage LinkedIn link eka danna
-            target="_blank" 
-            rel="noreferrer" 
-            className="text-slate-400 hover:text-[#0077b5] transition-colors duration-300"
-          >
-            <span className="sr-only">LinkedIn</span>
-            <FaLinkedin size={22} />
-          </a>
-        </div>
-
-        {/* Tech Stack Credit */}
-        <div className="text-slate-500 text-sm">
-          Built with <span className="text-white">Next.js</span> & <span className="text-white">Tailwind CSS</span>
+        {/* Bottom Section */}
+        <div className="border-t border-slate-800 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-500">
+          <p>© {currentYear} Ushan Perera. All rights reserved.</p>
+          <p>
+            Built with <span className="text-slate-400">Next.js</span> & <span className="text-slate-400">Tailwind CSS</span>
+          </p>
         </div>
 
       </div>

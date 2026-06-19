@@ -362,6 +362,25 @@ const tabs = [
 export default function About() {
   const [activeTab, setActiveTab] = useState('education');
 
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace('#', '');
+      const validTabs = ['education', 'skills', 'projects', 'certifications', 'extra'];
+      if (validTabs.includes(hash)) {
+        setActiveTab(hash);
+        const element = document.getElementById('about');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    };
+
+    handleHashChange();
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
   return (
     <section id="about" className="py-20 bg-slate-950 min-h-screen px-6 overflow-hidden">
 
