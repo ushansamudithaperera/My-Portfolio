@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, createContext, useContext } from 'react';
 import { motion, AnimatePresence, useMotionValue, animate, PanInfo } from 'framer-motion';
 import { FaGraduationCap, FaLaptopCode, FaProjectDiagram, FaAward, FaUsers, FaGithub, FaLinkedin, FaJava, FaAws, FaDatabase } from 'react-icons/fa';
 
@@ -149,6 +149,8 @@ function EducationTimeline() {
 }
 
 // Draggable Infinite Marquee Track using Framer Motion
+export const MarqueeContext = createContext({ isDragging: false });
+
 interface MarqueeTrackProps {
   children: React.ReactNode;
   className?: string;
@@ -201,8 +203,10 @@ function MarqueeTrack({ children, className = "" }: MarqueeTrackProps) {
   };
 
   const handleDragEnd = () => {
-    setIsDragging(false);
-    if (!trackRef.current) return;
+    if (!trackRef.current) {
+      setIsDragging(false);
+      return;
+    }
 
     const totalWidth = trackRef.current.scrollWidth;
     const halfWidth = totalWidth / 2;
@@ -214,28 +218,134 @@ function MarqueeTrack({ children, className = "" }: MarqueeTrackProps) {
     }
     x.set(normalizedX);
     setLoopKey((prev) => prev + 1);
+
+    // Timeout allows onClick handlers on inner <a> tags to notice isDragging is true
+    setTimeout(() => {
+      setIsDragging(false);
+    }, 150);
   };
 
   return (
-    <div
-      ref={containerRef}
-      className={`overflow-hidden relative w-full ${className}`}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <motion.div
-        ref={trackRef}
-        style={{ x }}
-        drag="x"
-        dragElastic={0.1}
-        dragConstraints={{ left: -3000, right: 3000 }}
-        onDragStart={handleDragStart}
-        onDragEnd={handleDragEnd}
-        className="flex w-max cursor-grab active:cursor-grabbing select-none py-4"
+    <MarqueeContext.Provider value={{ isDragging }}>
+      <div
+        ref={containerRef}
+        className={`overflow-hidden relative w-full ${className}`}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
       >
-        {children}
-      </motion.div>
+        <motion.div
+          ref={trackRef}
+          style={{ x }}
+          drag="x"
+          dragElastic={0.1}
+          dragConstraints={{ left: -3000, right: 3000 }}
+          onDragStart={handleDragStart}
+          onDragEnd={handleDragEnd}
+          className="flex w-max cursor-grab active:cursor-grabbing select-none py-4"
+        >
+          {children}
+        </motion.div>
+      </div>
+    </MarqueeContext.Provider>
+  );
+}
+
+// Project Card sub-component that handles drag checks
+function ProjectCard({ project }: { project: any }) {
+  const { isDragging } = useContext(MarqueeContext);
+
+  return (
+    <div
+      className="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-cyan-300 hover:shadow-[0_0_15px_rgba(103,232,249,0.3)] transition-all duration-300 relative flex flex-col justify-between w-[400px] shrink-0 grow-0 select-none"
+      draggable={false}
+    >
+      <div className="pointer-events-none">
+        <span className={`absolute top-4 right-4 text-xs font-bold px-3 py-1 rounded-full border ${project.status === "Finished"
+            ? "bg-emerald-500/20 text-emerald-400 border-emerald-500/30"
+            : "bg-yellow-500/20 text-yellow-400 border-yellow-500/30"
+          }`}>
+          {project.status}
+        </span>
+        <h3 className="text-xl font-bold text-white mb-2 pr-16">{project.title}</h3>
+        <p className="text-slate-400 text-sm mb-4 leading-relaxed">{project.description}</p>
+
+        <div className="flex flex-wrap gap-2 mb-6">
+          {project.tech.map((t: string, i: number) => (
+            <span key={i} className="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded">
+              {t}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <div className="flex gap-4 items-center">
+        {project.github && (
+          <a
+            href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            draggable={false}
+            onClick={(e) => {
+              if (isDragging) e.preventDefault();
+            }}
+            className="text-slate-400 hover:text-white transition-colors"
+            aria-label={`${project.title} GitHub repository`}
+          >
+            <FaGithub size={20} />
+          </a>
+        )}
+        {project.linkedin && (
+          <a
+            href={project.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            draggable={false}
+            onClick={(e) => {
+              if (isDragging) e.preventDefault();
+            }}
+            className="text-slate-400 hover:text-[#0077b5] transition-colors"
+            aria-label={`${project.title} LinkedIn post`}
+          >
+            <FaLinkedin size={20} />
+          </a>
+        )}
+      </div>
     </div>
+  );
+}
+
+// Certification Card sub-component that handles drag checks
+function CertificationCard({ cert }: { cert: any }) {
+  const { isDragging } = useContext(MarqueeContext);
+
+  return (
+    <a
+      href={cert.pdfLink}
+      target="_blank"
+      rel="noopener noreferrer"
+      draggable={false}
+      onClick={(e) => {
+        if (isDragging) e.preventDefault();
+      }}
+      className="bg-slate-800/40 backdrop-blur-md rounded-xl p-6 border border-slate-700/50 flex flex-col justify-between min-h-[220px] w-[400px] shrink-0 grow-0 hover:border-cyan-300 hover:shadow-[0_0_15px_rgba(103,232,249,0.3)] transition-all duration-300 group select-none"
+    >
+      <div className="flex flex-col gap-2 pointer-events-none">
+        <h3 className="text-lg font-semibold text-slate-200 group-hover:text-cyan-300 transition-colors leading-snug">
+          {cert.title}
+        </h3>
+        <p className="text-sm text-slate-400">
+          {cert.issuer}
+        </p>
+      </div>
+      <div className="flex items-center justify-between mt-4 pointer-events-none">
+        <span className="text-xs text-slate-500">
+          {cert.date}
+        </span>
+        <span className="text-xs text-emerald-400 font-medium group-hover:text-emerald-300 transition-colors flex items-center gap-1">
+          View Certificate ↗
+        </span>
+      </div>
+    </a>
   );
 }
 
@@ -445,108 +555,14 @@ export default function About() {
                   {/* First copy */}
                   <div className="flex gap-6 pr-6 shrink-0">
                     {projectsData.map((project, idx) => (
-                      <div
-                        key={`first-${idx}`}
-                        className="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-cyan-300 hover:shadow-[0_0_15px_rgba(103,232,249,0.3)] transition-all duration-300 relative flex flex-col justify-between w-[400px] shrink-0 grow-0"
-                      >
-                        <div>
-                          <span className={`absolute top-4 right-4 text-xs font-bold px-3 py-1 rounded-full border ${project.status === "Finished"
-                            ? "bg-emerald-500/20 text-emerald-400 border-emerald-500/30"
-                            : "bg-yellow-500/20 text-yellow-400 border-yellow-500/30"
-                            }`}>
-                            {project.status}
-                          </span>
-                          <h3 className="text-xl font-bold text-white mb-2 pr-16">{project.title}</h3>
-                          <p className="text-slate-400 text-sm mb-4 leading-relaxed">{project.description}</p>
-
-                          <div className="flex flex-wrap gap-2 mb-6">
-                            {project.tech.map((t, i) => (
-                              <span key={i} className="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded">
-                                {t}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-
-                        <div className="flex gap-4 items-center">
-                          {project.github && (
-                            <a
-                              href={project.github}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-slate-400 hover:text-white transition-colors"
-                              aria-label={`${project.title} GitHub repository`}
-                            >
-                              <FaGithub size={20} />
-                            </a>
-                          )}
-                          {project.linkedin && (
-                            <a
-                              href={project.linkedin}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-slate-400 hover:text-[#0077b5] transition-colors"
-                              aria-label={`${project.title} LinkedIn post`}
-                            >
-                              <FaLinkedin size={20} />
-                            </a>
-                          )}
-                        </div>
-                      </div>
+                      <ProjectCard key={`first-${idx}`} project={project} />
                     ))}
                   </div>
 
                   {/* Second copy */}
                   <div className="flex gap-6 pr-6 shrink-0">
                     {projectsData.map((project, idx) => (
-                      <div
-                        key={`second-${idx}`}
-                        className="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-cyan-300 hover:shadow-[0_0_15px_rgba(103,232,249,0.3)] transition-all duration-300 relative flex flex-col justify-between w-[400px] shrink-0 grow-0"
-                      >
-                        <div>
-                          <span className={`absolute top-4 right-4 text-xs font-bold px-3 py-1 rounded-full border ${project.status === "Finished"
-                            ? "bg-emerald-500/20 text-emerald-400 border-emerald-500/30"
-                            : "bg-yellow-500/20 text-yellow-400 border-yellow-500/30"
-                            }`}>
-                            {project.status}
-                          </span>
-                          <h3 className="text-xl font-bold text-white mb-2 pr-16">{project.title}</h3>
-                          <p className="text-slate-400 text-sm mb-4 leading-relaxed">{project.description}</p>
-
-                          <div className="flex flex-wrap gap-2 mb-6">
-                            {project.tech.map((t, i) => (
-                              <span key={i} className="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded">
-                                {t}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-
-                        <div className="flex gap-4 items-center">
-                          {project.github && (
-                            <a
-                              href={project.github}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-slate-400 hover:text-white transition-colors"
-                              aria-label={`${project.title} GitHub repository`}
-                            >
-                              <FaGithub size={20} />
-                            </a>
-                          )}
-                          {project.linkedin && (
-                            <a
-                              href={project.linkedin}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-slate-400 hover:text-[#0077b5] transition-colors"
-                              aria-label={`${project.title} LinkedIn post`}
-                            >
-                              <FaLinkedin size={20} />
-                            </a>
-                          )}
-                        </div>
-                      </div>
+                      <ProjectCard key={`second-${idx}`} project={project} />
                     ))}
                   </div>
                 </MarqueeTrack>
@@ -567,60 +583,14 @@ export default function About() {
                   {/* First copy */}
                   <div className="flex gap-6 pr-6 shrink-0">
                     {certifications.map((cert, index) => (
-                      <a
-                        key={`first-${index}`}
-                        href={cert.pdfLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="bg-slate-800/40 backdrop-blur-md rounded-xl p-6 border border-slate-700/50 flex flex-col justify-between min-h-[220px] w-[400px] shrink-0 grow-0 hover:border-cyan-300 hover:shadow-[0_0_15px_rgba(103,232,249,0.3)] transition-all duration-300 group"
-                      >
-                        <div className="flex flex-col gap-2">
-                          <h3 className="text-lg font-semibold text-slate-200 group-hover:text-cyan-300 transition-colors leading-snug">
-                            {cert.title}
-                          </h3>
-                          <p className="text-sm text-slate-400">
-                            {cert.issuer}
-                          </p>
-                        </div>
-                        <div className="flex items-center justify-between mt-4">
-                          <span className="text-xs text-slate-500">
-                            {cert.date}
-                          </span>
-                          <span className="text-xs text-emerald-400 font-medium group-hover:text-emerald-300 transition-colors flex items-center gap-1">
-                            View Certificate ↗
-                          </span>
-                        </div>
-                      </a>
+                      <CertificationCard key={`first-${index}`} cert={cert} />
                     ))}
                   </div>
 
                   {/* Second copy */}
                   <div className="flex gap-6 pr-6 shrink-0">
                     {certifications.map((cert, index) => (
-                      <a
-                        key={`second-${index}`}
-                        href={cert.pdfLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="bg-slate-800/40 backdrop-blur-md rounded-xl p-6 border border-slate-700/50 flex flex-col justify-between min-h-[220px] w-[400px] shrink-0 grow-0 hover:border-cyan-300 hover:shadow-[0_0_15px_rgba(103,232,249,0.3)] transition-all duration-300 group"
-                      >
-                        <div className="flex flex-col gap-2">
-                          <h3 className="text-lg font-semibold text-slate-200 group-hover:text-cyan-300 transition-colors leading-snug">
-                            {cert.title}
-                          </h3>
-                          <p className="text-sm text-slate-400">
-                            {cert.issuer}
-                          </p>
-                        </div>
-                        <div className="flex items-center justify-between mt-4">
-                          <span className="text-xs text-slate-500">
-                            {cert.date}
-                          </span>
-                          <span className="text-xs text-emerald-400 font-medium group-hover:text-emerald-300 transition-colors flex items-center gap-1">
-                            View Certificate ↗
-                          </span>
-                        </div>
-                      </a>
+                      <CertificationCard key={`second-${index}`} cert={cert} />
                     ))}
                   </div>
                 </MarqueeTrack>
