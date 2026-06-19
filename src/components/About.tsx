@@ -88,7 +88,7 @@ function EducationTimeline() {
                     transition={{ duration: 0.35, ease: 'easeInOut' }}
                     className="overflow-hidden"
                   >
-                    <p className="mt-3 text-sm text-slate-300 leading-relaxed border-l-2 border-emerald-400/40 pl-4 py-1">
+                    <p className="mt-3 text-sm text-slate-300 leading-relaxed border-l-2 border-cyan-300 pl-4 py-1">
                       {item.content}
                     </p>
                   </motion.div>
