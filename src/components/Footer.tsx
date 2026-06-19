@@ -17,7 +17,7 @@ export default function Footer() {
                 Ushan <span className="text-cyan-300">Perera</span>
               </h3>
               <p className="text-slate-400 text-xs mt-2 font-medium tracking-wide leading-relaxed">
-                Full-Stack Developer | AI/ML Enthusiast | DevOps & SRE
+                Full-Stack Developer | AI/ML Enthusiast | DevOps & SRE | IoT Enthusiast
               </p>
             </div>
             
@@ -45,7 +45,7 @@ export default function Footer() {
           </div>
 
           {/* Column 2: Quick Links */}
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 md:pl-16">
             <h4 className="text-sm font-semibold text-white uppercase tracking-wider">Quick Links</h4>
             <ul className="flex flex-col gap-2.5">
               {[
