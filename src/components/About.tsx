@@ -55,7 +55,7 @@ export default function About() {
 
         {/* The Node Interface (Horizontal Timeline) */}
         <div className="relative mb-16 w-full overflow-x-auto pb-4 custom-scrollbar">
-          <div className="min-w-[600px] relative flex justify-between items-center mx-auto px-4">
+          <div className="min-w-[600px] relative flex justify-between items-center mx-auto px-4 py-6 overflow-visible">
             {/* The Horizontal Background Line */}
             <div className="absolute left-0 right-0 h-1 bg-slate-800 top-1/2 transform -translate-y-1/2 z-0 rounded-full"></div>
             
@@ -67,7 +67,9 @@ export default function About() {
                 <div 
                   key={tab.id} 
                   onClick={() => setActiveTab(tab.id)}
-                  className="relative z-10 flex flex-col items-center cursor-pointer group"
+                  className={`relative flex flex-col items-center cursor-pointer group ${
+                    isActive ? 'z-20' : 'z-10'
+                  }`}
                 >
                   <div className={`w-14 h-14 md:w-16 md:h-16 flex items-center justify-center rounded-full border-4 transition-all duration-300 ${
                     isActive 
