@@ -15,8 +15,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // scroll-smooth dapu nisa links click karama lassanata pallehata yai
   return (
-    <html lang="en" className="scroll-smooth"> {/* scroll-smooth dapu nisa links click karama lassanata pallehata yai */}
+    <html lang="en" className="scroll-smooth">
       <body className={`${inter.className} bg-slate-950 text-slate-300 antialiased overflow-x-hidden`}>
         <Navbar /> {/* Navbar eka body eke udinma danawa */}
         {children}
