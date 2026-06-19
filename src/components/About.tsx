@@ -65,12 +65,12 @@ const projectsData = [
 
 // Certifications data array
 const certifications = [
-  { title: "AWS Cloud Practitioner Essentials", issuer: "Amazon Web Services", date: "Apr 2026", pdfLink: "/certs/aws.pdf" },
-  { title: "Kubernetes for the Absolute Beginners", issuer: "KodeKloud", date: "Mar 2026", pdfLink: "/certs/kubernetes.pdf" },
-  { title: "Docker Training Course for the Absolute Beginner", issuer: "KodeKloud", date: "Mar 2026", pdfLink: "/certs/docker.pdf" },
-  { title: "Hands-on Introduction to Linux Commands and Shell Scripting", issuer: "IBM", date: "Mar 2026", pdfLink: "/certs/linux.pdf" },
-  { title: "Developing Back-End Apps with Node.js and Express", issuer: "IBM", date: "Mar 2026", pdfLink: "/certs/node.pdf" },
-  { title: "Introduction to Information Security", issuer: "HashX", date: "Mar 2026", pdfLink: "/certs/security.pdf" }
+  { title: "AWS Cloud Practitioner Essentials", issuer: "Amazon Web Services", date: "Apr 2026", pdfLink: "/aws.pdf" },
+  { title: "Kubernetes for the Absolute Beginners", issuer: "KodeKloud", date: "Mar 2026", pdfLink: "/kubernetes.pdf" },
+  { title: "Docker Training Course for the Absolute Beginner", issuer: "KodeKloud", date: "Mar 2026", pdfLink: "/docker.pdf" },
+  { title: "Hands-on Introduction to Linux Commands and Shell Scripting", issuer: "IBM", date: "Mar 2026", pdfLink: "/linux.pdf" },
+  { title: "Developing Back-End Apps with Node.js and Express", issuer: "IBM", date: "Mar 2026", pdfLink: "/node.pdf" },
+  { title: "Introduction to Information Security", issuer: "HashX", date: "Mar 2026", pdfLink: "/security.pdf" }
 ];
 
 // Accordion-style Education Timeline sub-component
