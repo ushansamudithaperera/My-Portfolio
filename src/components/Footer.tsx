@@ -16,8 +16,8 @@ export default function Footer() {
               <h3 className="text-xl font-bold text-white tracking-wide">
                 Ushan <span className="text-cyan-300">Perera</span>
               </h3>
-              <p className="text-slate-400 text-sm mt-2 leading-relaxed">
-                Building scalable automated software systems and modern web applications.
+              <p className="text-slate-400 text-xs mt-2 font-medium tracking-wide leading-relaxed">
+                Full-Stack Developer | AI/ML Enthusiast | DevOps & SRE
               </p>
             </div>
             
