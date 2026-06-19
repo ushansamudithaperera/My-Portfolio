@@ -555,7 +555,7 @@ export default function About() {
                       Mar 2025 - Aug 2025
                     </span>
                   </div>
-                  <p className="text-emerald-400 font-semibold text-sm mb-4">UOK Robot Battles</p>
+                  <p className="text-cyan-300 font-semibold text-sm mb-4">UOK Robot Battles</p>
                   <ul className="list-disc list-inside space-y-2 text-sm text-slate-400">
                     <li>Communicated competition details and updates to registered members through emails and phone calls.</li>
                     <li>Provided support to fellow membership coordinators in managing participant engagement activities.</li>
@@ -570,7 +570,7 @@ export default function About() {
                       Jun 2023 - Present
                     </span>
                   </div>
-                  <p className="text-emerald-400 font-semibold text-sm mb-4">Electronics and Computer Science Club (ECSC)</p>
+                  <p className="text-cyan-300 font-semibold text-sm mb-4">Electronics and Computer Science Club (ECSC)</p>
                   <ul className="list-disc list-inside space-y-2 text-sm text-slate-400">
                     <li>Contributed to organizing and executing major technical events, boosting student engagement in modern computing and software engineering.</li>
                   </ul>
