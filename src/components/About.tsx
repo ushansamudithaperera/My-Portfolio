@@ -340,59 +340,117 @@ export default function About() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3 }}
-                className="grid grid-cols-1 md:grid-cols-2 gap-6"
+                className="overflow-hidden relative w-full"
               >
-                {projectsData.map((project, idx) => (
-                  <div
-                    key={idx}
-                    className="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-emerald-400/50 transition-colors relative flex flex-col justify-between"
-                  >
-                    <div>
-                      <span className={`absolute top-4 right-4 text-xs font-bold px-3 py-1 rounded-full border ${
-                        project.status === "Finished"
-                          ? "bg-emerald-500/20 text-emerald-400 border-emerald-500/30"
-                          : "bg-yellow-500/20 text-yellow-400 border-yellow-500/30"
-                      }`}>
-                        {project.status}
-                      </span>
-                      <h3 className="text-xl font-bold text-white mb-2 pr-16">{project.title}</h3>
-                      <p className="text-slate-400 text-sm mb-4 leading-relaxed">{project.description}</p>
-                      
-                      <div className="flex flex-wrap gap-2 mb-6">
-                        {project.tech.map((t, i) => (
-                          <span key={i} className="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded">
-                            {t}
+                <div className="animate-scroll hover:[animation-play-state:paused] py-4">
+                  {/* First copy */}
+                  <div className="flex gap-6 pr-6 shrink-0">
+                    {projectsData.map((project, idx) => (
+                      <div
+                        key={`first-${idx}`}
+                        className="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-cyan-300 hover:shadow-[0_0_15px_rgba(103,232,249,0.3)] transition-all duration-300 relative flex flex-col justify-between w-[400px] shrink-0 grow-0"
+                      >
+                        <div>
+                          <span className={`absolute top-4 right-4 text-xs font-bold px-3 py-1 rounded-full border ${project.status === "Finished"
+                              ? "bg-emerald-500/20 text-emerald-400 border-emerald-500/30"
+                              : "bg-yellow-500/20 text-yellow-400 border-yellow-500/30"
+                            }`}>
+                            {project.status}
                           </span>
-                        ))}
-                      </div>
-                    </div>
+                          <h3 className="text-xl font-bold text-white mb-2 pr-16">{project.title}</h3>
+                          <p className="text-slate-400 text-sm mb-4 leading-relaxed">{project.description}</p>
 
-                    <div className="flex gap-4 items-center">
-                      {project.github && (
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-slate-400 hover:text-white transition-colors"
-                          aria-label={`${project.title} GitHub repository`}
-                        >
-                          <FaGithub size={20} />
-                        </a>
-                      )}
-                      {project.linkedin && (
-                        <a
-                          href={project.linkedin}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-slate-400 hover:text-[#0077b5] transition-colors"
-                          aria-label={`${project.title} LinkedIn post`}
-                        >
-                          <FaLinkedin size={20} />
-                        </a>
-                      )}
-                    </div>
+                          <div className="flex flex-wrap gap-2 mb-6">
+                            {project.tech.map((t, i) => (
+                              <span key={i} className="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded">
+                                {t}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+
+                        <div className="flex gap-4 items-center">
+                          {project.github && (
+                            <a
+                              href={project.github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-slate-400 hover:text-white transition-colors"
+                              aria-label={`${project.title} GitHub repository`}
+                            >
+                              <FaGithub size={20} />
+                            </a>
+                          )}
+                          {project.linkedin && (
+                            <a
+                              href={project.linkedin}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-slate-400 hover:text-[#0077b5] transition-colors"
+                              aria-label={`${project.title} LinkedIn post`}
+                            >
+                              <FaLinkedin size={20} />
+                            </a>
+                          )}
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                ))}
+
+                  {/* Second copy */}
+                  <div className="flex gap-6 pr-6 shrink-0">
+                    {projectsData.map((project, idx) => (
+                      <div
+                        key={`second-${idx}`}
+                        className="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-cyan-300 hover:shadow-[0_0_15px_rgba(103,232,249,0.3)] transition-all duration-300 relative flex flex-col justify-between w-[400px] shrink-0 grow-0"
+                      >
+                        <div>
+                          <span className={`absolute top-4 right-4 text-xs font-bold px-3 py-1 rounded-full border ${project.status === "Finished"
+                              ? "bg-emerald-500/20 text-emerald-400 border-emerald-500/30"
+                              : "bg-yellow-500/20 text-yellow-400 border-yellow-500/30"
+                            }`}>
+                            {project.status}
+                          </span>
+                          <h3 className="text-xl font-bold text-white mb-2 pr-16">{project.title}</h3>
+                          <p className="text-slate-400 text-sm mb-4 leading-relaxed">{project.description}</p>
+
+                          <div className="flex flex-wrap gap-2 mb-6">
+                            {project.tech.map((t, i) => (
+                              <span key={i} className="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded">
+                                {t}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+
+                        <div className="flex gap-4 items-center">
+                          {project.github && (
+                            <a
+                              href={project.github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-slate-400 hover:text-white transition-colors"
+                              aria-label={`${project.title} GitHub repository`}
+                            >
+                              <FaGithub size={20} />
+                            </a>
+                          )}
+                          {project.linkedin && (
+                            <a
+                              href={project.linkedin}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-slate-400 hover:text-[#0077b5] transition-colors"
+                              aria-label={`${project.title} LinkedIn post`}
+                            >
+                              <FaLinkedin size={20} />
+                            </a>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </motion.div>
             )}
 
