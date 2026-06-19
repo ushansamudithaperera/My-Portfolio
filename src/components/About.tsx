@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useRef, useEffect } from 'react';
+import { motion, AnimatePresence, useMotionValue, animate, PanInfo } from 'framer-motion';
 import { FaGraduationCap, FaLaptopCode, FaProjectDiagram, FaAward, FaUsers, FaGithub, FaLinkedin, FaJava, FaAws, FaDatabase } from 'react-icons/fa';
 
 import { SiJavascript, SiTypescript, SiPython, SiC, SiCplusplus, SiSharp, SiPhp, SiReact, SiNextdotjs, SiHtml5, SiCss, SiTailwindcss, SiBootstrap, SiNodedotjs, SiExpress, SiSpringboot, SiDotnet, SiMongodb, SiMysql, SiDocker, SiKubernetes, SiLinux, SiPrometheus, SiGrafana, SiGit, SiGithub } from 'react-icons/si';
@@ -145,6 +145,97 @@ function EducationTimeline() {
         })}
       </div>
     </motion.div>
+  );
+}
+
+// Draggable Infinite Marquee Track using Framer Motion
+interface MarqueeTrackProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+function MarqueeTrack({ children, className = "" }: MarqueeTrackProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const x = useMotionValue(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const [loopKey, setLoopKey] = useState(0);
+
+  useEffect(() => {
+    if (!trackRef.current) return;
+
+    const totalWidth = trackRef.current.scrollWidth;
+    const halfWidth = totalWidth / 2;
+
+    let controls: any;
+
+    if (!isDragging && !isHovered) {
+      const currentX = x.get();
+      let startX = currentX % halfWidth;
+      if (startX > 0) startX -= halfWidth;
+      x.set(startX);
+
+      const targetX = -halfWidth;
+      const distance = Math.abs(targetX - startX);
+      const speed = 40; // Pixels per second
+      const duration = distance / speed;
+
+      controls = animate(x, targetX, {
+        ease: "linear",
+        duration: duration,
+        onComplete: () => {
+          x.set(0);
+          setLoopKey((prev) => prev + 1);
+        },
+      });
+    }
+
+    return () => {
+      controls?.stop();
+    };
+  }, [isDragging, isHovered, loopKey]);
+
+  const handleDragStart = () => {
+    setIsDragging(true);
+  };
+
+  const handleDragEnd = () => {
+    setIsDragging(false);
+    if (!trackRef.current) return;
+
+    const totalWidth = trackRef.current.scrollWidth;
+    const halfWidth = totalWidth / 2;
+
+    let currentX = x.get();
+    let normalizedX = currentX % halfWidth;
+    if (normalizedX > 0) {
+      normalizedX -= halfWidth;
+    }
+    x.set(normalizedX);
+    setLoopKey((prev) => prev + 1);
+  };
+
+  return (
+    <div
+      ref={containerRef}
+      className={`overflow-hidden relative w-full ${className}`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <motion.div
+        ref={trackRef}
+        style={{ x }}
+        drag="x"
+        dragElastic={0.1}
+        dragConstraints={{ left: -3000, right: 3000 }}
+        onDragStart={handleDragStart}
+        onDragEnd={handleDragEnd}
+        className="flex w-max cursor-grab active:cursor-grabbing select-none py-4"
+      >
+        {children}
+      </motion.div>
+    </div>
   );
 }
 
@@ -301,42 +392,40 @@ export default function About() {
                 ].map((category, index) => (
                   <div key={index} className="bg-slate-800/30 p-4 rounded-xl border border-slate-700">
                     <h3 className="text-emerald-400 font-semibold mb-3">{category.title}</h3>
-                    <div className="overflow-hidden relative w-full [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
-                      <div className="animate-scroll py-2">
-                        {/* Render first copy */}
-                        <div className="flex gap-6 pr-6 shrink-0">
-                          {category.items.map((item, i) => (
-                            <div
-                              key={`first-${i}`}
-                              className="flex flex-col items-center justify-center min-w-[100px] h-[90px] gap-2 p-3 rounded-xl bg-slate-800/40 border border-slate-700/50 backdrop-blur-md hover:border-cyan-300 hover:shadow-[0_0_15px_rgba(103,232,249,0.3)] transition-all duration-300 group"
-                            >
-                              <div className="text-slate-400 group-hover:text-cyan-300 transition-colors">
-                                {item.icon}
-                              </div>
-                              <span className="text-xs text-slate-400 font-medium tracking-wide">
-                                {item.name}
-                              </span>
+                    <MarqueeTrack className="[mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
+                      {/* Render first copy */}
+                      <div className="flex gap-6 pr-6 shrink-0">
+                        {category.items.map((item, i) => (
+                          <div
+                            key={`first-${i}`}
+                            className="flex flex-col items-center justify-center min-w-[100px] h-[90px] gap-2 p-3 rounded-xl bg-slate-800/40 border border-slate-700/50 backdrop-blur-md hover:border-cyan-300 hover:shadow-[0_0_15px_rgba(103,232,249,0.3)] transition-all duration-300 group"
+                          >
+                            <div className="text-slate-400 group-hover:text-cyan-300 transition-colors">
+                              {item.icon}
                             </div>
-                          ))}
-                        </div>
-                        {/* Render second copy */}
-                        <div className="flex gap-6 pr-6 shrink-0">
-                          {category.items.map((item, i) => (
-                            <div
-                              key={`second-${i}`}
-                              className="flex flex-col items-center justify-center min-w-[100px] h-[90px] gap-2 p-3 rounded-xl bg-slate-800/40 border border-slate-700/50 backdrop-blur-md hover:border-cyan-300 hover:shadow-[0_0_15px_rgba(103,232,249,0.3)] transition-all duration-300 group"
-                            >
-                              <div className="text-slate-400 group-hover:text-cyan-300 transition-colors">
-                                {item.icon}
-                              </div>
-                              <span className="text-xs text-slate-400 font-medium tracking-wide">
-                                {item.name}
-                              </span>
-                            </div>
-                          ))}
-                        </div>
+                            <span className="text-xs text-slate-400 font-medium tracking-wide">
+                              {item.name}
+                            </span>
+                          </div>
+                        ))}
                       </div>
-                    </div>
+                      {/* Render second copy */}
+                      <div className="flex gap-6 pr-6 shrink-0">
+                        {category.items.map((item, i) => (
+                          <div
+                            key={`second-${i}`}
+                            className="flex flex-col items-center justify-center min-w-[100px] h-[90px] gap-2 p-3 rounded-xl bg-slate-800/40 border border-slate-700/50 backdrop-blur-md hover:border-cyan-300 hover:shadow-[0_0_15px_rgba(103,232,249,0.3)] transition-all duration-300 group"
+                          >
+                            <div className="text-slate-400 group-hover:text-cyan-300 transition-colors">
+                              {item.icon}
+                            </div>
+                            <span className="text-xs text-slate-400 font-medium tracking-wide">
+                              {item.name}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </MarqueeTrack>
                   </div>
                 ))}
               </motion.div>
@@ -352,7 +441,7 @@ export default function About() {
                 transition={{ duration: 0.3 }}
                 className="overflow-hidden relative w-full"
               >
-                <div className="animate-scroll hover:[animation-play-state:paused] py-4">
+                <MarqueeTrack>
                   {/* First copy */}
                   <div className="flex gap-6 pr-6 shrink-0">
                     {projectsData.map((project, idx) => (
@@ -460,7 +549,7 @@ export default function About() {
                       </div>
                     ))}
                   </div>
-                </div>
+                </MarqueeTrack>
               </motion.div>
             )}
 
@@ -474,7 +563,7 @@ export default function About() {
                 transition={{ duration: 0.3 }}
                 className="overflow-hidden relative w-full min-h-[300px] md:min-h-[320px] flex flex-col justify-center"
               >
-                <div className="animate-scroll hover:[animation-play-state:paused] py-4">
+                <MarqueeTrack>
                   {/* First copy */}
                   <div className="flex gap-6 pr-6 shrink-0">
                     {certifications.map((cert, index) => (
@@ -534,7 +623,7 @@ export default function About() {
                       </a>
                     ))}
                   </div>
-                </div>
+                </MarqueeTrack>
               </motion.div>
             )}
 
