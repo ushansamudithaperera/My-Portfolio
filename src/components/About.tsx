@@ -5,6 +5,103 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaGraduationCap, FaLaptopCode, FaProjectDiagram, FaAward, FaUsers, FaGithub, FaLinkedin, FaJava, FaAws, FaDatabase } from 'react-icons/fa';
 
 import { SiJavascript, SiTypescript, SiPython, SiC, SiCplusplus, SiSharp, SiPhp, SiReact, SiHtml5, SiCss, SiTailwindcss, SiBootstrap, SiNodedotjs, SiExpress, SiSpringboot, SiDotnet, SiMongodb, SiMysql, SiDocker, SiKubernetes, SiLinux, SiPrometheus, SiGrafana, SiGit, SiGithub } from 'react-icons/si';
+// Education accordion data
+const educationData = [
+  {
+    title: 'Undergraduate Degree',
+    subtitle: 'University of Kelaniya \u2022 2023 \u2013 Present (Expected: 2027)',
+    content:
+      "Reading for a BSc in Computer Science. Deeply focused on high-level computer science concepts, modern software development, and automated software systems. Passionate about exploring AI & ML architectures and implementing scalable DevOps/SRE practices.",
+  },
+  {
+    title: 'G.C.E. Advanced Level (A/L)',
+    subtitle: 'R/New Town Prince College \u2022 2021 (2022)',
+    content:
+      "Successfully completed in the Physical Science (Mathematics) stream with 3 \u2018B\u2019 passes, building a strong foundation in analytical thinking, calculus, and advanced problem-solving.",
+  },
+  {
+    title: 'G.C.E. Ordinary Level (O/L)',
+    subtitle: 'R/Ananda Vidyalaya \u2022 2017',
+    content:
+      'Passed with excellent academic standing, demonstrating an early and strong aptitude for fundamental sciences, mathematics, and logical reasoning.',
+  },
+];
+
+// Accordion-style Education Timeline sub-component
+function EducationTimeline() {
+  const [activeNode, setActiveNode] = useState(0);
+
+  return (
+    <motion.div
+      key="education"
+      initial={{ opacity: 0, x: 20 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: -20 }}
+      transition={{ duration: 0.3 }}
+      className="relative"
+    >
+      {/* Continuous vertical guide line */}
+      <div className="absolute left-[7px] top-0 w-[2px] h-full bg-slate-800 rounded-full" />
+
+      <div className="space-y-0">
+        {educationData.map((item, index) => {
+          const isActive = activeNode === index;
+          return (
+            <div key={index} className="relative pl-10 pb-8 last:pb-0">
+              {/* Dot */}
+              <button
+                onClick={() => setActiveNode(index)}
+                aria-label={`Expand ${item.title}`}
+                className={`absolute left-0 top-[3px] w-4 h-4 rounded-full border-2 flex-shrink-0 transition-all duration-300 focus:outline-none ${isActive
+                  ? 'bg-emerald-400 border-emerald-400 shadow-[0_0_10px_#34d399] scale-110'
+                  : 'bg-slate-800 border-slate-600 hover:border-emerald-400/60'
+                  }`}
+              />
+
+              {/* Header — clickable */}
+              <button
+                onClick={() => setActiveNode(index)}
+                className="w-full text-left group focus:outline-none"
+              >
+                <h3
+                  className={`text-lg font-bold leading-snug transition-colors duration-300 ${isActive ? 'text-white' : 'text-slate-400 group-hover:text-slate-200'
+                    }`}
+                >
+                  {item.title}
+                </h3>
+                <p
+                  className={`text-xs mt-0.5 transition-colors duration-300 ${isActive ? 'text-emerald-400' : 'text-slate-600'
+                    }`}
+                >
+                  {item.subtitle}
+                </p>
+              </button>
+
+              {/* Animated content panel */}
+              <AnimatePresence initial={false}>
+                {isActive && (
+                  <motion.div
+                    key="content"
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.35, ease: 'easeInOut' }}
+                    className="overflow-hidden"
+                  >
+                    <p className="mt-3 text-sm text-slate-300 leading-relaxed border-l-2 border-emerald-400/40 pl-4 py-1">
+                      {item.content}
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          );
+        })}
+      </div>
+    </motion.div>
+  );
+}
+
 // Api define karagamu ape Nodes (Tabs) tika
 const tabs = [
   { id: 'education', label: 'Education', icon: FaGraduationCap },
@@ -14,14 +111,16 @@ const tabs = [
   { id: 'extra', label: 'Extra-Curricular', icon: FaUsers },
 ];
 
+
 export default function About() {
   const [activeTab, setActiveTab] = useState('education');
 
   return (
     <section id="about" className="py-20 bg-slate-950 min-h-screen px-6 overflow-hidden">
-      
+
       {/* Moving Carousel Effect ekata oni CSS tika methana inline danawa */}
-      <style dangerouslySetInnerHTML={{__html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         @keyframes scroll {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
@@ -38,7 +137,7 @@ export default function About() {
 
       <div className="max-w-5xl mx-auto">
         {/* Section Title */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -48,7 +147,7 @@ export default function About() {
             About <span className="text-emerald-400">Me</span>
           </h2>
           <p className="text-slate-400 max-w-2xl mx-auto">
-            A dedicated tech enthusiast with a strong foundation in modern computing, 
+            A dedicated tech enthusiast with a strong foundation in modern computing,
             software engineering, and cloud infrastructure.
           </p>
         </motion.div>
@@ -58,24 +157,22 @@ export default function About() {
           <div className="min-w-[600px] relative flex justify-between items-center mx-auto px-4 py-6 overflow-visible">
             {/* The Horizontal Background Line */}
             <div className="absolute left-0 right-0 h-1 bg-slate-800 top-1/2 transform -translate-y-1/2 z-0 rounded-full"></div>
-            
+
             {/* The Nodes */}
             {tabs.map((tab) => {
               const isActive = activeTab === tab.id;
               const Icon = tab.icon;
               return (
-                <div 
-                  key={tab.id} 
+                <div
+                  key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`relative flex flex-col items-center cursor-pointer group ${
-                    isActive ? 'z-20' : 'z-10'
-                  }`}
+                  className={`relative flex flex-col items-center cursor-pointer group ${isActive ? 'z-20' : 'z-10'
+                    }`}
                 >
-                  <div className={`w-14 h-14 md:w-16 md:h-16 flex items-center justify-center rounded-full border-4 transition-all duration-300 ${
-                    isActive 
-                      ? 'bg-slate-900 border-emerald-400 text-emerald-400 shadow-[0_0_20px_rgba(52,211,153,0.5)] scale-110' 
-                      : 'bg-slate-900 border-slate-700 text-slate-500 hover:border-emerald-400/50 hover:text-emerald-400/80'
-                  }`}>
+                  <div className={`w-14 h-14 md:w-16 md:h-16 flex items-center justify-center rounded-full border-4 transition-all duration-300 ${isActive
+                    ? 'bg-slate-900 border-emerald-400 text-emerald-400 shadow-[0_0_20px_rgba(52,211,153,0.5)] scale-110'
+                    : 'bg-slate-900 border-slate-700 text-slate-500 hover:border-emerald-400/50 hover:text-emerald-400/80'
+                    }`}>
                     <Icon size={isActive ? 28 : 24} />
                   </div>
                   <span className={`mt-3 text-sm font-semibold transition-colors duration-300 ${isActive ? 'text-emerald-400' : 'text-slate-500 group-hover:text-emerald-400/80'}`}>
@@ -90,36 +187,10 @@ export default function About() {
         {/* Tab Content Display */}
         <div className="min-h-[400px] bg-slate-900/50 border border-slate-800 rounded-2xl p-6 md:p-10 relative overflow-hidden">
           <AnimatePresence mode="wait">
-            
-            {/* 1. Education Content */}
+
+            {/* 1. Education Content — Accordion Timeline */}
             {activeTab === 'education' && (
-              <motion.div
-                key="education"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                transition={{ duration: 0.3 }}
-                className="space-y-8"
-              >
-                <div className="border-l-2 border-emerald-400 pl-6 relative">
-                  <div className="absolute w-4 h-4 bg-emerald-400 rounded-full -left-[9px] top-1 shadow-[0_0_10px_rgba(52,211,153,1)]"></div>
-                  <h3 className="text-xl font-bold text-white">Undergraduate Degree</h3>
-                  <p className="text-emerald-400 text-sm mb-2">Ongoing</p>
-                  <p className="text-slate-300">BSc in Electronics and Computer Science. Focusing on high-level computer science concepts and automated software systems.</p>
-                </div>
-                <div className="border-l-2 border-slate-700 pl-6 relative">
-                  <div className="absolute w-4 h-4 bg-slate-600 rounded-full -left-[9px] top-1"></div>
-                  <h3 className="text-xl font-bold text-white">G.C.E. Advanced Level (A/L)</h3>
-                  <p className="text-slate-400 text-sm mb-2">[Your School Name] - [Year]</p>
-                  <p className="text-slate-300">Completed in the Physical Science (Maths) stream.</p>
-                </div>
-                <div className="border-l-2 border-slate-700 pl-6 relative">
-                  <div className="absolute w-4 h-4 bg-slate-600 rounded-full -left-[9px] top-1"></div>
-                  <h3 className="text-xl font-bold text-white">G.C.E. Ordinary Level (O/L)</h3>
-                  <p className="text-slate-400 text-sm mb-2">[Your School Name] - [Year]</p>
-                  <p className="text-slate-300">Passed with excellent grades.</p>
-                </div>
-              </motion.div>
+              <EducationTimeline />
             )}
 
             {/* 2. Skills Content (With Carousel Effect) */}
@@ -134,10 +205,10 @@ export default function About() {
               >
 
                 {[
-                { title: "Programming Languages", items: [ <SiJavascript/>, <SiTypescript/>, <SiPython/>, <FaJava/>, <SiC/>, <SiCplusplus/>, <SiSharp/>, <SiPhp/> ] },
-                { title: "Frontend Technologies", items: [ <SiReact/>, <SiHtml5/>, <SiCss/>, <SiTailwindcss/>, <SiBootstrap/> ] },
-                { title: "Backend & Databases", items: [ <SiNodedotjs/>, <SiExpress/>, <SiSpringboot/>, <SiDotnet/>, <SiMongodb/>, <SiMysql/>, <FaDatabase/> ] },
-                { title: "Cloud, DevOps & Tools", items: [ <FaAws/>, <SiDocker/>, <SiKubernetes/>, <SiLinux/>, <SiPrometheus/>, <SiGrafana/>, <SiGit/>, <SiGithub/> ] }
+                  { title: "Programming Languages", items: [<SiJavascript />, <SiTypescript />, <SiPython />, <FaJava />, <SiC />, <SiCplusplus />, <SiSharp />, <SiPhp />] },
+                  { title: "Frontend Technologies", items: [<SiReact />, <SiHtml5 />, <SiCss />, <SiTailwindcss />, <SiBootstrap />] },
+                  { title: "Backend & Databases", items: [<SiNodedotjs />, <SiExpress />, <SiSpringboot />, <SiDotnet />, <SiMongodb />, <SiMysql />, <FaDatabase />] },
+                  { title: "Cloud, DevOps & Tools", items: [<FaAws />, <SiDocker />, <SiKubernetes />, <SiLinux />, <SiPrometheus />, <SiGrafana />, <SiGit />, <SiGithub />] }
                 ].map((category, index) => (
                   <div key={index} className="bg-slate-800/30 p-4 rounded-xl border border-slate-700">
                     <h3 className="text-emerald-400 font-semibold mb-3">{category.title}</h3>
@@ -213,10 +284,10 @@ export default function About() {
                   {/* Replace images with actual certificate URLs or local public images */}
                   {[1, 2, 3].map((item) => (
                     <div key={item} className="min-w-[300px] h-[200px] bg-slate-800 border border-slate-700 rounded-xl flex items-center justify-center relative group">
-                       <FaAward className="text-slate-600 text-6xl group-hover:text-emerald-400 transition-colors" />
-                       <div className="absolute inset-0 bg-emerald-500/90 text-slate-950 font-bold opacity-0 group-hover:opacity-100 flex items-center justify-center rounded-xl transition-opacity duration-300">
-                         View Certificate
-                       </div>
+                      <FaAward className="text-slate-600 text-6xl group-hover:text-emerald-400 transition-colors" />
+                      <div className="absolute inset-0 bg-emerald-500/90 text-slate-950 font-bold opacity-0 group-hover:opacity-100 flex items-center justify-center rounded-xl transition-opacity duration-300">
+                        View Certificate
+                      </div>
                     </div>
                   ))}
                 </div>
