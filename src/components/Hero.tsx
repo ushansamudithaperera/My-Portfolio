@@ -2,32 +2,37 @@
 
 import { motion } from 'framer-motion';
 import { Typewriter } from 'react-simple-typewriter';
-import { FaGithub, FaLinkedin, FaDownload } from 'react-icons/fa';
+import { FaDownload, FaLinkedin, FaGithub } from 'react-icons/fa';
 
 export default function Hero() {
   return (
-    <section id="home" className="min-h-screen bg-slate-950 flex items-center justify-center py-20 px-6 overflow-hidden">
-      <div className="max-w-7xl w-full mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-8">
-        
-        {/* Left Column: Text & Typewriter */}
-        <motion.div 
+    <section id="home" className="relative min-h-screen flex items-center justify-center pt-24 pb-10 md:pt-0 md:pb-0 overflow-hidden">
+
+      <div className="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-6 items-center">
+
+        {/* Left Column: Text & Buttons */}
+        <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          className="flex-1 text-center lg:text-left order-2 lg:order-1"
+          className="flex flex-col justify-center text-center md:text-left z-10"
         >
-          <h1 className="text-4xl lg:text-6xl font-bold text-white mb-4">
-            Hi, I'm <span className="text-emerald-400">Ushan Perera</span>
+          <h2 className="text-xl md:text-2xl text-emerald-400 font-semibold mb-2 tracking-wide">
+            Hi, I'm
+          </h2>
+          <h1 className="text-5xl md:text-7xl font-bold text-white mb-4 leading-tight">
+            Ushan <br className="hidden md:block" /> Perera
           </h1>
-          <div className="text-xl lg:text-3xl text-slate-300 font-semibold h-[40px] mb-6">
+
+          <div className="text-xl md:text-3xl font-medium text-cyan-300 mb-6 h-[40px]">
             <Typewriter
               words={[
-                'Full-Stack Developer', 
-                'DevOps & SRE Enthusiast', 
-                'AI & ML Enthusiast', 
-                'Software Systems Engineer'
+                'Full-Stack Developer',
+                'DevOps & SRE Enthusiast',
+                'AI & ML Enthusiast',
+                'IoT Enthusiast'
               ]}
-              loop={0}
+              loop={true}
               cursor
               cursorStyle="_"
               typeSpeed={70}
@@ -35,64 +40,55 @@ export default function Hero() {
               delaySpeed={1500}
             />
           </div>
-          <p className="text-slate-400 text-lg max-w-lg mx-auto lg:mx-0">
-            Passionate about building scalable automated software systems, modern web applications, and exploring the depths of cloud infrastructure.
-          </p>
-        </motion.div>
 
-        {/* Middle Column: Profile Image */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="flex-1 flex justify-center order-1 lg:order-2"
-        >
-          <div className="w-64 h-64 lg:w-80 lg:h-80 rounded-full border-4 border-emerald-400 overflow-hidden relative shadow-[0_0_30px_rgba(52,211,153,0.3)]">
-            {/* Using standard img tag for S3 static export compatibility */}
-            <img 
-              src="/me.png" 
-              alt="Ushan Perera" 
-              className="w-full h-full object-cover"
-            />
+          <p className="text-slate-400 text-lg mb-10 max-w-lg mx-auto md:mx-0 leading-relaxed">
+            Passionate about building scalable automated software systems, modern web applications,
+            and exploring the depths of cloud infrastructure.
+          </p>
+
+          <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
+            <a
+              href="/Ushan_Perera_CV.pdf"
+              download
+              className="flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 px-6 py-3 rounded-full font-bold transition-all duration-300 shadow-[0_0_15px_rgba(52,211,153,0.3)] hover:scale-105"
+            >
+              <FaDownload /> Download CV
+            </a>
+            <a
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center w-12 h-12 rounded-full border border-slate-700 text-slate-300 hover:text-white hover:border-cyan-400 hover:bg-slate-800 transition-all duration-300"
+            >
+              <FaLinkedin size={20} />
+            </a>
+            <a
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center w-12 h-12 rounded-full border border-slate-700 text-slate-300 hover:text-white hover:border-emerald-400 hover:bg-slate-800 transition-all duration-300"
+            >
+              <FaGithub size={20} />
+            </a>
           </div>
         </motion.div>
 
-        {/* Right Column: Buttons */}
-        <motion.div 
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="flex-1 flex flex-col items-center lg:items-end gap-5 order-3"
+        {/* Right Column: ONLY The Cutout Image */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="relative h-[450px] md:h-[700px] lg:h-[850px] w-full flex items-end justify-center md:justify-end mt-10 md:mt-0"
         >
-          {/* Download CV Button */}
-          <a 
-            href="/Ushan_Perera_CV.pdf" 
-            download="Ushan_Perera_CV.pdf"
-            className="flex items-center justify-center gap-3 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 w-full max-w-[250px] shadow-[0_0_15px_rgba(52,211,153,0.4)]"
-          >
-            <FaDownload size={18} /> Download CV
-          </a>
-
-          {/* LinkedIn Button */}
-          <a 
-            href="https://linkedin.com/in/ushan-perera" // Oyaage LinkedIn link eka methanata danna
-            target="_blank" 
-            rel="noreferrer" 
-            className="flex items-center justify-center gap-3 border-2 border-emerald-500 text-emerald-400 hover:bg-emerald-500 hover:text-slate-950 font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 w-full max-w-[250px]"
-          >
-            <FaLinkedin size={20} /> LinkedIn
-          </a>
-
-          {/* GitHub Button */}
-          <a 
-            href="https://github.com/ushan-perera" // Oyaage GitHub link eka methanata danna
-            target="_blank" 
-            rel="noreferrer" 
-            className="flex items-center justify-center gap-3 border-2 border-emerald-500 text-emerald-400 hover:bg-emerald-500 hover:text-slate-950 font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 w-full max-w-[250px]"
-          >
-            <FaGithub size={20} /> GitHub
-          </a>
+          <img
+            src="/me-cutout.png"
+            alt="Ushan Perera"
+            className="h-[105%] w-auto object-contain object-middle -mb-12 md:-mb-16 drop-shadow-[0_20px_30px_rgba(0,0,0,0.5)] z-10"
+          />
         </motion.div>
+
+        {/* Custom blending shadow (Darkening effect on the right side) */}
+        <div className="absolute top-0 right-0 h-full w-[40%] bg-gradient-to-l from-slate-950 to-transparent pointer-events-none z-20"></div>
 
       </div>
     </section>
