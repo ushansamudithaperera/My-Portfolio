@@ -27,6 +27,42 @@ const educationData = [
   },
 ];
 
+// Projects data array
+const projectsData = [
+  {
+    title: "Sentinel Stream",
+    status: "Finished",
+    description: "A real-time network intrusion detection system with multi-layer detection architecture, adaptive feedback, and complete Dockerized deployment.",
+    tech: ["React.js", "Node.js", "MongoDB", "Socket.IO", "Docker"],
+    github: "https://github.com/ushansamudithaperera/Sentinel-Stream-System",
+    linkedin: "https://www.linkedin.com/posts/ushan-perera-16ab952b3_cybersecurity-intrusiondetection-fullstack-ugcPost-7438299983537229824-0JTY"
+  },
+  {
+    title: "AI Smart Inventory System",
+    status: "Finished",
+    description: "Scalable inventory platform utilizing Google Gemini AI for automated product categorization, featuring Redis caching and Grafana monitoring.",
+    tech: ["MERN Stack", "Gemini AI", "Redis", "Docker", "Grafana"],
+    github: "https://github.com/ushansamudithaperera/Smart-Inventory-System",
+    linkedin: "https://www.linkedin.com/posts/ushan-perera-16ab952b3_fullstackdevelopment-mern-artificialintelligence-ugcPost-7449506753236353024-fWdr"
+  },
+  {
+    title: "Travel Commerce Platform",
+    status: "Finished",
+    description: "A full-stack digital marketplace connecting travelers with local service providers, featuring secure RESTful APIs and optimized data retrieval.",
+    tech: ["React.js", "Spring Boot", "MongoDB", "REST APIs"],
+    github: "https://github.com/ushansamudithaperera/Online-Platform-for-Travel-Based-Commerce",
+    linkedin: "https://www.linkedin.com/posts/ushan-perera-16ab952b3_webdevelopment-fullstack-servicemarketplace-ugcPost-7441446922617495554-nvgm"
+  },
+  {
+    title: "Gem Trading System",
+    status: "Ongoing",
+    description: "A modern digital platform currently in development for securely trading and managing gems with advanced commerce features.",
+    tech: ["Next.js", "Node.js", "MongoDB", "Tailwind CSS"],
+    github: "https://github.com/ushansamudithaperera/Gem-Trading-System",
+    linkedin: ""
+  }
+];
+
 // Accordion-style Education Timeline sub-component
 function EducationTimeline() {
   const [activeNode, setActiveNode] = useState(0);
@@ -306,39 +342,57 @@ export default function About() {
                 transition={{ duration: 0.3 }}
                 className="grid grid-cols-1 md:grid-cols-2 gap-6"
               >
-                {/* Project Card Example 1 */}
-                <div className="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-emerald-400/50 transition-colors relative">
-                  <span className="absolute top-4 right-4 bg-emerald-500/20 text-emerald-400 text-xs font-bold px-3 py-1 rounded-full border border-emerald-500/30">
-                    Finished
-                  </span>
-                  <h3 className="text-xl font-bold text-white mb-2">Sentinel Stream</h3>
-                  <p className="text-slate-400 text-sm mb-4">A real-time network intrusion detection system with multi-layer detection architecture.</p>
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    <span className="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded">Python</span>
-                    <span className="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded">Machine Learning</span>
-                  </div>
-                  <div className="flex gap-4">
-                    <a href="#" className="text-slate-400 hover:text-white transition-colors"><FaGithub size={20} /></a>
-                    <a href="#" className="text-slate-400 hover:text-[#0077b5] transition-colors"><FaLinkedin size={20} /></a>
-                  </div>
-                </div>
+                {projectsData.map((project, idx) => (
+                  <div
+                    key={idx}
+                    className="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-emerald-400/50 transition-colors relative flex flex-col justify-between"
+                  >
+                    <div>
+                      <span className={`absolute top-4 right-4 text-xs font-bold px-3 py-1 rounded-full border ${
+                        project.status === "Finished"
+                          ? "bg-emerald-500/20 text-emerald-400 border-emerald-500/30"
+                          : "bg-yellow-500/20 text-yellow-400 border-yellow-500/30"
+                      }`}>
+                        {project.status}
+                      </span>
+                      <h3 className="text-xl font-bold text-white mb-2 pr-16">{project.title}</h3>
+                      <p className="text-slate-400 text-sm mb-4 leading-relaxed">{project.description}</p>
+                      
+                      <div className="flex flex-wrap gap-2 mb-6">
+                        {project.tech.map((t, i) => (
+                          <span key={i} className="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded">
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
 
-                {/* Project Card Example 2 */}
-                <div className="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-emerald-400/50 transition-colors relative">
-                  <span className="absolute top-4 right-4 bg-yellow-500/20 text-yellow-400 text-xs font-bold px-3 py-1 rounded-full border border-yellow-500/30">
-                    Ongoing
-                  </span>
-                  <h3 className="text-xl font-bold text-white mb-2">Smart Inventory System</h3>
-                  <p className="text-slate-400 text-sm mb-4">Inventory management with AI-based product scanning utilizing the Gemini API.</p>
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    <span className="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded">Next.js</span>
-                    <span className="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded">Node.js</span>
-                    <span className="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded">MongoDB</span>
+                    <div className="flex gap-4 items-center">
+                      {project.github && (
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-slate-400 hover:text-white transition-colors"
+                          aria-label={`${project.title} GitHub repository`}
+                        >
+                          <FaGithub size={20} />
+                        </a>
+                      )}
+                      {project.linkedin && (
+                        <a
+                          href={project.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-slate-400 hover:text-[#0077b5] transition-colors"
+                          aria-label={`${project.title} LinkedIn post`}
+                        >
+                          <FaLinkedin size={20} />
+                        </a>
+                      )}
+                    </div>
                   </div>
-                  <div className="flex gap-4">
-                    <a href="#" className="text-slate-400 hover:text-white transition-colors"><FaGithub size={20} /></a>
-                  </div>
-                </div>
+                ))}
               </motion.div>
             )}
 
