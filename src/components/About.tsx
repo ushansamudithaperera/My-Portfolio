@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaGraduationCap, FaLaptopCode, FaProjectDiagram, FaAward, FaUsers, FaGithub, FaLinkedin, FaJava, FaAws, FaDatabase } from 'react-icons/fa';
 
-import { SiJavascript, SiTypescript, SiPython, SiC, SiCplusplus, SiSharp, SiPhp, SiReact, SiHtml5, SiCss, SiTailwindcss, SiBootstrap, SiNodedotjs, SiExpress, SiSpringboot, SiDotnet, SiMongodb, SiMysql, SiDocker, SiKubernetes, SiLinux, SiPrometheus, SiGrafana, SiGit, SiGithub } from 'react-icons/si';
+import { SiJavascript, SiTypescript, SiPython, SiC, SiCplusplus, SiSharp, SiPhp, SiReact, SiNextdotjs, SiHtml5, SiCss, SiTailwindcss, SiBootstrap, SiNodedotjs, SiExpress, SiSpringboot, SiDotnet, SiMongodb, SiMysql, SiDocker, SiKubernetes, SiLinux, SiPrometheus, SiGrafana, SiGit, SiGithub } from 'react-icons/si';
 // Education accordion data
 const educationData = [
   {
@@ -220,6 +220,7 @@ export default function About() {
                     title: "Frontend Technologies",
                     items: [
                       { name: "React", icon: <SiReact size={32} /> },
+                      { name: "Next.js", icon: <SiNextdotjs size={32} /> },
                       { name: "HTML5", icon: <SiHtml5 size={32} /> },
                       { name: "CSS3", icon: <SiCss size={32} /> },
                       { name: "Tailwind CSS", icon: <SiTailwindcss size={32} /> },
