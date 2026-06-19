@@ -48,11 +48,11 @@ export default function Hero() {
 
           <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
             <a
-              href="/Ushan_Perera_CV.pdf"
+              href="/Ushan_Perera_Resume.pdf"
               download
               className="flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 px-6 py-3 rounded-full font-bold transition-all duration-300 shadow-[0_0_15px_rgba(52,211,153,0.3)] hover:scale-105"
             >
-              <FaDownload /> Download CV
+              <FaDownload /> Download Resume
             </a>
             <a
               href="#"

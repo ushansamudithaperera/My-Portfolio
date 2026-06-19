@@ -21,7 +21,7 @@ export default function Contact() {
               Let's <span className="text-emerald-400">Connect</span>
             </h2>
             <p className="text-slate-400 text-lg max-w-md mx-auto md:mx-0">
-              I'm actively looking for internship opportunities in DevOps, SRE, and Full-Stack development.
+              I'm actively looking for internship opportunities in DevOps, SRE, AI & ML, and Full-Stack development.
               Whether you have a question or just want to say hi, I'll try my best to get back to you!
             </p>
           </div>
@@ -34,7 +34,7 @@ export default function Contact() {
               <div className="text-left">
                 <h4 className="text-white font-semibold">Email</h4>
                 {/* Oyaage real email eka methanata danna */}
-                <p className="text-slate-400">your.email@example.com</p>
+                <p className="text-slate-400">samudithaperera01@gmail.com</p>
               </div>
             </div>
 
@@ -44,7 +44,7 @@ export default function Contact() {
               </div>
               <div className="text-left">
                 <h4 className="text-white font-semibold">Location</h4>
-                <p className="text-slate-400">Sri Lanka</p>
+                <p className="text-slate-400">Rathnapura, Sri Lanka</p>
               </div>
             </div>
           </div>

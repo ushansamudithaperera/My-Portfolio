@@ -261,8 +261,8 @@ function ProjectCard({ project }: { project: any }) {
     >
       <div className="pointer-events-none">
         <span className={`absolute top-4 right-4 text-xs font-bold px-3 py-1 rounded-full border ${project.status === "Finished"
-            ? "bg-emerald-500/20 text-emerald-400 border-emerald-500/30"
-            : "bg-yellow-500/20 text-yellow-400 border-yellow-500/30"
+          ? "bg-emerald-500/20 text-emerald-400 border-emerald-500/30"
+          : "bg-yellow-500/20 text-yellow-400 border-yellow-500/30"
           }`}>
           {project.status}
         </span>
@@ -412,8 +412,9 @@ export default function About() {
             About <span className="text-emerald-400">Me</span>
           </h2>
           <p className="text-slate-400 max-w-2xl mx-auto">
-            A dedicated tech enthusiast with a strong foundation in modern computing,
-            software engineering, and cloud infrastructure.
+            BSc (Hons) in Electronics and Computer Science undergraduate with hands-on experience building real-time
+            secure networks and AI-integrated platforms. Seeking a technical internship to utilize expertise in software
+            engineering, API development, AI & ML and DevOps practices within a fast-paced technology environment.
           </p>
         </motion.div>
 
