@@ -55,7 +55,7 @@ export default function Hero() {
               <FaDownload /> Download Resume
             </a>
             <a
-              href="#"
+              href="https://www.linkedin.com/in/ushan-perera-16ab952b3/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center w-12 h-12 rounded-full border border-slate-700 text-slate-300 hover:text-white hover:border-cyan-400 hover:bg-slate-800 transition-all duration-300"
@@ -63,7 +63,7 @@ export default function Hero() {
               <FaLinkedin size={20} />
             </a>
             <a
-              href="#"
+              href="https://github.com/ushansamudithaperera"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center w-12 h-12 rounded-full border border-slate-700 text-slate-300 hover:text-white hover:border-emerald-400 hover:bg-slate-800 transition-all duration-300"
