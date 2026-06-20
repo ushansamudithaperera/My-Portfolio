@@ -33,7 +33,7 @@ export default function Contact() {
               </div>
               <div className="text-left">
                 <h4 className="text-white font-semibold">Email</h4>
-                {/* Oyaage real email eka methanata danna */}
+
                 <p className="text-slate-400">samudithaperera01@gmail.com</p>
               </div>
             </div>
@@ -58,7 +58,7 @@ export default function Contact() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="bg-slate-900 p-8 md:p-10 rounded-2xl border border-slate-800 shadow-xl"
         >
-          {/* Formspree Action URL eka methanata danna */}
+
           <form action="https://formspree.io/f/xrevnabz" method="POST" className="space-y-6">
 
             <div>

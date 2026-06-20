@@ -18,8 +18,8 @@ export default function Spotlight() {
         <div
             className="pointer-events-none fixed inset-0 z-50 transition-opacity duration-300"
             style={{
-                // rgba(56, 189, 248, 0.06) kiyanne ara oya dapu Light Blue (sky-400) eka. 
-                // 0.06 opacity eken hena smooth torch effect ekak enawa.
+
+
                 background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(56, 189, 248, 0.06), transparent 80%)`,
             }}
         />

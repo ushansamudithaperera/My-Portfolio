@@ -90,7 +90,7 @@ export default function Hero() {
         </motion.div>
 
         {/* Custom blending shadow (Darkening effect on the right side) */}
-        <div className="absolute top-0 right-0 h-full w-[40%] bg-gradient-to-l from-slate-950 to-transparent pointer-events-none z-20"></div>
+        <div className="hidden md:block absolute top-0 right-0 h-full w-[40%] bg-gradient-to-l from-slate-950 to-transparent pointer-events-none z-20"></div>
 
       </div>
     </section>
