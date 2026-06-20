@@ -79,6 +79,7 @@ function EducationTimeline() {
 
   return (
     <motion.div
+      id="education"
       key="education"
       initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: 1, x: 0 }}
@@ -368,10 +369,12 @@ export default function About() {
       const validTabs = ['education', 'skills', 'projects', 'certifications', 'extra'];
       if (validTabs.includes(hash)) {
         setActiveTab(hash);
-        const element = document.getElementById('about');
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
+        setTimeout(() => {
+          const element = document.getElementById(hash) || document.getElementById('about');
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100);
       }
     };
 
@@ -462,6 +465,7 @@ export default function About() {
             {/* 2. Skills Content (With Carousel Effect) */}
             {activeTab === 'skills' && (
               <motion.div
+                id="skills"
                 key="skills"
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -564,6 +568,7 @@ export default function About() {
             {/* 3. Projects Content */}
             {activeTab === 'projects' && (
               <motion.div
+                id="projects"
                 key="projects"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -592,6 +597,7 @@ export default function About() {
             {/* 4. Certifications Content */}
             {activeTab === 'certifications' && (
               <motion.div
+                id="certifications"
                 key="certifications"
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -620,6 +626,7 @@ export default function About() {
             {/* 5. Extra-Curricular Content */}
             {activeTab === 'extra' && (
               <motion.div
+                id="extra"
                 key="extra"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
