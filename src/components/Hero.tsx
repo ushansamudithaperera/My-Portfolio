@@ -46,7 +46,7 @@ export default function Hero() {
             and exploring the depths of cloud infrastructure, artificial intelligence and internet of things.
           </p>
 
-          <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
+          <div className="flex flex-col sm:flex-row items-center gap-4 mt-8">
             <a
               href="/Ushan_Perera_Resume.pdf"
               download
@@ -54,22 +54,24 @@ export default function Hero() {
             >
               <FaDownload /> Download Resume
             </a>
-            <a
-              href="https://www.linkedin.com/in/ushan-perera-16ab952b3/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center w-12 h-12 rounded-full border border-slate-700 text-slate-300 hover:text-white hover:border-cyan-400 hover:bg-slate-800 transition-all duration-300"
-            >
-              <FaLinkedin size={20} />
-            </a>
-            <a
-              href="https://github.com/ushansamudithaperera"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center w-12 h-12 rounded-full border border-slate-700 text-slate-300 hover:text-white hover:border-emerald-400 hover:bg-slate-800 transition-all duration-300"
-            >
-              <FaGithub size={20} />
-            </a>
+            <div className="flex items-center gap-4">
+              <a
+                href="https://www.linkedin.com/in/ushan-perera-16ab952b3/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center w-12 h-12 rounded-full border border-slate-700 text-slate-300 hover:text-white hover:border-cyan-400 hover:bg-slate-800 transition-all duration-300"
+              >
+                <FaLinkedin size={20} />
+              </a>
+              <a
+                href="https://github.com/ushansamudithaperera"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center w-12 h-12 rounded-full border border-slate-700 text-slate-300 hover:text-white hover:border-emerald-400 hover:bg-slate-800 transition-all duration-300"
+              >
+                <FaGithub size={20} />
+              </a>
+            </div>
           </div>
         </motion.div>
 

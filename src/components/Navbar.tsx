@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   // Scroll karaddi background eka blur wena effect eka track karanna
@@ -79,17 +79,17 @@ export default function Navbar() {
         {/* Mobile Menu Button */}
         <div className="md:hidden">
           <button 
-            onClick={() => setIsOpen(!isOpen)} 
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} 
             className="text-slate-300 hover:text-emerald-400 focus:outline-none"
           >
-            {isOpen ? <FaTimes size={28} /> : <FaBars size={28} />}
+            {isMobileMenuOpen ? <FaTimes size={28} /> : <FaBars size={28} />}
           </button>
         </div>
       </div>
 
       {/* Mobile Menu Dropdown */}
       <AnimatePresence>
-        {isOpen && (
+        {isMobileMenuOpen && (
           <motion.div 
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
@@ -101,7 +101,7 @@ export default function Navbar() {
                 <a 
                   key={link.name}
                   href={link.href} 
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => setIsMobileMenuOpen(false)}
                   className="text-slate-300 hover:text-emerald-400 text-lg font-medium transition-colors"
                 >
                   {link.name}
@@ -109,7 +109,7 @@ export default function Navbar() {
               ))}
               <a 
                 href="#contact"
-                onClick={() => setIsOpen(false)}
+                onClick={() => setIsMobileMenuOpen(false)}
                 className="bg-emerald-400 text-slate-950 px-8 py-3 rounded-full font-bold w-[200px] text-center"
               >
                 Hire Me

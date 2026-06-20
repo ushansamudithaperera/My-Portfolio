@@ -28,7 +28,7 @@ export default function Contact() {
 
           <div className="space-y-6 flex flex-col items-center md:items-start">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-slate-900 border border-slate-800 rounded-full flex items-center justify-center text-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.1)]">
+              <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-full bg-slate-900 border border-slate-800 text-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.1)]">
                 <FaEnvelope size={20} />
               </div>
               <div className="text-left">
@@ -39,7 +39,7 @@ export default function Contact() {
             </div>
 
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-slate-900 border border-slate-800 rounded-full flex items-center justify-center text-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.1)]">
+              <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-full bg-slate-900 border border-slate-800 text-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.1)]">
                 <FaMapMarkerAlt size={20} />
               </div>
               <div className="text-left">
