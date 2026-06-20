@@ -411,10 +411,10 @@ export default function About() {
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
             About <span className="text-emerald-400">Me</span>
           </h2>
-          <p className="text-slate-400 max-w-2xl mx-auto">
+          <p className="text-left text-slate-400 max-w-4xl mx-auto">
             BSc (Hons) in Electronics and Computer Science undergraduate with hands-on experience building real-time
-            secure networks and AI-integrated platforms. Seeking a technical internship to utilize expertise in software
-            engineering, API development, AI & ML and DevOps practices within a fast-paced technology environment.
+            secure networks and AI-integrated platforms. Seeking a technical internship to utilize expertise in Software
+            Engineering, API development, AI & ML and DevOps practices within a fast-paced technology environment.
           </p>
         </motion.div>
 

@@ -69,7 +69,7 @@ export default function Contact() {
                 name="name"
                 required
                 className="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 transition-colors"
-                placeholder="John Doe"
+                placeholder="A.B.C.Perera"
               />
             </div>
 
@@ -81,7 +81,7 @@ export default function Contact() {
                 name="email"
                 required
                 className="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 transition-colors"
-                placeholder="john@example.com"
+                placeholder="perera@example.com"
               />
             </div>
 

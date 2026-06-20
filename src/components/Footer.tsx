@@ -6,10 +6,10 @@ export default function Footer() {
   return (
     <footer className="bg-slate-950 border-t border-slate-900/80 py-12 px-6">
       <div className="max-w-6xl mx-auto">
-        
+
         {/* Top Section: 3-Column Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          
+
           {/* Column 1: Brand */}
           <div className="flex flex-col gap-4">
             <div>
@@ -20,22 +20,22 @@ export default function Footer() {
                 Full-Stack Developer | AI/ML Enthusiast | DevOps & SRE | IoT Enthusiast
               </p>
             </div>
-            
+
             {/* Social Links */}
             <div className="flex gap-4">
-              <a 
-                href="https://github.com/ushan-perera"
-                target="_blank" 
-                rel="noreferrer" 
+              <a
+                href="https://github.com/ushansamudithaperera"
+                target="_blank"
+                rel="noreferrer"
                 className="w-10 h-10 rounded-full bg-slate-900/80 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-emerald-400 hover:border-emerald-400/40 hover:shadow-[0_0_10px_rgba(52,211,153,0.15)] transition-all duration-300"
                 aria-label="GitHub"
               >
                 <FaGithub size={18} />
               </a>
-              <a 
-                href="https://linkedin.com/in/ushan-perera"
-                target="_blank" 
-                rel="noreferrer" 
+              <a
+                href="https://www.linkedin.com/in/ushan-perera-16ab952b3/"
+                target="_blank"
+                rel="noreferrer"
                 className="w-10 h-10 rounded-full bg-slate-900/80 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-cyan-300 hover:border-cyan-300/40 hover:shadow-[0_0_10px_rgba(103,232,249,0.15)] transition-all duration-300"
                 aria-label="LinkedIn"
               >
@@ -56,7 +56,7 @@ export default function Footer() {
                 { name: 'Certifications', href: '#certifications' },
               ].map((link) => (
                 <li key={link.name}>
-                  <a 
+                  <a
                     href={link.href}
                     className="text-slate-400 hover:text-cyan-300 text-sm font-medium transition-colors duration-200"
                   >
@@ -71,7 +71,7 @@ export default function Footer() {
           <div className="flex flex-col gap-4">
             <h4 className="text-sm font-semibold text-white uppercase tracking-wider">Contact Info</h4>
             <div className="flex flex-col gap-3">
-              <a 
+              <a
                 href="tel:+94711742319"
                 className="flex items-center gap-3 text-slate-400 group w-fit transition-colors duration-300"
               >
@@ -80,14 +80,14 @@ export default function Footer() {
                 </div>
                 <span className="text-sm font-medium group-hover:text-cyan-300 transition-colors duration-300">+94 71 174 2319</span>
               </a>
-              <a 
-                href="mailto:your.email@example.com"
+              <a
+                href="mailto:samudithaperera01@gmail.com"
                 className="flex items-center gap-3 text-slate-400 group w-fit transition-colors duration-300"
               >
                 <div className="flex flex-shrink-0 items-center justify-center w-10 h-10 rounded-full bg-emerald-400/10 text-emerald-400 border border-emerald-400/30 hover:bg-emerald-400/20 hover:border-emerald-400 hover:shadow-[0_0_15px_rgba(52,211,153,0.3)] group-hover:bg-emerald-400/20 group-hover:border-emerald-400 group-hover:shadow-[0_0_15px_rgba(52,211,153,0.3)] transition-all duration-300">
                   <FaEnvelope size={14} />
                 </div>
-                <span className="text-sm font-medium group-hover:text-cyan-300 transition-colors duration-300">your.email@example.com</span>
+                <span className="text-sm font-medium group-hover:text-cyan-300 transition-colors duration-300">samudithaperera01@gmail.com</span>
               </a>
             </div>
           </div>
