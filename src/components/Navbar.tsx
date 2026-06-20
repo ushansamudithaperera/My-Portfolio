@@ -36,11 +36,11 @@ export default function Navbar() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-2xl font-bold text-white tracking-wider"
+          className="text-2xl font-bold tracking-wider cursor-pointer hover:opacity-80 transition-opacity"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         >
-          <span className="text-emerald-400">&lt;</span>
-          Ushan
-          <span className="text-emerald-400">/&gt;</span>
+          <span className="text-slate-100">Ushan</span>{' '}
+          <span className="text-cyan-300">Perera</span>
         </motion.div>
 
         {/* Desktop Menu */}

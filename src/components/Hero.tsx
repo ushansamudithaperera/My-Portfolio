@@ -43,7 +43,7 @@ export default function Hero() {
 
           <p className="text-slate-400 text-lg mb-10 max-w-lg mx-auto md:mx-0 leading-relaxed">
             Passionate about building scalable automated software systems, modern web applications,
-            and exploring the depths of cloud infrastructure.
+            and exploring the depths of cloud infrastructure, artificial intelligence and internet of things.
           </p>
 
           <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
