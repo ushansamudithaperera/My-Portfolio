@@ -20,7 +20,6 @@ export default function Navbar() {
   const navLinks = [
     { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
-    { name: 'Projects', href: '#projects' },
     { name: 'Contact', href: '#contact' },
   ];
 
@@ -102,7 +101,17 @@ export default function Navbar() {
                 <a 
                   key={link.name}
                   href={link.href} 
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={(e) => {
+                    setIsMobileMenuOpen(false);
+                    const targetId = link.href.replace('#', '');
+                    const element = document.getElementById(targetId);
+                    if (element) {
+                      e.preventDefault();
+                      setTimeout(() => {
+                        element.scrollIntoView({ behavior: 'smooth' });
+                      }, 50);
+                    }
+                  }}
                   className="text-slate-300 hover:text-emerald-400 text-lg font-medium transition-colors"
                 >
                   {link.name}
@@ -110,7 +119,16 @@ export default function Navbar() {
               ))}
               <a 
                 href="#contact"
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={(e) => {
+                  setIsMobileMenuOpen(false);
+                  const element = document.getElementById('contact');
+                  if (element) {
+                    e.preventDefault();
+                    setTimeout(() => {
+                      element.scrollIntoView({ behavior: 'smooth' });
+                    }, 50);
+                  }
+                }}
                 className="bg-emerald-400 text-slate-950 px-8 py-3 rounded-full font-bold w-[200px] text-center"
               >
                 Hire Me
