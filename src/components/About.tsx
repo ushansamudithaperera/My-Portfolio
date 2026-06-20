@@ -17,7 +17,7 @@ const educationData = [
     title: 'G.C.E. Advanced Level (A/L)',
     subtitle: 'R/New Town Prince College \u2022 2021 (2022)',
     content:
-      "Successfully completed in the Physical Science (Mathematics) stream with 3 \u2018B\u2019 passes, building a strong foundation in analytical thinking, calculus, and advanced problem-solving.",
+      "Successfully completed in the Physical Science (Maths stream) stream with 3 \u2018B\u2019 passes, building a strong foundation in analytical thinking, calculus, and advanced problem-solving.",
   },
   {
     title: 'G.C.E. Ordinary Level (O/L)',
