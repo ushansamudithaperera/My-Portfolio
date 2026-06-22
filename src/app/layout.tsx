@@ -16,6 +16,9 @@ export const metadata: Metadata = {
     description: 'Personal portfolio of Ushan Perera, showcasing projects and expertise in modern web applications and automated software systems.',
     siteName: 'Ushan Perera Portfolio',
   },
+  verification: {
+    google: 'JiV8qPRlFOMoU1HxkGBZusM785Z5-VT8bTncYiaIAH8',
+  },
 };
 
 
