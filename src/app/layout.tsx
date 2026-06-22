@@ -6,15 +6,15 @@ import Navbar from "@/components/Navbar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Ushan Perera | DevOps & Software Engineering Portfolio',
-  description: 'Personal portfolio of Ushan Perera, showcasing projects and expertise in Full-Stack Development, DevOps, Site Reliability Engineering (SRE), and AI/ML integrations.',
-  keywords: ['Ushan Perera', 'Software Engineer', 'DevOps', 'SRE', 'AI/ML', 'Full-Stack Developer', 'Next.js', 'React', 'Portfolio', 'Sri Lanka'],
+  title: 'Ushan Samuditha Perera',
+  description: 'Personal website of Ushan Samuditha Perera, showcasing expertise in Full-Stack Development, DevOps, Site Reliability Engineering (SRE), and AI/ML integrations.',
+  keywords: ['Ushan Samuditha Perera', 'Software Engineer', 'DevOps', 'SRE', 'AI/ML', 'Full-Stack Developer', 'Next.js', 'Sri Lanka'],
   openGraph: {
     type: 'website',
     url: 'https://ushansamudithaperera.vercel.app/',
-    title: 'Ushan Perera | DevOps & Software Engineering Portfolio',
-    description: 'Personal portfolio of Ushan Perera, showcasing projects and expertise in modern web applications and automated software systems.',
-    siteName: 'Ushan Perera Portfolio',
+    title: 'Ushan Samuditha Perera',
+    description: 'Personal website of Ushan Samuditha Perera, showcasing expertise in automated software systems and modern web applications.',
+    siteName: 'Ushan Samuditha Perera',
   },
   verification: {
     google: 'JiV8qPRlFOMoU1HxkGBZusM785Z5-VT8bTncYiaIAH8',
