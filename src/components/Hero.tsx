@@ -83,13 +83,9 @@ export default function Hero() {
           className="relative h-[450px] md:h-[700px] lg:h-[850px] w-full flex items-end justify-center md:justify-end mt-10 md:mt-0"
         >
           <img
-            src="/me.png"
+            src="/0me.png"
             alt="Ushan Perera"
-            className="h-[105%] w-auto object-contain object-middle -mb-12 md:-mb-16 drop-shadow-[0_20px_30px_rgba(0,0,0,0.5)] z-10"
-            style={{
-              WebkitMaskImage: 'radial-gradient(circle at 50% 45%, black 35%, transparent 72%)',
-              maskImage: 'radial-gradient(circle at 50% 45%, black 35%, transparent 72%)',
-            }}
+            className="h-[105%] w-auto object-contain object-middle -mb-12 md:-mb-16 z-10"
           />
         </motion.div>
 
