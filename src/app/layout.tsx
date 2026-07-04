@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
+import Header from "@/components/Header";
 import Preloader from "@/components/Preloader";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -33,10 +33,10 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <body className={`${inter.className} bg-slate-950 text-slate-300 antialiased overflow-x-hidden`}>
         <Preloader>
-          <Navbar />
+          <Header />
           {children}
         </Preloader>
       </body>
     </html>
   );
-}
+}
