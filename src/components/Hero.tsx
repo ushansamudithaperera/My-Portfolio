@@ -214,7 +214,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center pt-20 pb-10 px-4 overflow-hidden"
+      className="relative min-h-screen flex flex-col items-center justify-center pt-24 pb-0 px-4 overflow-hidden"
     >
       {/* ── Background Layers ── */}
 
@@ -251,7 +251,7 @@ export default function Hero() {
 
       {/* ── BUILD Panel Card ── */}
       <motion.div
-        className="relative z-10 w-full max-w-sm"
+        className="relative z-10 w-full max-w-xl"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -325,7 +325,7 @@ export default function Hero() {
 
             {/* ── Bio Text ── */}
             <motion.p
-              className="text-[13px] text-slate-400/80 leading-relaxed mt-4 max-w-[280px]"
+              className="text-[14px] md:text-[15px] text-slate-400/80 leading-relaxed mt-5 max-w-[480px]"
               variants={itemVariants}
             >
               Passionate about building scalable automated software systems,
@@ -399,6 +399,14 @@ export default function Hero() {
           }}
         />
       </motion.div>
+
+      {/* ── Connecting Pipeline Below Panel ── */}
+      <div className="relative z-10 flex justify-center mt-6 h-32 w-full">
+        {/* Top glowing node */}
+        <div className="absolute top-0 w-4 h-4 rounded-full border-[2px] border-emerald-400 bg-emerald-400 shadow-[0_0_16px_rgba(52,211,153,1)] z-10 -mt-2" />
+        {/* Downward line */}
+        <div className="w-1 h-full bg-gradient-to-b from-emerald-500/80 via-emerald-500/40 to-transparent shadow-[0_0_15px_rgba(16,185,129,0.5)]" />
+      </div>
     </section>
   );
 }
