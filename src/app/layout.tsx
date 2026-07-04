@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Education from "@/components/Education";
 import Header from "@/components/Header";
 import Preloader from "@/components/Preloader";
 
@@ -39,4 +40,4 @@ export default function RootLayout({
       </body>
     </html>
   );
-}
+}
