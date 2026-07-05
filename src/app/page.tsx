@@ -8,10 +8,14 @@ import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
 import Certifications from "@/components/Certifications";
 import Extracurricular from "@/components/Extracurricular";
+import { CentralPipeline } from "@/components/Pipeline";
+import Navbar from "@/components/Navbar";
 
 export default function Home() {
   return (
-    <main className="bg-slate-950 min-h-screen w-full overflow-hidden">
+    <main className="relative flex min-h-screen flex-col bg-slate-950 overflow-hidden">
+      <CentralPipeline />
+      <Navbar />
       <Spotlight />
       <Hero />
       <Education />
