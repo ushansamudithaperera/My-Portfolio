@@ -27,26 +27,11 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex flex-col items-center pt-32 pb-0 px-4 overflow-hidden bg-[#0a0f16]"
+      className="relative min-h-screen flex flex-col items-center pt-32 pb-0 px-4 overflow-hidden"
     >
-      {/* ── Background Layers ── */}
-      
-      {/* Subtle glowing grid effect */}
-      <div 
-        className="absolute inset-0 z-0 opacity-20 pointer-events-none"
-        style={{
-          backgroundImage: 'linear-gradient(rgba(16,185,129,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(16,185,129,0.1) 1px, transparent 1px)',
-          backgroundSize: '40px 40px'
-        }}
-      />
-
-      {/* Radial glowing blur orbs behind the panel */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[60vw] h-[60vw] max-w-[800px] max-h-[800px] bg-emerald-500/10 blur-[100px] rounded-full pointer-events-none z-0" />
-      <div className="absolute top-1/2 left-1/4 w-[40vw] h-[40vw] max-w-[500px] max-h-[500px] bg-blue-500/10 blur-[100px] rounded-full pointer-events-none z-0" />
-
       {/* ── BUILD Panel Card (Larger Size) ── */}
       <motion.div
-        className="relative z-10 w-full max-w-2xl bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 md:p-10 shadow-2xl flex flex-col items-center text-center"
+        className="relative z-10 w-full max-w-4xl bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 md:p-14 shadow-2xl flex flex-col items-center text-center"
         variants={containerVariants}
         initial="hidden"
         animate="visible"

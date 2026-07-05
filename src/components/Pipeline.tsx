@@ -17,7 +17,7 @@ export function CentralPipeline() {
   const height = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
 
   return (
-    <div className="fixed left-1/2 top-0 bottom-0 -translate-x-1/2 w-4 z-0 pointer-events-none flex justify-center overflow-hidden">
+    <div className="absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-4 z-0 pointer-events-none flex justify-center overflow-hidden">
       
       {/* Layer 1: The Track */}
       <div className="absolute inset-y-0 w-full bg-white/5 border-x border-emerald-500/20 rounded-full" />
@@ -28,11 +28,11 @@ export function CentralPipeline() {
         style={{ height }}
       />
 
-      {/* Layer 3: Data Packets (Simulating data flow) */}
-      <DataPacket delay={0} duration={3.5} />
-      <DataPacket delay={1.2} duration={4} />
-      <DataPacket delay={2.5} duration={3} />
-      <DataPacket delay={3.1} duration={4.5} />
+      {/* Layer 3: Data Packets (Simulating data flow down the absolute container) */}
+      <DataPacket delay={0} duration={8} />
+      <DataPacket delay={2} duration={9} />
+      <DataPacket delay={4} duration={7.5} />
+      <DataPacket delay={6} duration={8.5} />
     </div>
   );
 }
@@ -44,13 +44,13 @@ export function CentralPipeline() {
 function DataPacket({ delay, duration }: { delay: number; duration: number }) {
   return (
     <motion.div
-      className="absolute top-0 w-[2px] h-16 rounded-full"
+      className="absolute w-[2px] h-24 rounded-full"
       style={{
         background: 'linear-gradient(to bottom, transparent, rgba(52,211,153,0.8) 70%, rgba(255,255,255,1))',
         boxShadow: '0 10px 15px rgba(52,211,153,0.6)',
       }}
       animate={{
-        y: ['-100%', '100vh'], // Travel from above viewport to below viewport
+        top: ['-5%', '105%'], // Travel from top of the absolute container to the bottom
       }}
       transition={{
         duration,
