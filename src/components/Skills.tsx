@@ -5,11 +5,12 @@ import { PipelineBranch } from './Pipeline';
 import { 
   SiJavascript, SiTypescript, SiPython, SiReact, SiNextdotjs, SiTailwindcss, SiHtml5,
   SiNodedotjs, SiExpress, SiFastapi, SiSpringboot, SiMongodb, SiPostgresql, SiRedis, SiMysql,
-  SiDocker, SiKubernetes, SiMicrosoftazure, SiTensorflow, SiPytorch, SiHuggingface,
-  SiGit, SiGithub, SiVisualstudiocode, SiPostman, SiArduino, SiRaspberrypi, SiCplusplus
+  SiDocker, SiKubernetes, SiTensorflow, SiPytorch, SiHuggingface,
+  SiGit, SiGithub, SiPostman, SiArduino, SiRaspberrypi, SiCplusplus
 } from 'react-icons/si';
 import { FaJava, FaRobot, FaAws } from 'react-icons/fa6';
 import { FaNetworkWired } from 'react-icons/fa';
+import { VscAzure, VscVscode } from 'react-icons/vsc';
 
 /* ─── Data Arrays ────────────────────────────────────────────────── */
 
@@ -56,7 +57,7 @@ const categories = [
       { name: 'AWS', icon: FaAws, color: '#FF9900' },
       { name: 'Docker', icon: SiDocker, color: '#2496ED' },
       { name: 'Kubernetes', icon: SiKubernetes, color: '#326CE5' },
-      { name: 'Azure', icon: SiMicrosoftazure, color: '#0078D4' },
+      { name: 'Azure', icon: VscAzure, color: '#0078D4' },
     ]
   },
   {
@@ -73,7 +74,7 @@ const categories = [
     techs: [
       { name: 'Git', icon: SiGit, color: '#F05032' },
       { name: 'GitHub', icon: SiGithub, color: '#ffffff' },
-      { name: 'VS Code', icon: SiVisualstudiocode, color: '#007ACC' },
+      { name: 'VS Code', icon: VscVscode, color: '#007ACC' },
       { name: 'Postman', icon: SiPostman, color: '#FF6C37' },
     ]
   },
