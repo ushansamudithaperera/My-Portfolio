@@ -2,35 +2,30 @@
 
 import { motion } from 'framer-motion';
 
-// Mock data for education timeline
 const educationData = [
   {
     id: 1,
-    degree: "Master's Degree in Software Engineering",
-    university: 'Tech Institute of Future',
-    date: 'Aug 2021 - May 2023',
-    location: 'New York, NY',
+    degree: 'BSc. (Hons) in Computer Science',
+    university: 'University of Kelaniya',
+    date: 'Sep 2023 - Present',
+    location: 'Sri Lanka',
     details: [
-      'Specialized in Distributed Systems',
-      'Advanced Machine Learning Concepts',
+      'Currently maintaining a First Class Honours.',
+      'Active member of the Electronics and Computer Science Club.',
     ],
-    isActive: true, // Highlights the card to represent an active or most recent state
   },
   {
     id: 2,
-    degree: 'Bachelor of Science in Computer Science',
-    university: 'State University',
-    date: 'Aug 2017 - May 2021',
-    location: 'San Francisco, CA',
+    degree: 'GCE Advanced Level (Physical Science)',
+    university: 'St. Aloysius College',
+    date: 'Aug 2019 - Feb 2022',
+    location: 'Galle, Sri Lanka',
     details: [
-      'Minor in Mathematics',
-      'President of the University Coding Club',
+      'Passed with excellent academic standing.',
+      'Active participant in school tech initiatives.',
     ],
-    isActive: false,
   },
 ];
-
-/* ─── Animation Variants ─────────────────────────────────────────── */
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -41,7 +36,7 @@ const containerVariants = {
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, x: -30 },
+  hidden: { opacity: 0, x: -20 },
   visible: {
     opacity: 1,
     x: 0,
@@ -49,136 +44,119 @@ const itemVariants = {
   },
 };
 
-/* ─── Component ──────────────────────────────────────────────────── */
-
 export default function Education() {
   return (
-    <section className="relative w-full max-w-4xl mx-auto py-16 px-4 sm:px-6 lg:px-8" id="education">
+    <section className="relative w-full max-w-4xl mx-auto py-24 px-4 sm:px-6 lg:px-8" id="education">
       
-      {/* ── Main Glassmorphism Panel Container ── */}
-      <div className="relative bg-[#0b1121]/80 border border-slate-700/50 rounded-[2rem] p-8 md:p-12 shadow-2xl backdrop-blur-xl">
-        
+      {/* ── Background Layers ── */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[40vw] h-[40vw] max-w-[600px] max-h-[600px] bg-emerald-500/10 blur-[100px] rounded-full pointer-events-none z-0" />
+      
+      {/* ── Main Glassmorphism Panel ── */}
+      <motion.div 
+        className="relative z-10 w-full bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 md:p-10 shadow-2xl"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
         {/* Panel Header */}
-        <div className="text-center mb-14">
+        <div className="text-center mb-12">
           <motion.h2
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-xl md:text-3xl font-bold text-white tracking-widest uppercase shadow-emerald-500/50 drop-shadow-lg"
+            variants={itemVariants}
+            className="text-2xl md:text-3xl font-bold text-white tracking-[0.2em] uppercase"
           >
             Education Panel
           </motion.h2>
           <motion.p
-            initial={{ opacity: 0, y: -10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-sm md:text-base text-emerald-400 mt-2 tracking-wide font-mono"
+            variants={itemVariants}
+            className="text-xs md:text-sm text-slate-400 mt-2 tracking-[0.15em] font-mono uppercase"
           >
             Step 2: Degrees & Diplomas
           </motion.p>
         </div>
 
-        <motion.div
-          className="relative"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-50px' }}
-        >
-          {/* ── Vertical Pipeline Line (Inside Panel) ── */}
-          {/* Increased brightness and height to connect items clearly */}
-          <div className="absolute left-[20px] md:left-[36px] top-4 bottom-4 w-px bg-emerald-500/60 shadow-[0_0_12px_rgba(16,185,129,0.8)]" />
+        <div className="relative">
+          {/* ── Animated Vertical Pipeline (Inside Panel) ── */}
+          <div className="absolute left-[20px] md:left-[36px] top-4 bottom-4 w-1.5 bg-emerald-900/40 rounded-full overflow-hidden flex justify-center shadow-[0_0_10px_rgba(16,185,129,0.2)]">
+            <motion.div 
+              className="absolute top-0 w-full bg-emerald-500/80 shadow-[0_0_15px_rgba(16,185,129,0.8)]"
+              initial={{ height: 0 }}
+              whileInView={{ height: '100%' }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.5, ease: "easeOut", delay: 0.2 }}
+            />
+            {/* Traveling Data Packet */}
+            <motion.div
+              className="absolute w-3 h-3 bg-white rounded-full shadow-[0_0_20px_rgba(255,255,255,1),0_0_15px_rgba(16,185,129,1)]"
+              animate={{
+                y: [0, 400], 
+                opacity: [0, 1, 1, 0]
+              }}
+              transition={{
+                duration: 2.5,
+                repeat: Infinity,
+                ease: "linear",
+                delay: 1.5
+              }}
+            />
+          </div>
 
-          <div className="space-y-12 pl-16 md:pl-24 pr-4 md:pr-8">
-            {educationData.map((edu) => (
+          <div className="space-y-12 pl-16 md:pl-24 pr-4 md:pr-8 pb-4">
+            {educationData.map((edu, idx) => (
               <motion.div key={edu.id} className="relative group" variants={itemVariants}>
                 
                 {/* Node on the timeline */}
-                <div
-                  className={`absolute -left-[50px] md:-left-[66px] top-8 w-4 h-4 rounded-full border-[2px] border-emerald-400 ${
-                    edu.isActive
-                      ? 'bg-emerald-400 shadow-[0_0_16px_rgba(52,211,153,1)]'
-                      : 'bg-slate-900 shadow-[0_0_8px_rgba(52,211,153,0.5)]'
-                  } transition-all duration-300 group-hover:scale-125 group-hover:bg-emerald-400 z-10`}
-                />
+                <div className="absolute -left-[45px] md:-left-[61px] top-6 w-4 h-4 rounded-full border-[2px] border-emerald-400 bg-emerald-400 shadow-[0_0_12px_rgba(52,211,153,1)] z-10 transition-transform duration-300 group-hover:scale-125" />
                 
-                {/* Connector line from node to card */}
-                <div className="absolute -left-[34px] md:-left-[50px] top-[39px] w-8 md:w-12 h-[2px] bg-emerald-500/40 group-hover:bg-emerald-400/80 transition-colors duration-300" />
+                {/* Connecting branch */}
+                <div className="absolute -left-[45px] md:-left-[61px] top-[30px] w-[45px] md:w-[61px] h-px bg-emerald-500/50 shadow-[0_0_8px_rgba(16,185,129,0.5)] -z-10" />
 
-                {/* ── The Glassmorphism Card ── */}
-                <div
-                  className={`relative overflow-hidden rounded-2xl p-6 md:p-8 transition-all duration-300 ${
-                    edu.isActive
-                      ? 'bg-slate-800/80 border-emerald-500/60 shadow-[0_0_30px_rgba(16,185,129,0.2)]'
-                      : 'bg-[#0f172a88] border-slate-700/60 hover:bg-slate-800/80'
-                  }`}
-                  style={{
-                    borderWidth: '1px',
-                    borderStyle: 'solid',
-                  }}
-                >
-                  {/* Subtle internal gradient glow */}
-                  <div
-                    className="absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                    style={{
-                      background:
-                        'radial-gradient(800px circle at center, rgba(16,185,129,0.08), transparent 40%)',
-                    }}
-                  />
+                {/* ── Inner Card ("Card inside a card") ── */}
+                <div className="bg-[#0a0f16]/60 border border-emerald-400/50 shadow-[0_0_15px_rgba(52,211,153,0.3)] rounded-2xl p-6 transition-all duration-300 group-hover:bg-[#0a0f16]/80 group-hover:shadow-[0_0_25px_rgba(52,211,153,0.4)] relative overflow-hidden">
+                  
+                  {/* Subtle inner glow */}
+                  <div className="absolute inset-0 bg-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
-                  {/* Border glow on hover */}
-                  <div
-                    className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                    style={{
-                      border: '1px solid rgba(16,185,129,0.6)',
-                      boxShadow: 'inset 0 0 20px rgba(16,185,129,0.1)',
-                    }}
-                  />
-
-                  {/* Card Content */}
-                  <div className="relative z-10 flex flex-col gap-2">
-                    <h3 className="text-xl md:text-2xl font-bold text-white tracking-wide">
-                      {edu.degree}
-                    </h3>
-                    <p className="text-base md:text-lg text-emerald-400 font-medium tracking-wide">
-                      {edu.university}
-                    </p>
-                    
-                    {/* Subtle Divider */}
-                    <div className="w-full h-px bg-slate-700/60 my-4" />
-                    
-                    {/* Footer Row: Dates and Location */}
-                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 text-sm md:text-base text-slate-400 font-mono uppercase tracking-wider">
-                      <span className="bg-slate-900/50 px-3 py-1 rounded-md border border-slate-700/50">{edu.date}</span>
-                      <span>{edu.location}</span>
-                    </div>
-                    
-                    {/* Additional details list */}
-                    <ul className="mt-5 space-y-3">
-                      {edu.details.map((detail, idx) => (
-                        <li key={idx} className="flex items-start gap-3 text-base text-slate-300">
-                          <span className="w-2 h-2 rounded-full bg-emerald-500/70 mt-2 flex-shrink-0" />
-                          <span className="leading-relaxed">{detail}</span>
-                        </li>
-                      ))}
-                    </ul>
+                  <h3 className="text-xl md:text-2xl font-bold text-white tracking-wide mb-1 group-hover:text-emerald-300 transition-colors">
+                    {edu.degree}
+                  </h3>
+                  <h4 className="text-emerald-400 text-sm md:text-base font-medium tracking-wide uppercase mb-4">
+                    {edu.university}
+                  </h4>
+                  
+                  <div className="w-full h-px bg-slate-700/60 my-4" />
+                  
+                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 text-sm text-slate-300 font-mono uppercase tracking-wider mb-4">
+                    <span className="bg-white/5 px-3 py-1 rounded-md border border-white/10">{edu.date}</span>
+                    <span className="text-slate-400">{edu.location}</span>
                   </div>
+                  
+                  <ul className="space-y-2 mt-4">
+                    {edu.details.map((detail, i) => (
+                      <li key={i} className="flex items-start gap-3 text-sm text-slate-300 leading-relaxed">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500/80 mt-1.5 flex-shrink-0 shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
+                        {detail}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </motion.div>
             ))}
           </div>
-        </motion.div>
-      </div>
+        </div>
+      </motion.div>
 
-      {/* ── Connecting Pipeline Below Panel ── */}
-      {/* This creates the continuous pipeline look connecting to the next section */}
-      <div className="flex justify-center relative mt-2 md:mt-4">
-        {/* Top glowing node */}
-        <div className="absolute top-0 w-3 h-3 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(16,185,129,1)] z-10 -mt-1.5" />
-        {/* Downward line */}
-        <div className="w-1 h-24 bg-gradient-to-b from-emerald-500/80 via-emerald-500/40 to-transparent shadow-[0_0_15px_rgba(16,185,129,0.5)]" />
+      {/* ── Connecting Animated Pipeline Below Panel ── */}
+      <div className="relative z-10 flex justify-center mt-4 w-full h-24 md:h-32">
+        <div className="relative w-1.5 h-full bg-emerald-900/40 rounded-full overflow-hidden flex justify-center shadow-[0_0_10px_rgba(16,185,129,0.2)]">
+          <motion.div 
+            className="absolute top-0 w-full bg-emerald-500/80 shadow-[0_0_15px_rgba(16,185,129,0.8)]"
+            initial={{ height: 0 }}
+            whileInView={{ height: '100%' }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
+          />
+        </div>
       </div>
     </section>
   );
