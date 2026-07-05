@@ -1,113 +1,129 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-20 bg-slate-950 min-h-screen flex items-center justify-center px-6">
-      <div className="max-w-6xl w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-
-        {/* Left Side: Text & Info */}
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
+    <section className="relative w-full max-w-4xl mx-auto py-24 px-4 sm:px-6" id="contact">
+      
+      {/* ── Central Pipeline (Terminating) ── */}
+      <div className="absolute left-1/2 top-0 h-32 w-1.5 bg-emerald-500/80 shadow-[0_0_15px_rgba(16,185,129,0.8)] -translate-x-1/2 z-0" />
+      
+      {/* ── Section Header ── */}
+      <div className="text-center mb-10 relative z-10 pt-16">
+        <motion.h2
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="space-y-8 text-center md:text-left"
+          className="text-2xl md:text-4xl font-bold text-white tracking-[0.2em] uppercase shadow-emerald-500/50 drop-shadow-lg"
         >
+          Contact Panel
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: -10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-sm text-emerald-400 mt-2 tracking-widest font-mono uppercase"
+        >
+          Step 7: Deploy & Production
+        </motion.p>
+      </div>
+
+      {/* ── Glassmorphism Form Container ── */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="relative bg-[#111928]/80 border border-slate-700/60 rounded-3xl p-6 md:p-10 shadow-2xl backdrop-blur-xl z-10"
+      >
+        <form action="https://formspree.io/f/xrevnabz" method="POST" className="space-y-6">
+          
+          {/* Name Field (Full Width) */}
           <div>
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
-              Let's <span className="text-emerald-400">Connect</span>
-            </h2>
-            <p className="text-slate-400 text-lg max-w-md mx-auto md:mx-0">
-              I'm actively looking for internship opportunities in DevOps, SRE, AI & ML, and Full-Stack development.
-              Whether you have a question or just want to say hi, I'll try my best to get back to you!
-            </p>
+            <label htmlFor="name" className="sr-only">Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              className="w-full bg-[#1a2333]/50 border border-slate-700/80 rounded-xl px-5 py-4 text-white placeholder-slate-400 focus:outline-none focus:border-emerald-500/80 focus:ring-1 focus:ring-emerald-500/50 transition-colors"
+              placeholder="Name"
+            />
           </div>
 
-          <div className="space-y-6 flex flex-col items-center md:items-start">
-            <div className="grid grid-cols-[50px_1fr] items-center gap-4 w-full">
-              <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-full bg-slate-900 border border-slate-800 text-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.1)]">
-                <FaEnvelope size={20} />
-              </div>
-              <div className="text-left">
-                <h4 className="text-white font-semibold">Email</h4>
-
-                <p className="text-slate-400">samudithaperera01@gmail.com</p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-[50px_1fr] items-center gap-4 w-full">
-              <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-full bg-slate-900 border border-slate-800 text-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.1)]">
-                <FaMapMarkerAlt size={20} />
-              </div>
-              <div className="text-left">
-                <h4 className="text-white font-semibold">Location</h4>
-                <p className="text-slate-400">Rathnapura, Sri Lanka</p>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Right Side: The Form */}
-        <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="bg-slate-900 p-8 md:p-10 rounded-2xl border border-slate-800 shadow-xl"
-        >
-
-          <form action="https://formspree.io/f/xrevnabz" method="POST" className="space-y-6">
-
+          {/* Email and Phone Row */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-slate-300 mb-2">Name</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                required
-                className="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 transition-colors"
-                placeholder="A B C Perera"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-slate-300 mb-2">Email</label>
+              <label htmlFor="email" className="sr-only">Email</label>
               <input
                 type="email"
                 id="email"
                 name="email"
                 required
-                className="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 transition-colors"
-                placeholder="perera@example.com"
+                className="w-full bg-[#1a2333]/50 border border-slate-700/80 rounded-xl px-5 py-4 text-white placeholder-slate-400 focus:outline-none focus:border-emerald-500/80 focus:ring-1 focus:ring-emerald-500/50 transition-colors"
+                placeholder="Email"
               />
             </div>
-
             <div>
-              <label htmlFor="message" className="block text-sm font-medium text-slate-300 mb-2">Message</label>
-              <textarea
-                id="message"
-                name="message"
-                rows={5}
-                required
-                className="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 transition-colors resize-none"
-                placeholder="Hello Ushan, I'd like to discuss an opportunity..."
-              ></textarea>
+              <label htmlFor="phone" className="sr-only">Phone</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                className="w-full bg-[#1a2333]/50 border border-slate-700/80 rounded-xl px-5 py-4 text-white placeholder-slate-400 focus:outline-none focus:border-emerald-500/80 focus:ring-1 focus:ring-emerald-500/50 transition-colors"
+                placeholder="Phone"
+              />
             </div>
+          </div>
 
+          {/* Message Field */}
+          <div>
+            <label htmlFor="message" className="sr-only">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows={5}
+              required
+              className="w-full bg-[#1a2333]/50 border border-slate-700/80 rounded-xl px-5 py-4 text-white placeholder-slate-400 focus:outline-none focus:border-emerald-500/80 focus:ring-1 focus:ring-emerald-500/50 transition-colors resize-none"
+              placeholder="Message"
+            ></textarea>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
             <button
               type="submit"
-              className="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-[1.02] shadow-[0_0_15px_rgba(52,211,153,0.3)]"
+              className="w-full py-4 rounded-xl text-white font-semibold tracking-wider uppercase text-sm bg-slate-800/50 border border-slate-600 hover:bg-emerald-500/20 hover:border-emerald-400/80 hover:shadow-[0_0_20px_rgba(16,185,129,0.3)] transition-all duration-300"
             >
-              Send Message
+              Contact
             </button>
+            <a
+              href="/resume.pdf"
+              download
+              className="w-full flex items-center justify-center py-4 rounded-xl text-white font-semibold tracking-wider uppercase text-sm bg-slate-800/50 border border-slate-600 hover:bg-cyan-500/20 hover:border-cyan-400/80 hover:shadow-[0_0_20px_rgba(6,182,212,0.3)] transition-all duration-300"
+            >
+              Download CV
+            </a>
+          </div>
+        </form>
 
-          </form>
-        </motion.div>
-
-      </div>
+        {/* ── Pipeline Status Indicator ── */}
+        <div className="mt-12 border-t border-slate-800/80 pt-6 flex flex-col items-center justify-center">
+          <div className="flex items-center gap-3">
+            <span className="relative flex h-3 w-3">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,1)]"></span>
+            </span>
+            <span className="text-emerald-400 text-xs font-mono tracking-[0.2em] uppercase">
+              Pipeline Status: Secure Connection
+            </span>
+          </div>
+        </div>
+      </motion.div>
+      
+      {/* ── Terminal Node Glow below panel ── */}
+      <div className="absolute left-1/2 bottom-0 w-32 h-10 bg-emerald-500/20 blur-3xl -translate-x-1/2 pointer-events-none" />
     </section>
   );
 }

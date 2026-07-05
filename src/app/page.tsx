@@ -6,6 +6,8 @@ import Spotlight from "@/components/Spotlight";
 import Education from "@/components/Education";
 import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
+import Certifications from "@/components/Certifications";
+import Extracurricular from "@/components/Extracurricular";
 
 export default function Home() {
   return (
@@ -15,6 +17,8 @@ export default function Home() {
       <Education />
       <Skills />
       <Projects />
+      <Certifications />
+      <Extracurricular />
       <Contact />
       <Footer />
     </main>
