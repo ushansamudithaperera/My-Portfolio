@@ -8,8 +8,6 @@ import Projects from "@/components/Projects";
 import Certifications from "@/components/Certifications";
 import Extracurricular from "@/components/Extracurricular";
 import { CentralPipeline } from "@/components/Pipeline";
-import Navbar from "@/components/Navbar";
-
 export default function Home() {
   return (
     <main className="relative flex min-h-screen flex-col bg-[#0a0f16] overflow-hidden">
@@ -26,8 +24,6 @@ export default function Home() {
       {/* Global radial glowing blur orbs */}
       <div className="fixed top-0 left-1/2 -translate-x-1/2 w-[80vw] h-[80vw] max-w-[1000px] max-h-[1000px] bg-emerald-500/5 blur-[120px] rounded-full pointer-events-none z-0" />
       <div className="fixed top-[50vh] left-1/4 w-[50vw] h-[50vw] max-w-[600px] max-h-[600px] bg-blue-500/5 blur-[120px] rounded-full pointer-events-none z-0" />
-
-      <Navbar />
 
       <Spotlight />
 
