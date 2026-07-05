@@ -1,261 +1,225 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { PipelineBranch } from './Pipeline';
+import { 
+  SiJavascript, SiTypescript, SiPython, SiReact, SiNextdotjs, SiTailwindcss, SiHtml5,
+  SiNodedotjs, SiExpress, SiFastapi, SiSpringboot, SiMongodb, SiPostgresql, SiRedis, SiMysql,
+  SiDocker, SiKubernetes, SiMicrosoftazure, SiTensorflow, SiPytorch, SiHuggingface,
+  SiGit, SiGithub, SiVisualstudiocode, SiPostman, SiArduino, SiRaspberrypi, SiCplusplus
+} from 'react-icons/si';
+import { FaJava, FaRobot, FaAws } from 'react-icons/fa6';
+import { FaNetworkWired } from 'react-icons/fa';
 
-const skillsData = [
+/* ─── Data Arrays ────────────────────────────────────────────────── */
+
+const categories = [
   {
-    category: 'Programming Languages',
-    items: ['JavaScript', 'TypeScript', 'Python', 'Java', 'C++', 'Go'],
+    title: 'Programming Languages',
+    techs: [
+      { name: 'JavaScript', icon: SiJavascript, color: '#F7DF1E' },
+      { name: 'TypeScript', icon: SiTypescript, color: '#3178C6' },
+      { name: 'Python', icon: SiPython, color: '#3776AB' },
+      { name: 'Java', icon: FaJava, color: '#007396' },
+    ]
   },
   {
-    category: 'Backend & Frameworks',
-    items: ['Node.js', 'Express', 'FastAPI', 'Spring Boot'],
+    title: 'Frontend Technologies',
+    techs: [
+      { name: 'React', icon: SiReact, color: '#61DAFB' },
+      { name: 'Next.js', icon: SiNextdotjs, color: '#ffffff' },
+      { name: 'Tailwind CSS', icon: SiTailwindcss, color: '#06B6D4' },
+      { name: 'HTML5', icon: SiHtml5, color: '#E34F26' },
+    ]
   },
   {
-    category: 'Frontend Technologies',
-    items: ['React.js', 'Next.js', 'HTML5', 'CSS3', 'Tailwind', 'Bootstrap'],
+    title: 'Backend & Frameworks',
+    techs: [
+      { name: 'Node.js', icon: SiNodedotjs, color: '#339933' },
+      { name: 'Express', icon: SiExpress, color: '#ffffff' },
+      { name: 'FastAPI', icon: SiFastapi, color: '#009688' },
+      { name: 'Spring Boot', icon: SiSpringboot, color: '#6DB33F' },
+    ]
   },
   {
-    category: 'Databases',
-    items: ['MongoDB', 'PostgreSQL', 'Redis', 'MySQL'],
+    title: 'Databases',
+    techs: [
+      { name: 'MongoDB', icon: SiMongodb, color: '#47A248' },
+      { name: 'PostgreSQL', icon: SiPostgresql, color: '#4169E1' },
+      { name: 'Redis', icon: SiRedis, color: '#DC382D' },
+      { name: 'MySQL', icon: SiMysql, color: '#4479A1' },
+    ]
   },
   {
-    category: 'Cloud, DevOps & Infra',
-    items: ['AWS', 'Docker', 'Linux', 'Jenkins', 'Kubernetes', 'Terraform'],
+    title: 'Cloud, DevOps & Infra',
+    techs: [
+      { name: 'AWS', icon: FaAws, color: '#FF9900' },
+      { name: 'Docker', icon: SiDocker, color: '#2496ED' },
+      { name: 'Kubernetes', icon: SiKubernetes, color: '#326CE5' },
+      { name: 'Azure', icon: SiMicrosoftazure, color: '#0078D4' },
+    ]
   },
   {
-    category: 'AI & Machine Learning',
-    items: ['TensorFlow', 'PyTorch', 'Pandas', 'Scikit-Learn'],
+    title: 'AI & Machine Learning',
+    techs: [
+      { name: 'TensorFlow', icon: SiTensorflow, color: '#FF6F00' },
+      { name: 'PyTorch', icon: SiPytorch, color: '#EE4C2C' },
+      { name: 'LangChain', icon: FaRobot, color: '#10B981' },
+      { name: 'Hugging Face', icon: SiHuggingface, color: '#FFD21E' },
+    ]
   },
   {
-    category: 'Developer Tools & IDEs',
-    items: ['Git', 'VS Code', 'Postman', 'Jira', 'Figma', 'Webpack'],
+    title: 'Developer Tools & IDEs',
+    techs: [
+      { name: 'Git', icon: SiGit, color: '#F05032' },
+      { name: 'GitHub', icon: SiGithub, color: '#ffffff' },
+      { name: 'VS Code', icon: SiVisualstudiocode, color: '#007ACC' },
+      { name: 'Postman', icon: SiPostman, color: '#FF6C37' },
+    ]
   },
   {
-    category: 'Electronics & IoT',
-    items: ['Arduino', 'Raspberry Pi', 'ESP32', 'Sensors'],
-  },
+    title: 'Electronics & IoT',
+    techs: [
+      { name: 'Arduino', icon: SiArduino, color: '#00979D' },
+      { name: 'Raspberry Pi', icon: SiRaspberrypi, color: '#A22846' },
+      { name: 'C++', icon: SiCplusplus, color: '#00599C' },
+      { name: 'IoT Networks', icon: FaNetworkWired, color: '#10B981' },
+    ]
+  }
 ];
 
-// Helper to generate coordinates and edge connections for the Neural Network layout
-const getLayout = (count: number, isLeft: boolean) => {
-  if (count === 4) {
-    const nodes = [
-      [25, 35], // 0
-      [75, 30], // 1
-      [25, 75], // 2
-      [75, 80], // 3
-    ];
-    // edges: [from_idx, to_idx] (-1 means the main branch entry point)
-    const edgesLeft = [
-      [-1, 1], [-1, 3], 
-      [1, 0], [3, 2],   
-      [1, 2], [0, 3],   
-    ];
-    const edgesRight = [
-      [-1, 0], [-1, 2], 
-      [0, 1], [2, 3],   
-      [0, 3], [1, 2],   
-    ];
-    return { nodes, edges: isLeft ? edgesLeft : edgesRight };
-  } else {
-    // 6 items layout
-    const nodes = [
-      [20, 30], // 0
-      [50, 25], // 1
-      [80, 35], // 2
-      [20, 75], // 3
-      [50, 85], // 4
-      [80, 75], // 5
-    ];
-    const edgesLeft = [
-      [-1, 2], [-1, 5],
-      [2, 1], [5, 4],
-      [1, 0], [4, 3],
-      [2, 4], [1, 3], [5, 1], [0, 4]
-    ];
-    const edgesRight = [
-      [-1, 0], [-1, 3],
-      [0, 1], [3, 4],
-      [1, 2], [4, 5],
-      [0, 4], [1, 5], [3, 1], [2, 4]
-    ];
-    return { nodes, edges: isLeft ? edgesLeft : edgesRight };
-  }
-};
+/* ─── Neural Panel Component ─────────────────────────────────────── */
 
-function SkillPanel({ data, isLeft, index }: { data: any, isLeft: boolean, index: number }) {
-  const { nodes, edges } = getLayout(data.items.length, isLeft);
+function NeuralPanel({ title, techs, index }: { title: string, techs: any[], index: number }) {
+  // Determine if this panel is on the left or right of the central pipeline on desktop
+  const isLeftColumn = index % 2 === 0;
   
+  // Staggered, asymmetrical node positions in percentages (x, y)
+  const nodePositions = [
+    { x: 25, y: 35 },
+    { x: 75, y: 30 },
+    { x: 30, y: 75 },
+    { x: 70, y: 70 },
+  ];
+
+  // The entry point where the pipeline branch connects to the panel
+  // If it's a left column panel, the branch connects to its RIGHT border (x: 100%)
+  const entryX = isLeftColumn ? 100 : 0;
+  const entryY = 50; // Middle of the panel height
+
   return (
     <motion.div 
+      className="relative w-full h-[280px] md:h-[320px] bg-[#0a0f16]/80 backdrop-blur-xl border border-white/10 rounded-[2rem] shadow-2xl p-6 group"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-100px' }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="relative flex flex-col w-full"
+      viewport={{ once: true, margin: '-50px' }}
+      transition={{ duration: 0.5, delay: (index % 2) * 0.2 }}
     >
-      {/* ── Branch Connecting to Central Pipeline ── */}
-      <motion.div 
-        className={`hidden md:block absolute top-1/2 h-1.5 bg-emerald-500 shadow-[0_0_15px_rgba(16,185,129,0.8)] -translate-y-1/2 z-0 ${
-           isLeft ? 'left-[100%] w-10' : 'right-[100%] w-10'
-        }`}
-        initial={{ scaleX: 0 }}
-        whileInView={{ scaleX: 1 }}
-        viewport={{ once: true, margin: '-100px' }}
-        transition={{ duration: 0.6, delay: 0.5 }}
-        style={{ originX: isLeft ? 1 : 0 }} 
-      />
-      
-      {/* ── Glassmorphism Panel ── */}
-      <div className="relative h-[340px] md:h-[400px] w-full rounded-[2rem] bg-[#0b1121]/80 border border-slate-700/60 shadow-2xl overflow-hidden backdrop-blur-xl p-6 group">
-        
-        {/* Subtle hover glow on panel */}
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-        
-        {/* Category Title */}
-        <h3 className="relative z-10 text-center text-base md:text-lg font-bold text-white tracking-[0.2em] uppercase shadow-emerald-500/50 drop-shadow-lg">
-          {data.category}
-        </h3>
-        
-        {/* Sci-fi Decorative Labels */}
-        <div className="absolute top-4 left-4 text-[9px] text-emerald-500/70 font-mono uppercase tracking-widest hidden sm:block">
-          SYS.ACTV
-        </div>
-        <div className="absolute bottom-4 right-4 text-[9px] text-blue-400/70 font-mono uppercase tracking-widest hidden sm:block">
-          UNIT TESTS: PASSING
-        </div>
+      {/* ── Title ── */}
+      <h3 className="text-lg md:text-xl font-bold text-white tracking-widest uppercase mb-4 text-center z-20 relative drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+        {title}
+      </h3>
 
-        {/* ── Neural Network Area ── */}
-        <div className="absolute inset-0 w-full h-full pointer-events-none">
+      {/* ── SVG Neural Connections ── */}
+      {/* We draw curved paths from the border entry point to each tech node */}
+      <svg className="absolute inset-0 w-full h-full pointer-events-none z-0" preserveAspectRatio="none" viewBox="0 0 100 100">
+        {nodePositions.map((pos, i) => {
+          // Calculate control points for a smooth organic curve
+          const controlX = isLeftColumn ? entryX - 20 : entryX + 20;
+          return (
+            <motion.path 
+              key={i}
+              d={`M ${entryX} ${entryY} C ${controlX} ${entryY}, ${pos.x} ${pos.y - 10}, ${pos.x} ${pos.y}`}
+              stroke="rgba(52,211,153,0.3)"
+              strokeWidth="0.8"
+              fill="none"
+              className="drop-shadow-[0_0_8px_rgba(52,211,153,0.6)]"
+              initial={{ pathLength: 0, opacity: 0 }}
+              whileInView={{ pathLength: 1, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.5, delay: 0.3 + (i * 0.15) }}
+            />
+          );
+        })}
+      </svg>
+
+      {/* ── Technology Nodes ── */}
+      {techs.map((tech, i) => (
+        <div 
+          key={tech.name} 
+          className="absolute flex flex-col items-center justify-center transform -translate-x-1/2 -translate-y-1/2 z-10"
+          style={{ left: `${nodePositions[i].x}%`, top: `${nodePositions[i].y}%` }}
+        >
+          {/* Strict User Box Design */}
+          <motion.div 
+            className="w-16 h-16 flex items-center justify-center bg-[#0a0f16]/80 backdrop-blur-md border border-white/10 rounded-xl shadow-[0_0_15px_rgba(52,211,153,0.15)] relative z-10 transition-transform duration-300 hover:scale-110"
+            initial={{ scale: 0, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ type: "spring", stiffness: 200, delay: 0.8 + (i * 0.1) }}
+          >
+            <tech.icon style={{ color: tech.color, fontSize: '2rem' }} className="drop-shadow-[0_0_10px_currentColor]" />
+          </motion.div>
           
-          {/* SVG Canvas for Edges */}
-          <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-             <defs>
-               <linearGradient id="edge-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                 <stop offset="0%" stopColor="#34d399" stopOpacity="0.8" /> {/* emerald-400 */}
-                 <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.4" /> {/* blue-500 */}
-               </linearGradient>
-             </defs>
-             
-             {edges.map((edge, i) => {
-                const [from, to] = edge;
-                const startPoint = from === -1 ? (isLeft ? [100, 50] : [0, 50]) : nodes[from];
-                const endPoint = nodes[to];
-                
-                // SVG Bezier S-curve for a fluid organic look
-                const d = `M ${startPoint[0]},${startPoint[1]} C ${(startPoint[0]+endPoint[0])/2},${startPoint[1]} ${(startPoint[0]+endPoint[0])/2},${endPoint[1]} ${endPoint[0]},${endPoint[1]}`;
-                
-                return (
-                  <motion.path 
-                    key={i}
-                    d={d}
-                    fill="none"
-                    stroke="url(#edge-gradient)"
-                    strokeWidth="1.5"
-                    vectorEffect="non-scaling-stroke"
-                    initial={{ pathLength: 0, opacity: 0 }}
-                    whileInView={{ pathLength: 1, opacity: 1 }}
-                    viewport={{ once: true, margin: '-50px' }}
-                    transition={{ duration: 1.2, delay: 0.8 + (i * 0.1), ease: "easeInOut" }}
-                  />
-                );
-             })}
-          </svg>
-          
-          {/* Node Elements */}
-          {data.items.map((item: string, i: number) => {
-            const pos = nodes[i];
-            // Grab the first two letters for the icon (or custom logic)
-            const iconText = item.substring(0, 2).toUpperCase();
-            
-            return (
-              <motion.div
-                key={item}
-                className="absolute flex flex-col items-center justify-center transform -translate-x-1/2 -translate-y-1/2 pointer-events-auto"
-                style={{ left: `${pos[0]}%`, top: `${pos[1]}%` }}
-                initial={{ opacity: 0, scale: 0 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 1.2 + (i * 0.1), type: 'spring', bounce: 0.4 }}
-              >
-                {/* Node Icon Circle/Square */}
-                <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-slate-900/90 border border-emerald-500/50 flex items-center justify-center shadow-[0_0_12px_rgba(16,185,129,0.4)] backdrop-blur-md relative hover:scale-110 hover:border-emerald-400 transition-all duration-300 cursor-default group/node">
-                  <div className="absolute inset-0 rounded-xl bg-emerald-400/20 opacity-0 group-hover/node:opacity-100 transition-opacity blur-md" />
-                  <span className="text-emerald-300 font-bold text-xs md:text-sm tracking-widest z-10">
-                    {iconText}
-                  </span>
-                </div>
-                
-                {/* Text Label */}
-                <span className="mt-2 text-[10px] md:text-[11px] text-slate-300 font-mono tracking-wider whitespace-nowrap bg-slate-950/80 px-2 py-0.5 rounded border border-slate-700/50 shadow-lg">
-                  {item}
-                </span>
-              </motion.div>
-            )
-          })}
+          {/* Label underneath */}
+          <motion.p 
+            className="text-[11px] text-slate-300 mt-2 font-mono uppercase tracking-wider bg-[#0a0f16]/90 px-2 py-0.5 rounded border border-white/10 shadow-lg whitespace-nowrap"
+            initial={{ opacity: 0, y: -5 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 1.2 + (i * 0.1) }}
+          >
+            {tech.name}
+          </motion.p>
         </div>
+      ))}
+
+      {/* ── Pipeline Branch Connector ── */}
+      {/* Hidden on mobile, connects to CentralPipeline on desktop */}
+      <div className="hidden md:block">
+        <PipelineBranch direction={isLeftColumn ? 'left' : 'right'} width="5vw" />
       </div>
     </motion.div>
   );
 }
 
+/* ─── Main Skills Section ────────────────────────────────────────── */
+
 export default function Skills() {
   return (
-    <section className="relative w-full max-w-6xl mx-auto py-24 px-4 sm:px-6" id="skills">
+    <section className="relative w-full mx-auto py-24 px-4 sm:px-6 lg:px-8 overflow-hidden" id="skills">
       
-      {/* ── Section Header ── */}
-      <div className="text-center mb-24 relative z-20">
+      {/* Section Header */}
+      <div className="text-center mb-16 md:mb-24">
         <motion.h2
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-2xl md:text-4xl font-bold text-white tracking-[0.3em] uppercase shadow-emerald-500/50 drop-shadow-2xl"
+          className="text-2xl md:text-3xl font-bold text-white tracking-[0.2em] uppercase drop-shadow-[0_0_15px_rgba(52,211,153,0.4)]"
         >
-          SKILLS
+          Skills Arsenal
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: -10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-sm md:text-base text-emerald-400 mt-3 tracking-[0.2em] font-mono uppercase"
+          transition={{ delay: 0.1 }}
+          className="text-xs md:text-sm text-emerald-400 mt-2 tracking-[0.15em] font-mono uppercase"
         >
-          Step 3: Neural Network & Stack
+          Step 3: Network Diagnostics
         </motion.p>
       </div>
 
-      <div className="relative">
-        
-        {/* ── Main Central Pipeline (Backbone) ── */}
-        {/* Renders behind the grid, descending down the absolute middle */}
-        <div className="hidden md:block absolute left-1/2 top-[-60px] bottom-[-60px] w-1.5 bg-slate-800/40 -translate-x-1/2 rounded-full z-0 overflow-hidden shadow-[inset_0_0_5px_rgba(0,0,0,0.5)]">
-          {/* Animated glowing fill */}
-          <motion.div 
-            className="absolute top-0 left-0 right-0 bg-gradient-to-b from-emerald-300 via-emerald-500 to-emerald-400 shadow-[0_0_20px_rgba(16,185,129,1)]"
-            initial={{ height: 0 }}
-            whileInView={{ height: '100%' }}
-            viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 2, ease: "easeInOut" }}
+      {/* Grid of Neural Panels */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-x-[10vw] md:gap-y-16 w-full max-w-7xl mx-auto z-10 relative">
+        {categories.map((cat, index) => (
+          <NeuralPanel 
+            key={cat.title} 
+            title={cat.title} 
+            techs={cat.techs} 
+            index={index} 
           />
-        </div>
-        
-        {/* ── 2x4 Grid of Panels ── */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-y-12 md:gap-y-24 md:gap-x-20 relative z-10">
-          {skillsData.map((category, index) => {
-            const isLeft = index % 2 === 0;
-            return (
-              <SkillPanel 
-                key={category.category} 
-                data={category} 
-                isLeft={isLeft} 
-                index={index} 
-              />
-            );
-          })}
-        </div>
-        
+        ))}
       </div>
     </section>
   );
