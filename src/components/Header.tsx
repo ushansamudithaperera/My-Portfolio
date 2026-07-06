@@ -48,11 +48,11 @@ function Logo() {
             fill="none"
           />
           {/* Inner glow dot */}
-          <circle cx="16" cy="16" r="2" fill="#00e676" opacity="0.6" />
+          <circle cx="16" cy="16" r="2" fill="#00e6a0" opacity="0.6" />
           <defs>
             <linearGradient id="logo-gradient" x1="8" y1="6" x2="24" y2="26">
-              <stop offset="0%" stopColor="#00e676" />
-              <stop offset="100%" stopColor="#4ade80" />
+              <stop offset="0%" stopColor="#00e6a0" />
+              <stop offset="100%" stopColor="#00ffaa" />
             </linearGradient>
           </defs>
         </svg>
@@ -60,7 +60,7 @@ function Logo() {
         <div
           className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
           style={{
-            background: 'radial-gradient(circle, rgba(0,230,118,0.2) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(0,255,170,0.2) 0%, transparent 70%)',
             filter: 'blur(8px)',
           }}
         />
@@ -122,7 +122,7 @@ function PillNav({ activeSection }: { activeSection: string }) {
       <div
         className="flex items-center gap-0.5 px-1.5 py-1.5 rounded-full border border-slate-700/30"
         style={{
-          background: 'rgba(10, 14, 23, 0.65)',
+          background: 'rgba(20, 25, 35, 0.6)',
           backdropFilter: 'blur(16px)',
           WebkitBackdropFilter: 'blur(16px)',
           boxShadow: '0 0 20px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.03)',
@@ -164,9 +164,9 @@ function PillNav({ activeSection }: { activeSection: string }) {
                   layoutId="active-pill"
                   className="absolute inset-0 rounded-full"
                   style={{
-                    border: '1px solid rgba(0,230,118,0.5)',
-                    background: 'rgba(0,230,118,0.08)',
-                    boxShadow: '0 0 12px rgba(0,230,118,0.15), inset 0 0 8px rgba(0,230,118,0.05)',
+                    border: '1px solid rgba(0,255,170,0.5)',
+                    background: 'rgba(0,255,170,0.08)',
+                    boxShadow: '0 0 12px rgba(0,255,170,0.15), inset 0 0 8px rgba(0,255,170,0.05)',
                   }}
                   transition={{
                     type: 'spring',
@@ -213,7 +213,7 @@ function MobileMenu({
           <motion.div
             className="fixed top-0 right-0 z-50 h-full w-[280px] lg:hidden overflow-y-auto"
             style={{
-              background: 'rgba(10, 14, 23, 0.95)',
+              background: 'rgba(20, 25, 35, 0.95)',
               backdropFilter: 'blur(24px)',
               WebkitBackdropFilter: 'blur(24px)',
               borderLeft: '1px solid rgba(71,85,105,0.2)',
@@ -271,7 +271,7 @@ function MobileMenu({
                         layoutId="mobile-active"
                         className="absolute left-0 top-[25%] bottom-[25%] w-[3px] rounded-full bg-emerald-400"
                         style={{
-                          boxShadow: '0 0 8px rgba(0,230,118,0.4)',
+                          boxShadow: '0 0 8px rgba(0,255,170,0.4)',
                         }}
                         transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                       />
@@ -308,8 +308,8 @@ function MobileMenu({
                 transition={{ delay: 0.4, duration: 0.3 }}
                 className="mt-2 flex items-center justify-center gap-2 py-3 px-6 rounded-full text-[13px] font-semibold tracking-[0.1em] text-slate-950 transition-all duration-300 hover:scale-[1.02]"
                 style={{
-                  background: 'linear-gradient(135deg, #00e676, #4ade80)',
-                  boxShadow: '0 0 20px rgba(0,230,118,0.25)',
+                  background: 'linear-gradient(135deg, #00e6a0, #00ffaa)',
+                  boxShadow: '0 0 20px rgba(0,255,170,0.25)',
                 }}
               >
                 HIRE ME
@@ -395,8 +395,8 @@ export default function Header() {
           className="absolute inset-0 transition-all duration-500"
           style={{
             background: hasScrolled
-              ? 'rgba(10, 14, 23, 0.82)'
-              : 'linear-gradient(180deg, rgba(10,14,23,0.9) 0%, rgba(10,14,23,0) 100%)',
+              ? 'rgba(20, 25, 35, 0.82)'
+              : 'linear-gradient(180deg, rgba(20,25,35,0.9) 0%, rgba(20,25,35,0) 100%)',
             backdropFilter: hasScrolled ? 'blur(16px) saturate(1.2)' : 'none',
             WebkitBackdropFilter: hasScrolled ? 'blur(16px) saturate(1.2)' : 'none',
           }}
@@ -407,7 +407,7 @@ export default function Header() {
           className="absolute inset-0 opacity-[0.03] pointer-events-none"
           style={{
             backgroundImage:
-              'linear-gradient(90deg, rgba(0,230,118,0.4) 1px, transparent 1px), linear-gradient(rgba(0,230,118,0.4) 1px, transparent 1px)',
+              'linear-gradient(90deg, rgba(0,255,170,0.4) 1px, transparent 1px), linear-gradient(rgba(0,255,170,0.4) 1px, transparent 1px)',
             backgroundSize: '40px 40px',
           }}
         />
@@ -417,7 +417,7 @@ export default function Header() {
           className="absolute bottom-0 left-0 right-0 h-[1px]"
           style={{
             background:
-              'linear-gradient(90deg, transparent 0%, rgba(0,230,118,0.15) 20%, rgba(0,230,118,0.25) 50%, rgba(0,230,118,0.15) 80%, transparent 100%)',
+              'linear-gradient(90deg, transparent 0%, rgba(0,255,170,0.15) 20%, rgba(0,255,170,0.25) 50%, rgba(0,255,170,0.15) 80%, transparent 100%)',
           }}
           initial={{ opacity: 0 }}
           animate={{ opacity: hasScrolled ? 1 : 0 }}

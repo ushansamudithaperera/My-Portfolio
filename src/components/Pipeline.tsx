@@ -24,7 +24,7 @@ export function CentralPipeline() {
       
       {/* Layer 2: The Core Flow */}
       <motion.div 
-        className="absolute top-0 w-[2px] bg-emerald-400 shadow-[0_0_25px_rgba(52,211,153,1)] rounded-full"
+        className="absolute top-0 w-[2px] bg-emerald-400 shadow-[0_0_25px_rgba(0,230,160,1)] rounded-full"
         style={{ height }}
       />
 
@@ -46,8 +46,8 @@ function DataPacket({ delay, duration }: { delay: number; duration: number }) {
     <motion.div
       className="absolute w-[2px] h-24 rounded-full"
       style={{
-        background: 'linear-gradient(to bottom, transparent, rgba(52,211,153,0.8) 70%, rgba(255,255,255,1))',
-        boxShadow: '0 10px 15px rgba(52,211,153,0.6)',
+        background: 'linear-gradient(to bottom, transparent, rgba(0,230,160,0.8) 70%, rgba(255,255,255,1))',
+        boxShadow: '0 10px 15px rgba(0,230,160,0.6)',
       }}
       animate={{
         top: ['-5%', '105%'], // Travel from top of the absolute container to the bottom
@@ -91,7 +91,7 @@ export function PipelineBranch({
   return (
     <motion.div
       ref={ref}
-      className={`absolute top-1/2 h-[2px] bg-emerald-500/60 shadow-[0_0_15px_rgba(16,185,129,0.8)] -z-10`}
+      className={`absolute top-1/2 h-[2px] bg-emerald-500/60 shadow-[0_0_15px_rgba(0,255,170,0.8)] -z-10`}
       style={{ 
         width,
         opacity, 
@@ -102,7 +102,7 @@ export function PipelineBranch({
     >
        {/* Branch Node connecting to the central pipeline */}
        <div 
-         className={`absolute top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-emerald-400 border-[2px] border-[#0a0f16] shadow-[0_0_10px_rgba(52,211,153,1)] ${isLeft ? 'right-[-6px]' : 'left-[-6px]'}`} 
+         className={`absolute top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-emerald-400 border-[2px] border-[#0a0f16] shadow-[0_0_10px_rgba(0,230,160,1)] ${isLeft ? 'right-[-6px]' : 'left-[-6px]'}`} 
        />
        
        {/* Small connector node at the panel border */}

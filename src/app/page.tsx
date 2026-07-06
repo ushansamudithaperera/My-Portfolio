@@ -10,14 +10,14 @@ import Extracurricular from "@/components/Extracurricular";
 import { CentralPipeline } from "@/components/Pipeline";
 export default function Home() {
   return (
-    <main className="relative flex min-h-screen flex-col bg-[#0a0f16] overflow-hidden">
+    <main className="relative flex min-h-screen flex-col overflow-hidden">
 
       {/* ── Global Background Layers ── */}
       {/* Subtle glowing grid effect covering the entire site */}
       <div
         className="fixed inset-0 z-0 opacity-20 pointer-events-none"
         style={{
-          backgroundImage: 'linear-gradient(rgba(16,185,129,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(16,185,129,0.1) 1px, transparent 1px)',
+          backgroundImage: 'linear-gradient(rgba(0,255,170,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,170,0.05) 1px, transparent 1px)',
           backgroundSize: '40px 40px'
         }}
       />
@@ -44,7 +44,7 @@ export default function Home() {
       </div>
 
       {/* Footer is completely outside the pipeline bounding container */}
-      <div className="relative z-20 bg-[#0a0f16]">
+      <div className="relative z-20">
         <Footer />
       </div>
     </main>

@@ -121,7 +121,7 @@ export default function Projects() {
       </div>
 
       {/* ── Main Container (Like Image Reference) ── */}
-      <div className="relative bg-[#080d19]/80 border border-slate-700/50 rounded-[2.5rem] p-6 md:p-10 shadow-2xl backdrop-blur-xl">
+      <div className="relative bg-[#141923]/60 border border-[#00ffaa]/20 rounded-[2.5rem] p-6 md:p-10 shadow-[0_0_20px_rgba(0,255,170,0.15)] backdrop-blur-xl">
         
         {/* Subtle inner background glow */}
         <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 via-transparent to-blue-500/5 rounded-[2.5rem] pointer-events-none" />
@@ -137,14 +137,14 @@ export default function Projects() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="group relative flex flex-col bg-[#111928]/90 border border-slate-700/60 rounded-2xl overflow-hidden hover:border-emerald-500/50 transition-colors duration-300"
+                className="group relative flex flex-col bg-[#0a0e14]/80 border border-slate-700/60 rounded-2xl overflow-hidden hover:border-emerald-500/50 transition-colors duration-300"
               >
                 {/* ── Card Thumbnail Area ── */}
                 <div className="relative h-44 w-full bg-[#0a101d] border-b border-slate-800 flex items-center justify-center overflow-hidden">
                   
                   {/* Background Grid Pattern */}
                   <div className="absolute inset-0 opacity-20" style={{
-                    backgroundImage: 'linear-gradient(rgba(16,185,129,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(16,185,129,0.2) 1px, transparent 1px)',
+                    backgroundImage: 'linear-gradient(rgba(0,255,170,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,170,0.2) 1px, transparent 1px)',
                     backgroundSize: '20px 20px'
                   }} />
                   
@@ -152,7 +152,7 @@ export default function Projects() {
                   <div className="absolute w-24 h-24 bg-emerald-500/20 blur-2xl rounded-full group-hover:bg-emerald-400/30 transition-all duration-500" />
                   
                   {/* Glowing Icon representing thumbnail */}
-                  <Icon className="relative z-10 text-emerald-400 opacity-90 text-6xl group-hover:scale-110 group-hover:text-emerald-300 transition-all duration-500 drop-shadow-[0_0_15px_rgba(52,211,153,0.5)]" />
+                  <Icon className="relative z-10 text-emerald-400 opacity-90 text-6xl group-hover:scale-110 group-hover:text-emerald-300 transition-all duration-500 drop-shadow-[0_0_15px_rgba(0,255,170,0.5)]" />
                   
                   {/* Decorative corner brackets */}
                   <div className="absolute top-3 left-3 w-4 h-4 border-t-2 border-l-2 border-emerald-500/30 rounded-tl" />
@@ -168,7 +168,7 @@ export default function Projects() {
                   {/* Tech Tags */}
                   <div className="flex flex-wrap gap-2 mb-6">
                     {project.tags.map((tag) => (
-                      <span key={tag} className="text-[11px] font-mono tracking-wider text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 px-2 py-1 rounded-md shadow-[0_0_8px_rgba(16,185,129,0.05)]">
+                      <span key={tag} className="text-[11px] font-mono tracking-wider text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 px-2 py-1 rounded-md shadow-[0_0_8px_rgba(0,255,170,0.05)]">
                         {tag}
                       </span>
                     ))}
@@ -177,7 +177,7 @@ export default function Projects() {
                   {/* Action Button */}
                   <button 
                     onClick={() => setSelectedProject(project)}
-                    className="mt-auto w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-semibold tracking-wider text-slate-300 transition-all duration-300 bg-slate-800/50 border border-slate-600/50 hover:bg-emerald-500/10 hover:border-emerald-500/40 hover:text-emerald-300 hover:shadow-[0_0_15px_rgba(16,185,129,0.15)]"
+                    className="mt-auto w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-semibold tracking-wider text-slate-300 transition-all duration-300 bg-slate-800/50 border border-slate-600/50 hover:bg-emerald-500/10 hover:border-emerald-500/40 hover:text-emerald-300 hover:shadow-[0_0_15px_rgba(0,255,170,0.15)]"
                   >
                     {project.isGitHub ? (
                       <>
@@ -200,8 +200,8 @@ export default function Projects() {
 
       {/* ── Connecting Pipeline Below Panel ── */}
       <div className="flex justify-center relative mt-2 md:mt-4">
-        <div className="absolute top-0 w-3 h-3 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(16,185,129,1)] z-10 -mt-1.5" />
-        <div className="w-1 h-24 bg-gradient-to-b from-emerald-500/80 via-emerald-500/40 to-transparent shadow-[0_0_15px_rgba(16,185,129,0.5)]" />
+        <div className="absolute top-0 w-3 h-3 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(0,230,160,1)] z-10 -mt-1.5" />
+        <div className="w-1 h-24 bg-gradient-to-b from-emerald-500/80 via-emerald-500/40 to-transparent shadow-[0_0_15px_rgba(0,255,170,0.5)]" />
       </div>
 
       {/* ── Glassmorphism Modal ── */}
@@ -224,10 +224,10 @@ export default function Projects() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="relative w-full max-w-2xl bg-[#0f172a] border border-emerald-500/30 rounded-2xl shadow-[0_0_40px_rgba(16,185,129,0.15)] overflow-hidden"
+              className="relative w-full max-w-2xl bg-[#141923]/90 backdrop-blur-xl border border-emerald-500/30 rounded-2xl shadow-[0_0_40px_rgba(0,255,170,0.15)] overflow-hidden"
             >
               {/* Modal Header */}
-              <div className="px-6 py-5 border-b border-slate-800 flex justify-between items-start bg-[#0b1121]">
+              <div className="px-6 py-5 border-b border-slate-800 flex justify-between items-start bg-[#0a0e14]/90">
                 <div>
                   <h3 className="text-xl md:text-2xl font-bold text-white tracking-wide">
                     {selectedProject.details[0]}
@@ -253,7 +253,7 @@ export default function Projects() {
                 <ul className="space-y-4">
                   {selectedProject.details.slice(1).map((point, i) => (
                     <li key={i} className="flex items-start gap-4 text-slate-300 text-sm md:text-base leading-relaxed">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500/80 mt-2 flex-shrink-0 shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500/80 mt-2 flex-shrink-0 shadow-[0_0_8px_rgba(0,255,170,0.8)]" />
                       {point}
                     </li>
                   ))}
@@ -262,12 +262,12 @@ export default function Projects() {
               
               {/* Modal Footer */}
               {selectedProject.isGitHub && (
-                <div className="px-6 py-4 border-t border-slate-800 bg-[#0b1121] flex justify-end">
+                <div className="px-6 py-4 border-t border-slate-800 bg-[#0a0e14]/90 flex justify-end">
                   <a 
                     href="https://github.com/ushansamudithaperera" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold text-slate-900 bg-emerald-400 hover:bg-emerald-300 transition-colors shadow-[0_0_15px_rgba(52,211,153,0.4)]"
+                    className="flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold text-slate-900 bg-emerald-400 hover:bg-emerald-300 transition-colors shadow-[0_0_15px_rgba(0,255,170,0.4)]"
                   >
                     <FaGithub size={18} />
                     Open GitHub Profile

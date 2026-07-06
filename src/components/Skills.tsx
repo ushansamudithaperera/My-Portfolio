@@ -110,7 +110,7 @@ function NeuralPanel({ title, techs, index }: { title: string, techs: any[], ind
 
   return (
     <motion.div 
-      className="relative w-full h-[280px] md:h-[320px] bg-[#0a0f16]/80 backdrop-blur-xl border border-white/10 rounded-[2rem] shadow-2xl p-6 group"
+      className="relative w-full h-[280px] md:h-[320px] bg-[#141923]/60 backdrop-blur-xl border border-[#00ffaa]/20 rounded-[2rem] shadow-[0_0_20px_rgba(0,255,170,0.15)] p-6 group"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-50px' }}
@@ -131,10 +131,10 @@ function NeuralPanel({ title, techs, index }: { title: string, techs: any[], ind
             <motion.path 
               key={i}
               d={`M ${entryX} ${entryY} C ${controlX} ${entryY}, ${pos.x} ${pos.y - 10}, ${pos.x} ${pos.y}`}
-              stroke="rgba(52,211,153,0.3)"
+              stroke="rgba(0,255,170,0.3)"
               strokeWidth="0.8"
               fill="none"
-              className="drop-shadow-[0_0_8px_rgba(52,211,153,0.6)]"
+              className="drop-shadow-[0_0_8px_rgba(0,255,170,0.6)]"
               initial={{ pathLength: 0, opacity: 0 }}
               whileInView={{ pathLength: 1, opacity: 1 }}
               viewport={{ once: true }}
@@ -153,7 +153,7 @@ function NeuralPanel({ title, techs, index }: { title: string, techs: any[], ind
         >
           {/* Strict User Box Design */}
           <motion.div 
-            className="w-16 h-16 flex items-center justify-center bg-[#0a0f16]/80 backdrop-blur-md border border-white/10 rounded-xl shadow-[0_0_15px_rgba(52,211,153,0.15)] relative z-10 transition-transform duration-300 hover:scale-110"
+            className="w-16 h-16 flex items-center justify-center bg-[#141923]/60 backdrop-blur-md border border-[#00ffaa]/20 rounded-xl shadow-[0_0_15px_rgba(0,255,170,0.15)] relative z-10 transition-transform duration-300 hover:scale-110"
             initial={{ scale: 0, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
             viewport={{ once: true }}
@@ -164,7 +164,7 @@ function NeuralPanel({ title, techs, index }: { title: string, techs: any[], ind
           
           {/* Label underneath */}
           <motion.p 
-            className="text-[11px] text-slate-300 mt-2 font-mono uppercase tracking-wider bg-[#0a0f16]/90 px-2 py-0.5 rounded border border-white/10 shadow-lg whitespace-nowrap"
+            className="text-[11px] text-slate-300 mt-2 font-mono uppercase tracking-wider bg-[#141923]/90 px-2 py-0.5 rounded border border-[#00ffaa]/20 shadow-lg whitespace-nowrap"
             initial={{ opacity: 0, y: -5 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -196,7 +196,7 @@ export default function Skills() {
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-2xl md:text-3xl font-bold text-white tracking-[0.2em] uppercase drop-shadow-[0_0_15px_rgba(52,211,153,0.4)]"
+          className="text-2xl md:text-3xl font-bold text-white tracking-[0.2em] uppercase drop-shadow-[0_0_15px_rgba(0,255,170,0.4)]"
         >
           Skills Arsenal
         </motion.h2>

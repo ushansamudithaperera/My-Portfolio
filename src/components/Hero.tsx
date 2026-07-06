@@ -31,7 +31,7 @@ export default function Hero() {
     >
       {/* ── Main Wide Panel ── */}
       <motion.div
-        className="relative z-10 w-full max-w-5xl lg:max-w-6xl bg-[#0a0f16]/80 backdrop-blur-xl border border-white/10 rounded-2xl p-10 md:p-14 shadow-[0_0_30px_rgba(52,211,153,0.15)] flex flex-col-reverse md:flex-row items-center gap-10 md:gap-16"
+        className="relative z-10 w-full max-w-5xl lg:max-w-6xl bg-[#141923]/60 backdrop-blur-xl border border-[#00ffaa]/20 rounded-2xl p-10 md:p-14 shadow-[0_0_20px_rgba(0,255,170,0.15)] flex flex-col-reverse md:flex-row items-center gap-10 md:gap-16"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -72,7 +72,7 @@ export default function Hero() {
               href="https://linkedin.com/in/ushan-perera-73a11b199" 
               target="_blank"
               rel="noopener noreferrer"
-              className="w-12 h-12 flex items-center justify-center rounded-full border border-slate-600 hover:border-emerald-400 hover:text-emerald-400 text-slate-300 transition-colors bg-[#0a0f16]/50 shadow-lg"
+              className="w-12 h-12 flex items-center justify-center rounded-full border border-slate-600 hover:border-emerald-400 hover:text-emerald-400 text-slate-300 transition-colors bg-[#141923]/50 shadow-lg"
               aria-label="LinkedIn"
             >
               <FaLinkedin size={20} />
@@ -82,7 +82,7 @@ export default function Hero() {
               href="https://github.com/ushan111" 
               target="_blank"
               rel="noopener noreferrer"
-              className="w-12 h-12 flex items-center justify-center rounded-full border border-slate-600 hover:border-emerald-400 hover:text-emerald-400 text-slate-300 transition-colors bg-[#0a0f16]/50 shadow-lg"
+              className="w-12 h-12 flex items-center justify-center rounded-full border border-slate-600 hover:border-emerald-400 hover:text-emerald-400 text-slate-300 transition-colors bg-[#141923]/50 shadow-lg"
               aria-label="GitHub"
             >
               <FaGithub size={20} />
@@ -91,7 +91,7 @@ export default function Hero() {
             <a 
               href="/Ushan_Perera_Resume.pdf" 
               download 
-              className="bg-transparent border border-slate-600 hover:border-emerald-400 hover:text-emerald-400 text-slate-300 font-semibold py-3 px-6 rounded-lg transition-colors flex items-center justify-center gap-2 h-12 bg-[#0a0f16]/50 shadow-lg"
+              className="bg-transparent border border-slate-600 hover:border-emerald-400 hover:text-emerald-400 text-slate-300 font-semibold py-3 px-6 rounded-lg transition-colors flex items-center justify-center gap-2 h-12 bg-[#141923]/50 shadow-lg"
             >
               <FaDownload size={14} />
               Download CV
@@ -101,7 +101,7 @@ export default function Hero() {
 
         {/* ── Right Side (Image) ── */}
         <motion.div 
-          className="relative w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80 shrink-0 bg-[#0a0f16]/80 backdrop-blur-xl border border-white/10 shadow-[0_0_30px_rgba(52,211,153,0.15)] rounded-2xl overflow-hidden"
+          className="relative w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80 shrink-0 bg-[#141923]/60 backdrop-blur-xl border border-[#00ffaa]/20 shadow-[0_0_20px_rgba(0,255,170,0.15)] rounded-2xl overflow-hidden"
           variants={itemVariants}
         >
           <img
@@ -118,17 +118,17 @@ export default function Hero() {
       {/* ── Connecting Animated Pipeline Below Panel ── */}
       <div className="relative z-10 flex justify-center mt-4 w-full h-24 md:h-32">
         {/* Animated vertical green line */}
-        <div className="relative w-1.5 h-full bg-emerald-900/40 rounded-full overflow-hidden flex justify-center shadow-[0_0_10px_rgba(16,185,129,0.2)]">
+        <div className="relative w-1.5 h-full bg-emerald-900/40 rounded-full overflow-hidden flex justify-center shadow-[0_0_10px_rgba(0,255,170,0.2)]">
           {/* Growing line effect */}
           <motion.div 
-            className="absolute top-0 w-full bg-emerald-500/80 shadow-[0_0_15px_rgba(16,185,129,0.8)]"
+            className="absolute top-0 w-full bg-emerald-500/80 shadow-[0_0_15px_rgba(0,255,170,0.8)]"
             initial={{ height: 0 }}
             animate={{ height: '100%' }}
             transition={{ duration: 1.5, ease: "easeOut", delay: 0.5 }}
           />
           {/* Traveling Data Packet (Glowing Dot) */}
           <motion.div
-            className="absolute w-3 h-3 bg-white rounded-full shadow-[0_0_20px_rgba(255,255,255,1),0_0_15px_rgba(16,185,129,1)]"
+            className="absolute w-3 h-3 bg-white rounded-full shadow-[0_0_20px_rgba(255,255,255,1),0_0_15px_rgba(0,255,170,1)]"
             animate={{
               y: [0, 128], // travel down
               opacity: [0, 1, 1, 0]
@@ -142,7 +142,7 @@ export default function Hero() {
           />
         </div>
         {/* Top connector node */}
-        <div className="absolute top-0 w-4 h-4 rounded-full border-[2px] border-emerald-400 bg-emerald-400 shadow-[0_0_16px_rgba(52,211,153,1)] z-10 -mt-2 left-1/2 -translate-x-1/2" />
+        <div className="absolute top-0 w-4 h-4 rounded-full border-[2px] border-emerald-400 bg-emerald-400 shadow-[0_0_16px_rgba(0,230,160,1)] z-10 -mt-2 left-1/2 -translate-x-1/2" />
       </div>
     </section>
   );

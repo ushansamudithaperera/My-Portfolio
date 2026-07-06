@@ -33,7 +33,7 @@ export default function Extracurricular() {
     <section className="relative w-full max-w-6xl mx-auto py-24 px-4 sm:px-6" id="extracurricular">
       
       {/* ── Central Pipeline ── */}
-      <div className="absolute left-1/2 top-0 bottom-0 w-1.5 bg-emerald-500/80 shadow-[0_0_15px_rgba(16,185,129,0.8)] -translate-x-1/2 z-0" />
+      <div className="absolute left-1/2 top-0 bottom-0 w-1.5 bg-emerald-500/80 shadow-[0_0_15px_rgba(0,255,170,0.8)] -translate-x-1/2 z-0" />
       
       {/* ── Section Header ── */}
       <div className="text-center mb-16 relative z-10 bg-slate-950/60 backdrop-blur-md py-4 rounded-3xl border border-slate-800/50 inline-block left-1/2 -translate-x-1/2 px-10">
@@ -66,7 +66,7 @@ export default function Extracurricular() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: idx * 0.2 }}
-              className="relative group bg-[#0b1121]/80 border border-slate-700/50 rounded-3xl p-6 md:p-8 shadow-2xl backdrop-blur-xl overflow-hidden hover:border-emerald-500/50 transition-colors duration-300 flex flex-col"
+              className="relative group bg-[#141923]/60 border border-[#00ffaa]/20 rounded-3xl p-6 md:p-8 shadow-[0_0_20px_rgba(0,255,170,0.15)] backdrop-blur-xl overflow-hidden hover:border-emerald-500/50 transition-colors duration-300 flex flex-col"
             >
               {/* Subtle background glow */}
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
@@ -78,7 +78,7 @@ export default function Extracurricular() {
                 <div className="relative w-20 h-20 shrink-0 bg-[#060a13] border border-slate-700/80 rounded-2xl flex items-center justify-center shadow-inner overflow-hidden group-hover:scale-105 transition-transform duration-300">
                   {/* Internal grid pattern */}
                   <div className="absolute inset-0 opacity-20" style={{
-                    backgroundImage: 'linear-gradient(rgba(16,185,129,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(16,185,129,0.3) 1px, transparent 1px)',
+                    backgroundImage: 'linear-gradient(rgba(0,255,170,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,170,0.3) 1px, transparent 1px)',
                     backgroundSize: '8px 8px'
                   }} />
                   <div className={`absolute inset-0 blur-xl opacity-20 group-hover:opacity-40 transition-opacity ${activity.color}`} />
@@ -103,7 +103,7 @@ export default function Extracurricular() {
               <ul className="space-y-4 flex-grow">
                 {activity.details.map((point, i) => (
                   <li key={i} className="flex items-start gap-3 text-sm md:text-base text-slate-300 leading-relaxed">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500/80 mt-2 flex-shrink-0 shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500/80 mt-2 flex-shrink-0 shadow-[0_0_8px_rgba(0,255,170,0.8)]" />
                     {point}
                   </li>
                 ))}

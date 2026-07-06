@@ -1,12 +1,17 @@
 @import "tailwindcss";
 
+@theme {
+  --color-emerald-300: #4dffc4;
+  --color-emerald-400: #00e6a0;
+  --color-emerald-500: #00ffaa;
+  --color-emerald-900: #004d33;
+}
 
 html,
 body {
-  background-color: #020617 !important;
-  /* Tailwind's bg-slate-950 exact hex code */
+  background: linear-gradient(to bottom, #0a0e14, #0d1117) !important;
+  background-attachment: fixed !important;
   color: #cbd5e1;
-  /* text-slate-300 */
   margin: 0;
   padding: 0;
   overflow-x: hidden;

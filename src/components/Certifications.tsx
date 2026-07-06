@@ -47,7 +47,7 @@ export default function Certifications() {
     <section className="relative w-full max-w-5xl mx-auto py-24 px-4 sm:px-6" id="certifications">
       
       {/* ── Central Pipeline ── */}
-      <div className="absolute left-1/2 top-0 bottom-0 w-1.5 bg-emerald-500/80 shadow-[0_0_15px_rgba(16,185,129,0.8)] -translate-x-1/2 z-0" />
+      <div className="absolute left-1/2 top-0 bottom-0 w-1.5 bg-emerald-500/80 shadow-[0_0_15px_rgba(0,255,170,0.8)] -translate-x-1/2 z-0" />
       
       {/* ── Section Header ── */}
       <div className="text-center mb-16 relative z-10 bg-slate-950/60 backdrop-blur-md py-4 rounded-3xl border border-slate-800/50 inline-block left-1/2 -translate-x-1/2 px-10">
@@ -70,7 +70,7 @@ export default function Certifications() {
       </div>
 
       {/* ── Main Glassmorphism Panel Container ── */}
-      <div className="relative bg-[#0b1121]/80 border border-slate-700/50 rounded-[2rem] p-8 md:p-12 shadow-2xl backdrop-blur-xl z-10">
+      <div className="relative bg-[#141923]/60 border border-[#00ffaa]/20 rounded-[2rem] p-8 md:p-12 shadow-[0_0_20px_rgba(0,255,170,0.15)] backdrop-blur-xl z-10">
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {certsData.map((cert, idx) => {
@@ -82,7 +82,7 @@ export default function Certifications() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="group relative flex flex-col items-center text-center bg-[#111928]/90 border border-slate-700/60 rounded-2xl p-6 hover:border-emerald-500/60 hover:shadow-[0_0_20px_rgba(16,185,129,0.15)] transition-all duration-300"
+                className="group relative flex flex-col items-center text-center bg-[#0a0e14]/80 border border-slate-700/60 rounded-2xl p-6 hover:border-emerald-500/60 hover:shadow-[0_0_20px_rgba(0,255,170,0.15)] transition-all duration-300"
               >
                 {/* Background glow on hover */}
                 <div className="absolute inset-0 bg-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl pointer-events-none" />

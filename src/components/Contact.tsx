@@ -7,7 +7,7 @@ export default function Contact() {
     <section className="relative w-full max-w-4xl mx-auto py-24 px-4 sm:px-6" id="contact">
       
       {/* ── Central Pipeline (Terminating) ── */}
-      <div className="absolute left-1/2 top-0 h-32 w-1.5 bg-emerald-500/80 shadow-[0_0_15px_rgba(16,185,129,0.8)] -translate-x-1/2 z-0" />
+      <div className="absolute left-1/2 top-0 h-32 w-1.5 bg-emerald-500/80 shadow-[0_0_15px_rgba(0,255,170,0.8)] -translate-x-1/2 z-0" />
       
       {/* ── Section Header ── */}
       <div className="text-center mb-10 relative z-10 pt-16">
@@ -35,7 +35,7 @@ export default function Contact() {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="relative bg-[#111928]/80 border border-slate-700/60 rounded-3xl p-6 md:p-10 shadow-2xl backdrop-blur-xl z-10"
+        className="relative bg-[#141923]/60 border border-[#00ffaa]/20 rounded-3xl p-6 md:p-10 shadow-[0_0_20px_rgba(0,255,170,0.15)] backdrop-blur-xl z-10"
       >
         <form action="https://formspree.io/f/xrevnabz" method="POST" className="space-y-6">
           
@@ -47,7 +47,7 @@ export default function Contact() {
               id="name"
               name="name"
               required
-              className="w-full bg-[#1a2333]/50 border border-slate-700/80 rounded-xl px-5 py-4 text-white placeholder-slate-400 focus:outline-none focus:border-emerald-500/80 focus:ring-1 focus:ring-emerald-500/50 transition-colors"
+              className="w-full bg-[#0a0e14]/50 border border-slate-700/80 rounded-xl px-5 py-4 text-white placeholder-slate-400 focus:outline-none focus:border-emerald-500/80 focus:ring-1 focus:ring-emerald-500/50 transition-colors"
               placeholder="Name"
             />
           </div>
@@ -61,7 +61,7 @@ export default function Contact() {
                 id="email"
                 name="email"
                 required
-                className="w-full bg-[#1a2333]/50 border border-slate-700/80 rounded-xl px-5 py-4 text-white placeholder-slate-400 focus:outline-none focus:border-emerald-500/80 focus:ring-1 focus:ring-emerald-500/50 transition-colors"
+                className="w-full bg-[#0a0e14]/50 border border-slate-700/80 rounded-xl px-5 py-4 text-white placeholder-slate-400 focus:outline-none focus:border-emerald-500/80 focus:ring-1 focus:ring-emerald-500/50 transition-colors"
                 placeholder="Email"
               />
             </div>
@@ -71,7 +71,7 @@ export default function Contact() {
                 type="tel"
                 id="phone"
                 name="phone"
-                className="w-full bg-[#1a2333]/50 border border-slate-700/80 rounded-xl px-5 py-4 text-white placeholder-slate-400 focus:outline-none focus:border-emerald-500/80 focus:ring-1 focus:ring-emerald-500/50 transition-colors"
+                className="w-full bg-[#0a0e14]/50 border border-slate-700/80 rounded-xl px-5 py-4 text-white placeholder-slate-400 focus:outline-none focus:border-emerald-500/80 focus:ring-1 focus:ring-emerald-500/50 transition-colors"
                 placeholder="Phone"
               />
             </div>
@@ -85,7 +85,7 @@ export default function Contact() {
               name="message"
               rows={5}
               required
-              className="w-full bg-[#1a2333]/50 border border-slate-700/80 rounded-xl px-5 py-4 text-white placeholder-slate-400 focus:outline-none focus:border-emerald-500/80 focus:ring-1 focus:ring-emerald-500/50 transition-colors resize-none"
+              className="w-full bg-[#0a0e14]/50 border border-slate-700/80 rounded-xl px-5 py-4 text-white placeholder-slate-400 focus:outline-none focus:border-emerald-500/80 focus:ring-1 focus:ring-emerald-500/50 transition-colors resize-none"
               placeholder="Message"
             ></textarea>
           </div>
@@ -94,14 +94,14 @@ export default function Contact() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
             <button
               type="submit"
-              className="w-full py-4 rounded-xl text-white font-semibold tracking-wider uppercase text-sm bg-slate-800/50 border border-slate-600 hover:bg-emerald-500/20 hover:border-emerald-400/80 hover:shadow-[0_0_20px_rgba(16,185,129,0.3)] transition-all duration-300"
+              className="w-full py-4 rounded-xl text-white font-semibold tracking-wider uppercase text-sm bg-slate-800/50 border border-slate-600 hover:bg-emerald-500/20 hover:border-emerald-400/80 hover:shadow-[0_0_20px_rgba(0,255,170,0.3)] transition-all duration-300"
             >
               Contact
             </button>
             <a
               href="/resume.pdf"
               download
-              className="w-full flex items-center justify-center py-4 rounded-xl text-white font-semibold tracking-wider uppercase text-sm bg-slate-800/50 border border-slate-600 hover:bg-cyan-500/20 hover:border-cyan-400/80 hover:shadow-[0_0_20px_rgba(6,182,212,0.3)] transition-all duration-300"
+              className="w-full flex items-center justify-center py-4 rounded-xl text-white font-semibold tracking-wider uppercase text-sm bg-slate-800/50 border border-slate-600 hover:bg-emerald-500/20 hover:border-emerald-400/80 hover:shadow-[0_0_20px_rgba(0,255,170,0.3)] transition-all duration-300"
             >
               Download CV
             </a>
@@ -113,7 +113,7 @@ export default function Contact() {
           <div className="flex items-center gap-3">
             <span className="relative flex h-3 w-3">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,1)]"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500 shadow-[0_0_10px_rgba(0,230,160,1)]"></span>
             </span>
             <span className="text-emerald-400 text-xs font-mono tracking-[0.2em] uppercase">
               Pipeline Status: Secure Connection
