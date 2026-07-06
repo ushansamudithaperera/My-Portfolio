@@ -34,22 +34,25 @@ export default function Home() {
         It starts at Hero and exactly terminates at the bottom of Contact. 
       */}
       <div className="relative w-full z-10">
-        {/* Global Pipeline Background (z-0) */}
-        <div className="hidden md:block absolute top-0 bottom-0 left-1/2 -translate-x-1/2 z-0">
+        {/* Pipeline Background (z-0) — lowest layer */}
+        <div className="hidden md:block absolute top-0 bottom-0 left-1/2 -translate-x-1/2 z-0 pointer-events-none">
           <CentralPipelineBackground />
         </div>
 
-        <Hero />
-        <Education />
-        <Skills />
-        <Projects />
-        <Certifications />
-        <Extracurricular />
-        <Contact />
-
-        {/* Global Pipeline Trace (z-20) */}
-        <div className="hidden md:block absolute top-0 bottom-0 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
+        {/* Pipeline Trace + Packets (z-[1]) — behind content, visible in gaps */}
+        <div className="hidden md:block absolute top-0 bottom-0 left-1/2 -translate-x-1/2 z-[1] pointer-events-none">
           <CentralPipelineTrace />
+        </div>
+
+        {/* All content sections (z-[2]) — sit ABOVE the pipeline */}
+        <div className="relative z-[2]">
+          <Hero />
+          <Education />
+          <Skills />
+          <Projects />
+          <Certifications />
+          <Extracurricular />
+          <Contact />
         </div>
       </div>
 
