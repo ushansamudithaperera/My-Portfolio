@@ -17,37 +17,36 @@ export function CentralPipeline() {
   const height = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
 
   return (
-    <div className="absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-4 z-0 pointer-events-none flex justify-center overflow-hidden">
+    <div className="absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-6 z-0 pointer-events-none flex justify-center overflow-hidden">
       
-      {/* Layer 1: The Track */}
-      <div className="absolute inset-y-0 w-full bg-white/5 border-x border-emerald-500/20 rounded-full" />
+      {/* Layer 1: The Track (Thickened) */}
+      <div className="absolute inset-y-0 w-2 bg-white/5 border-x border-emerald-500/20 rounded-full" />
       
-      {/* Layer 2: The Core Flow */}
+      {/* Layer 2: The Core Flow (Thickened) */}
       <motion.div 
-        className="absolute top-0 w-[2px] bg-emerald-400 shadow-[0_0_25px_rgba(0,230,160,1)] rounded-full"
+        className="absolute top-0 w-[4px] bg-emerald-400 shadow-[0_0_25px_rgba(0,230,160,1)] rounded-full"
         style={{ height }}
       />
 
       {/* Layer 3: Data Packets (Simulating data flow down the absolute container) */}
       <DataPacket delay={0} duration={8} />
-      <DataPacket delay={2} duration={9} />
-      <DataPacket delay={4} duration={7.5} />
-      <DataPacket delay={6} duration={8.5} />
+      <DataPacket delay={2} duration={8} />
+      <DataPacket delay={4} duration={8} />
+      <DataPacket delay={6} duration={8} />
     </div>
   );
 }
 
 /**
  * ─── Data Packet ─────────────────────────────────────────────────────
- * Animated glowing node with a fading trail traveling down the track.
+ * Animated glowing node traveling down the vertical track.
  */
 function DataPacket({ delay, duration }: { delay: number; duration: number }) {
   return (
     <motion.div
-      className="absolute w-[2px] h-24 rounded-full"
+      className="absolute w-[6px] h-[24px] rounded-full bg-[#00e6a0]"
       style={{
-        background: 'linear-gradient(to bottom, transparent, rgba(0,230,160,0.8) 70%, rgba(255,255,255,1))',
-        boxShadow: '0 10px 15px rgba(0,230,160,0.6)',
+        boxShadow: '0 0 15px rgba(0,230,160,1)',
       }}
       animate={{
         top: ['-5%', '105%'], // Travel from top of the absolute container to the bottom
@@ -91,7 +90,7 @@ export function PipelineBranch({
   return (
     <motion.div
       ref={ref}
-      className={`absolute top-1/2 h-[2px] bg-emerald-500/60 shadow-[0_0_15px_rgba(0,255,170,0.8)] -z-10`}
+      className={`absolute top-1/2 h-[4px] bg-emerald-500/60 shadow-[0_0_15px_rgba(0,255,170,0.8)] -z-10 overflow-hidden`}
       style={{ 
         width,
         opacity, 
@@ -100,14 +99,43 @@ export function PipelineBranch({
         [isLeft ? 'right' : 'left']: `-${width}` // Position it sticking out of the panel
       }}
     >
+       {/* Horizontal Data Packets flowing from center to panel */}
+       <motion.div 
+         className="absolute top-1/2 -translate-y-1/2 w-[24px] h-[6px] rounded-full bg-[#00e6a0] shadow-[0_0_15px_rgba(0,230,160,1)]"
+         animate={{
+           // If it's a left panel, data moves Right -> Left (100% to 0%).
+           // If it's a right panel, data moves Left -> Right (0% to 100%).
+           left: isLeft ? ['100%', '-20px'] : ['-20px', '100%']
+         }}
+         transition={{
+           duration: 2,
+           repeat: Infinity,
+           ease: 'linear',
+           delay: 0.5 // Offset so it looks natural
+         }}
+       />
+       
+       <motion.div 
+         className="absolute top-1/2 -translate-y-1/2 w-[24px] h-[6px] rounded-full bg-[#00e6a0] shadow-[0_0_15px_rgba(0,230,160,1)]"
+         animate={{
+           left: isLeft ? ['100%', '-20px'] : ['-20px', '100%']
+         }}
+         transition={{
+           duration: 2,
+           repeat: Infinity,
+           ease: 'linear',
+           delay: 1.5 
+         }}
+       />
+
        {/* Branch Node connecting to the central pipeline */}
        <div 
-         className={`absolute top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-emerald-400 border-[2px] border-[#0a0f16] shadow-[0_0_10px_rgba(0,230,160,1)] ${isLeft ? 'right-[-6px]' : 'left-[-6px]'}`} 
+         className={`absolute top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-emerald-400 border-[2px] border-[#0a0f16] shadow-[0_0_10px_rgba(0,230,160,1)] ${isLeft ? 'right-[-8px]' : 'left-[-8px]'}`} 
        />
        
        {/* Small connector node at the panel border */}
        <div 
-         className={`absolute top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-emerald-300 ${isLeft ? 'left-[-2px]' : 'right-[-2px]'}`} 
+         className={`absolute top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-emerald-300 ${isLeft ? 'left-[-4px]' : 'right-[-4px]'}`} 
        />
     </motion.div>
   );

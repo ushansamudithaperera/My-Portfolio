@@ -5,16 +5,20 @@ import { PipelineBranch } from './Pipeline';
 import { 
   SiJavascript, SiTypescript, SiPython, SiReact, SiNextdotjs, SiTailwindcss, SiHtml5,
   SiNodedotjs, SiExpress, SiFastapi, SiSpringboot, SiMongodb, SiMysql,
-  SiDocker, SiKubernetes, SiTensorflow, SiGit, SiGithub, SiPostman, SiArduino, SiCplusplus 
+  SiDocker, SiKubernetes, SiTensorflow, SiGit, SiGithub, SiPostman, SiArduino, SiCplusplus, 
+  SiC, SiPandas, SiNumpy, SiScikitlearn, SiAndroidstudio, SiXampp, SiBootstrap, SiDotnet, 
+  SiPrometheus, SiGrafana
 } from 'react-icons/si';
 
 import { 
-  FaJava, FaRobot, FaAws, FaCode, FaLayerGroup, FaNetworkWired, FaCubes, FaDatabase, FaLinux, 
-  FaSync, FaChartBar, FaChartLine, FaTable, FaBrain, FaCogs, FaLanguage, FaSpaceShuttle, 
-  FaAndroid, FaServer, FaMicrochip 
+  FaJava, FaAws, FaLayerGroup, FaNetworkWired, FaCubes, FaDatabase, FaLinux, 
+  FaSync, FaBrain, FaLanguage, FaSpaceShuttle, FaServer, FaMicrochip, FaPhp, 
+  FaCss3Alt, FaLink, FaBriefcase, FaLaptopCode, FaCogs
 } from 'react-icons/fa';
 
 import { VscVscode, VscAzure } from 'react-icons/vsc';
+import { PiFileCSharp } from 'react-icons/pi';
+import { TbDatabase, TbCpu } from 'react-icons/tb';
 
 /* ─── Data Arrays ────────────────────────────────────────────────── */
 
@@ -26,10 +30,10 @@ const categories = [
       { name: 'TypeScript', icon: SiTypescript, color: '#3178C6' },
       { name: 'Python', icon: SiPython, color: '#3776AB' },
       { name: 'Java', icon: FaJava, color: '#007396' },
-      { name: 'C', icon: FaCode, color: '#A8B9CC' },
+      { name: 'C', icon: SiC, color: '#A8B9CC' },
       { name: 'C++', icon: SiCplusplus, color: '#00599C' },
-      { name: 'C#', icon: FaCode, color: '#239120' },
-      { name: 'PHP', icon: FaCode, color: '#777BB4' },
+      { name: 'C#', icon: PiFileCSharp, color: '#239120' },
+      { name: 'PHP', icon: FaPhp, color: '#777BB4' },
     ]
   },
   {
@@ -39,9 +43,9 @@ const categories = [
       { name: 'Next.js', icon: SiNextdotjs, color: '#ffffff' },
       { name: 'Streamlit', icon: FaLayerGroup, color: '#FF4B4B' },
       { name: 'HTML5', icon: SiHtml5, color: '#E34F26' },
-      { name: 'CSS3', icon: FaCode, color: '#1572B6' },
+      { name: 'CSS3', icon: FaCss3Alt, color: '#1572B6' },
       { name: 'Tailwind CSS', icon: SiTailwindcss, color: '#06B6D4' },
-      { name: 'Bootstrap', icon: FaCode, color: '#7952B3' },
+      { name: 'Bootstrap', icon: SiBootstrap, color: '#7952B3' },
     ]
   },
   {
@@ -51,7 +55,7 @@ const categories = [
       { name: 'Express.js', icon: SiExpress, color: '#ffffff' },
       { name: 'FastAPI', icon: SiFastapi, color: '#009688' },
       { name: 'Spring Boot', icon: SiSpringboot, color: '#6DB33F' },
-      { name: '.NET', icon: FaCode, color: '#512BD4' },
+      { name: '.NET', icon: SiDotnet, color: '#512BD4' },
       { name: 'REST APIs', icon: FaNetworkWired, color: '#00E6A0' },
       { name: 'Pydantic', icon: FaCubes, color: '#E92063' },
     ]
@@ -62,8 +66,8 @@ const categories = [
       { name: 'MongoDB', icon: SiMongodb, color: '#47A248' },
       { name: 'MySQL', icon: SiMysql, color: '#4479A1' },
       { name: 'Oracle', icon: FaDatabase, color: '#F80000' },
-      { name: 'SQL Server', icon: FaDatabase, color: '#CC2927' },
-      { name: 'ChromaDB', icon: FaDatabase, color: '#00E6A0' },
+      { name: 'SQL Server', icon: FaServer, color: '#CC2927' },
+      { name: 'ChromaDB', icon: TbDatabase, color: '#00E6A0' },
     ]
   },
   {
@@ -75,19 +79,19 @@ const categories = [
       { name: 'Kubernetes', icon: SiKubernetes, color: '#326CE5' },
       { name: 'Linux', icon: FaLinux, color: '#FCC624' },
       { name: 'CI/CD', icon: FaSync, color: '#00E6A0' },
-      { name: 'Prometheus', icon: FaChartBar, color: '#E6522C' },
-      { name: 'Grafana', icon: FaChartLine, color: '#F46800' },
+      { name: 'Prometheus', icon: SiPrometheus, color: '#E6522C' },
+      { name: 'Grafana', icon: SiGrafana, color: '#F46800' },
     ]
   },
   {
     title: 'AI & Machine Learning',
     techs: [
-      { name: 'Pandas', icon: FaTable, color: '#150458' },
-      { name: 'NumPy', icon: FaTable, color: '#013243' },
-      { name: 'LangChain', icon: FaRobot, color: '#10B981' },
+      { name: 'Pandas', icon: SiPandas, color: '#150458' },
+      { name: 'NumPy', icon: SiNumpy, color: '#013243' },
+      { name: 'LangChain', icon: FaLink, color: '#10B981' },
       { name: 'TensorFlow Lite', icon: SiTensorflow, color: '#FF6F00' },
-      { name: 'Scikit-Learn', icon: FaBrain, color: '#F7931E' },
-      { name: 'Joblib', icon: FaCogs, color: '#00E6A0' },
+      { name: 'Scikit-Learn', icon: SiScikitlearn, color: '#F7931E' },
+      { name: 'Joblib', icon: FaBriefcase, color: '#00E6A0' },
       { name: 'NLP', icon: FaLanguage, color: '#00E6A0' },
     ]
   },
@@ -97,20 +101,20 @@ const categories = [
       { name: 'Git', icon: SiGit, color: '#F05032' },
       { name: 'GitHub', icon: SiGithub, color: '#ffffff' },
       { name: 'VS Code', icon: VscVscode, color: '#007ACC' },
-      { name: 'IntelliJ IDEA', icon: FaCode, color: '#000000' },
+      { name: 'IntelliJ IDEA', icon: FaLaptopCode, color: '#000000' },
       { name: 'Antigravity', icon: FaSpaceShuttle, color: '#00E6A0' },
-      { name: 'Android Studio', icon: FaAndroid, color: '#3DDC84' },
+      { name: 'Android Studio', icon: SiAndroidstudio, color: '#3DDC84' },
       { name: 'Postman', icon: SiPostman, color: '#FF6C37' },
-      { name: 'XAMPP', icon: FaServer, color: '#FB7A24' },
+      { name: 'XAMPP', icon: SiXampp, color: '#FB7A24' },
     ]
   },
   {
     title: 'Electronics & IoT',
     techs: [
       { name: 'ESP32', icon: FaMicrochip, color: '#E7352C' },
-      { name: 'PIC Microcontroller', icon: FaMicrochip, color: '#00E6A0' },
+      { name: 'PIC Microcontroller', icon: TbCpu, color: '#00E6A0' },
       { name: 'Arduino', icon: SiArduino, color: '#00979D' },
-      { name: 'C++ (embedded)', icon: SiCplusplus, color: '#00599C' },
+      { name: 'C++ (embedded)', icon: FaCogs, color: '#00599C' },
     ]
   }
 ];
@@ -118,148 +122,175 @@ const categories = [
 /* ─── Neural Panel Component ─────────────────────────────────────── */
 
 function NeuralPanel({ title, techs, index }: { title: string, techs: any[], index: number }) {
-  // Determine if this panel is on the left or right of the central pipeline on desktop
   const isLeftColumn = index % 2 === 0;
   
-  // The entry point where the pipeline branch connects to the panel
-  // If it's a left column panel, the branch connects to its RIGHT border (x: 100%)
-  const entryX = isLeftColumn ? 100 : 0;
-  const entryY = 50; 
+  // A fixed square coordinate space ensures a perfect circle regardless of panel width
+  const SVG_SIZE = 400; 
+  const center = SVG_SIZE / 2;
+  const RADIUS = 135;
   
-  const PULSE_DURATION = 4; // seconds for a full loop
+  const PULSE_DURATION = 3.5; 
 
-  // Snake indexing for sequential connection
-  const getSnakeIndex = (i: number) => {
-    if (i < 4) return i; // Top row goes L->R
-    const bottomCount = techs.length - 4;
-    return 4 + (bottomCount - 1 - (i - 4)); // Bottom row goes R->L
-  };
-
-  // Generate dynamic grid positions for up to 8 nodes
-  const nodePositions = techs.map((_, i) => {
-    const isTopRow = i < 4;
-    const colIndex = i % 4;
+  // Calculate perfect circular positions
+  const nodes = techs.map((tech, i) => {
+    const angle = (i / techs.length) * 2 * Math.PI - Math.PI / 2;
+    const cx = center + RADIUS * Math.cos(angle);
+    const cy = center + RADIUS * Math.sin(angle);
     
-    // Distribute nodes evenly in their row
-    const rowCount = isTopRow ? Math.min(techs.length, 4) : techs.length - 4;
-    const xSpace = 100 / (rowCount + 1);
-    const x = xSpace * (colIndex + 1);
-    const y = isTopRow ? 35 : 75; // Percentages from top
+    // Calculate Quadratic Bezier control point for a swirling curved spoke
+    const midX = (center + cx) / 2;
+    const midY = (center + cy) / 2;
+    const dx = cx - center;
+    const dy = cy - center;
+    const curveStrength = 0.25; 
+    const ctrlX = midX - dy * curveStrength;
+    const ctrlY = midY + dx * curveStrength;
     
-    return { x, y, originalIndex: i, snakeIndex: getSnakeIndex(i) };
+    return {
+      cx, cy, ctrlX, ctrlY,
+      pathD: `M ${center} ${center} Q ${ctrlX} ${ctrlY} ${cx} ${cy}`
+    };
   });
-
-  // Sort nodes by snakeIndex to draw a continuous circuit trace
-  const pathNodes = [...nodePositions].sort((a, b) => a.snakeIndex - b.snakeIndex);
-
-  // We draw a line from entryX, entryY to the first node, then through all nodes sequentially
-  const pathD = `M ${entryX} ${entryY} ` + pathNodes.map(pos => `L ${pos.x} ${pos.y}`).join(' ');
 
   return (
     <motion.div 
-      className="relative w-full h-[320px] md:h-[360px] bg-[#141923]/60 backdrop-blur-xl border border-[#00ffaa]/20 rounded-[2rem] shadow-[0_0_20px_rgba(0,255,170,0.15)] p-6 group"
+      className="relative w-full h-[360px] md:h-[400px] bg-[#0f141c]/40 backdrop-blur-[12px] border border-[rgba(0,230,160,0.25)] rounded-[2rem] shadow-[0_8px_32px_rgba(0,0,0,0.3)] p-6 group overflow-hidden"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-50px' }}
       transition={{ duration: 0.5, delay: (index % 2) * 0.2 }}
     >
+      {/* ── Glassmorphism Reflection ── */}
+      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-white/20 to-transparent z-20 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/[0.03] to-transparent pointer-events-none rounded-[2rem] z-0" />
+
       {/* ── Title ── */}
       <h3 className="absolute top-6 left-0 right-0 text-lg md:text-xl font-bold text-white tracking-widest uppercase text-center z-20 drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
         {title}
       </h3>
 
-      {/* ── SVG Circuit Trace & Data Pulse ── */}
-      <svg className="absolute inset-0 w-full h-full pointer-events-none z-0" preserveAspectRatio="none" viewBox="0 0 100 100">
-        {/* Base inactive trace */}
-        <path 
-          d={pathD}
-          stroke="rgba(0,255,170,0.2)"
-          strokeWidth="0.8"
-          fill="none"
-        />
-        {/* Animated Data Pulse */}
-        <motion.path 
-          d={pathD}
-          stroke="#00e6a0"
-          strokeWidth="1.5"
-          fill="none"
-          className="drop-shadow-[0_0_8px_rgba(0,255,170,0.8)]"
-          initial={{ pathLength: 0.05, pathOffset: 0, opacity: 0 }}
-          animate={{ pathOffset: 1, opacity: [0, 1, 1, 0] }}
-          transition={{ 
-            pathOffset: { duration: PULSE_DURATION, repeat: Infinity, ease: "linear" },
-            opacity: { duration: PULSE_DURATION, repeat: Infinity, ease: "linear", times: [0, 0.1, 0.9, 1] } 
-          }}
-        />
-      </svg>
-
-      {/* ── Technology Nodes ── */}
-      {techs.map((tech, i) => {
-        const pos = nodePositions[i];
-        // Delay calculation ensures glow peaks exactly as the pulse reaches the node
-        const delay = ((pos.snakeIndex + 1) / (techs.length + 1)) * PULSE_DURATION;
-
-        return (
-          <div 
-            key={tech.name} 
-            className="absolute flex flex-col items-center justify-center transform -translate-x-1/2 -translate-y-1/2 z-10 w-[24%]"
-            style={{ left: `${pos.x}%`, top: `${pos.y}%` }}
+      {/* ── Fixed Square Container for Perfect Circle Topology ── */}
+      <div className="absolute inset-0 flex items-center justify-center mt-6">
+        <div className="relative w-[340px] h-[340px] md:w-[400px] md:h-[400px]">
+          
+          {/* SVG Canvas for Spoke Lines */}
+          <svg 
+            className="absolute inset-0 w-full h-full pointer-events-none z-0" 
+            viewBox={`0 0 ${SVG_SIZE} ${SVG_SIZE}`}
           >
-            {/* Pop-in entry wrapper */}
-            <motion.div
-              initial={{ scale: 0, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ type: "spring", stiffness: 200, delay: 0.5 + (i * 0.05) }}
-              className="relative flex justify-center items-center"
-            >
-              {/* Reactive Glow Box */}
-              <motion.div 
-                className="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center bg-[#141923]/90 backdrop-blur-md border border-[#00ffaa]/20 rounded-xl relative z-10 hover:scale-110 transition-transform duration-300 cursor-default"
-                animate={{
-                  boxShadow: [
-                    "0 0 30px rgba(0,255,170,1)",   // Peak exactly at start (t = delay)
-                    "0 0 15px rgba(0,255,170,0.1)", // Fade down
-                    "0 0 15px rgba(0,255,170,0.1)", // Stay down
-                    "0 0 15px rgba(0,255,170,0.1)", // Stay down
-                    "0 0 30px rgba(0,255,170,1)"    // Peak at end to loop seamlessly
-                  ],
-                  borderColor: [
-                    "rgba(0,255,170,1)",
-                    "rgba(0,255,170,0.2)",
-                    "rgba(0,255,170,0.2)",
-                    "rgba(0,255,170,0.2)",
-                    "rgba(0,255,170,1)"
-                  ]
-                }}
-                transition={{
-                  duration: PULSE_DURATION,
-                  repeat: Infinity,
-                  delay: delay,
-                  times: [0, 0.2, 0.5, 0.8, 1],
-                  ease: "easeInOut"
-                }}
-              >
-                <tech.icon style={{ color: tech.color, fontSize: '1.5rem' }} className="drop-shadow-[0_0_5px_currentColor]" />
-              </motion.div>
-            </motion.div>
-            
-            {/* Label */}
-            <motion.p 
-              className="text-[9px] md:text-[10px] text-slate-300 mt-2 font-mono uppercase tracking-wider bg-[#141923]/90 px-1.5 py-0.5 rounded border border-[#00ffaa]/20 shadow-lg text-center leading-tight whitespace-nowrap"
-              initial={{ opacity: 0, y: -5 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.8 + (i * 0.05) }}
-            >
-              {tech.name}
-            </motion.p>
+            <defs>
+              <mask id={`mask-${index}`}>
+                <rect width={SVG_SIZE} height={SVG_SIZE} fill="white" />
+                {/* Cut out the center hub so lines don't pierce it */}
+                <circle cx={center} cy={center} r="20" fill="black" />
+                {/* Cut out the outer nodes */}
+                {nodes.map((n, i) => (
+                  <circle key={i} cx={n.cx} cy={n.cy} r="35" fill="black" />
+                ))}
+              </mask>
+            </defs>
+
+            <g mask={`url(#mask-${index})`}>
+              {nodes.map((n, i) => (
+                <g key={`spoke-${i}`}>
+                  {/* Base Spoke Line */}
+                  <path 
+                    d={n.pathD}
+                    stroke="rgba(0,255,170,0.2)"
+                    strokeWidth="1.5"
+                    fill="none"
+                  />
+                  {/* Animated Data Packet (Pill) flowing OUTWARD from hub to node */}
+                  <motion.path 
+                    d={n.pathD}
+                    stroke="#00e6a0"
+                    strokeWidth="4"
+                    strokeLinecap="round"
+                    fill="none"
+                    className="drop-shadow-[0_0_8px_rgba(0,255,170,1)]"
+                    initial={{ pathLength: 0.05, pathOffset: 0, opacity: 0 }}
+                    animate={{ pathOffset: 1, opacity: [0, 1, 1, 0] }}
+                    transition={{ 
+                      duration: PULSE_DURATION, 
+                      repeat: Infinity, 
+                      ease: "linear",
+                      delay: (i * 0.4) // Stagger the packets radiating outward
+                    }}
+                  />
+                </g>
+              ))}
+            </g>
+          </svg>
+
+          {/* ── Central Core Hub ── */}
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
+            <div className="relative flex items-center justify-center w-8 h-8">
+              <div className="absolute inset-0 bg-[#00e6a0] rounded-full blur-[8px] opacity-70 animate-pulse" />
+              <div className="relative w-4 h-4 bg-emerald-300 rounded-full shadow-[0_0_15px_#00e6a0]" />
+            </div>
           </div>
-        );
-      })}
+
+          {/* ── Surrounding Technology Nodes ── */}
+          {techs.map((tech, i) => {
+            const pos = nodes[i];
+            // Compute percentage for DOM absolute positioning (0 to 100%)
+            const pctX = (pos.cx / SVG_SIZE) * 100;
+            const pctY = (pos.cy / SVG_SIZE) * 100;
+
+            // Sync the icon glow to the arrival of the data packet
+            const delay = (i * 0.4) + PULSE_DURATION * 0.9; 
+
+            return (
+              <div 
+                key={tech.name} 
+                className="absolute flex flex-col items-center justify-center transform -translate-x-1/2 -translate-y-1/2 z-10"
+                style={{ left: `${pctX}%`, top: `${pctY}%` }}
+              >
+                <motion.div
+                  initial={{ scale: 0, opacity: 0 }}
+                  whileInView={{ scale: 1, opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ type: "spring", stiffness: 200, delay: 0.2 + (i * 0.1) }}
+                  className="relative flex flex-col items-center justify-center group"
+                >
+                  {/* Reactive Glow Box */}
+                  <motion.div 
+                    className="w-11 h-11 md:w-12 md:h-12 flex items-center justify-center bg-[#0f141c]/90 backdrop-blur-md border border-[rgba(0,230,160,0.25)] rounded-xl relative z-10 group-hover:scale-110 transition-transform duration-300 cursor-default"
+                    animate={{
+                      boxShadow: [
+                        "0 0 15px rgba(0,230,160,0.1)", // Base
+                        "0 0 30px rgba(0,230,160,1)",   // Peak exactly when packet arrives
+                        "0 0 15px rgba(0,230,160,0.1)"  // Fade down
+                      ],
+                      borderColor: [
+                        "rgba(0,230,160,0.25)",
+                        "rgba(0,230,160,1)",
+                        "rgba(0,230,160,0.25)"
+                      ]
+                    }}
+                    transition={{
+                      duration: PULSE_DURATION,
+                      repeat: Infinity,
+                      delay: delay,
+                      times: [0, 0.1, 0.3],
+                      ease: "easeInOut"
+                    }}
+                  >
+                    <tech.icon style={{ color: tech.color, fontSize: '1.25rem' }} className="drop-shadow-[0_0_5px_currentColor]" />
+                  </motion.div>
+                  
+                  {/* Label */}
+                  <p className="text-[9px] md:text-[10px] text-slate-300 mt-2 font-mono uppercase tracking-wider bg-[#0f141c]/90 px-1.5 py-0.5 rounded border border-[rgba(0,230,160,0.25)] shadow-lg text-center leading-tight whitespace-nowrap absolute top-[110%]">
+                    {tech.name}
+                  </p>
+                </motion.div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
 
       {/* ── Pipeline Branch Connector ── */}
-      {/* Hidden on mobile, connects to CentralPipeline on desktop */}
       <div className="hidden md:block">
         <PipelineBranch direction={isLeftColumn ? 'left' : 'right'} width="5vw" />
       </div>
