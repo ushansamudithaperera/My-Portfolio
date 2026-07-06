@@ -152,15 +152,6 @@ function NeuralPanel({ title, techs, index }: { title: string, techs: any[], ind
     };
   });
 
-  // Inner connector path to route data from the outer pipeline edge to the central hub
-  const entryX = isLeftColumn ? SVG_SIZE : 0;
-  const entryY = center;
-
-  // Arch curve upward to cleanly dodge the outer node at 0 or 180 degrees
-  const innerCurveCtrlX = isLeftColumn ? SVG_SIZE - 20 : 20;
-  const innerCurveCtrlY = center - 100; // Arch upward by 100px
-  const innerPathD = `M ${entryX} ${entryY} Q ${innerCurveCtrlX} ${innerCurveCtrlY} ${center} ${center}`;
-
   return (
     <motion.div
       className="relative w-full h-[360px] md:h-[400px] bg-[#0f141c]/40 backdrop-blur-[12px] border border-[rgba(0,230,160,0.25)] rounded-[2rem] shadow-[0_8px_32px_rgba(0,0,0,0.3)] p-6 group"
@@ -202,31 +193,6 @@ function NeuralPanel({ title, techs, index }: { title: string, techs: any[], ind
             </defs>
 
             <g mask={`url(#mask-${index})`}>
-              {/* Inner Connector Trace */}
-              <path
-                d={innerPathD}
-                stroke="rgba(0,255,170,0.3)"
-                strokeWidth="2"
-                fill="none"
-              />
-              {/* Animated Data Packet flowing INWARD from panel edge to central hub */}
-              <motion.path
-                d={innerPathD}
-                stroke="#00e6a0"
-                strokeWidth="4"
-                strokeLinecap="round"
-                fill="none"
-                className="drop-shadow-[0_0_8px_rgba(0,255,170,1)]"
-                initial={{ pathLength: 0.05, pathOffset: 0, opacity: 0 }}
-                animate={{ pathOffset: 1, opacity: [0, 1, 1, 0] }}
-                transition={{
-                  duration: 1.5,
-                  repeat: Infinity,
-                  ease: "linear",
-                  delay: 0.5 // Matches outer pipeline timing roughly
-                }}
-              />
-
               {/* Hub Spoke Traces */}
               {nodes.map((n, i) => (
                 <g key={`spoke-${i}`}>
