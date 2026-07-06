@@ -93,7 +93,7 @@ export function PipelineBranch({
   return (
     <motion.div
       ref={ref}
-      className={`absolute top-1/2 h-[4px] bg-emerald-500/60 shadow-[0_0_15px_rgba(0,255,170,0.8)] -z-10`}
+      className={`absolute top-1/2 h-[3px] bg-emerald-500/60 shadow-[0_0_15px_rgba(0,255,170,0.4)] -z-10`}
       style={{ 
         width,
         opacity, 
@@ -102,26 +102,28 @@ export function PipelineBranch({
         [isLeft ? 'right' : 'left']: positionOffset // Position it sticking out of the panel
       }}
     >
-       {/* Horizontal Data Packets flowing from center to panel */}
+       {/* Horizontal Data Packets flowing from center to panel border */}
        <motion.div 
-         className="absolute top-1/2 -translate-y-1/2 w-[24px] h-[6px] rounded-full bg-[#00e6a0] shadow-[0_0_15px_rgba(0,230,160,1)]"
+         className="absolute top-1/2 -translate-y-1/2 w-[24px] h-[4px] rounded-full bg-[#00e6a0] shadow-[0_0_15px_rgba(0,230,160,1)]"
          animate={{
            // If it's a left panel, data moves Right -> Left (100% to 0%).
            // If it's a right panel, data moves Left -> Right (0% to 100%).
-           left: isLeft ? ['100%', '-20px'] : ['-20px', '100%']
+           left: isLeft ? ['100%', '0%'] : ['0%', '100%'],
+           opacity: isLeft ? [0, 1, 1, 0] : [0, 1, 1, 0] // Fade out right as it hits the border
          }}
          transition={{
            duration: 2,
            repeat: Infinity,
            ease: 'linear',
-           delay: 0.5 // Offset so it looks natural
+           delay: 0.5 
          }}
        />
        
        <motion.div 
-         className="absolute top-1/2 -translate-y-1/2 w-[24px] h-[6px] rounded-full bg-[#00e6a0] shadow-[0_0_15px_rgba(0,230,160,1)]"
+         className="absolute top-1/2 -translate-y-1/2 w-[24px] h-[4px] rounded-full bg-[#00e6a0] shadow-[0_0_15px_rgba(0,230,160,1)]"
          animate={{
-           left: isLeft ? ['100%', '-20px'] : ['-20px', '100%']
+           left: isLeft ? ['100%', '0%'] : ['0%', '100%'],
+           opacity: isLeft ? [0, 1, 1, 0] : [0, 1, 1, 0]
          }}
          transition={{
            duration: 2,
@@ -131,14 +133,9 @@ export function PipelineBranch({
          }}
        />
 
-       {/* Branch Node connecting to the central pipeline */}
+       {/* Small connector dot exactly at the panel border (plug point) */}
        <div 
-         className={`absolute top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-emerald-400 border-[2px] border-[#0a0f16] shadow-[0_0_10px_rgba(0,230,160,1)] ${isLeft ? 'right-[-8px]' : 'left-[-8px]'}`} 
-       />
-       
-       {/* Small connector node at the panel border */}
-       <div 
-         className={`absolute top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-emerald-300 ${isLeft ? 'left-[-4px]' : 'right-[-4px]'}`} 
+         className={`absolute top-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full bg-[#00e6a0] shadow-[0_0_10px_rgba(0,230,160,1)] border border-[#0f141c] z-10 ${isLeft ? 'left-[-1px]' : 'right-[-1px]'}`} 
        />
     </motion.div>
   );

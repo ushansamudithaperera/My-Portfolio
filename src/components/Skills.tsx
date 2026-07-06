@@ -2,17 +2,17 @@
 
 import { motion } from 'framer-motion';
 import { PipelineBranch } from './Pipeline';
-import { 
+import {
   SiJavascript, SiTypescript, SiPython, SiReact, SiNextdotjs, SiTailwindcss, SiHtml5,
   SiNodedotjs, SiExpress, SiFastapi, SiSpringboot, SiMongodb, SiMysql,
-  SiDocker, SiKubernetes, SiTensorflow, SiGit, SiGithub, SiPostman, SiArduino, SiCplusplus, 
-  SiC, SiPandas, SiNumpy, SiScikitlearn, SiAndroidstudio, SiXampp, SiBootstrap, SiDotnet, 
+  SiDocker, SiKubernetes, SiTensorflow, SiGit, SiGithub, SiPostman, SiArduino, SiCplusplus,
+  SiC, SiPandas, SiNumpy, SiScikitlearn, SiAndroidstudio, SiXampp, SiBootstrap, SiDotnet,
   SiPrometheus, SiGrafana
 } from 'react-icons/si';
 
-import { 
-  FaJava, FaAws, FaLayerGroup, FaNetworkWired, FaCubes, FaDatabase, FaLinux, 
-  FaSync, FaBrain, FaLanguage, FaSpaceShuttle, FaServer, FaMicrochip, FaPhp, 
+import {
+  FaJava, FaAws, FaLayerGroup, FaNetworkWired, FaCubes, FaDatabase, FaLinux,
+  FaSync, FaBrain, FaLanguage, FaSpaceShuttle, FaServer, FaMicrochip, FaPhp,
   FaCss3Alt, FaLink, FaBriefcase, FaLaptopCode, FaCogs
 } from 'react-icons/fa';
 
@@ -123,37 +123,46 @@ const categories = [
 
 function NeuralPanel({ title, techs, index }: { title: string, techs: any[], index: number }) {
   const isLeftColumn = index % 2 === 0;
-  
+
   // A fixed square coordinate space ensures a perfect circle regardless of panel width
-  const SVG_SIZE = 400; 
+  const SVG_SIZE = 400;
   const center = SVG_SIZE / 2;
   const RADIUS = 135;
-  
-  const PULSE_DURATION = 3.5; 
+
+  const PULSE_DURATION = 3.5;
 
   // Calculate perfect circular positions
   const nodes = techs.map((tech, i) => {
     const angle = (i / techs.length) * 2 * Math.PI - Math.PI / 2;
     const cx = center + RADIUS * Math.cos(angle);
     const cy = center + RADIUS * Math.sin(angle);
-    
+
     // Calculate Quadratic Bezier control point for a swirling curved spoke
     const midX = (center + cx) / 2;
     const midY = (center + cy) / 2;
     const dx = cx - center;
     const dy = cy - center;
-    const curveStrength = 0.25; 
+    const curveStrength = 0.25;
     const ctrlX = midX - dy * curveStrength;
     const ctrlY = midY + dx * curveStrength;
-    
+
     return {
       cx, cy, ctrlX, ctrlY,
       pathD: `M ${center} ${center} Q ${ctrlX} ${ctrlY} ${cx} ${cy}`
     };
   });
 
+  // Inner connector path to route data from the outer pipeline edge to the central hub
+  const entryX = isLeftColumn ? SVG_SIZE : 0;
+  const entryY = center;
+
+  // Arch curve upward to cleanly dodge the outer node at 0 or 180 degrees
+  const innerCurveCtrlX = isLeftColumn ? SVG_SIZE - 20 : 20;
+  const innerCurveCtrlY = center - 100; // Arch upward by 100px
+  const innerPathD = `M ${entryX} ${entryY} Q ${innerCurveCtrlX} ${innerCurveCtrlY} ${center} ${center}`;
+
   return (
-    <motion.div 
+    <motion.div
       className="relative w-full h-[360px] md:h-[400px] bg-[#0f141c]/40 backdrop-blur-[12px] border border-[rgba(0,230,160,0.25)] rounded-[2rem] shadow-[0_8px_32px_rgba(0,0,0,0.3)] p-6 group"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -174,10 +183,10 @@ function NeuralPanel({ title, techs, index }: { title: string, techs: any[], ind
       {/* ── Fixed Square Container for Perfect Circle Topology ── */}
       <div className="absolute inset-0 flex items-center justify-center mt-6">
         <div className="relative w-[340px] h-[340px] md:w-[400px] md:h-[400px]">
-          
+
           {/* SVG Canvas for Spoke Lines */}
-          <svg 
-            className="absolute inset-0 w-full h-full pointer-events-none z-0" 
+          <svg
+            className="absolute inset-0 w-full h-full pointer-events-none z-0"
             viewBox={`0 0 ${SVG_SIZE} ${SVG_SIZE}`}
           >
             <defs>
@@ -193,17 +202,43 @@ function NeuralPanel({ title, techs, index }: { title: string, techs: any[], ind
             </defs>
 
             <g mask={`url(#mask-${index})`}>
+              {/* Inner Connector Trace */}
+              <path
+                d={innerPathD}
+                stroke="rgba(0,255,170,0.3)"
+                strokeWidth="2"
+                fill="none"
+              />
+              {/* Animated Data Packet flowing INWARD from panel edge to central hub */}
+              <motion.path
+                d={innerPathD}
+                stroke="#00e6a0"
+                strokeWidth="4"
+                strokeLinecap="round"
+                fill="none"
+                className="drop-shadow-[0_0_8px_rgba(0,255,170,1)]"
+                initial={{ pathLength: 0.05, pathOffset: 0, opacity: 0 }}
+                animate={{ pathOffset: 1, opacity: [0, 1, 1, 0] }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  ease: "linear",
+                  delay: 0.5 // Matches outer pipeline timing roughly
+                }}
+              />
+
+              {/* Hub Spoke Traces */}
               {nodes.map((n, i) => (
                 <g key={`spoke-${i}`}>
                   {/* Base Spoke Line */}
-                  <path 
+                  <path
                     d={n.pathD}
                     stroke="rgba(0,255,170,0.2)"
                     strokeWidth="1.5"
                     fill="none"
                   />
                   {/* Animated Data Packet (Pill) flowing OUTWARD from hub to node */}
-                  <motion.path 
+                  <motion.path
                     d={n.pathD}
                     stroke="#00e6a0"
                     strokeWidth="4"
@@ -212,9 +247,9 @@ function NeuralPanel({ title, techs, index }: { title: string, techs: any[], ind
                     className="drop-shadow-[0_0_8px_rgba(0,255,170,1)]"
                     initial={{ pathLength: 0.05, pathOffset: 0, opacity: 0 }}
                     animate={{ pathOffset: 1, opacity: [0, 1, 1, 0] }}
-                    transition={{ 
-                      duration: PULSE_DURATION, 
-                      repeat: Infinity, 
+                    transition={{
+                      duration: PULSE_DURATION,
+                      repeat: Infinity,
                       ease: "linear",
                       delay: (i * 0.4) // Stagger the packets radiating outward
                     }}
@@ -240,11 +275,11 @@ function NeuralPanel({ title, techs, index }: { title: string, techs: any[], ind
             const pctY = (pos.cy / SVG_SIZE) * 100;
 
             // Sync the icon glow to the arrival of the data packet
-            const delay = (i * 0.4) + PULSE_DURATION * 0.9; 
+            const delay = (i * 0.4) + PULSE_DURATION * 0.9;
 
             return (
-              <div 
-                key={tech.name} 
+              <div
+                key={tech.name}
                 className="absolute flex flex-col items-center justify-center transform -translate-x-1/2 -translate-y-1/2 z-10"
                 style={{ left: `${pctX}%`, top: `${pctY}%` }}
               >
@@ -256,7 +291,7 @@ function NeuralPanel({ title, techs, index }: { title: string, techs: any[], ind
                   className="relative flex flex-col items-center justify-center group"
                 >
                   {/* Reactive Glow Box */}
-                  <motion.div 
+                  <motion.div
                     className="w-11 h-11 md:w-12 md:h-12 flex items-center justify-center bg-[#0f141c]/90 backdrop-blur-md border border-[rgba(0,230,160,0.25)] rounded-xl relative z-10 group-hover:scale-110 transition-transform duration-300 cursor-default"
                     animate={{
                       boxShadow: [
@@ -280,7 +315,7 @@ function NeuralPanel({ title, techs, index }: { title: string, techs: any[], ind
                   >
                     <tech.icon style={{ color: tech.color, fontSize: '1.25rem' }} className="drop-shadow-[0_0_5px_currentColor]" />
                   </motion.div>
-                  
+
                   {/* Label */}
                   <p className="text-[9px] md:text-[10px] text-slate-300 mt-2 font-mono uppercase tracking-wider bg-[#0f141c]/90 px-1.5 py-0.5 rounded border border-[rgba(0,230,160,0.25)] shadow-lg text-center leading-tight whitespace-nowrap absolute top-[110%]">
                     {tech.name}
@@ -294,10 +329,10 @@ function NeuralPanel({ title, techs, index }: { title: string, techs: any[], ind
 
       {/* ── Pipeline Branch Connector (Behind the panel contents) ── */}
       <div className="hidden md:block absolute top-1/2 left-0 right-0 h-0 z-[-1] pointer-events-none mt-6">
-        <PipelineBranch 
-          direction={isLeftColumn ? 'left' : 'right'} 
-          width="calc(50% + 5vw)" 
-          offset="-5vw" 
+        <PipelineBranch
+          direction={isLeftColumn ? 'left' : 'right'}
+          width="5vw"
+          offset="-5vw"
         />
       </div>
     </motion.div>
@@ -309,7 +344,7 @@ function NeuralPanel({ title, techs, index }: { title: string, techs: any[], ind
 export default function Skills() {
   return (
     <section className="relative w-full mx-auto py-24 px-4 sm:px-6 lg:px-8 overflow-hidden" id="skills">
-      
+
       {/* Section Header */}
       <div className="text-center mb-16 md:mb-24">
         <motion.h2
@@ -334,11 +369,11 @@ export default function Skills() {
       {/* Grid of Neural Panels */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-x-[10vw] md:gap-y-16 w-full max-w-7xl mx-auto z-10 relative">
         {categories.map((cat, index) => (
-          <NeuralPanel 
-            key={cat.title} 
-            title={cat.title} 
-            techs={cat.techs} 
-            index={index} 
+          <NeuralPanel
+            key={cat.title}
+            title={cat.title}
+            techs={cat.techs}
+            index={index}
           />
         ))}
       </div>
