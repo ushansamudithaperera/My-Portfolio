@@ -7,7 +7,8 @@ import Footer from "@/components/Footer";
 import Projects from "@/components/Projects";
 import Certifications from "@/components/Certifications";
 import Extracurricular from "@/components/Extracurricular";
-import { CentralPipeline } from "@/components/Pipeline";
+import { CentralPipelineBackground, CentralPipelineTrace } from "@/components/Pipeline";
+
 export default function Home() {
   return (
     <main className="relative flex min-h-screen flex-col overflow-hidden">
@@ -33,7 +34,11 @@ export default function Home() {
         It starts at Hero and exactly terminates at the bottom of Contact. 
       */}
       <div className="relative w-full z-10">
-        <CentralPipeline />
+        {/* Global Pipeline Background (z-0) */}
+        <div className="hidden md:block absolute top-0 bottom-0 left-1/2 -translate-x-1/2 z-0">
+          <CentralPipelineBackground />
+        </div>
+
         <Hero />
         <Education />
         <Skills />
@@ -41,6 +46,11 @@ export default function Home() {
         <Certifications />
         <Extracurricular />
         <Contact />
+
+        {/* Global Pipeline Trace (z-20) */}
+        <div className="hidden md:block absolute top-0 bottom-0 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
+          <CentralPipelineTrace />
+        </div>
       </div>
 
       {/* Footer is completely outside the pipeline bounding container */}

@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { PipelineBranch } from './Pipeline';
+import { PipelineBranch, CentralPipelineBackground, CentralPipelineTrace } from './Pipeline';
 import {
   SiJavascript, SiTypescript, SiPython, SiReact, SiNextdotjs, SiTailwindcss, SiHtml5,
   SiNodedotjs, SiExpress, SiFastapi, SiSpringboot, SiMongodb, SiMysql,
@@ -314,25 +314,22 @@ export default function Skills() {
       {/* Section Header */}
       <div className="text-center mb-16 md:mb-24">
         <motion.h2
+          className="text-4xl md:text-5xl font-extrabold tracking-tight"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-2xl md:text-3xl font-bold text-white tracking-[0.2em] uppercase drop-shadow-[0_0_15px_rgba(0,255,170,0.4)]"
+          transition={{ duration: 0.6 }}
         >
-          Skills Arsenal
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-600 drop-shadow-[0_0_15px_rgba(0,255,170,0.3)]">
+            SKILLS ARSENAL
+          </span>
         </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: -10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
-          className="text-xs md:text-sm text-emerald-400 mt-2 tracking-[0.15em] font-mono uppercase"
-        >
-          Step 3: Network Diagnostics
-        </motion.p>
+        <p className="mt-4 text-slate-400 text-sm md:text-base font-mono max-w-2xl mx-auto uppercase tracking-widest">
+          Comprehensive overview of technical capabilities
+        </p>
       </div>
 
-      {/* Grid of Neural Panels */}
+      {/* Grid of Neural Panels (z-10 relative) */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-x-[10vw] md:gap-y-16 w-full max-w-7xl mx-auto z-10 relative">
         {categories.map((cat, index) => (
           <NeuralPanel
