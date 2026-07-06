@@ -154,18 +154,20 @@ function NeuralPanel({ title, techs, index }: { title: string, techs: any[], ind
 
   return (
     <motion.div 
-      className="relative w-full h-[360px] md:h-[400px] bg-[#0f141c]/40 backdrop-blur-[12px] border border-[rgba(0,230,160,0.25)] rounded-[2rem] shadow-[0_8px_32px_rgba(0,0,0,0.3)] p-6 group overflow-hidden"
+      className="relative w-full h-[360px] md:h-[400px] bg-[#0f141c]/40 backdrop-blur-[12px] border border-[rgba(0,230,160,0.25)] rounded-[2rem] shadow-[0_8px_32px_rgba(0,0,0,0.3)] p-6 group"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-50px' }}
       transition={{ duration: 0.5, delay: (index % 2) * 0.2 }}
     >
-      {/* ── Glassmorphism Reflection ── */}
-      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-white/20 to-transparent z-20 pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-b from-white/[0.03] to-transparent pointer-events-none rounded-[2rem] z-0" />
+      {/* ── Glassmorphism Reflection (Contains rounded clip internally) ── */}
+      <div className="absolute inset-0 overflow-hidden rounded-[2rem] pointer-events-none z-0">
+        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-white/20 to-transparent z-20" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/[0.03] to-transparent" />
+      </div>
 
       {/* ── Title ── */}
-      <h3 className="absolute top-6 left-0 right-0 text-lg md:text-xl font-bold text-white tracking-widest uppercase text-center z-20 drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+      <h3 className="absolute top-6 left-0 right-0 text-lg md:text-xl font-bold text-white tracking-widest uppercase text-center z-20 drop-shadow-[0_0_10px_rgba(255,255,255,0.2)] pointer-events-none">
         {title}
       </h3>
 
@@ -290,9 +292,13 @@ function NeuralPanel({ title, techs, index }: { title: string, techs: any[], ind
         </div>
       </div>
 
-      {/* ── Pipeline Branch Connector ── */}
-      <div className="hidden md:block">
-        <PipelineBranch direction={isLeftColumn ? 'left' : 'right'} width="5vw" />
+      {/* ── Pipeline Branch Connector (Behind the panel contents) ── */}
+      <div className="hidden md:block absolute top-1/2 left-0 right-0 h-0 z-[-1] pointer-events-none mt-6">
+        <PipelineBranch 
+          direction={isLeftColumn ? 'left' : 'right'} 
+          width="calc(50% + 5vw)" 
+          offset="-5vw" 
+        />
       </div>
     </motion.div>
   );

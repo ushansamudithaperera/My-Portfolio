@@ -64,15 +64,17 @@ function DataPacket({ delay, duration }: { delay: number; duration: number }) {
 /**
  * ─── Pipeline Branch ─────────────────────────────────────────────────
  * Explicit horizontal branching line that stems from the central pipeline 
- * and visually connects directly into the side borders of adjacent panels.
+ * and visually connects directly into the side borders or center of adjacent panels.
  * Animates opacity and scale based on scroll position.
  */
 export function PipelineBranch({ 
   direction = 'left',
-  width = '4vw' // Distance from panel to center pipeline
+  width = '4vw', // Total length of the branch
+  offset // How far it sticks out of the container (defaults to -width)
 }: { 
   direction?: 'left' | 'right';
   width?: string;
+  offset?: string;
 }) {
   const ref = useRef(null);
   
@@ -86,17 +88,18 @@ export function PipelineBranch({
   const scaleX = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   const isLeft = direction === 'left';
+  const positionOffset = offset || `-${width}`;
 
   return (
     <motion.div
       ref={ref}
-      className={`absolute top-1/2 h-[4px] bg-emerald-500/60 shadow-[0_0_15px_rgba(0,255,170,0.8)] -z-10 overflow-hidden`}
+      className={`absolute top-1/2 h-[4px] bg-emerald-500/60 shadow-[0_0_15px_rgba(0,255,170,0.8)] -z-10`}
       style={{ 
         width,
         opacity, 
         scaleX,
         transformOrigin: isLeft ? 'right' : 'left', // Grow from the center outwards
-        [isLeft ? 'right' : 'left']: `-${width}` // Position it sticking out of the panel
+        [isLeft ? 'right' : 'left']: positionOffset // Position it sticking out of the panel
       }}
     >
        {/* Horizontal Data Packets flowing from center to panel */}
