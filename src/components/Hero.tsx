@@ -22,81 +22,103 @@ const itemVariants = {
   },
 };
 
-/* ─── Main Hero / BUILD Panel ────────────────────────────────────── */
+/* ─── Main Hero Panel ────────────────────────────────────────────── */
 export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex flex-col items-center pt-32 pb-0 px-4 overflow-hidden"
+      className="relative min-h-screen flex flex-col items-center justify-center pt-32 pb-0 px-4 overflow-hidden"
     >
-      {/* ── BUILD Panel Card (Larger Size) ── */}
+      {/* ── Main Wide Panel ── */}
       <motion.div
-        className="relative z-10 w-full max-w-4xl bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 md:p-14 shadow-2xl flex flex-col items-center text-center"
+        className="relative z-10 w-full max-w-5xl lg:max-w-6xl bg-[#0a0f16]/80 backdrop-blur-xl border border-white/10 rounded-2xl p-10 md:p-14 shadow-[0_0_30px_rgba(52,211,153,0.15)] flex flex-col-reverse md:flex-row items-center gap-10 md:gap-16"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        {/* ── Panel Header ── */}
-        <motion.div className="mb-8 w-full" variants={itemVariants}>
-          <h2 className="text-2xl md:text-3xl font-bold text-white tracking-[0.2em] uppercase">
-            BUILD
-          </h2>
-          <p className="text-xs md:text-sm text-slate-400 tracking-[0.15em] mt-1 uppercase">
-            Step 1: Source & Build
-          </p>
-        </motion.div>
-
-        {/* ── Inner Card ("Card inside a card") ── */}
+        {/* ── Left Side (Content) ── */}
         <motion.div 
-          className="relative w-full max-w-md bg-[#0a0f16]/60 border border-emerald-400/50 shadow-[0_0_15px_rgba(52,211,153,0.3)] rounded-2xl p-6 md:p-8 flex flex-col items-center"
+          className="flex-1 flex flex-col items-center md:items-start text-center md:text-left"
           variants={itemVariants}
         >
-          {/* Portrait */}
-          <div className="relative w-40 h-40 sm:w-48 sm:h-48 rounded-2xl overflow-hidden border border-emerald-400/30 mb-6 shadow-inner bg-slate-900">
-            <img
-              src="/me.png"
-              alt="Ushan Perera"
-              className="w-full h-full object-cover object-top"
-              loading="eager"
-            />
-            {/* Inner glow on portrait */}
-            <div className="absolute inset-0 bg-gradient-to-t from-emerald-500/20 to-transparent pointer-events-none" />
-          </div>
-
-          {/* Name & Title */}
-          <h1 className="text-3xl md:text-4xl font-bold text-white tracking-[0.1em] uppercase mb-1">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-[0.1em] uppercase mb-4 drop-shadow-md">
             USHAN
           </h1>
-          <p className="text-emerald-400 text-sm md:text-base font-medium tracking-wide mb-4 uppercase">
-            Software Engineer
+          
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-medium text-emerald-400 h-[40px] md:h-[48px] mb-6">
+            <Typewriter
+              words={[
+                'Full-Stack Developer',
+                'DevOps & SRE Enthusiast',
+                'AI/ML Enthusiast',
+                'IoT Enthusiast'
+              ]}
+              loop={true}
+              cursor
+              cursorStyle="_"
+              typeSpeed={70}
+              deleteSpeed={50}
+              delaySpeed={1000}
+            />
+          </h2>
+          
+          <p className="text-slate-300 text-base md:text-lg leading-relaxed max-w-xl mb-10">
+            Passionate about building scalable automated software systems, modern web applications, and exploring the depths of cloud infrastructure, artificial intelligence, and internet of things.
           </p>
-
-          {/* Bio Text */}
-          <p className="text-slate-300 text-sm leading-relaxed max-w-[350px]">
-            Passionate about building scalable automated software systems,
-            modern web applications, and exploring the depths of cloud
-            infrastructure, artificial intelligence, and internet of things.
-          </p>
-
+          
           {/* ── Action Buttons ── */}
-          <div className="w-full flex flex-col gap-3 mt-8">
-            <a href="#contact" className="w-full bg-white hover:bg-slate-200 text-[#0a0f16] font-bold py-3 rounded-lg transition-colors flex items-center justify-center">
-              Contact
+          <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
+            <a 
+              href="https://linkedin.com/in/ushan-perera-73a11b199" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-12 h-12 flex items-center justify-center rounded-full border border-slate-600 hover:border-emerald-400 hover:text-emerald-400 text-slate-300 transition-colors bg-[#0a0f16]/50 shadow-lg"
+              aria-label="LinkedIn"
+            >
+              <FaLinkedin size={20} />
             </a>
-            <a href="/Ushan_Perera_Resume.pdf" download className="w-full bg-transparent border border-slate-600 hover:border-emerald-400 hover:text-emerald-400 text-slate-300 font-semibold py-3 rounded-lg transition-colors flex items-center justify-center gap-2">
+            
+            <a 
+              href="https://github.com/ushan111" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-12 h-12 flex items-center justify-center rounded-full border border-slate-600 hover:border-emerald-400 hover:text-emerald-400 text-slate-300 transition-colors bg-[#0a0f16]/50 shadow-lg"
+              aria-label="GitHub"
+            >
+              <FaGithub size={20} />
+            </a>
+            
+            <a 
+              href="/Ushan_Perera_Resume.pdf" 
+              download 
+              className="bg-transparent border border-slate-600 hover:border-emerald-400 hover:text-emerald-400 text-slate-300 font-semibold py-3 px-6 rounded-lg transition-colors flex items-center justify-center gap-2 h-12 bg-[#0a0f16]/50 shadow-lg"
+            >
               <FaDownload size={14} />
               Download CV
             </a>
           </div>
         </motion.div>
+
+        {/* ── Right Side (Image) ── */}
+        <motion.div 
+          className="relative w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80 shrink-0 bg-[#0a0f16]/80 backdrop-blur-xl border border-white/10 shadow-[0_0_30px_rgba(52,211,153,0.15)] rounded-2xl overflow-hidden"
+          variants={itemVariants}
+        >
+          <img
+            src="/me.png"
+            alt="Ushan Perera"
+            className="w-full h-full object-cover object-top"
+            loading="eager"
+          />
+          {/* Inner glow on portrait */}
+          <div className="absolute inset-0 bg-gradient-to-t from-emerald-500/20 to-transparent pointer-events-none" />
+        </motion.div>
       </motion.div>
 
       {/* ── Connecting Animated Pipeline Below Panel ── */}
-      <div className="relative z-10 flex justify-center mt-4 w-full h-32 md:h-48">
-        
+      <div className="relative z-10 flex justify-center mt-4 w-full h-24 md:h-32">
         {/* Animated vertical green line */}
         <div className="relative w-1.5 h-full bg-emerald-900/40 rounded-full overflow-hidden flex justify-center shadow-[0_0_10px_rgba(16,185,129,0.2)]">
-          
           {/* Growing line effect */}
           <motion.div 
             className="absolute top-0 w-full bg-emerald-500/80 shadow-[0_0_15px_rgba(16,185,129,0.8)]"
@@ -104,23 +126,21 @@ export default function Hero() {
             animate={{ height: '100%' }}
             transition={{ duration: 1.5, ease: "easeOut", delay: 0.5 }}
           />
-
           {/* Traveling Data Packet (Glowing Dot) */}
           <motion.div
             className="absolute w-3 h-3 bg-white rounded-full shadow-[0_0_20px_rgba(255,255,255,1),0_0_15px_rgba(16,185,129,1)]"
             animate={{
-              y: [0, 192], // travel down (using approx h-48 height 192px)
+              y: [0, 128], // travel down
               opacity: [0, 1, 1, 0]
             }}
             transition={{
               duration: 2,
               repeat: Infinity,
               ease: "linear",
-              delay: 2 // Start after line grows
+              delay: 2
             }}
           />
         </div>
-
         {/* Top connector node */}
         <div className="absolute top-0 w-4 h-4 rounded-full border-[2px] border-emerald-400 bg-emerald-400 shadow-[0_0_16px_rgba(52,211,153,1)] z-10 -mt-2 left-1/2 -translate-x-1/2" />
       </div>
