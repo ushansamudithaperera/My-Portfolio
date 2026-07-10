@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaNetworkWired, FaCube, FaBrain, FaGlobe, FaCheckSquare, FaGithub, FaTimes, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaTimes, FaExternalLinkAlt } from 'react-icons/fa';
 
 type Project = {
   id: number;
@@ -10,8 +10,7 @@ type Project = {
   year: string;
   tags: string[];
   details: string[];
-  icon: any;
-  isGitHub?: boolean;
+  image: string;
 };
 
 const projectsData: Project[] = [
@@ -26,7 +25,7 @@ const projectsData: Project[] = [
       'Built an adaptive feedback system enabling analysts to adjust detection sensitivity through alert classification without requiring model retraining.',
       'Secured the application with JWT authentication, HTTP-only cookies, and Role-Based Access Control (RBAC); deployed the full infrastructure using Docker containerization.'
     ],
-    icon: FaNetworkWired
+    image: '/Sentinel Stream.png'
   },
   {
     id: 2,
@@ -39,7 +38,7 @@ const projectsData: Project[] = [
       'Implemented monitoring and observability using Prometheus and Grafana to track system performance and business metrics.',
       'Improved backend data retrieval speeds by ~30% through Redis caching and MongoDB aggregation pipelines; automated test workflows via GitHub Actions CI/CD.'
     ],
-    icon: FaCube
+    image: '/Smart Inventory AI.png'
   },
   {
     id: 3,
@@ -52,7 +51,7 @@ const projectsData: Project[] = [
       'Architected a Retrieval-Augmented Generation (RAG) workflow via LangChain and ChromaDB, utilizing Google Gemini AI to synthesize context-grounded resolution guides from embedded troubleshooting runbooks.',
       'Implemented a dynamic confidence guardrail (60% threshold) to intelligently route ambiguous requests to Level 2 support, and deployed the full interactive Streamlit interface using Docker containerization.'
     ],
-    icon: FaBrain
+    image: '/IT Support Agent.png'
   },
   {
     id: 4,
@@ -64,7 +63,7 @@ const projectsData: Project[] = [
       'Developed a full-stack digital marketplace connecting travelers with local service providers via a responsive React.js frontend.',
       'Built secure RESTful APIs with Spring Boot and optimized MongoDB queries, improving dynamic data retrieval efficiency.'
     ],
-    icon: FaGlobe
+    image: '/Travel Commerce.png'
   },
   {
     id: 5,
@@ -76,19 +75,37 @@ const projectsData: Project[] = [
       'Developed a desktop application supporting automated quiz evaluation and real-time result generation.',
       'Architected a centralized SQL Server database with role-based access control to manage multi-tier permissions for 2 user roles (teachers and students).'
     ],
-    icon: FaCheckSquare
+    image: '/EDU QUIZ.png'
   },
   {
     id: 6,
-    title: 'GitHub Archive',
-    year: '',
-    tags: ['View Source Code'],
+    title: 'Happy Paws Clinic System',
+    year: '2025',
+    tags: ['PHP', 'MySQL', 'JavaScript', 'HTML5', 'CSS3', 'XAMPP'],
     details: [
-      'GitHub Archive',
-      'Explore all my other projects, scripts, and open-source contributions directly on my GitHub profile.'
+      'Happy Paws Veterinary Clinic System | Group Project (2025)',
+      'Built a full-stack clinic management platform supporting appointment scheduling, patient workflows, and pet adoption services.',
+      'Implemented SQL prepared statements across all user input fields, eliminating SQL injection vulnerabilities.'
     ],
-    icon: FaGithub,
-    isGitHub: true
+    image: '/Happy Paws.png'
+  },
+  {
+    id: 7,
+    title: 'Voltiva 2.0',
+    year: 'May 2025 – Aug 2025',
+    tags: ['ESP32', 'Arduino IDE', 'Blynk IoT', 'Telegram Bot API', 'C++'],
+    details: [
+      'Voltiva 2.0 - IoT Smart Energy Meter',
+      'Thrilled to share that our team has successfully completed our project for the Creative Design Project II module - Voltiva 2.0, an IoT-based smart energy monitoring system built to help people actually see and understand their electricity usage in real time.',
+      '⚡ About the Project : Voltiva 2.0 is a smart energy meter built on ESP32 that monitors voltage and current live, calculates electricity cost based on Sri Lanka\'s CEB tariff structure, and keeps you updated through instant alerts - so you always know exactly what your appliances are costing you.',
+      '⚙️ Key Features : Real-time voltage & current monitoring (ZMPT101B + ACS712 sensors)',
+      'Automatic cost calculation using CEB\'s tiered tariff rates',
+      'Live remote dashboard via Blynk IoT',
+      'Telegram alerts every minute + full session summary on unplug',
+      'On-device 16x2 LCD display',
+      'EEPROM storage so data survives power cuts'
+    ],
+    image: '/Creative Design.png'
   }
 ];
 
@@ -98,26 +115,23 @@ export default function Projects() {
   return (
     <section className="relative w-full max-w-6xl mx-auto py-24 px-4 sm:px-6" id="projects">
       
-      {/* ── Main Container (Like Image Reference) ── */}
-      <div className="relative bg-[#141923]/60 border border-[#00ffaa]/20 rounded-[2.5rem] p-6 md:p-10 shadow-[0_0_20px_rgba(0,255,170,0.15)] backdrop-blur-xl">
+      {/* ── Main Glassmorphism Panel ── */}
+      <div className="relative z-10 bg-[#141923]/60 backdrop-blur-xl border border-[#00ffaa]/20 rounded-3xl p-8 md:p-12 shadow-[0_0_40px_rgba(0,255,170,0.1)]">
         
-        {/* Subtle inner background glow */}
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 via-transparent to-blue-500/5 rounded-[2.5rem] pointer-events-none" />
-
-        {/* ── Section Header ── */}
-        <div className="relative z-20 flex flex-col items-center justify-center">
-          <h2 className="text-2xl md:text-3xl font-bold tracking-[0.2em] text-white uppercase text-center mb-2">
-            PROJECTS PANEL
+        {/* Section Header */}
+        <div className="flex flex-col items-center justify-center mb-16 relative">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-emerald-500/20 blur-[80px] rounded-full pointer-events-none" />
+          <h2 className="text-3xl md:text-5xl font-extrabold text-white tracking-[0.2em] uppercase text-center relative z-10">
+            Projects Panel
           </h2>
-          <p className="text-xs md:text-sm text-slate-400 font-mono tracking-[0.1em] uppercase text-center mb-10">
-            STEP 4: DEPLOY & PRODUCTION
+          <p className="text-slate-400 font-mono text-sm tracking-widest mt-4 uppercase">
+            Step 4: Deploy & Production
           </p>
         </div>
 
-        {/* ── 3x2 Grid ── */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
+        {/* ── Projects Grid ── */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projectsData.map((project, idx) => {
-            const Icon = project.icon;
             return (
               <motion.div
                 key={project.id}
@@ -136,15 +150,21 @@ export default function Projects() {
                     backgroundSize: '20px 20px'
                   }} />
                   
-                  {/* Sci-Fi Glow behind Icon */}
-                  <div className="absolute w-24 h-24 bg-emerald-500/20 blur-2xl rounded-full group-hover:bg-emerald-400/30 transition-all duration-500" />
+                  {/* Sci-Fi Glow behind Image */}
+                  <div className="absolute w-32 h-32 bg-emerald-500/20 blur-2xl rounded-full group-hover:bg-emerald-400/30 transition-all duration-500" />
                   
-                  {/* Glowing Icon representing thumbnail */}
-                  <Icon className="relative z-10 text-emerald-400 opacity-90 text-6xl group-hover:scale-110 group-hover:text-emerald-300 transition-all duration-500 drop-shadow-[0_0_15px_rgba(0,255,170,0.5)]" />
+                  {/* Image representing thumbnail */}
+                  {project.image && (
+                    <img 
+                      src={project.image} 
+                      alt={project.title} 
+                      className="relative z-10 w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 mix-blend-luminosity group-hover:mix-blend-normal"
+                    />
+                  )}
                   
                   {/* Decorative corner brackets */}
-                  <div className="absolute top-3 left-3 w-4 h-4 border-t-2 border-l-2 border-emerald-500/30 rounded-tl" />
-                  <div className="absolute bottom-3 right-3 w-4 h-4 border-b-2 border-r-2 border-emerald-500/30 rounded-br" />
+                  <div className="absolute top-3 left-3 w-4 h-4 border-t-2 border-l-2 border-emerald-500/30 rounded-tl z-20" />
+                  <div className="absolute bottom-3 right-3 w-4 h-4 border-b-2 border-r-2 border-emerald-500/30 rounded-br z-20" />
                 </div>
 
                 {/* ── Card Details Area ── */}
@@ -167,17 +187,8 @@ export default function Projects() {
                     onClick={() => setSelectedProject(project)}
                     className="mt-auto w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-semibold tracking-wider text-slate-300 transition-all duration-300 bg-slate-800/50 border border-slate-600/50 hover:bg-emerald-500/10 hover:border-emerald-500/40 hover:text-emerald-300 hover:shadow-[0_0_15px_rgba(0,255,170,0.15)]"
                   >
-                    {project.isGitHub ? (
-                      <>
-                        <FaGithub size={16} />
-                        View on GitHub
-                      </>
-                    ) : (
-                      <>
-                        <FaExternalLinkAlt size={14} />
-                        View Details
-                      </>
-                    )}
+                    <FaExternalLinkAlt size={14} />
+                    View Details
                   </button>
                 </div>
               </motion.div>
@@ -185,8 +196,6 @@ export default function Projects() {
           })}
         </div>
       </div>
-
-
 
       {/* ── Glassmorphism Modal ── */}
       <AnimatePresence>
@@ -243,26 +252,10 @@ export default function Projects() {
                   ))}
                 </ul>
               </div>
-              
-              {/* Modal Footer */}
-              {selectedProject.isGitHub && (
-                <div className="px-6 py-4 border-t border-slate-800 bg-[#0a0e14]/90 flex justify-end">
-                  <a 
-                    href="https://github.com/ushansamudithaperera" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold text-slate-900 bg-emerald-400 hover:bg-emerald-300 transition-colors shadow-[0_0_15px_rgba(0,255,170,0.4)]"
-                  >
-                    <FaGithub size={18} />
-                    Open GitHub Profile
-                  </a>
-                </div>
-              )}
             </motion.div>
           </div>
         )}
       </AnimatePresence>
-
     </section>
   );
 }

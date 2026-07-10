@@ -10,9 +10,9 @@ const educationData = [
     icon: FaUserGraduate,
     iconContainerClass: 'p-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 shadow-[0_0_15px_rgba(52,211,153,0.15)] flex items-center justify-center shrink-0',
     iconClass: 'text-emerald-400 text-xl',
-    stream: null,
+    stream: 'Faculty of Science',
     institution: 'University of Kelaniya',
-    subText: 'Faculty of Science',
+    subText: null,
     badge: '2023 - PRESENT (EXPECTED 2027)',
     details: null,
     bullets: [],
@@ -153,19 +153,19 @@ export default function Education() {
                           </h3>
                         </div>
 
-                        {/* Stream (if any) */}
+                        {/* Stream (Top line, Dim) */}
                         {edu.stream && (
-                          <h4 className="text-slate-400 text-sm md:text-base font-medium tracking-wide ml-14">
+                          <h4 className="text-sm text-slate-500 ml-14 mt-1">
                             {edu.stream}
                           </h4>
                         )}
 
-                        {/* Institution */}
+                        {/* Institution (Bottom line, Bright) */}
                         <h4 className="text-slate-300 text-sm md:text-base font-medium ml-14 mt-1">
                           {edu.institution}
                         </h4>
 
-                        {/* Subtext (Faculty of Science) */}
+                        {/* Subtext (Additional Bottom line, Dim) */}
                         {edu.subText && (
                           <p className="text-sm text-slate-500 ml-14 mt-1">
                             {edu.subText}
