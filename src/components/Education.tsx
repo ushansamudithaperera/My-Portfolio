@@ -9,7 +9,8 @@ const educationData = [
     title: 'BSc (Hons) in Electronics and Computer Science',
     icon: FaUserGraduate,
     stream: null,
-    institution: 'UNIVERSITY OF KELANIYA (FACULTY OF SCIENCE)',
+    institution: 'University of Kelaniya',
+    subText: 'Faculty of Science',
     badge: '2023 - PRESENT (EXPECTED 2027)',
     details: null,
     bullets: [],
@@ -19,7 +20,8 @@ const educationData = [
     title: 'G.C.E. Advanced Level',
     icon: FaUniversity,
     stream: 'Physical Science (Maths Stream)',
-    institution: 'R/NEWTOWN PRINCE COLLEGE',
+    institution: 'R/Newtown Prince College',
+    subText: null,
     badge: '2021 (2022)',
     details: null,
     bullets: [
@@ -33,14 +35,15 @@ const educationData = [
     title: 'G.C.E. Ordinary Level',
     icon: FaUniversity,
     stream: null,
-    institution: 'R/ANANDA VIDYALAYA',
+    institution: 'R/Ananda Vidyalaya',
+    subText: null,
     badge: '2017',
-    details: (
-      <>
-        Passed all subjects with excellent standing (<span className="text-emerald-400 font-medium">3 A&apos;s, 4 B&apos;s, 3 C&apos;s</span>)
-      </>
-    ),
-    bullets: [],
+    details: 'Passed all subjects with excellent standing',
+    bullets: [
+      "3 A's",
+      "4 B's",
+      "3 C's"
+    ],
   },
 ];
 
@@ -103,17 +106,16 @@ export default function Education() {
                 <motion.div key={edu.id} className="relative group" variants={itemVariants}>
                   
                   {/* ── Secondary Animated Vertical Pipeline Segment ── */}
-                  {/* Mathematically spans EXACTLY from the center of this node to the center of the next node */}
                   {!isLast && (
                     <div className="absolute -left-[45px] md:-left-[61px] top-[32px] w-[16px] h-[calc(100%+48px)] border-x border-emerald-500/30 z-0 overflow-hidden flex justify-center">
                       <motion.div
                         className="absolute w-[6px] h-[16px] bg-emerald-400 rounded-full shadow-[0_0_15px_rgba(52,211,153,1)] z-10"
                         animate={{ top: ['-20px', '100%'] }}
                         transition={{
-                          duration: 4.5, // Match slow pacing of main pipeline
+                          duration: 4.5,
                           repeat: Infinity,
                           ease: 'linear',
-                          delay: idx * 2.2 // Staggered flow
+                          delay: idx * 2.2
                         }}
                       />
                     </div>
@@ -135,27 +137,34 @@ export default function Education() {
                     <div className="flex flex-col md:flex-row md:justify-between items-start gap-4 mb-4">
                       
                       {/* Left Side: Title, Stream, Institution */}
-                      <div className="flex-1 flex flex-col gap-2">
-                        <div className="flex items-center gap-3">
-                          <div className="p-2 rounded-lg bg-emerald-500/10 border border-emerald-500/20 shrink-0">
-                            <Icon className="text-emerald-400 text-xl" />
+                      <div className="flex-1 flex flex-col gap-1">
+                        <div className="flex items-center gap-3 mb-1">
+                          <div className="p-2 rounded-lg bg-white/5 border border-white/10 shrink-0">
+                            <Icon className="text-slate-400 text-xl" />
                           </div>
-                          <h3 className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400 font-bold text-xl md:text-2xl tracking-wide group-hover:from-emerald-300 group-hover:to-cyan-300 transition-all duration-300">
+                          <h3 className="text-slate-50 font-bold text-xl md:text-2xl tracking-wide">
                             {edu.title}
                           </h3>
                         </div>
                         
                         {/* Stream (if any) */}
                         {edu.stream && (
-                          <h4 className="text-emerald-400/80 text-sm md:text-base font-medium tracking-wide drop-shadow-[0_0_8px_rgba(52,211,153,0.2)] ml-14">
+                          <h4 className="text-slate-400 text-sm md:text-base font-medium tracking-wide ml-14">
                             {edu.stream}
                           </h4>
                         )}
                         
-                        {/* Glowing Emerald Institution */}
-                        <h4 className="text-emerald-500/90 text-sm md:text-base tracking-wider uppercase font-semibold ml-14 mt-1">
+                        {/* Institution */}
+                        <h4 className="text-slate-300 text-sm md:text-base font-medium ml-14 mt-1">
                           {edu.institution}
                         </h4>
+
+                        {/* Subtext (Faculty of Science) */}
+                        {edu.subText && (
+                          <p className="text-sm text-slate-500 ml-14 mt-1">
+                            {edu.subText}
+                          </p>
+                        )}
                       </div>
 
                       {/* Right Side: Premium Date Badge */}
@@ -170,21 +179,22 @@ export default function Education() {
                     <div className="w-full h-px bg-slate-700/60 my-5 ml-0 md:ml-14 max-w-full md:max-w-[calc(100%-3.5rem)]" />
                     
                     <div className="ml-0 md:ml-14">
-                      {/* Simple Text Details with Highlights */}
+                      {/* Description */}
                       {edu.details && (
-                        <p className="text-sm md:text-base text-slate-300 leading-relaxed">
+                        <p className="text-sm md:text-base text-slate-400 mb-3">
                           {edu.details}
                         </p>
                       )}
 
-                      {/* Glowing Sleek Glassmorphism Pills */}
+                      {/* Result Pills */}
                       {edu.bullets && edu.bullets.length > 0 && (
-                        <div className="flex flex-wrap gap-3 mt-4">
+                        <div className="flex flex-wrap gap-3">
                           {edu.bullets.map((bullet, i) => (
                             <span 
                               key={i} 
-                              className="px-4 py-1.5 text-sm bg-[#0a0e14]/50 border border-white/5 rounded-full flex items-center gap-2 text-slate-300 hover:border-emerald-500/40 transition-colors shadow-[0_0_10px_rgba(0,0,0,0.2)] hover:shadow-[0_0_15px_rgba(52,211,153,0.15)]"
+                              className="px-3 py-1 md:px-4 md:py-1.5 text-sm bg-[#0a0e14]/50 border border-white/5 rounded-full flex items-center gap-2 text-slate-300 hover:border-emerald-500/40 transition-colors shadow-[0_0_10px_rgba(0,0,0,0.2)] font-medium"
                             >
+                              {/* Tiny Emerald Accent */}
                               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500/80 shadow-[0_0_8px_rgba(0,255,170,0.8)] shrink-0" />
                               {bullet}
                             </span>
