@@ -44,63 +44,97 @@ export default function Extracurricular() {
           </p>
         </div>
 
-        {/* ── Cards Container ── */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
-        {activitiesData.map((activity, idx) => {
-          const Icon = activity.icon;
-          return (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: idx * 0.2 }}
-              className="relative group bg-[#141923]/60 border border-[#00ffaa]/20 rounded-3xl p-6 md:p-8 shadow-[0_0_20px_rgba(0,255,170,0.15)] backdrop-blur-xl overflow-hidden hover:border-emerald-500/50 transition-colors duration-300 flex flex-col"
-            >
-              {/* Subtle background glow */}
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+        {/* ── Cards Container (Vertical Timeline) ── */}
+        <div className="relative flex flex-col gap-8 pl-8 md:pl-12 z-10 mt-4">
+          {activitiesData.map((activity, idx) => {
+            const isLast = idx === activitiesData.length - 1;
+            const Icon = activity.icon;
+            return (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: idx * 0.2 }}
+                className="relative group w-full"
+              >
+                {/* ── Secondary Animated Vertical Pipeline Segment ── */}
+                {!isLast && (
+                  <div className="absolute -left-[29px] md:-left-[45px] top-[32px] w-[16px] h-[calc(100%+32px)] border-x border-emerald-500/30 z-0 overflow-hidden flex justify-center">
+                    <motion.div
+                      className="absolute w-[6px] h-[16px] bg-emerald-400 rounded-full shadow-[0_0_15px_rgba(52,211,153,1)] z-10"
+                      animate={{ top: ['-20px', '100%'] }}
+                      transition={{
+                        duration: 4.5,
+                        repeat: Infinity,
+                        ease: 'linear',
+                        delay: idx * 2.2
+                      }}
+                    />
+                  </div>
+                )}
 
-              {/* ── Card Header & Thumbnail ── */}
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-8 border-b border-slate-800/80 pb-6">
+                {/* Node on the timeline */}
+                <div className="absolute -left-[29px] md:-left-[45px] top-[24px] w-4 h-4 rounded-full bg-emerald-400 shadow-[0_0_15px_rgba(52,211,153,1)] border-[3px] border-[#0a0e14] z-10 transition-transform duration-300 group-hover:scale-125" />
 
-                {/* Glowing Thumbnail */}
-                <div className="relative w-20 h-20 shrink-0 bg-[#060a13] border border-slate-700/80 rounded-2xl flex items-center justify-center shadow-inner overflow-hidden group-hover:scale-105 transition-transform duration-300">
-                  {/* Internal grid pattern */}
-                  <div className="absolute inset-0 opacity-20" style={{
-                    backgroundImage: 'linear-gradient(rgba(0,255,170,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,170,0.3) 1px, transparent 1px)',
-                    backgroundSize: '8px 8px'
-                  }} />
-                  <div className={`absolute inset-0 blur-xl opacity-20 group-hover:opacity-40 transition-opacity ${activity.color}`} />
-                  <Icon size={36} className={`relative z-10 ${activity.color} drop-shadow-[0_0_10px_currentColor]`} />
+                {/* Connecting horizontal branch */}
+                <div className="absolute -left-[13px] md:-left-[29px] top-[31px] w-[13px] md:w-[29px] h-[2px] bg-emerald-500/30 shadow-[0_0_8px_rgba(0,255,170,0.5)] z-0" />
+
+                {/* ── Inner Card ── */}
+                <div className="bg-[#141923]/60 border border-[#00ffaa]/20 rounded-3xl p-6 md:p-8 shadow-[0_0_20px_rgba(0,255,170,0.15)] backdrop-blur-xl overflow-hidden hover:border-emerald-500/50 transition-colors duration-300 relative">
+                  
+                  {/* Subtle background glow */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+                  {/* ── Card Header (Flex for Date Badge on Right) ── */}
+                  <div className="flex flex-col sm:flex-row items-start sm:justify-between gap-6 mb-8 border-b border-slate-800/80 pb-6 relative z-10">
+                    
+                    {/* Left Side: Thumbnail, Title, Org */}
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+                      {/* Glowing Thumbnail */}
+                      <div className="relative w-16 h-16 md:w-20 md:h-20 shrink-0 bg-[#060a13] border border-slate-700/80 rounded-2xl flex items-center justify-center shadow-inner overflow-hidden group-hover:scale-105 transition-transform duration-300">
+                        {/* Internal grid pattern */}
+                        <div className="absolute inset-0 opacity-20" style={{
+                          backgroundImage: 'linear-gradient(rgba(0,255,170,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,170,0.3) 1px, transparent 1px)',
+                          backgroundSize: '8px 8px'
+                        }} />
+                        <div className={`absolute inset-0 blur-xl opacity-20 group-hover:opacity-40 transition-opacity ${activity.color}`} />
+                        <Icon size={32} className={`relative z-10 ${activity.color} drop-shadow-[0_0_10px_currentColor]`} />
+                      </div>
+
+                      {/* Title & Organization */}
+                      <div className="flex flex-col gap-1">
+                        <h3 className="text-xl md:text-2xl font-bold text-white tracking-wide group-hover:text-emerald-300 transition-colors">
+                          {activity.role}
+                        </h3>
+                        <p className="text-sm md:text-base text-emerald-400/90 font-medium">
+                          {activity.organization}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Right Side: Premium Date Badge */}
+                    <div className="shrink-0 mt-2 sm:mt-0">
+                      <span className="inline-block text-xs font-mono text-slate-300 bg-slate-900/80 px-3 py-1.5 rounded-md border border-slate-700/50 shadow-inner tracking-wider">
+                        {activity.period}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* ── Card Details ── */}
+                  <ul className="space-y-4 relative z-10">
+                    {activity.details.map((point, i) => (
+                      <li key={i} className="flex items-start gap-3 text-sm md:text-base text-slate-300 leading-relaxed">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500/80 mt-2 flex-shrink-0 shadow-[0_0_8px_rgba(0,255,170,0.8)]" />
+                        {point}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-
-                {/* Title & Organization */}
-                <div>
-                  <h3 className="text-xl md:text-2xl font-bold text-white tracking-wide group-hover:text-emerald-300 transition-colors">
-                    {activity.role}
-                  </h3>
-                  <p className="text-sm md:text-base text-emerald-400/90 font-medium mt-1">
-                    {activity.organization}
-                  </p>
-                  <span className="inline-block mt-2 text-xs font-mono text-slate-400 bg-slate-900/80 px-2 py-1 rounded border border-slate-700/50">
-                    {activity.period}
-                  </span>
-                </div>
-              </div>
-
-              {/* ── Card Details ── */}
-              <ul className="space-y-4 flex-grow">
-                {activity.details.map((point, i) => (
-                  <li key={i} className="flex items-start gap-3 text-sm md:text-base text-slate-300 leading-relaxed">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500/80 mt-2 flex-shrink-0 shadow-[0_0_8px_rgba(0,255,170,0.8)]" />
-                    {point}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          );
-        })}
-      </div>
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
