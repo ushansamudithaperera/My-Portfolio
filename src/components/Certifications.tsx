@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaAws, FaDocker, FaLinux, FaNodeJs, FaShieldAlt, FaServer, FaExternalLinkAlt, FaTimes } from 'react-icons/fa';
+import { FaAws, FaDocker, FaLinux, FaNodeJs, FaShieldAlt, FaServer, FaExternalLinkAlt, FaTimes, FaPython, FaReact, FaJs, FaMicrosoft, FaCode, FaCloud } from 'react-icons/fa';
 
 type Certification = {
   title: string;
@@ -54,6 +54,48 @@ const certsData: Certification[] = [
     icon: FaShieldAlt,
     color: 'text-emerald-500',
     pdfUrl: '/security.pdf'
+  },
+  {
+    title: '100 Days of Cloud - AWS',
+    issuer: '100 Days of Cloud',
+    icon: FaAws,
+    color: 'text-[#FF9900]',
+    pdfUrl: '/100_Days_of_Cloud_AWS.pdf'
+  },
+  {
+    title: '100 Days of Cloud - Azure',
+    issuer: '100 Days of Cloud',
+    icon: FaMicrosoft,
+    color: 'text-[#00A4EF]',
+    pdfUrl: '/100_Days_of_Cloud_Azure.pdf'
+  },
+  {
+    title: 'Introduction to Front-End Development',
+    issuer: 'Meta',
+    icon: FaCode,
+    color: 'text-blue-400',
+    pdfUrl: '/Introduction to Front-End Development.pdf'
+  },
+  {
+    title: 'Programming with JavaScript',
+    issuer: 'Meta',
+    icon: FaJs,
+    color: 'text-yellow-400',
+    pdfUrl: '/Programming with Java Script.pdf'
+  },
+  {
+    title: 'Python for Data Science, AI & Development',
+    issuer: 'IBM',
+    icon: FaPython,
+    color: 'text-blue-500',
+    pdfUrl: '/Python for Data Science, AI & Development.pdf'
+  },
+  {
+    title: 'React Basics',
+    issuer: 'Meta',
+    icon: FaReact,
+    color: 'text-[#61DAFB]',
+    pdfUrl: '/React Basics.pdf'
   }
 ];
 
