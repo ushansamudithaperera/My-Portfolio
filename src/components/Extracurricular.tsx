@@ -115,7 +115,7 @@ export default function Extracurricular() {
 
                     {/* Right Side: Premium Date Badge */}
                     <div className="shrink-0 mt-2 sm:mt-0">
-                      <span className="inline-block text-xs font-mono text-slate-300 bg-slate-900/80 px-3 py-1.5 rounded-md border border-slate-700/50 shadow-inner tracking-wider">
+                      <span className="px-3 py-1 text-xs font-mono text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 rounded-full shadow-[0_0_10px_rgba(52,211,153,0.15)] inline-block tracking-wider">
                         {activity.period}
                       </span>
                     </div>
