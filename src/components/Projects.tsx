@@ -198,11 +198,7 @@ export default function Projects() {
         </div>
       </div>
 
-      {/* ── Connecting Pipeline Below Panel ── */}
-      <div className="flex justify-center relative mt-2 md:mt-4">
-        <div className="absolute top-0 w-3 h-3 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(0,230,160,1)] z-10 -mt-1.5" />
-        <div className="w-1 h-24 bg-gradient-to-b from-emerald-500/80 via-emerald-500/40 to-transparent shadow-[0_0_15px_rgba(0,255,170,0.5)]" />
-      </div>
+
 
       {/* ── Glassmorphism Modal ── */}
       <AnimatePresence>

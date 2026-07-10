@@ -6,8 +6,6 @@ export default function Contact() {
   return (
     <section className="relative w-full max-w-4xl mx-auto py-24 px-4 sm:px-6" id="contact">
       
-      {/* ── Central Pipeline (Terminating) ── */}
-      <div className="absolute left-1/2 top-0 h-32 w-1.5 bg-emerald-500/80 shadow-[0_0_15px_rgba(0,255,170,0.8)] -translate-x-1/2 z-0" />
       
       {/* ── Section Header ── */}
       <div className="text-center mb-10 relative z-10 pt-16">

@@ -46,8 +46,6 @@ export default function Certifications() {
   return (
     <section className="relative w-full max-w-5xl mx-auto py-24 px-4 sm:px-6" id="certifications">
       
-      {/* ── Central Pipeline ── */}
-      <div className="absolute left-1/2 top-0 bottom-0 w-1.5 bg-emerald-500/80 shadow-[0_0_15px_rgba(0,255,170,0.8)] -translate-x-1/2 z-0" />
       
       {/* ── Section Header ── */}
       <div className="text-center mb-16 relative z-10 bg-slate-950/60 backdrop-blur-md py-4 rounded-3xl border border-slate-800/50 inline-block left-1/2 -translate-x-1/2 px-10">

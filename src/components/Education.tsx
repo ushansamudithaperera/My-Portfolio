@@ -146,18 +146,7 @@ export default function Education() {
         </div>
       </motion.div>
 
-      {/* ── Connecting Animated Pipeline Below Panel ── */}
-      <div className="relative z-10 flex justify-center mt-4 w-full h-24 md:h-32">
-        <div className="relative w-1.5 h-full bg-emerald-900/40 rounded-full overflow-hidden flex justify-center shadow-[0_0_10px_rgba(0,255,170,0.2)]">
-          <motion.div 
-            className="absolute top-0 w-full bg-emerald-500/80 shadow-[0_0_15px_rgba(0,255,170,0.8)]"
-            initial={{ height: 0 }}
-            whileInView={{ height: '100%' }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-          />
-        </div>
-      </div>
+
     </section>
   );
 }

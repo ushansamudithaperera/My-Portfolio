@@ -115,35 +115,7 @@ export default function Hero() {
         </motion.div>
       </motion.div>
 
-      {/* ── Connecting Animated Pipeline Below Panel ── */}
-      <div className="relative z-10 flex justify-center mt-4 w-full h-24 md:h-32">
-        {/* Animated vertical green line */}
-        <div className="relative w-1.5 h-full bg-emerald-900/40 rounded-full overflow-hidden flex justify-center shadow-[0_0_10px_rgba(0,255,170,0.2)]">
-          {/* Growing line effect */}
-          <motion.div 
-            className="absolute top-0 w-full bg-emerald-500/80 shadow-[0_0_15px_rgba(0,255,170,0.8)]"
-            initial={{ height: 0 }}
-            animate={{ height: '100%' }}
-            transition={{ duration: 1.5, ease: "easeOut", delay: 0.5 }}
-          />
-          {/* Traveling Data Packet (Glowing Dot) */}
-          <motion.div
-            className="absolute w-3 h-3 bg-white rounded-full shadow-[0_0_20px_rgba(255,255,255,1),0_0_15px_rgba(0,255,170,1)]"
-            animate={{
-              y: [0, 128], // travel down
-              opacity: [0, 1, 1, 0]
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "linear",
-              delay: 2
-            }}
-          />
-        </div>
-        {/* Top connector node */}
-        <div className="absolute top-0 w-4 h-4 rounded-full border-[2px] border-emerald-400 bg-emerald-400 shadow-[0_0_16px_rgba(0,230,160,1)] z-10 -mt-2 left-1/2 -translate-x-1/2" />
-      </div>
+
     </section>
   );
 }
