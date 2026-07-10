@@ -67,12 +67,12 @@ const itemVariants = {
 export default function Education() {
   return (
     <section className="relative w-full max-w-4xl mx-auto py-24 px-4 sm:px-6 lg:px-8" id="education">
-      
+
       {/* ── Background Layers ── */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[40vw] h-[40vw] max-w-[600px] max-h-[600px] bg-emerald-500/10 blur-[100px] rounded-full pointer-events-none z-0" />
-      
+
       {/* ── Main Glassmorphism Panel ── */}
-      <motion.div 
+      <motion.div
         className="relative z-10 w-full bg-[#141923]/60 backdrop-blur-xl border border-[#00ffaa]/20 rounded-2xl p-6 md:p-10 shadow-[0_0_20px_rgba(0,255,170,0.15)]"
         variants={containerVariants}
         initial="hidden"
@@ -96,15 +96,15 @@ export default function Education() {
         </div>
 
         <div className="relative">
-          
+
           <div className="relative space-y-12 pl-16 md:pl-24 pr-4 md:pr-8 pb-4">
-            
+
             {educationData.map((edu, idx) => {
               const isLast = idx === educationData.length - 1;
               const Icon = edu.icon;
               return (
                 <motion.div key={edu.id} className="relative group" variants={itemVariants}>
-                  
+
                   {/* ── Secondary Animated Vertical Pipeline Segment ── */}
                   {!isLast && (
                     <div className="absolute -left-[45px] md:-left-[61px] top-[32px] w-[16px] h-[calc(100%+48px)] border-x border-emerald-500/30 z-0 overflow-hidden flex justify-center">
@@ -123,19 +123,19 @@ export default function Education() {
 
                   {/* Node on the timeline */}
                   <div className="absolute -left-[45px] md:-left-[61px] top-[24px] w-4 h-4 rounded-full bg-emerald-400 shadow-[0_0_15px_rgba(52,211,153,1)] border-[3px] border-[#0a0e14] z-10 transition-transform duration-300 group-hover:scale-125" />
-                  
+
                   {/* Connecting horizontal branch */}
                   <div className="absolute -left-[29px] md:-left-[45px] top-[31px] w-[29px] md:w-[45px] h-[2px] bg-emerald-500/30 shadow-[0_0_8px_rgba(0,255,170,0.5)] z-0" />
 
                   {/* ── Inner Card ("Card inside a card") ── */}
                   <div className="bg-[#0a0e14]/80 border border-emerald-400/50 shadow-[0_0_15px_rgba(0,230,160,0.3)] rounded-2xl p-6 md:p-8 transition-all duration-300 group-hover:bg-[#0a0e14]/90 group-hover:shadow-[0_0_25px_rgba(0,230,160,0.4)] relative overflow-hidden">
-                    
+
                     {/* Subtle inner glow */}
                     <div className="absolute inset-0 bg-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
                     {/* ── Flex Layout (Header & Date) ── */}
                     <div className="flex flex-col md:flex-row md:justify-between items-start gap-4 mb-4">
-                      
+
                       {/* Left Side: Title, Stream, Institution */}
                       <div className="flex-1 flex flex-col gap-1">
                         <div className="flex items-center gap-3 mb-1">
@@ -146,14 +146,14 @@ export default function Education() {
                             {edu.title}
                           </h3>
                         </div>
-                        
+
                         {/* Stream (if any) */}
                         {edu.stream && (
                           <h4 className="text-slate-400 text-sm md:text-base font-medium tracking-wide ml-14">
                             {edu.stream}
                           </h4>
                         )}
-                        
+
                         {/* Institution */}
                         <h4 className="text-slate-300 text-sm md:text-base font-medium ml-14 mt-1">
                           {edu.institution}
@@ -173,11 +173,11 @@ export default function Education() {
                           {edu.badge}
                         </span>
                       </div>
-                      
+
                     </div>
-                    
+
                     <div className="w-full h-px bg-slate-700/60 my-5 ml-0 md:ml-14 max-w-full md:max-w-[calc(100%-3.5rem)]" />
-                    
+
                     <div className="ml-0 md:ml-14">
                       {/* Description */}
                       {edu.details && (
@@ -190,8 +190,8 @@ export default function Education() {
                       {edu.bullets && edu.bullets.length > 0 && (
                         <div className="flex flex-wrap gap-3">
                           {edu.bullets.map((bullet, i) => (
-                            <span 
-                              key={i} 
+                            <span
+                              key={i}
                               className="px-3 py-1 md:px-4 md:py-1.5 text-sm bg-[#0a0e14]/50 border border-white/5 rounded-full flex items-center gap-2 text-slate-300 hover:border-emerald-500/40 transition-colors shadow-[0_0_10px_rgba(0,0,0,0.2)] font-medium"
                             >
                               {/* Tiny Emerald Accent */}
@@ -202,7 +202,7 @@ export default function Education() {
                         </div>
                       )}
                     </div>
-                    
+
                   </div>
                 </motion.div>
               );
