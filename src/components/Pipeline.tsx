@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 
 /* ═══════════════════════════════════════════════════════════════════════
- *  CENTRAL PIPELINE — Background Layer (z-0)
+ * CENTRAL PIPELINE — Background Layer (z-0)
  * ═══════════════════════════════════════════════════════════════════════ */
 export function CentralPipelineBackground() {
   return (
@@ -13,33 +13,27 @@ export function CentralPipelineBackground() {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
- *  CENTRAL PIPELINE — Trace Layer (z-[1])
+ * CENTRAL PIPELINE — Trace Layer (z-[1])
+ * (Cleaned up: Only the falling data packets, NO long static lines)
  * ═══════════════════════════════════════════════════════════════════════ */
 
-const FALL_DURATION = 12;
-const NUM_PACKETS = 5;
+const FALL_DURATION = 8;
+const NUM_PACKETS = 8;
 const INTERVAL = FALL_DURATION / NUM_PACKETS;
 
 export function CentralPipelineTrace() {
-  const { scrollYProgress } = useScroll();
-  const traceHeight = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
-
   return (
     <div className="w-[24px] h-full flex justify-center relative pointer-events-none
-                    border-x-[2px] border-emerald-500/40">
-      {/* Inner core trace (grows with scroll) */}
-      <motion.div
-        className="absolute top-0 w-[2px] bg-emerald-400 shadow-[0_0_20px_rgba(0,230,160,1)] z-10"
-        style={{ height: traceHeight }}
-      />
+                    border-x-[2px] border-emerald-500/40 overflow-hidden">
 
-      {/* Vertical data packets — travel INSIDE the channel */}
+      {/* Vertical data packets ONLY — travel INSIDE the channel */}
       {Array.from({ length: NUM_PACKETS }, (_, i) => (
         <motion.div
           key={`vp-${i}`}
-          className="absolute left-1/2 -translate-x-1/2 w-[6px] h-[12px] rounded-full
-                     bg-[#00e6a0] shadow-[0_0_12px_rgba(0,230,160,0.9)] z-20"
-          animate={{ top: ['-2%', '102%'] }}
+          // Pill shaped data packets
+          className="absolute left-1/2 -translate-x-1/2 w-[6px] h-[16px] rounded-full
+                     bg-emerald-400 shadow-[0_0_15px_rgba(52,211,153,1)] z-20"
+          animate={{ top: ['-5%', '105%'] }}
           transition={{
             duration: FALL_DURATION,
             delay: i * INTERVAL,
@@ -53,7 +47,8 @@ export function CentralPipelineTrace() {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
- *  PIPELINE BRANCH — Horizontal connector (Fixed Logic)
+ * PIPELINE BRANCH — Horizontal connector
+ * (Perfectly branches outwards from the center to the panels)
  * ═══════════════════════════════════════════════════════════════════════ */
 export function PipelineBranch({
   direction = 'left',
@@ -75,8 +70,6 @@ export function PipelineBranch({
   const scaleX = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   const isLeft = direction === 'left';
-
-  // FIX: Attach exactly to the outer edge of the central pipeline (100% of the parent's width)
   const attachEdge = offset || '100%';
 
   return (
@@ -92,17 +85,16 @@ export function PipelineBranch({
       {/* Layer 1: Scaled background — entrance grow animation */}
       <motion.div
         className="absolute inset-0 bg-[#0a0e14] border-y-[2px] border-emerald-500/40
-                   shadow-[0_0_15px_rgba(0,255,170,0.15)]"
+                   shadow-[0_0_15px_rgba(52,211,153,0.15)]"
         style={{
           opacity,
           scaleX,
-          // Scales outwards from the center spine
           transformOrigin: isLeft ? 'right' : 'left',
         }}
       >
-        {/* Inner trace line */}
+        {/* Inner faint track line (very low opacity so it doesn't look like a solid bar) */}
         <div className="absolute inset-0 flex items-center">
-          <div className="w-full h-[2px] bg-emerald-400/60 shadow-[0_0_12px_rgba(0,230,160,0.8)]" />
+          <div className="w-full h-[2px] bg-emerald-400/20" />
         </div>
       </motion.div>
 
@@ -114,9 +106,8 @@ export function PipelineBranch({
         {/* Packet 1 */}
         <motion.div
           className="absolute top-1/2 -translate-y-1/2 w-[12px] h-[6px] rounded-full
-                     bg-[#00e6a0] shadow-[0_0_12px_rgba(0,230,160,0.9)] z-10"
+                     bg-emerald-400 shadow-[0_0_15px_rgba(52,211,153,1)] z-10"
           animate={{
-            // FIX: Uses clean percentages to travel the FULL container width outwards
             left: isLeft ? ['100%', '-10%'] : ['-10%', '100%'],
           }}
           transition={{
@@ -129,7 +120,7 @@ export function PipelineBranch({
         {/* Packet 2 */}
         <motion.div
           className="absolute top-1/2 -translate-y-1/2 w-[12px] h-[6px] rounded-full
-                     bg-[#00e6a0] shadow-[0_0_12px_rgba(0,230,160,0.9)] z-10"
+                     bg-emerald-400 shadow-[0_0_15px_rgba(52,211,153,1)] z-10"
           animate={{
             left: isLeft ? ['100%', '-10%'] : ['-10%', '100%'],
           }}
