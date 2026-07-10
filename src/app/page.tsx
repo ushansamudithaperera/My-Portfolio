@@ -11,7 +11,7 @@ import { CentralPipelineBackground, CentralPipelineTrace } from "@/components/Pi
 
 export default function Home() {
   return (
-    <main className="relative flex min-h-screen flex-col overflow-hidden">
+    <main className="relative z-10 w-full min-h-screen bg-transparent flex flex-col items-center overflow-hidden">
 
       {/* ── Global Background Layers ── */}
       {/* Subtle glowing grid effect covering the entire site */}

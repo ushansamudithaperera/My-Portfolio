@@ -21,7 +21,7 @@ const techPhrases = [
 
 export default function TechBackground() {
   return (
-    <div className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden bg-[#05080c]">
+    <div className="fixed inset-0 z-0 bg-[#05080c] overflow-hidden pointer-events-none flex items-center justify-center">
       
       {/* Subtle Grid/Graph Lines */}
       <div 
