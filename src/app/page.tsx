@@ -56,7 +56,7 @@ export default function Home() {
       </div>
 
       {/* Footer is completely outside the pipeline bounding container */}
-      <div className="relative z-20">
+      <div className="relative w-full z-20">
         <Footer />
       </div>
     </main>
