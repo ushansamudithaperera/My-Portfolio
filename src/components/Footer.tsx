@@ -13,13 +13,15 @@ export default function Footer() {
           {/* Column 1: Brand */}
           <div className="flex flex-col gap-4">
             <div>
-              <div className="flex items-center gap-3 mb-4">
-                {/* Abstract 'U' Logo matching the header */}
-                <div className="flex items-center justify-center w-8 h-8 rounded-lg border-[2px] border-emerald-400 text-emerald-400 font-bold text-lg shadow-[0_0_10px_rgba(52,211,153,0.3)]">
-                  U
+              <div className="flex items-center gap-3 mb-4 group cursor-pointer w-fit">
+                {/* USP Monogram Icon matching the header */}
+                <div className="relative flex items-center justify-center px-2.5 h-8 rounded-lg border-[2px] border-emerald-400/50 shadow-[0_0_15px_rgba(52,211,153,0.3)] bg-emerald-950/20 group-hover:border-emerald-400 transition-colors duration-300">
+                  <span className="font-extrabold text-sm tracking-[0.2em] bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent ml-[0.2em]">
+                    Ushan Perera
+                  </span>
                 </div>
-                <span className="text-xl md:text-2xl font-bold tracking-[0.3em] text-white uppercase">
-                  USHAN
+                <span className="text-xl md:text-2xl font-bold tracking-[0.3em] text-white uppercase group-hover:text-white transition-colors duration-300">
+
                 </span>
               </div>
               <p className="text-slate-400 text-sm mt-4 leading-relaxed max-w-sm">

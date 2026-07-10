@@ -6,12 +6,12 @@ import { motion, AnimatePresence, useMotionValueEvent, useScroll } from 'framer-
 /* ─── Navigation Config ──────────────────────────────────────────── */
 
 const NAV_LINKS = [
-  { name: 'BIO',       href: '#about' },
+  { name: 'BIO', href: '#about' },
   { name: 'EDUCATION', href: '#education' },
-  { name: 'SKILLS',    href: '#skills' },
-  { name: 'PROJECTS',  href: '#projects' },
-  { name: 'EXTRA',     href: '#extra' },
-  { name: 'CONTACT',   href: '#contact' },
+  { name: 'SKILLS', href: '#skills' },
+  { name: 'PROJECTS', href: '#projects' },
+  { name: 'EXTRA', href: '#extra' },
+  { name: 'CONTACT', href: '#contact' },
 ];
 
 /* ─── Logo Component ─────────────────────────────────────────────── */
@@ -31,44 +31,16 @@ function Logo() {
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
     >
-      {/* U Monogram Icon */}
-      <div className="relative w-8 h-8 flex items-center justify-center">
-        <svg
-          viewBox="0 0 32 32"
-          fill="none"
-          className="w-full h-full"
-          aria-hidden="true"
-        >
-          {/* Outer bracket shape */}
-          <path
-            d="M8 6 L8 20 Q8 26 16 26 Q24 26 24 20 L24 6"
-            stroke="url(#logo-gradient)"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            fill="none"
-          />
-          {/* Inner glow dot */}
-          <circle cx="16" cy="16" r="2" fill="#00e6a0" opacity="0.6" />
-          <defs>
-            <linearGradient id="logo-gradient" x1="8" y1="6" x2="24" y2="26">
-              <stop offset="0%" stopColor="#00e6a0" />
-              <stop offset="100%" stopColor="#00ffaa" />
-            </linearGradient>
-          </defs>
-        </svg>
-        {/* Glow effect behind icon */}
-        <div
-          className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-          style={{
-            background: 'radial-gradient(circle, rgba(0,255,170,0.2) 0%, transparent 70%)',
-            filter: 'blur(8px)',
-          }}
-        />
+      {/* USP Monogram Icon */}
+      <div className="relative flex items-center justify-center px-2.5 h-8 rounded-lg border-[2px] border-emerald-400/50 shadow-[0_0_15px_rgba(52,211,153,0.3)] bg-emerald-950/20 group-hover:border-emerald-400 transition-colors duration-300">
+        <span className="font-extrabold text-sm tracking-[0.2em] bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent ml-[0.2em]">
+          Ushan Perera
+        </span>
       </div>
 
       {/* Wordmark */}
       <span className="text-[22px] font-bold tracking-[0.15em] text-slate-100 group-hover:text-white transition-colors duration-300">
-        USHAN
+
       </span>
     </motion.a>
   );
@@ -259,11 +231,10 @@ function MobileMenu({
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: 30 }}
                     transition={{ delay: idx * 0.05 + 0.1, duration: 0.3 }}
-                    className={`relative flex items-center gap-3 py-4 px-4 rounded-xl text-[14px] font-medium tracking-[0.1em] transition-all duration-200 group ${
-                      isActive
-                        ? 'text-emerald-300'
-                        : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/30'
-                    }`}
+                    className={`relative flex items-center gap-3 py-4 px-4 rounded-xl text-[14px] font-medium tracking-[0.1em] transition-all duration-200 group ${isActive
+                      ? 'text-emerald-300'
+                      : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/30'
+                      }`}
                   >
                     {/* Active bar */}
                     {isActive && (
@@ -279,9 +250,8 @@ function MobileMenu({
 
                     {/* Dot */}
                     <span
-                      className={`w-1.5 h-1.5 rounded-full flex-shrink-0 transition-colors duration-200 ${
-                        isActive ? 'bg-emerald-400' : 'bg-slate-600 group-hover:bg-slate-400'
-                      }`}
+                      className={`w-1.5 h-1.5 rounded-full flex-shrink-0 transition-colors duration-200 ${isActive ? 'bg-emerald-400' : 'bg-slate-600 group-hover:bg-slate-400'
+                        }`}
                     />
 
                     {link.name}
