@@ -48,23 +48,13 @@ export default function Certifications() {
       
       
       {/* ── Section Header ── */}
-      <div className="text-center mb-16 relative z-10 bg-slate-950/60 backdrop-blur-md py-4 rounded-3xl border border-slate-800/50 inline-block left-1/2 -translate-x-1/2 px-10">
-        <motion.h2
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-xl md:text-3xl font-bold text-white tracking-[0.2em] uppercase shadow-emerald-500/50 drop-shadow-lg"
-        >
-          Certifications Panel
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: -10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-sm text-emerald-400 mt-2 tracking-widest font-mono uppercase"
-        >
-          Step 5: Professional Validation
-        </motion.p>
+      <div className="flex flex-col items-center justify-center py-4 px-10 bg-[#0a0f16]/90 backdrop-blur-md border border-white/10 rounded-2xl mx-auto max-w-fit mb-12 z-10 relative">
+        <h2 className="text-2xl md:text-3xl font-bold tracking-[0.2em] text-white uppercase text-center">
+          CERTIFICATIONS PANEL
+        </h2>
+        <p className="mt-2 text-xs md:text-sm text-slate-400 font-mono tracking-[0.1em] uppercase text-center">
+          STEP 5: PROFESSIONAL VALIDATION
+        </p>
       </div>
 
       {/* ── Main Glassmorphism Panel Container ── */}

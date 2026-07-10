@@ -8,23 +8,13 @@ export default function Contact() {
       
       
       {/* ── Section Header ── */}
-      <div className="text-center mb-10 relative z-10 pt-16">
-        <motion.h2
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-2xl md:text-4xl font-bold text-white tracking-[0.2em] uppercase shadow-emerald-500/50 drop-shadow-lg"
-        >
-          Contact Panel
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: -10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-sm text-emerald-400 mt-2 tracking-widest font-mono uppercase"
-        >
-          Step 7: Deploy & Production
-        </motion.p>
+      <div className="flex flex-col items-center justify-center py-4 px-10 bg-[#0a0f16]/90 backdrop-blur-md border border-white/10 rounded-2xl mx-auto max-w-fit mb-12 z-10 pt-16 relative">
+        <h2 className="text-2xl md:text-3xl font-bold tracking-[0.2em] text-white uppercase text-center">
+          CONTACT PANEL
+        </h2>
+        <p className="mt-2 text-xs md:text-sm text-slate-400 font-mono tracking-[0.1em] uppercase text-center">
+          STEP 7: INITIATE SECURE CONNECTION
+        </p>
       </div>
 
       {/* ── Glassmorphism Form Container ── */}

@@ -312,19 +312,11 @@ export default function Skills() {
     <section className="relative w-full mx-auto py-24 px-4 sm:px-6 lg:px-8 overflow-hidden" id="skills">
 
       {/* Section Header */}
-      <div className="text-center mb-16 md:mb-24">
-        <motion.h2
-          className="text-4xl md:text-5xl font-extrabold tracking-tight"
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-600 drop-shadow-[0_0_15px_rgba(0,255,170,0.3)]">
-            SKILLS ARSENAL
-          </span>
-        </motion.h2>
-        <p className="mt-4 text-slate-400 text-sm md:text-base font-mono max-w-2xl mx-auto uppercase tracking-widest">
+      <div className="flex flex-col items-center justify-center py-4 px-10 bg-[#0a0f16]/90 backdrop-blur-md border border-white/10 rounded-2xl mx-auto max-w-fit mb-12 z-10 relative">
+        <h2 className="text-2xl md:text-3xl font-bold tracking-[0.2em] text-white uppercase text-center">
+          SKILLS ARSENAL
+        </h2>
+        <p className="mt-2 text-xs md:text-sm text-slate-400 font-mono tracking-[0.1em] uppercase text-center">
           Comprehensive overview of technical capabilities
         </p>
       </div>

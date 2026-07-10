@@ -99,25 +99,13 @@ export default function Projects() {
     <section className="relative w-full max-w-6xl mx-auto py-24 px-4 sm:px-6" id="projects">
       
       {/* ── Section Header ── */}
-      <div className="text-center mb-16 relative z-20">
-        <motion.h2
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-2xl md:text-4xl font-bold text-white tracking-[0.3em] uppercase shadow-emerald-500/50 drop-shadow-2xl"
-        >
-          Projects Panel
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: -10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-sm md:text-base text-emerald-400 mt-3 tracking-[0.2em] font-mono uppercase"
-        >
-          Step 4: Deploy & Production
-        </motion.p>
+      <div className="flex flex-col items-center justify-center py-4 px-10 bg-[#0a0f16]/90 backdrop-blur-md border border-white/10 rounded-2xl mx-auto max-w-fit mb-12 z-10 relative">
+        <h2 className="text-2xl md:text-3xl font-bold tracking-[0.2em] text-white uppercase text-center">
+          PROJECTS PANEL
+        </h2>
+        <p className="mt-2 text-xs md:text-sm text-slate-400 font-mono tracking-[0.1em] uppercase text-center">
+          STEP 4: DEPLOY & PRODUCTION
+        </p>
       </div>
 
       {/* ── Main Container (Like Image Reference) ── */}
