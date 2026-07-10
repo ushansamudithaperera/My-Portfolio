@@ -24,6 +24,8 @@ export const metadata: Metadata = {
 };
 
 
+import TechBackground from "@/components/TechBackground";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -33,6 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${inter.className} bg-slate-950 text-slate-300 antialiased overflow-x-hidden`}>
+        <TechBackground />
         <Preloader>
           <Header />
           {children}
