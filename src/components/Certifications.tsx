@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect, MouseEvent } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaAws, FaDocker, FaLinux, FaNodeJs, FaShieldAlt, FaServer, FaExternalLinkAlt, FaTimes, FaPython, FaReact, FaJs, FaMicrosoft, FaCode, FaCloud } from 'react-icons/fa';
 
@@ -102,6 +102,57 @@ const certsData: Certification[] = [
 export default function Certifications() {
   const [selectedCert, setSelectedCert] = useState<Certification | null>(null);
 
+  // --- Drag and Auto-scroll State ---
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+
+  // Auto-scroll logic
+  useEffect(() => {
+    if (isHovered || isDragging) return;
+    
+    let animationFrameId: number;
+    const scroll = () => {
+      if (scrollRef.current) {
+        scrollRef.current.scrollLeft += 1;
+        // Snap back when we scroll past exactly half the duplicated content
+        if (scrollRef.current.scrollLeft >= scrollRef.current.scrollWidth / 2) {
+          scrollRef.current.scrollLeft = 0;
+        }
+      }
+      animationFrameId = requestAnimationFrame(scroll);
+    };
+    
+    animationFrameId = requestAnimationFrame(scroll);
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [isHovered, isDragging]);
+
+  const handleMouseDown = (e: MouseEvent) => {
+    setIsDragging(true);
+    if (!scrollRef.current) return;
+    setStartX(e.pageX - scrollRef.current.offsetLeft);
+    setScrollLeft(scrollRef.current.scrollLeft);
+  };
+
+  const handleMouseLeave = () => {
+    setIsDragging(false);
+    setIsHovered(false);
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const handleMouseMove = (e: MouseEvent) => {
+    if (!isDragging || !scrollRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollRef.current.offsetLeft;
+    const walk = (x - startX) * 2; // Scroll fast
+    scrollRef.current.scrollLeft = scrollLeft - walk;
+  };
+
   // Duplicate array for infinite scroll
   const marqueeCerts = [...certsData, ...certsData];
 
@@ -131,15 +182,17 @@ export default function Certifications() {
 
           {/* Marquee Track */}
           <div 
-            className="flex gap-6 w-max hover:[animation-play-state:paused] px-16"
-            style={{ animation: 'certMarquee 40s linear infinite' }}
+            ref={scrollRef}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={handleMouseLeave}
+            onMouseDown={handleMouseDown}
+            onMouseUp={handleMouseUp}
+            onMouseMove={handleMouseMove}
+            onTouchStart={() => setIsHovered(true)}
+            onTouchEnd={() => setIsHovered(false)}
+            className={`flex gap-6 w-full overflow-x-auto scrollbar-hide py-4 pr-6 ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
+            style={{ scrollBehavior: 'auto', WebkitOverflowScrolling: 'touch' }}
           >
-            <style>{`
-              @keyframes certMarquee {
-                0% { transform: translateX(0%); }
-                100% { transform: translateX(-50%); }
-              }
-            `}</style>
 
             {marqueeCerts.map((cert, idx) => {
               const Icon = cert.icon;
