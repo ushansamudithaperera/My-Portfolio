@@ -6,23 +6,33 @@ const educationData = [
   {
     id: 1,
     title: 'BSc (Hons) in Electronics and Computer Science',
+    stream: null,
     institution: 'UNIVERSITY OF KELANIYA (FACULTY OF SCIENCE)',
     badge: '2023 - PRESENT (EXPECTED 2027)',
     details: null,
+    bullets: [],
   },
   {
     id: 2,
-    title: 'G.C.E. Advanced Level (Physical Science / Maths Stream)',
+    title: 'G.C.E. Advanced Level',
+    stream: 'Physical Science (Maths Stream)',
     institution: 'R/NEWTOWN PRINCE COLLEGE',
     badge: '2021 (2022)',
-    details: "Passed with 3 B's (Physics, Chemistry, Combined Maths)",
+    details: null,
+    bullets: [
+      'Combined Mathematics - B',
+      'Physics - B',
+      'Chemistry - B'
+    ],
   },
   {
     id: 3,
     title: 'G.C.E. Ordinary Level',
+    stream: null,
     institution: 'R/ANANDA VIDYALAYA',
-    badge: 'COMPLETED',
+    badge: '2017',
     details: "Passed all subjects with excellent standing (3 A's, 4 B's, 3 C's)",
+    bullets: [],
   },
 ];
 
@@ -78,61 +88,90 @@ export default function Education() {
           
           <div className="relative space-y-12 pl-16 md:pl-24 pr-4 md:pr-8 pb-4">
             
-            {/* ── EXACT Spanning Vertical Timeline Line ── */}
-            {/* 
-              Top is 24px (center of first dot, since dot is top-6 i.e. 24px and h-4 means its center is at 32px.
-              Actually top-6 = 24px, plus h-4/2 = 32px from top. Let's position line exactly from 32px to bottom 32px.
-            */}
-            <div className="absolute left-[20px] md:left-[36px] top-[32px] bottom-[32px] w-[2px] bg-emerald-500/60 shadow-[0_0_15px_rgba(52,211,153,0.8)] z-0 -translate-x-1/2" />
-
-            {educationData.map((edu) => (
-              <motion.div key={edu.id} className="relative group" variants={itemVariants}>
-                
-                {/* Node on the timeline */}
-                <div className="absolute -left-[45px] md:-left-[61px] top-[24px] w-4 h-4 rounded-full bg-emerald-400 shadow-[0_0_15px_rgba(52,211,153,1)] border-[3px] border-[#0a0e14] z-10 transition-transform duration-300 group-hover:scale-125" />
-                
-                {/* Connecting branch */}
-                <div className="absolute -left-[45px] md:-left-[61px] top-[31px] w-[45px] md:w-[61px] h-[2px] bg-emerald-500/50 shadow-[0_0_8px_rgba(0,255,170,0.5)] -z-10" />
-
-                {/* ── Inner Card ("Card inside a card") ── */}
-                <div className="bg-[#0a0e14]/80 border border-emerald-400/50 shadow-[0_0_15px_rgba(0,230,160,0.3)] rounded-2xl p-6 md:p-8 transition-all duration-300 group-hover:bg-[#0a0e14]/90 group-hover:shadow-[0_0_25px_rgba(0,230,160,0.4)] relative overflow-hidden">
+            {educationData.map((edu, idx) => {
+              const isLast = idx === educationData.length - 1;
+              return (
+                <motion.div key={edu.id} className="relative group" variants={itemVariants}>
                   
-                  {/* Subtle inner glow */}
-                  <div className="absolute inset-0 bg-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                  {/* ── Secondary Animated Vertical Pipeline Segment ── */}
+                  {/* Mathematically spans EXACTLY from the center of this node to the center of the next node */}
+                  {!isLast && (
+                    <div className="absolute -left-[45px] md:-left-[61px] top-[32px] w-[16px] h-[calc(100%+48px)] border-x border-emerald-500/30 z-0 overflow-hidden flex justify-center">
+                      <motion.div
+                        className="absolute w-[6px] h-[16px] bg-emerald-400 rounded-full shadow-[0_0_15px_rgba(52,211,153,1)] z-10"
+                        animate={{ top: ['-20px', '100%'] }}
+                        transition={{
+                          duration: 4.5, // Match slow pacing of main pipeline
+                          repeat: Infinity,
+                          ease: 'linear',
+                          delay: idx * 2.2 // Staggered flow
+                        }}
+                      />
+                    </div>
+                  )}
 
-                  {/* Title & Badge Layout */}
-                  <div className="flex flex-col gap-3 mb-2">
-                    <h3 className="text-xl md:text-2xl font-bold text-white tracking-wide group-hover:text-emerald-300 transition-colors">
+                  {/* Node on the timeline */}
+                  <div className="absolute -left-[45px] md:-left-[61px] top-[24px] w-4 h-4 rounded-full bg-emerald-400 shadow-[0_0_15px_rgba(52,211,153,1)] border-[3px] border-[#0a0e14] z-10 transition-transform duration-300 group-hover:scale-125" />
+                  
+                  {/* Connecting horizontal branch */}
+                  <div className="absolute -left-[29px] md:-left-[45px] top-[31px] w-[29px] md:w-[45px] h-[2px] bg-emerald-500/30 shadow-[0_0_8px_rgba(0,255,170,0.5)] z-0" />
+
+                  {/* ── Inner Card ("Card inside a card") ── */}
+                  <div className="bg-[#0a0e14]/80 border border-emerald-400/50 shadow-[0_0_15px_rgba(0,230,160,0.3)] rounded-2xl p-6 md:p-8 transition-all duration-300 group-hover:bg-[#0a0e14]/90 group-hover:shadow-[0_0_25px_rgba(0,230,160,0.4)] relative overflow-hidden">
+                    
+                    {/* Subtle inner glow */}
+                    <div className="absolute inset-0 bg-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+
+                    {/* Title */}
+                    <h3 className="text-xl md:text-2xl font-bold text-white tracking-wide group-hover:text-emerald-300 transition-colors mb-2">
                       {edu.title}
                     </h3>
-                  </div>
-                  
-                  {/* Glowing Emerald Institution */}
-                  <h4 className="text-emerald-400 text-sm md:text-base font-medium tracking-wide uppercase drop-shadow-[0_0_8px_rgba(52,211,153,0.5)] mb-4">
-                    {edu.institution}
-                  </h4>
-                  
-                  <div className="w-full h-px bg-slate-700/60 my-4" />
-                  
-                  {/* Glassmorphism Badge */}
-                  <div className="flex items-start mb-4">
-                    <span className="inline-block bg-white/5 border border-white/10 px-3 py-1.5 rounded-md text-emerald-400 font-mono text-sm tracking-wider drop-shadow-[0_0_8px_rgba(52,211,153,0.3)] uppercase">
-                      {edu.badge}
-                    </span>
-                  </div>
-                  
-                  {/* Bullet Details */}
-                  {edu.details && (
-                    <ul className="space-y-2 mt-4">
-                      <li className="flex items-start gap-3 text-sm md:text-base text-slate-300 leading-relaxed">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500/80 mt-2 flex-shrink-0 shadow-[0_0_8px_rgba(0,255,170,0.8)]" />
+                    
+                    {/* Stream (if any) */}
+                    {edu.stream && (
+                      <h4 className="text-emerald-400/90 text-sm md:text-base font-medium tracking-wide mb-3 drop-shadow-[0_0_8px_rgba(52,211,153,0.3)]">
+                        {edu.stream}
+                      </h4>
+                    )}
+                    
+                    {/* Glowing Emerald Institution */}
+                    <h4 className="text-emerald-400 text-sm md:text-base font-bold tracking-wide uppercase drop-shadow-[0_0_8px_rgba(52,211,153,0.6)] mb-4">
+                      {edu.institution}
+                    </h4>
+                    
+                    <div className="w-full h-px bg-slate-700/60 my-4" />
+                    
+                    {/* Glassmorphism Badge */}
+                    <div className="flex items-start mb-4">
+                      <span className="inline-block bg-white/5 border border-white/10 px-3 py-1.5 rounded-md text-emerald-400 font-mono text-sm tracking-wider drop-shadow-[0_0_8px_rgba(52,211,153,0.3)] uppercase">
+                        {edu.badge}
+                      </span>
+                    </div>
+                    
+                    {/* Simple Text Details */}
+                    {edu.details && (
+                      <p className="text-sm md:text-base text-slate-300 leading-relaxed mt-4">
                         {edu.details}
-                      </li>
-                    </ul>
-                  )}
-                </div>
-              </motion.div>
-            ))}
+                      </p>
+                    )}
+
+                    {/* Glowing Sub-badges / Bullets */}
+                    {edu.bullets && edu.bullets.length > 0 && (
+                      <div className="flex flex-wrap gap-3 mt-4">
+                        {edu.bullets.map((bullet, i) => (
+                          <span 
+                            key={i} 
+                            className="px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-sm font-medium shadow-[0_0_10px_rgba(52,211,153,0.1)]"
+                          >
+                            {bullet}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </motion.div>
