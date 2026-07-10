@@ -14,23 +14,24 @@ export function CentralPipelineBackground() {
 
 /* ═══════════════════════════════════════════════════════════════════════
  * CENTRAL PIPELINE — Trace Layer (z-[1])
- * (Cleaned up: Only the falling data packets, NO long static lines)
+ * (Fixed: NO solid lines at all. Only the borders and the data packets)
  * ═══════════════════════════════════════════════════════════════════════ */
 
-const FALL_DURATION = 8;
-const NUM_PACKETS = 8;
+const FALL_DURATION = 12; // පරණ Normal Speed එකමයි
+const NUM_PACKETS = 15;   // Packets ගාණ වැඩි කරලා තියෙන්නේ (ළඟින් ළඟින් යන්න)
 const INTERVAL = FALL_DURATION / NUM_PACKETS;
 
 export function CentralPipelineTrace() {
   return (
+    // මෙතන ඇතුලේ කිසිම Background Color එකක් හරි Static line එකක් හරි නෑ. හිස් ටියුබ් එකක්.
     <div className="w-[24px] h-full flex justify-center relative pointer-events-none
                     border-x-[2px] border-emerald-500/40 overflow-hidden">
 
-      {/* Vertical data packets ONLY — travel INSIDE the channel */}
+      {/* Vertical data packets ONLY — travel INSIDE the hollow channel */}
       {Array.from({ length: NUM_PACKETS }, (_, i) => (
         <motion.div
           key={`vp-${i}`}
-          // Pill shaped data packets
+          // Data packet එකේ හැඩය
           className="absolute left-1/2 -translate-x-1/2 w-[6px] h-[16px] rounded-full
                      bg-emerald-400 shadow-[0_0_15px_rgba(52,211,153,1)] z-20"
           animate={{ top: ['-5%', '105%'] }}
@@ -48,7 +49,6 @@ export function CentralPipelineTrace() {
 
 /* ═══════════════════════════════════════════════════════════════════════
  * PIPELINE BRANCH — Horizontal connector
- * (Perfectly branches outwards from the center to the panels)
  * ═══════════════════════════════════════════════════════════════════════ */
 export function PipelineBranch({
   direction = 'left',
