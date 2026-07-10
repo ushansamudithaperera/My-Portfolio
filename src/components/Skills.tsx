@@ -312,12 +312,12 @@ export default function Skills() {
     <section className="relative w-full mx-auto py-24 px-4 sm:px-6 lg:px-8 overflow-hidden" id="skills">
 
       {/* Section Header */}
-      <div className="flex flex-col items-center justify-center py-4 px-10 bg-[#0a0f16]/90 backdrop-blur-md border border-white/10 rounded-2xl mx-auto max-w-fit mb-12 z-10 relative">
-        <h2 className="text-2xl md:text-3xl font-bold tracking-[0.2em] text-white uppercase text-center">
+      <div className="flex flex-col items-center justify-center py-4 px-10 bg-[#141923]/60 backdrop-blur-xl border border-[#00ffaa]/20 rounded-2xl shadow-[0_0_20px_rgba(0,255,170,0.15)] mx-auto max-w-fit mb-12 z-10 relative">
+        <h2 className="text-2xl md:text-3xl font-bold text-white tracking-[0.2em] uppercase text-center">
           SKILLS ARSENAL
         </h2>
-        <p className="mt-2 text-xs md:text-sm text-slate-400 font-mono tracking-[0.1em] uppercase text-center">
-          Comprehensive overview of technical capabilities
+        <p className="text-xs md:text-sm text-slate-400 mt-2 font-mono tracking-[0.15em] uppercase text-center">
+          Step 3: Technical Capabilities
         </p>
       </div>
 
