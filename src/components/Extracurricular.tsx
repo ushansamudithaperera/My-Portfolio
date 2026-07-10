@@ -1,15 +1,15 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { FaRobot, FaMicrochip } from 'react-icons/fa';
 
 const activitiesData = [
   {
     role: 'Membership Coordinator',
     organization: 'UOK Robot Battles',
     period: 'Mar 2025 - Aug 2025',
-    icon: FaRobot,
-    color: 'text-rose-500',
+    imgSrc: '/robot_games.png',
+    glowClass: 'border-cyan-500/30 shadow-[0_0_15px_rgba(6,182,212,0.2)] group-hover:shadow-[0_0_30px_rgba(6,182,212,0.8)]',
+    dropShadowClass: 'drop-shadow-[0_0_10px_rgba(6,182,212,0.8)]',
     details: [
       'Communicated competition details and updates to registered members through emails and phone calls.',
       'Provided support to fellow membership coordinators in managing participant engagement activities.',
@@ -20,8 +20,9 @@ const activitiesData = [
     role: 'Member',
     organization: 'Electronics and Computer Science Club (ECSC)',
     period: 'Jun 2023 - Present',
-    icon: FaMicrochip,
-    color: 'text-cyan-400',
+    imgSrc: '/ecsc.png',
+    glowClass: 'border-slate-400/30 shadow-[0_0_15px_rgba(255,255,255,0.15)] group-hover:shadow-[0_0_30px_rgba(255,255,255,0.6)]',
+    dropShadowClass: 'drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]',
     details: [
       'Contributed to organizing and executing major technical events, boosting student engagement in modern computing.'
     ]
@@ -92,14 +93,12 @@ export default function Extracurricular() {
                     {/* Left Side: Thumbnail, Title, Org */}
                     <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
                       {/* Glowing Thumbnail */}
-                      <div className="relative w-16 h-16 md:w-20 md:h-20 shrink-0 bg-[#060a13] border border-slate-700/80 rounded-2xl flex items-center justify-center shadow-inner overflow-hidden group-hover:scale-105 transition-transform duration-300">
-                        {/* Internal grid pattern */}
-                        <div className="absolute inset-0 opacity-20" style={{
-                          backgroundImage: 'linear-gradient(rgba(0,255,170,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,170,0.3) 1px, transparent 1px)',
-                          backgroundSize: '8px 8px'
-                        }} />
-                        <div className={`absolute inset-0 blur-xl opacity-20 group-hover:opacity-40 transition-opacity ${activity.color}`} />
-                        <Icon size={32} className={`relative z-10 ${activity.color} drop-shadow-[0_0_10px_currentColor]`} />
+                      <div className={`relative w-16 h-16 md:w-20 md:h-20 shrink-0 bg-[#0f141c]/90 backdrop-blur-md border rounded-xl flex items-center justify-center overflow-hidden group-hover:scale-110 transition-transform duration-300 ${activity.glowClass}`}>
+                        <img 
+                          src={activity.imgSrc} 
+                          alt={activity.organization}
+                          className={`relative z-10 w-[70%] h-[70%] object-contain mix-blend-screen ${activity.dropShadowClass}`} 
+                        />
                       </div>
 
                       {/* Title & Organization */}
