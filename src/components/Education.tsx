@@ -8,6 +8,8 @@ const educationData = [
     id: 1,
     title: 'BSc (Hons) in Electronics and Computer Science',
     icon: FaUserGraduate,
+    iconContainerClass: 'p-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 shadow-[0_0_15px_rgba(52,211,153,0.15)] flex items-center justify-center shrink-0',
+    iconClass: 'text-emerald-400 text-xl',
     stream: null,
     institution: 'University of Kelaniya',
     subText: 'Faculty of Science',
@@ -19,6 +21,8 @@ const educationData = [
     id: 2,
     title: 'G.C.E. Advanced Level',
     icon: FaUniversity,
+    iconContainerClass: 'p-2.5 rounded-xl bg-cyan-500/10 border border-cyan-500/20 shadow-[0_0_15px_rgba(6,182,212,0.15)] flex items-center justify-center shrink-0',
+    iconClass: 'text-cyan-400 text-xl',
     stream: 'Physical Science (Maths Stream)',
     institution: 'R/Newtown Prince College',
     subText: null,
@@ -34,6 +38,8 @@ const educationData = [
     id: 3,
     title: 'G.C.E. Ordinary Level',
     icon: FaUniversity,
+    iconContainerClass: 'p-2.5 rounded-xl bg-purple-500/10 border border-purple-500/20 shadow-[0_0_15px_rgba(168,85,247,0.15)] flex items-center justify-center shrink-0',
+    iconClass: 'text-purple-400 text-xl',
     stream: null,
     institution: 'R/Ananda Vidyalaya',
     subText: null,
@@ -139,8 +145,8 @@ export default function Education() {
                       {/* Left Side: Title, Stream, Institution */}
                       <div className="flex-1 flex flex-col gap-1">
                         <div className="flex items-center gap-3 mb-1">
-                          <div className="p-2 rounded-lg bg-white/5 border border-white/10 shrink-0">
-                            <Icon className="text-slate-400 text-xl" />
+                          <div className={edu.iconContainerClass}>
+                            <Icon className={edu.iconClass} />
                           </div>
                           <h3 className="text-slate-50 font-bold text-xl md:text-2xl tracking-wide">
                             {edu.title}
