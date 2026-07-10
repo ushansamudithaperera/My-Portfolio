@@ -100,12 +100,14 @@ export function PipelineBranch({
       {/* Inner trace line */}
       <div className="absolute w-full h-[2px] bg-emerald-400/60 shadow-[0_0_12px_rgba(0,230,160,0.8)]" />
 
-      {/* Data packets traveling INSIDE the branch channel */}
+      {/* Data packets: both use `left` — right side goes 0→100%, left side goes 100%→0% */}
       <motion.div
         className="absolute top-1/2 -translate-y-1/2 w-[12px] h-[6px] rounded-full
                    bg-[#00e6a0] shadow-[0_0_12px_rgba(0,230,160,0.9)] z-10"
         animate={{
-          left: isLeft ? ['100%', '-12px'] : ['-12px', '100%'],
+          left: isLeft
+            ? ['calc(100% - 12px)', '-12px']   // start at right/center, move to left/panel
+            : ['-12px', 'calc(100% - 12px)'],  // start at left/center, move to right/panel
         }}
         transition={{
           duration: 1.8,
@@ -118,7 +120,9 @@ export function PipelineBranch({
         className="absolute top-1/2 -translate-y-1/2 w-[12px] h-[6px] rounded-full
                    bg-[#00e6a0] shadow-[0_0_12px_rgba(0,230,160,0.9)] z-10"
         animate={{
-          left: isLeft ? ['100%', '-12px'] : ['-12px', '100%'],
+          left: isLeft
+            ? ['calc(100% - 12px)', '-12px']
+            : ['-12px', 'calc(100% - 12px)'],
         }}
         transition={{
           duration: 1.8,

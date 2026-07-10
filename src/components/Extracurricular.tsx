@@ -31,10 +31,10 @@ const activitiesData = [
 export default function Extracurricular() {
   return (
     <section className="relative w-full max-w-6xl mx-auto py-24 px-4 sm:px-6" id="extracurricular">
-      
+
       {/* ── Central Pipeline ── */}
       <div className="absolute left-1/2 top-0 bottom-0 w-1.5 bg-emerald-500/80 shadow-[0_0_15px_rgba(0,255,170,0.8)] -translate-x-1/2 z-0" />
-      
+
       {/* ── Section Header ── */}
       <div className="text-center mb-16 relative z-10 bg-slate-950/60 backdrop-blur-md py-4 rounded-3xl border border-slate-800/50 inline-block left-1/2 -translate-x-1/2 px-10">
         <motion.h2
@@ -73,7 +73,7 @@ export default function Extracurricular() {
 
               {/* ── Card Header & Thumbnail ── */}
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-8 border-b border-slate-800/80 pb-6">
-                
+
                 {/* Glowing Thumbnail */}
                 <div className="relative w-20 h-20 shrink-0 bg-[#060a13] border border-slate-700/80 rounded-2xl flex items-center justify-center shadow-inner overflow-hidden group-hover:scale-105 transition-transform duration-300">
                   {/* Internal grid pattern */}
@@ -84,7 +84,7 @@ export default function Extracurricular() {
                   <div className={`absolute inset-0 blur-xl opacity-20 group-hover:opacity-40 transition-opacity ${activity.color}`} />
                   <Icon size={36} className={`relative z-10 ${activity.color} drop-shadow-[0_0_10px_currentColor]`} />
                 </div>
-                
+
                 {/* Title & Organization */}
                 <div>
                   <h3 className="text-xl md:text-2xl font-bold text-white tracking-wide group-hover:text-emerald-300 transition-colors">
