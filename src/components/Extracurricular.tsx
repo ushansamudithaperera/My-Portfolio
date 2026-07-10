@@ -33,18 +33,19 @@ export default function Extracurricular() {
     <section className="relative w-full max-w-6xl mx-auto py-24 px-4 sm:px-6" id="extracurricular">
 
 
-      {/* ── Section Header ── */}
-      <div className="flex flex-col items-center justify-center py-4 px-10 bg-[#0a0f16]/90 backdrop-blur-md border border-white/10 rounded-2xl mx-auto max-w-fit mb-12 z-10 relative">
-        <h2 className="text-2xl md:text-3xl font-bold tracking-[0.2em] text-white uppercase text-center">
-          EXTRA-CURRICULAR PANEL
-        </h2>
-        <p className="mt-2 text-xs md:text-sm text-slate-400 font-mono tracking-[0.1em] uppercase text-center">
-          STEP 6: COMMUNITY & LEADERSHIP
-        </p>
-      </div>
+      <div className="relative w-full max-w-5xl mx-auto bg-[#0a0f16]/40 backdrop-blur-md border border-white/10 rounded-3xl p-6 md:p-10 shadow-[0_0_30px_rgba(52,211,153,0.05)] z-10">
+        {/* Inside Header */}
+        <div className="flex flex-col items-center justify-center mb-12 w-full">
+          <h2 className="text-2xl md:text-3xl font-bold tracking-[0.2em] text-white uppercase text-center mb-2">
+            EXTRA-CURRICULAR PANEL
+          </h2>
+          <p className="text-xs md:text-sm text-slate-400 font-mono tracking-[0.1em] uppercase text-center">
+            STEP 6: COMMUNITY & LEADERSHIP
+          </p>
+        </div>
 
-      {/* ── Cards Container ── */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 relative z-10">
+        {/* ── Cards Container ── */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
         {activitiesData.map((activity, idx) => {
           const Icon = activity.icon;
           return (
@@ -99,6 +100,7 @@ export default function Extracurricular() {
             </motion.div>
           );
         })}
+      </div>
       </div>
     </section>
   );
