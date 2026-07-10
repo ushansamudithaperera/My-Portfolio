@@ -14,16 +14,15 @@ export function CentralPipelineBackground() {
 
 /* ═══════════════════════════════════════════════════════════════════════
  * CENTRAL PIPELINE — Trace Layer (z-[1])
- * (Fixed: NO solid lines at all. Only the borders and the data packets)
+ * (Super Smooth & Slow pacing for a professional, non-distracting look)
  * ═══════════════════════════════════════════════════════════════════════ */
 
-const FALL_DURATION = 12; // පරණ Normal Speed එකමයි
-const NUM_PACKETS = 15;   // Packets ගාණ වැඩි කරලා තියෙන්නේ (ළඟින් ළඟින් යන්න)
+const FALL_DURATION = 25; // ගොඩක් හෙමින් පල්ලෙහාට යන්න කාලය වැඩි කළා
+const NUM_PACKETS = 6;    // Packets ගාණ 15 ඉඳන් 6 ට අඩු කළා කරදරයක් නොවෙන්න
 const INTERVAL = FALL_DURATION / NUM_PACKETS;
 
 export function CentralPipelineTrace() {
   return (
-    // මෙතන ඇතුලේ කිසිම Background Color එකක් හරි Static line එකක් හරි නෑ. හිස් ටියුබ් එකක්.
     <div className="w-[24px] h-full flex justify-center relative pointer-events-none
                     border-x-[2px] border-emerald-500/40 overflow-hidden">
 
@@ -31,7 +30,6 @@ export function CentralPipelineTrace() {
       {Array.from({ length: NUM_PACKETS }, (_, i) => (
         <motion.div
           key={`vp-${i}`}
-          // Data packet එකේ හැඩය
           className="absolute left-1/2 -translate-x-1/2 w-[6px] h-[16px] rounded-full
                      bg-emerald-400 shadow-[0_0_15px_rgba(52,211,153,1)] z-20"
           animate={{ top: ['-5%', '105%'] }}
@@ -92,7 +90,7 @@ export function PipelineBranch({
           transformOrigin: isLeft ? 'right' : 'left',
         }}
       >
-        {/* Inner faint track line (very low opacity so it doesn't look like a solid bar) */}
+        {/* Inner faint track line */}
         <div className="absolute inset-0 flex items-center">
           <div className="w-full h-[2px] bg-emerald-400/20" />
         </div>
@@ -103,7 +101,7 @@ export function PipelineBranch({
         className="absolute inset-0 overflow-hidden"
         style={{ opacity }}
       >
-        {/* Packet 1 */}
+        {/* Packet 1 (Only ONE packet per branch now to reduce visual noise) */}
         <motion.div
           className="absolute top-1/2 -translate-y-1/2 w-[12px] h-[6px] rounded-full
                      bg-emerald-400 shadow-[0_0_15px_rgba(52,211,153,1)] z-10"
@@ -111,24 +109,10 @@ export function PipelineBranch({
             left: isLeft ? ['100%', '-10%'] : ['-10%', '100%'],
           }}
           transition={{
-            duration: 1.8,
+            duration: 4.5, // Main pipeline එකේ speed එකට සමාන වෙන්න හෙමින් යැව්වා
             repeat: Infinity,
             ease: 'linear',
-            delay: 0.3,
-          }}
-        />
-        {/* Packet 2 */}
-        <motion.div
-          className="absolute top-1/2 -translate-y-1/2 w-[12px] h-[6px] rounded-full
-                     bg-emerald-400 shadow-[0_0_15px_rgba(52,211,153,1)] z-10"
-          animate={{
-            left: isLeft ? ['100%', '-10%'] : ['-10%', '100%'],
-          }}
-          transition={{
-            duration: 1.8,
-            repeat: Infinity,
-            ease: 'linear',
-            delay: 1.2,
+            delay: 0,
           }}
         />
       </motion.div>
