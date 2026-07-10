@@ -1,11 +1,13 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { FaUserGraduate, FaUniversity } from 'react-icons/fa';
 
 const educationData = [
   {
     id: 1,
     title: 'BSc (Hons) in Electronics and Computer Science',
+    icon: FaUserGraduate,
     stream: null,
     institution: 'UNIVERSITY OF KELANIYA (FACULTY OF SCIENCE)',
     badge: '2023 - PRESENT (EXPECTED 2027)',
@@ -15,6 +17,7 @@ const educationData = [
   {
     id: 2,
     title: 'G.C.E. Advanced Level',
+    icon: FaUniversity,
     stream: 'Physical Science (Maths Stream)',
     institution: 'R/NEWTOWN PRINCE COLLEGE',
     badge: '2021 (2022)',
@@ -28,10 +31,15 @@ const educationData = [
   {
     id: 3,
     title: 'G.C.E. Ordinary Level',
+    icon: FaUniversity,
     stream: null,
     institution: 'R/ANANDA VIDYALAYA',
     badge: '2017',
-    details: "Passed all subjects with excellent standing (3 A's, 4 B's, 3 C's)",
+    details: (
+      <>
+        Passed all subjects with excellent standing (<span className="text-emerald-400 font-medium">3 A&apos;s, 4 B&apos;s, 3 C&apos;s</span>)
+      </>
+    ),
     bullets: [],
   },
 ];
@@ -90,6 +98,7 @@ export default function Education() {
             
             {educationData.map((edu, idx) => {
               const isLast = idx === educationData.length - 1;
+              const Icon = edu.icon;
               return (
                 <motion.div key={edu.id} className="relative group" variants={itemVariants}>
                   
@@ -122,52 +131,68 @@ export default function Education() {
                     {/* Subtle inner glow */}
                     <div className="absolute inset-0 bg-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
-                    {/* Title */}
-                    <h3 className="text-xl md:text-2xl font-bold text-white tracking-wide group-hover:text-emerald-300 transition-colors mb-2">
-                      {edu.title}
-                    </h3>
-                    
-                    {/* Stream (if any) */}
-                    {edu.stream && (
-                      <h4 className="text-emerald-400/90 text-sm md:text-base font-medium tracking-wide mb-3 drop-shadow-[0_0_8px_rgba(52,211,153,0.3)]">
-                        {edu.stream}
-                      </h4>
-                    )}
-                    
-                    {/* Glowing Emerald Institution */}
-                    <h4 className="text-emerald-400 text-sm md:text-base font-bold tracking-wide uppercase drop-shadow-[0_0_8px_rgba(52,211,153,0.6)] mb-4">
-                      {edu.institution}
-                    </h4>
-                    
-                    <div className="w-full h-px bg-slate-700/60 my-4" />
-                    
-                    {/* Glassmorphism Badge */}
-                    <div className="flex items-start mb-4">
-                      <span className="inline-block bg-white/5 border border-white/10 px-3 py-1.5 rounded-md text-emerald-400 font-mono text-sm tracking-wider drop-shadow-[0_0_8px_rgba(52,211,153,0.3)] uppercase">
-                        {edu.badge}
-                      </span>
+                    {/* ── Flex Layout (Header & Date) ── */}
+                    <div className="flex flex-col md:flex-row md:justify-between items-start gap-4 mb-4">
+                      
+                      {/* Left Side: Title, Stream, Institution */}
+                      <div className="flex-1 flex flex-col gap-2">
+                        <div className="flex items-center gap-3">
+                          <div className="p-2 rounded-lg bg-emerald-500/10 border border-emerald-500/20 shrink-0">
+                            <Icon className="text-emerald-400 text-xl" />
+                          </div>
+                          <h3 className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400 font-bold text-xl md:text-2xl tracking-wide group-hover:from-emerald-300 group-hover:to-cyan-300 transition-all duration-300">
+                            {edu.title}
+                          </h3>
+                        </div>
+                        
+                        {/* Stream (if any) */}
+                        {edu.stream && (
+                          <h4 className="text-emerald-400/80 text-sm md:text-base font-medium tracking-wide drop-shadow-[0_0_8px_rgba(52,211,153,0.2)] ml-14">
+                            {edu.stream}
+                          </h4>
+                        )}
+                        
+                        {/* Glowing Emerald Institution */}
+                        <h4 className="text-emerald-500/90 text-sm md:text-base tracking-wider uppercase font-semibold ml-14 mt-1">
+                          {edu.institution}
+                        </h4>
+                      </div>
+
+                      {/* Right Side: Premium Date Badge */}
+                      <div className="shrink-0 md:pl-4 self-start ml-14 md:ml-0 mt-2 md:mt-1">
+                        <span className="px-3 py-1 text-xs font-mono text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 rounded-full shadow-[0_0_10px_rgba(52,211,153,0.15)] inline-block">
+                          {edu.badge}
+                        </span>
+                      </div>
+                      
                     </div>
                     
-                    {/* Simple Text Details */}
-                    {edu.details && (
-                      <p className="text-sm md:text-base text-slate-300 leading-relaxed mt-4">
-                        {edu.details}
-                      </p>
-                    )}
+                    <div className="w-full h-px bg-slate-700/60 my-5 ml-0 md:ml-14 max-w-full md:max-w-[calc(100%-3.5rem)]" />
+                    
+                    <div className="ml-0 md:ml-14">
+                      {/* Simple Text Details with Highlights */}
+                      {edu.details && (
+                        <p className="text-sm md:text-base text-slate-300 leading-relaxed">
+                          {edu.details}
+                        </p>
+                      )}
 
-                    {/* Glowing Sub-badges / Bullets */}
-                    {edu.bullets && edu.bullets.length > 0 && (
-                      <div className="flex flex-wrap gap-3 mt-4">
-                        {edu.bullets.map((bullet, i) => (
-                          <span 
-                            key={i} 
-                            className="px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-sm font-medium shadow-[0_0_10px_rgba(52,211,153,0.1)]"
-                          >
-                            {bullet}
-                          </span>
-                        ))}
-                      </div>
-                    )}
+                      {/* Glowing Sleek Glassmorphism Pills */}
+                      {edu.bullets && edu.bullets.length > 0 && (
+                        <div className="flex flex-wrap gap-3 mt-4">
+                          {edu.bullets.map((bullet, i) => (
+                            <span 
+                              key={i} 
+                              className="px-4 py-1.5 text-sm bg-[#0a0e14]/50 border border-white/5 rounded-full flex items-center gap-2 text-slate-300 hover:border-emerald-500/40 transition-colors shadow-[0_0_10px_rgba(0,0,0,0.2)] hover:shadow-[0_0_15px_rgba(52,211,153,0.15)]"
+                            >
+                              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500/80 shadow-[0_0_8px_rgba(0,255,170,0.8)] shrink-0" />
+                              {bullet}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                    
                   </div>
                 </motion.div>
               );
