@@ -98,21 +98,21 @@ export default function Projects() {
   return (
     <section className="relative w-full max-w-6xl mx-auto py-24 px-4 sm:px-6" id="projects">
       
-      {/* ── Section Header ── */}
-      <div className="flex flex-col items-center justify-center py-4 px-10 bg-[#0a0f16]/90 backdrop-blur-md border border-white/10 rounded-2xl mx-auto max-w-fit mb-12 z-10 relative">
-        <h2 className="text-2xl md:text-3xl font-bold tracking-[0.2em] text-white uppercase text-center">
-          PROJECTS PANEL
-        </h2>
-        <p className="mt-2 text-xs md:text-sm text-slate-400 font-mono tracking-[0.1em] uppercase text-center">
-          STEP 4: DEPLOY & PRODUCTION
-        </p>
-      </div>
-
       {/* ── Main Container (Like Image Reference) ── */}
       <div className="relative bg-[#141923]/60 border border-[#00ffaa]/20 rounded-[2.5rem] p-6 md:p-10 shadow-[0_0_20px_rgba(0,255,170,0.15)] backdrop-blur-xl">
         
         {/* Subtle inner background glow */}
         <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 via-transparent to-blue-500/5 rounded-[2.5rem] pointer-events-none" />
+
+        {/* ── Section Header ── */}
+        <div className="relative z-20 flex flex-col items-center justify-center">
+          <h2 className="text-2xl md:text-3xl font-bold tracking-[0.2em] text-white uppercase text-center mb-2">
+            PROJECTS PANEL
+          </h2>
+          <p className="text-xs md:text-sm text-slate-400 font-mono tracking-[0.1em] uppercase text-center mb-10">
+            STEP 4: DEPLOY & PRODUCTION
+          </p>
+        </div>
 
         {/* ── 3x2 Grid ── */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
