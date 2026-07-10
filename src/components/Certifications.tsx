@@ -126,8 +126,8 @@ export default function Certifications() {
         <div className="w-full overflow-hidden relative">
           
           {/* Left/Right Fade Gradients for smooth marquee entry/exit */}
-          <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-[#141923] to-transparent z-20 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-[#141923] to-transparent z-20 pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-8 md:w-32 bg-gradient-to-r from-[#141923] to-transparent z-20 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-8 md:w-32 bg-gradient-to-l from-[#141923] to-transparent z-20 pointer-events-none" />
 
           {/* Marquee Track */}
           <div 
