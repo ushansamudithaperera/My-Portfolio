@@ -38,7 +38,7 @@ export default function Hero() {
       >
         {/* ── Left Side (Content) ── */}
         <motion.div
-          className="flex-1 flex flex-col items-center md:items-start text-center md:text-left"
+          className="flex-1 flex flex-col items-center md:items-start text-center md:text-left justify-between h-full self-stretch"
           variants={itemVariants}
         >
           <div className="inline-flex items-center px-3 py-1 mb-4 border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 font-mono text-xs md:text-sm rounded-full shadow-[0_0_15px_rgba(52,211,153,0.2)]">Hi, I'm</div>
@@ -63,13 +63,13 @@ export default function Hero() {
             />
           </h2>
 
-          <div className="text-center md:text-left mb-10 max-w-xl">
-            <p className="text-slate-300 text-base md:text-lg leading-relaxed mb-6">
+          <div className="text-center md:text-left mb-10 max-w-xl flex-1 flex flex-col w-full">
+            <p className="mt-3 mb-8 md:mb-auto text-[13px] md:text-sm text-slate-300 leading-relaxed">
               Passionate about building scalable automated software systems, modern web applications, and exploring the depths of cloud infrastructure, artificial intelligence and internet of things.
             </p>
-            <div className="p-5 md:p-6 rounded-xl bg-[#030508]/40 border border-white/5 shadow-[inset_0_4px_20px_rgba(0,0,0,0.5)] mb-8">
+            <div className="p-5 md:p-6 rounded-xl bg-[#030508]/40 border border-white/5 shadow-[inset_0_4px_20px_rgba(0,0,0,0.5)] mb-6 transition-all duration-300 hover:border-emerald-500/20 hover:shadow-[0_0_20px_rgba(52,211,153,0.1)] hover:-translate-y-1 group">
               <h3 className="text-emerald-400 font-semibold tracking-wider uppercase text-sm mb-3">About Me</h3>
-              <p className="text-slate-400 text-sm md:text-base leading-relaxed">
+              <p className="text-[13px] md:text-sm text-slate-400 leading-relaxed group-hover:text-slate-300 transition-colors duration-300">
                 BSc (Hons) in Electronics and Computer Science undergraduate with hands-on experience building real-time secure networks and AI-integrated platforms. Seeking a technical internship to utilize expertise in Software Engineering, API development, AI & ML and DevOps practices within a fast-paced technology environment.
               </p>
             </div>
