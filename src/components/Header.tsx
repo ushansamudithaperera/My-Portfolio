@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence, useMotionValueEvent, useScroll } from 'framer-motion';
@@ -40,11 +40,6 @@ function Logo() {
         <span className="font-extrabold text-sm tracking-[0.2em] bg-gradient-to-r from-primary-400 via-primary-300 to-cyan-400 bg-clip-text text-transparent ml-[0.2em]">
           Ushan Perera
         </span>
-        {/* Tiny theme-swap dot indicator */}
-        <span
-          className="absolute -top-1 -right-1 w-2 h-2 rounded-full border border-[#0a0e14] transition-colors duration-500"
-          style={{ backgroundColor: isBlue ? '#22d3ee' : 'rgb(var(--color-accent-r) var(--color-accent-g) var(--color-accent-b))' }}
-        />
       </motion.button>
 
       {/* Wordmark — still navigates home */}

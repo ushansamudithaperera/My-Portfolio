@@ -1,7 +1,11 @@
-﻿import { FaGithub, FaLinkedin, FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
+'use client';
+
+import { FaGithub, FaLinkedin, FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
+import { useTheme } from './ThemeProvider';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const { toggleTheme } = useTheme();
 
   return (
     <footer className="relative w-full border-t border-white/10 bg-[#0a0e14]/40 backdrop-blur-2xl pt-16 pb-8 z-20">
@@ -13,16 +17,19 @@ export default function Footer() {
           {/* Column 1: Brand */}
           <div className="flex flex-col gap-4">
             <div>
-              <div className="flex items-center gap-3 mb-4 group cursor-pointer w-fit">
-                {/* USP Monogram Icon matching the header */}
-                <div className="relative flex items-center justify-center px-2.5 h-8 rounded-lg border-[2px] border-primary-400/50 shadow-[0_0_15px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.3)] bg-emerald-950/20 group-hover:border-primary-400 transition-colors duration-300">
+              <div className="flex items-center gap-3 mb-4 w-fit">
+                {/* Theme Toggle Logo — click to swap theme */}
+                <button
+                  onClick={toggleTheme}
+                  title="Toggle theme"
+                  className="relative flex items-center justify-center px-2.5 h-8 rounded-lg border-[2px] cursor-pointer
+                             border-primary-400/50 shadow-[0_0_15px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.3)]
+                             bg-primary-900/20 hover:border-primary-400 transition-all duration-300"
+                >
                   <span className="font-extrabold text-sm tracking-[0.2em] bg-gradient-to-r from-primary-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent ml-[0.2em]">
                     Ushan Perera
                   </span>
-                </div>
-                <span className="text-xl md:text-2xl font-bold tracking-[0.3em] text-white uppercase group-hover:text-white transition-colors duration-300">
-
-                </span>
+                </button>
               </div>
               <p className="text-slate-400 text-sm mt-4 leading-relaxed max-w-sm">
                 Computer Science Undergraduate | DevOps & SRE Enthusiast
