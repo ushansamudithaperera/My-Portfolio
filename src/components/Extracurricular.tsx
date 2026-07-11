@@ -54,7 +54,7 @@ export default function Extracurricular() {
                 key={idx}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "50px" }}
                 transition={{ duration: 0.6, delay: idx * 0.2 }}
                 className="relative group w-full"
               >

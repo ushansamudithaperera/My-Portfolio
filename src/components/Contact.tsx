@@ -12,7 +12,7 @@ export default function Contact() {
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
+        viewport={{ once: true, margin: "50px" }}
         transition={{ duration: 0.6 }}
         className="relative bg-[#141923]/60 border border-[#00ffaa]/20 rounded-3xl p-6 md:p-10 shadow-[0_0_20px_rgba(0,255,170,0.15)] backdrop-blur-xl z-10"
       >

@@ -252,7 +252,7 @@ function NeuralPanel({ title, techs, index }: { title: string, techs: any[], ind
                 <motion.div
                   initial={{ scale: 0, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, margin: "50px" }}
                   transition={{ type: "spring", stiffness: 200, delay: 0.2 + (i * 0.1) }}
                   className="relative flex flex-col items-center justify-center group"
                 >

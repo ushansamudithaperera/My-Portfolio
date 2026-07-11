@@ -74,7 +74,7 @@ export function PipelineBranch({
     /* Outer wrapper */
     <div
       ref={ref}
-      className="absolute top-1/2 -translate-y-1/2 h-[24px] -z-10"
+      className="absolute top-1/2 -translate-y-1/2 h-[24px] -z-10 hidden md:block"
       style={{
         width,
         [isLeft ? 'right' : 'left']: attachEdge,

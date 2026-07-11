@@ -83,7 +83,7 @@ export default function Education() {
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true }}
+        viewport={{ once: true, margin: "50px" }}
       >
         {/* Panel Header */}
         <div className="text-center mb-12">

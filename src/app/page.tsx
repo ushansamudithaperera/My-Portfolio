@@ -34,17 +34,17 @@ export default function Home() {
       */}
       <div className="relative w-full z-10">
         {/* Pipeline Background (z-0) — lowest layer */}
-        <div className="absolute top-0 bottom-0 left-6 md:left-1/2 -translate-x-1/2 z-0 pointer-events-none opacity-30 md:opacity-100">
+        <div className="absolute top-0 bottom-0 left-6 md:left-1/2 -translate-x-1/2 z-0 pointer-events-none opacity-100">
           <CentralPipelineBackground />
         </div>
 
         {/* Pipeline Trace + Packets (z-[1]) — behind content, visible in gaps */}
-        <div className="absolute top-0 bottom-0 left-6 md:left-1/2 -translate-x-1/2 z-[1] pointer-events-none opacity-50 md:opacity-100">
+        <div className="absolute top-0 bottom-0 left-6 md:left-1/2 -translate-x-1/2 z-[1] pointer-events-none opacity-100">
           <CentralPipelineTrace />
         </div>
 
         {/* All content sections (z-[2]) — sit ABOVE the pipeline */}
-        <div className="relative z-[2]">
+        <div className="relative z-[2] pl-12 sm:pl-16 md:pl-0">
           <Hero />
           <Education />
           <Skills />
