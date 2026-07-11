@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 import Projects from "@/components/Projects";
 import Certifications from "@/components/Certifications";
 import Extracurricular from "@/components/Extracurricular";
-import { CentralPipelineBackground, CentralPipelineTrace } from "@/components/Pipeline";
+import { CentralPipelineBackground, CentralPipelineTrace, MobileConnector } from "@/components/Pipeline";
 
 export default function Home() {
   return (
@@ -45,13 +45,13 @@ export default function Home() {
 
         {/* All content sections (z-[2]) — sit ABOVE the pipeline */}
         <div className="relative z-[2] pl-12 sm:pl-16 md:pl-0">
-          <Hero />
-          <Education />
-          <Skills />
-          <Projects />
-          <Certifications />
-          <Extracurricular />
-          <Contact />
+          <div className="relative"><Hero /></div>
+          <div className="relative"><MobileConnector /><Education /></div>
+          <div className="relative"><MobileConnector /><Skills /></div>
+          <div className="relative"><MobileConnector /><Projects /></div>
+          <div className="relative"><MobileConnector /><Certifications /></div>
+          <div className="relative"><MobileConnector /><Extracurricular /></div>
+          <div className="relative"><MobileConnector /><Contact /></div>
         </div>
       </div>
 

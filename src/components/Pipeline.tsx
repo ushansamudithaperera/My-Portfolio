@@ -12,6 +12,15 @@ export function CentralPipelineBackground() {
   );
 }
 
+export function MobileConnector() {
+  return (
+    <div className="absolute top-[160px] left-[-24px] sm:left-[-40px] w-[24px] sm:w-[40px] h-[2px] md:hidden z-0 flex items-center pointer-events-none">
+      <div className="w-full h-[2px] bg-emerald-500/50 shadow-[0_0_10px_rgba(52,211,153,0.5)]" />
+      <div className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.8)] -ml-1 z-10" />
+    </div>
+  );
+}
+
 /* ═══════════════════════════════════════════════════════════════════════
  * CENTRAL PIPELINE — Trace Layer (z-[1])
  * (Super Smooth & Slow pacing for a professional, non-distracting look)

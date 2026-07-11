@@ -46,7 +46,7 @@ const educationData = [
     badge: '2017',
     details: 'Passed all subjects with excellent standing',
     bullets: [
-      "3 A's",
+      "2 A's",
       "4 B's",
       "3 C's"
     ],
@@ -194,16 +194,16 @@ export default function Education() {
 
                       {/* Result Pills */}
                       {edu.bullets && edu.bullets.length > 0 && (
-                        <div className="flex flex-wrap gap-3">
+                        <div className="flex flex-col gap-2">
                           {edu.bullets.map((bullet, i) => (
-                            <span
+                            <div
                               key={i}
-                              className="px-3 py-1 md:px-4 md:py-1.5 text-sm bg-[#0a0e14]/50 border border-white/5 rounded-full flex items-center gap-2 text-slate-300 hover:border-emerald-500/40 transition-colors shadow-[0_0_10px_rgba(0,0,0,0.2)] font-medium"
+                              className="px-3 py-2 md:px-4 md:py-2.5 text-sm bg-[#0a0e14]/50 border border-white/5 rounded-xl flex items-center gap-3 text-slate-300 hover:border-emerald-500/40 transition-colors shadow-[0_0_10px_rgba(0,0,0,0.2)] font-medium w-full"
                             >
                               {/* Tiny Emerald Accent */}
                               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500/80 shadow-[0_0_8px_rgba(0,255,170,0.8)] shrink-0" />
                               {bullet}
-                            </span>
+                            </div>
                           ))}
                         </div>
                       )}
