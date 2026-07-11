@@ -6,7 +6,7 @@ import { motion, AnimatePresence, useMotionValueEvent, useScroll } from 'framer-
 /* ─── Navigation Config ──────────────────────────────────────────── */
 
 const NAV_LINKS = [
-  { name: 'BIO', href: '#about' },
+  { name: 'BIO', href: '#home' },
   { name: 'EDUCATION', href: '#education' },
   { name: 'SKILLS', href: '#skills' },
   { name: 'PROJECTS', href: '#projects' },
@@ -320,7 +320,7 @@ export default function Header() {
 
   // Intersection Observer for active section tracking
   const updateActiveSection = useCallback(() => {
-    const sectionIds = ['home', 'about', 'education', 'skills', 'projects', 'extra', 'contact'];
+    const sectionIds = ['home', 'education', 'skills', 'projects', 'extra', 'contact'];
     const sections = sectionIds
       .map((id) => document.getElementById(id))
       .filter(Boolean) as HTMLElement[];
@@ -335,8 +335,7 @@ export default function Header() {
       }
     }
 
-    // Map 'about' to show BIO as active
-    if (current === 'about') current = 'about';
+    // Removed mapping for 'about' as it now points to 'home'
     setActiveSection(current);
   }, []);
 

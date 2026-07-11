@@ -12,20 +12,10 @@ export function CentralPipelineBackground() {
   );
 }
 
-export function MobileConnector() {
-  return (
-    <div className="absolute top-[160px] left-[-24px] sm:left-[-40px] w-[24px] sm:w-[40px] h-[2px] md:hidden z-0 flex items-center pointer-events-none">
-      <div className="w-full h-[2px] bg-emerald-500/50 shadow-[0_0_10px_rgba(52,211,153,0.5)]" />
-      <div className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.8)] -ml-1 z-10" />
-    </div>
-  );
-}
-
 /* ═══════════════════════════════════════════════════════════════════════
  * CENTRAL PIPELINE — Trace Layer (z-[1])
  * (Super Smooth & Slow pacing for a professional, non-distracting look)
  * ═══════════════════════════════════════════════════════════════════════ */
-
 const FALL_DURATION = 25; // ගොඩක් හෙමින් පල්ලෙහාට යන්න කාලය වැඩි කළා
 const NUM_PACKETS = 6;    // Packets ගාණ 15 ඉඳන් 6 ට අඩු කළා කරදරයක් නොවෙන්න
 const INTERVAL = FALL_DURATION / NUM_PACKETS;
@@ -55,7 +45,8 @@ export function CentralPipelineTrace() {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
- * PIPELINE BRANCH — Horizontal connector
+ * HORIZONTAL PIPELINE BRANCH
+ * Animates from the center spine out to the cards when they scroll into view.
  * ═══════════════════════════════════════════════════════════════════════ */
 export function PipelineBranch({
   direction = 'left',
@@ -83,7 +74,7 @@ export function PipelineBranch({
     /* Outer wrapper */
     <div
       ref={ref}
-      className="absolute top-1/2 -translate-y-1/2 h-[24px] -z-10 hidden md:block"
+      className="absolute top-1/2 -translate-y-1/2 h-[24px] -z-10"
       style={{
         width,
         [isLeft ? 'right' : 'left']: attachEdge,

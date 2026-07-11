@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 import Projects from "@/components/Projects";
 import Certifications from "@/components/Certifications";
 import Extracurricular from "@/components/Extracurricular";
-import { CentralPipelineBackground, CentralPipelineTrace, MobileConnector } from "@/components/Pipeline";
+import { CentralPipelineBackground, CentralPipelineTrace } from "@/components/Pipeline";
 
 export default function Home() {
   return (
@@ -34,24 +34,24 @@ export default function Home() {
       */}
       <div className="relative w-full z-10">
         {/* Pipeline Background (z-0) — lowest layer */}
-        <div className="absolute top-0 bottom-0 left-6 md:left-1/2 -translate-x-1/2 z-0 pointer-events-none opacity-100">
+        <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 z-0 pointer-events-none opacity-30 md:opacity-100">
           <CentralPipelineBackground />
         </div>
 
         {/* Pipeline Trace + Packets (z-[1]) — behind content, visible in gaps */}
-        <div className="absolute top-0 bottom-0 left-6 md:left-1/2 -translate-x-1/2 z-[1] pointer-events-none opacity-100">
+        <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 z-[1] pointer-events-none opacity-50 md:opacity-100">
           <CentralPipelineTrace />
         </div>
 
         {/* All content sections (z-[2]) — sit ABOVE the pipeline */}
-        <div className="relative z-[2] pl-12 sm:pl-16 md:pl-0">
-          <div className="relative"><Hero /></div>
-          <div className="relative"><MobileConnector /><Education /></div>
-          <div className="relative"><MobileConnector /><Skills /></div>
-          <div className="relative"><MobileConnector /><Projects /></div>
-          <div className="relative"><MobileConnector /><Certifications /></div>
-          <div className="relative"><MobileConnector /><Extracurricular /></div>
-          <div className="relative"><MobileConnector /><Contact /></div>
+        <div className="relative z-[2]">
+          <Hero />
+          <Education />
+          <Skills />
+          <Projects />
+          <Certifications />
+          <Extracurricular />
+          <Contact />
         </div>
       </div>
 
