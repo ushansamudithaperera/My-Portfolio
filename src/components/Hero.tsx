@@ -41,7 +41,7 @@ export default function Hero() {
           className="flex-1 flex flex-col items-center md:items-start text-center md:text-left"
           variants={itemVariants}
         >
-          <span className="text-emerald-400 text-sm md:text-base font-mono tracking-wider mb-2 block">Hi, I'm</span>
+          <div className="inline-flex items-center px-3 py-1 mb-4 border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 font-mono text-xs md:text-sm rounded-full shadow-[0_0_15px_rgba(52,211,153,0.2)]">Hi, I'm</div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-[0.04em] uppercase mb-4 drop-shadow-md">
             USHAN PERERA
           </h1>
@@ -63,12 +63,12 @@ export default function Hero() {
             />
           </h2>
 
-          <div className="text-slate-400 text-sm md:text-base leading-relaxed max-w-xl mb-10 text-center md:text-left">
-            <p>
+          <div className="text-center md:text-left mb-10 max-w-xl">
+            <p className="text-slate-300 text-base md:text-lg leading-relaxed mb-6">
               Passionate about building scalable automated software systems, modern web applications, and exploring the depths of cloud infrastructure, artificial intelligence and internet of things.
             </p>
-            <h3 className="text-white/80 font-semibold mt-4 mb-1">About Me</h3>
-            <p>
+            <h3 className="text-emerald-400 font-semibold tracking-wider uppercase text-sm mb-2 mt-4">About Me</h3>
+            <p className="text-slate-400 text-sm md:text-base leading-relaxed">
               BSc (Hons) in Electronics and Computer Science undergraduate with hands-on experience building real-time secure networks and AI-integrated platforms. Seeking a technical internship to utilize expertise in Software Engineering, API development, AI & ML and DevOps practices within a fast-paced technology environment.
             </p>
           </div>
@@ -108,28 +108,21 @@ export default function Hero() {
 
         {/* ── Right Side (Image with Animated Border) ── */}
         <motion.div
-          className="relative w-full max-w-[280px] md:max-w-[320px] aspect-square rounded-2xl p-[2px] overflow-visible shrink-0 mx-auto md:mx-0"
+          className="relative w-full max-w-[320px] md:max-w-[380px] aspect-[4/5] md:aspect-square rounded-2xl p-[2px] overflow-hidden group shrink-0 mx-auto md:mx-0"
           variants={itemVariants}
         >
-          {/* Animated Glowing Dot Border */}
-          <motion.div 
-            animate={{ rotate: 360 }} 
-            transition={{ repeat: Infinity, duration: 4, ease: "linear" }} 
-            className="absolute inset-0 z-0 flex items-start justify-center"
-          >
-            <div className="w-3 h-3 bg-emerald-400 rounded-full shadow-[0_0_15px_#34d399] -mt-1.5" />
-          </motion.div>
-
-          {/* Actual Image Container covering the inside */}
-          <div className="relative z-10 w-full h-full bg-[#0a0f16] rounded-2xl overflow-hidden shadow-[0_0_20px_rgba(0,255,170,0.15)] border border-[#141923]">
-            <img
-              src="/me.png"
-              alt="Ushan Perera"
-              className="w-full h-full object-cover object-top"
+          {/* Spinning Light Beam Background */}
+          <div className="absolute inset-[-100%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#0a0f16_0%,#0a0f16_50%,#34d399_100%)]" />
+          
+          {/* Inner Image Mask */}
+          <div className="relative w-full h-full rounded-2xl overflow-hidden bg-[#0a0f16] z-10 flex items-center justify-center">
+            {/* Ensure the img fills the container */}
+            <img 
+              src="/me.png" 
+              alt="Profile" 
+              className="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 transition-opacity duration-500"
               loading="eager"
             />
-            {/* Inner glow on portrait */}
-            <div className="absolute inset-0 bg-gradient-to-t from-emerald-500/20 to-transparent pointer-events-none" />
           </div>
         </motion.div>
       </motion.div>
