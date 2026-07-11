@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState, useRef, useEffect, MouseEvent } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -77,7 +77,7 @@ const projectsData: Project[] = [
       'Built secure RESTful APIs with Spring Boot and optimized MongoDB queries, improving dynamic data retrieval efficiency.'
     ],
     image: '/Travel Commerce.png',
-    githubUrl: undefined,
+    githubUrl: 'https://github.com/ushansamudithaperera/Online-Platform-for-Travel-Based-Commerce',
     demoUrl: 'https://travelcommerce.vercel.app'
   },
   {
@@ -129,7 +129,7 @@ const projectsData: Project[] = [
     ],
     image: '/Creative Design.png',
     githubUrl: 'https://github.com/ushansamudithaperera/Creative-Design-Project',
-    demoUrl: 'https://www.linkedin.com/posts/ushan-perera-16ab952b3_ai-machinelearning-devops-ugcPost-7478136407664795649-qzaW/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEt1r6IBFpvmw_Pp9ai28E1LcuNjQmcgTRQ'
+    demoUrl: 'https://www.linkedin.com/in/ushan-perera-16ab952b3/details/projects/'
   }
 ];
 
