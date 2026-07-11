@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { motion } from 'framer-motion';
 import { PipelineBranch, CentralPipelineBackground, CentralPipelineTrace } from './Pipeline';
@@ -154,7 +154,7 @@ function NeuralPanel({ title, techs, index }: { title: string, techs: any[], ind
 
   return (
     <motion.div
-      className="relative w-full h-[360px] md:h-[400px] bg-[#0f141c]/40 backdrop-blur-[12px] border border-[rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.25)] rounded-[2rem] shadow-[0_8px_32px_rgba(0,0,0,0.3)] p-6 group"
+      className="relative w-full h-[360px] md:h-[400px] bg-[#0f141c]/40 backdrop-blur-sm md:backdrop-blur-[12px] border border-[rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.25)] rounded-[2rem] shadow-[0_8px_32px_rgba(0,0,0,0.3)] p-6 group"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-50px' }}
@@ -258,7 +258,7 @@ function NeuralPanel({ title, techs, index }: { title: string, techs: any[], ind
                 >
                   {/* Reactive Glow Box */}
                   <motion.div
-                    className="w-11 h-11 md:w-12 md:h-12 flex items-center justify-center bg-[#0f141c]/90 backdrop-blur-md border border-[rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.25)] rounded-xl relative z-10 group-hover:scale-110 transition-transform duration-300 cursor-default"
+                    className="w-11 h-11 md:w-12 md:h-12 flex items-center justify-center bg-[#0f141c]/90 backdrop-blur-none md:backdrop-blur-md border border-[rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.25)] rounded-xl relative z-10 group-hover:scale-110 transition-transform duration-300 cursor-default"
                     animate={{
                       boxShadow: [
                         "0 0 15px rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.1)", // Base
@@ -312,7 +312,7 @@ export default function Skills() {
     <section className="relative w-full mx-auto py-24 px-4 sm:px-6 lg:px-8 overflow-hidden" id="skills">
 
       {/* Section Header */}
-      <div className="flex flex-col items-center justify-center py-4 px-10 bg-[#141923]/60 backdrop-blur-xl border border-[var(--color-primary-400)]/20 rounded-2xl shadow-[0_0_20px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.15)] mx-auto max-w-fit mb-12 z-10 relative">
+      <div className="flex flex-col items-center justify-center py-4 px-10 bg-[#141923]/60 backdrop-blur-md md:backdrop-blur-xl border border-[var(--color-primary-400)]/20 rounded-2xl shadow-[0_0_20px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.15)] mx-auto max-w-fit mb-12 z-10 relative">
         <h2 className="text-2xl md:text-3xl font-bold text-white tracking-[0.2em] uppercase text-center">
           SKILLS
         </h2>
