@@ -5,8 +5,8 @@ import { motion } from 'framer-motion';
 export default function Contact() {
   return (
     <section className="relative w-full max-w-4xl mx-auto py-24 px-4 sm:px-6" id="contact">
-      
-      
+
+
       {/* ── Glassmorphism Form Container ── */}
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
@@ -15,18 +15,18 @@ export default function Contact() {
         transition={{ duration: 0.6 }}
         className="relative bg-[#141923]/60 border border-[#00ffaa]/20 rounded-3xl p-6 md:p-10 shadow-[0_0_20px_rgba(0,255,170,0.15)] backdrop-blur-xl z-10"
       >
-        
+
         {/* ── Section Header ── */}
         <div className="relative z-20 flex flex-col items-center justify-center">
           <h2 className="text-2xl md:text-3xl font-bold tracking-[0.2em] text-white uppercase text-center mb-2">
-            CONTACT PANEL
+            CONTACT
           </h2>
           <p className="text-xs md:text-sm text-slate-400 font-mono tracking-[0.1em] uppercase text-center mb-10">
             STEP 7: INITIATE SECURE CONNECTION
           </p>
         </div>
         <form action="https://formspree.io/f/xrevnabz" method="POST" className="space-y-6">
-          
+
           {/* Name Field (Full Width) */}
           <div>
             <label htmlFor="name" className="sr-only">Name</label>
@@ -109,7 +109,7 @@ export default function Contact() {
           </div>
         </div>
       </motion.div>
-      
+
       {/* ── Terminal Node Glow below panel ── */}
       <div className="absolute left-1/2 bottom-0 w-32 h-10 bg-emerald-500/20 blur-3xl -translate-x-1/2 pointer-events-none" />
     </section>

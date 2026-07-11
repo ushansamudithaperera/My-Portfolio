@@ -38,7 +38,7 @@ export default function Extracurricular() {
         {/* Inside Header */}
         <div className="flex flex-col items-center justify-center mb-12 w-full">
           <h2 className="text-2xl md:text-3xl font-bold tracking-[0.2em] text-white uppercase text-center mb-2">
-            EXTRA-CURRICULAR PANEL
+            EXTRA-CURRICULAR
           </h2>
           <p className="text-xs md:text-sm text-slate-400 font-mono tracking-[0.1em] uppercase text-center">
             STEP 6: COMMUNITY & LEADERSHIP
@@ -83,21 +83,21 @@ export default function Extracurricular() {
 
                 {/* ── Inner Card ── */}
                 <div className="bg-[#141923]/60 border border-[#00ffaa]/20 rounded-3xl p-6 md:p-8 shadow-[0_0_20px_rgba(0,255,170,0.15)] backdrop-blur-xl overflow-hidden hover:border-emerald-500/50 transition-colors duration-300 relative">
-                  
+
                   {/* Subtle background glow */}
                   <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
                   {/* ── Card Header (Flex for Date Badge on Right) ── */}
                   <div className="flex flex-col sm:flex-row items-start sm:justify-between gap-6 mb-8 border-b border-slate-800/80 pb-6 relative z-10">
-                    
+
                     {/* Left Side: Thumbnail, Title, Org */}
                     <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
                       {/* Glowing Thumbnail */}
                       <div className={`relative w-16 h-16 md:w-20 md:h-20 shrink-0 bg-[#0f141c]/90 backdrop-blur-md border rounded-xl flex items-center justify-center overflow-hidden group-hover:scale-110 transition-transform duration-300 ${activity.glowClass}`}>
-                        <img 
-                          src={activity.imgSrc} 
+                        <img
+                          src={activity.imgSrc}
                           alt={activity.organization}
-                          className={`relative z-10 w-[70%] h-[70%] object-contain mix-blend-screen ${activity.dropShadowClass}`} 
+                          className={`relative z-10 w-[70%] h-[70%] object-contain mix-blend-screen ${activity.dropShadowClass}`}
                         />
                       </div>
 

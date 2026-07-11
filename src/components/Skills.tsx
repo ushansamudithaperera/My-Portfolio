@@ -314,7 +314,7 @@ export default function Skills() {
       {/* Section Header */}
       <div className="flex flex-col items-center justify-center py-4 px-10 bg-[#141923]/60 backdrop-blur-xl border border-[#00ffaa]/20 rounded-2xl shadow-[0_0_20px_rgba(0,255,170,0.15)] mx-auto max-w-fit mb-12 z-10 relative">
         <h2 className="text-2xl md:text-3xl font-bold text-white tracking-[0.2em] uppercase text-center">
-          SKILLS ARSENAL
+          SKILLS
         </h2>
         <p className="text-xs md:text-sm text-slate-400 mt-2 font-mono tracking-[0.15em] uppercase text-center">
           Step 3: Technical Capabilities

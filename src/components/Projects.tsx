@@ -146,7 +146,7 @@ export default function Projects() {
   // Auto-scroll logic
   useEffect(() => {
     if (isHovered || isDragging) return;
-    
+
     let animationFrameId: number;
     const scroll = () => {
       if (scrollRef.current) {
@@ -158,7 +158,7 @@ export default function Projects() {
       }
       animationFrameId = requestAnimationFrame(scroll);
     };
-    
+
     animationFrameId = requestAnimationFrame(scroll);
     return () => cancelAnimationFrame(animationFrameId);
   }, [isHovered, isDragging]);
@@ -192,15 +192,15 @@ export default function Projects() {
 
   return (
     <section className="relative w-full max-w-[1400px] mx-auto py-24 px-4 sm:px-6 overflow-hidden" id="projects">
-      
+
       {/* ── Main Glassmorphism Panel ── */}
       <div className="relative z-10 bg-[#141923]/60 backdrop-blur-xl border border-[#00ffaa]/20 rounded-3xl py-12 md:py-16 shadow-[0_0_40px_rgba(0,255,170,0.1)] overflow-hidden">
-        
+
         {/* Section Header */}
         <div className="flex flex-col items-center justify-center mb-16 relative px-4">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-emerald-500/20 blur-[80px] rounded-full pointer-events-none" />
           <h2 className="text-3xl md:text-5xl font-extrabold text-white tracking-[0.2em] uppercase text-center relative z-10">
-            Projects Panel
+            Projects
           </h2>
           <p className="text-slate-400 font-mono text-sm tracking-widest mt-4 uppercase text-center">
             Step 4: Deploy & Production
@@ -209,13 +209,13 @@ export default function Projects() {
 
         {/* ── Continuous Marquee Carousel ── */}
         <div className="w-full overflow-hidden relative">
-          
+
           {/* Left/Right Fade Gradients for smooth marquee entry/exit */}
           <div className="absolute left-0 top-0 bottom-0 w-8 md:w-32 bg-gradient-to-r from-[#141923] to-transparent z-20 pointer-events-none" />
           <div className="absolute right-0 top-0 bottom-0 w-8 md:w-32 bg-gradient-to-l from-[#141923] to-transparent z-20 pointer-events-none" />
 
           {/* Marquee Track */}
-          <div 
+          <div
             ref={scrollRef}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={handleMouseLeave}
@@ -227,7 +227,7 @@ export default function Projects() {
             className={`flex gap-6 w-full overflow-x-auto scrollbar-hide py-4 pr-6 ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
             style={{ scrollBehavior: 'auto', WebkitOverflowScrolling: 'touch' }}
           >
-            
+
             {marqueeProjects.map((project, idx) => (
               <div
                 key={`${project.id}-${idx}`}
@@ -236,9 +236,9 @@ export default function Projects() {
                 {/* ── Card Thumbnail Area ── */}
                 <div className="relative h-56 w-full bg-[#0a101d] overflow-hidden">
                   {/* True Color Image with Scale Hover */}
-                  <img 
-                    src={project.image} 
-                    alt={project.title} 
+                  <img
+                    src={project.image}
+                    alt={project.title}
                     className="relative z-10 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   {/* Bottom fade into card body */}
@@ -250,12 +250,12 @@ export default function Projects() {
                   <h3 className="text-2xl font-bold text-white tracking-wide mb-3 group-hover:text-emerald-300 transition-colors duration-300">
                     {project.title}
                   </h3>
-                  
+
                   {/* Short Description */}
                   <p className="text-slate-400 text-sm leading-relaxed mb-6 line-clamp-3">
                     {project.shortDescription}
                   </p>
-                  
+
                   {/* Tech Tags */}
                   <div className="flex flex-wrap gap-2 mb-8">
                     {project.tags.map((tag) => (
@@ -269,10 +269,10 @@ export default function Projects() {
                   <div className="mt-auto pt-4 flex items-center gap-3 border-t border-slate-800/80">
                     {/* Icon Links */}
                     {project.demoUrl && (
-                      <a 
-                        href={project.demoUrl} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
+                      <a
+                        href={project.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="p-3 rounded-xl bg-emerald-500/10 text-emerald-400 hover:bg-emerald-400 hover:text-slate-900 transition-colors"
                         title="Watch Demo"
                       >
@@ -280,19 +280,19 @@ export default function Projects() {
                       </a>
                     )}
                     {project.githubUrl && (
-                      <a 
-                        href={project.githubUrl} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="p-3 rounded-xl bg-slate-800/80 text-slate-300 hover:bg-white hover:text-slate-900 transition-colors"
                         title="View Source Code"
                       >
                         <FaGithub size={16} />
                       </a>
                     )}
-                    
+
                     {/* View Full Details */}
-                    <button 
+                    <button
                       onClick={() => setSelectedProject(project)}
                       className="flex-grow py-3 rounded-xl text-sm font-semibold tracking-wider text-slate-300 transition-all duration-300 bg-slate-800/50 border border-slate-600/50 hover:bg-emerald-500/10 hover:border-emerald-500/40 hover:text-emerald-300"
                     >
@@ -310,7 +310,7 @@ export default function Projects() {
       <AnimatePresence>
         {selectedProject && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
-            
+
             {/* Overlay backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
@@ -319,7 +319,7 @@ export default function Projects() {
               onClick={() => setSelectedProject(null)}
               className="absolute inset-0 bg-slate-950/80 backdrop-blur-md"
             />
-            
+
             {/* Modal Content (50/50 Split View) */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -329,7 +329,7 @@ export default function Projects() {
               className="relative w-full max-w-6xl h-[85vh] md:h-[75vh] flex flex-col md:flex-row bg-[#0a0e14]/95 backdrop-blur-2xl border border-emerald-500/30 rounded-3xl shadow-[0_0_50px_rgba(0,255,170,0.2)] overflow-hidden"
             >
               {/* Close Button */}
-              <button 
+              <button
                 onClick={() => setSelectedProject(null)}
                 className="absolute top-4 right-4 z-50 p-2.5 text-slate-400 hover:text-white hover:bg-slate-800/80 rounded-full transition-colors backdrop-blur-md"
               >
@@ -338,8 +338,8 @@ export default function Projects() {
 
               {/* Left Side: Image */}
               <div className="w-full md:w-5/12 h-64 md:h-full relative bg-slate-900 shrink-0 border-b md:border-b-0 md:border-r border-slate-800/50">
-                <img 
-                  src={selectedProject.image} 
+                <img
+                  src={selectedProject.image}
                   alt={selectedProject.title}
                   className="absolute inset-0 w-full h-full object-cover"
                 />
@@ -348,11 +348,11 @@ export default function Projects() {
 
               {/* Right Side: Detailed Content */}
               <div className="w-full md:w-7/12 h-full flex flex-col p-6 md:p-10 lg:p-12 overflow-y-auto custom-scrollbar">
-                
+
                 <h3 className="text-3xl md:text-4xl font-extrabold text-white tracking-wide mb-4">
                   {selectedProject.title}
                 </h3>
-                
+
                 <div className="flex flex-wrap gap-2 mb-8">
                   {selectedProject.tags.map((tag) => (
                     <span key={tag} className="text-[11px] font-mono tracking-wider text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1.5 rounded-md">
@@ -373,9 +373,9 @@ export default function Projects() {
                 {/* Modal Footer Actions */}
                 <div className="mt-12 pt-8 border-t border-slate-800/50 flex flex-wrap gap-4">
                   {selectedProject.demoUrl && (
-                    <a 
-                      href={selectedProject.demoUrl} 
-                      target="_blank" 
+                    <a
+                      href={selectedProject.demoUrl}
+                      target="_blank"
                       rel="noopener noreferrer"
                       className="flex-1 flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-semibold tracking-wider text-slate-900 bg-emerald-400 hover:bg-emerald-300 transition-colors shadow-[0_0_20px_rgba(52,211,153,0.3)]"
                     >
@@ -384,9 +384,9 @@ export default function Projects() {
                     </a>
                   )}
                   {selectedProject.githubUrl && (
-                    <a 
-                      href={selectedProject.githubUrl} 
-                      target="_blank" 
+                    <a
+                      href={selectedProject.githubUrl}
+                      target="_blank"
                       rel="noopener noreferrer"
                       className="flex-1 flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-semibold tracking-wider text-slate-300 bg-slate-800/80 hover:bg-slate-700 transition-colors border border-slate-700"
                     >

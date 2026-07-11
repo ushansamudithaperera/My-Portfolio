@@ -91,13 +91,13 @@ export default function Education() {
             variants={itemVariants}
             className="text-2xl md:text-3xl font-bold text-white tracking-[0.2em] uppercase"
           >
-            Education Panel
+            Education
           </motion.h2>
           <motion.p
             variants={itemVariants}
             className="text-xs md:text-sm text-slate-400 mt-2 tracking-[0.15em] font-mono uppercase"
           >
-            Step 2: Degrees & Diplomas
+            Step 2: Universities & Schools
           </motion.p>
         </div>
 
