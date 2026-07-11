@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { motion } from 'framer-motion';
 
@@ -22,10 +22,10 @@ const techPhrases = [
 export default function TechBackground() {
   return (
     <div className="fixed inset-0 z-0 bg-[#05080c] overflow-hidden pointer-events-none flex items-center justify-center">
-      
+
       {/* Subtle Grid/Graph Lines */}
-      <div 
-        className="absolute inset-0 opacity-[0.03]" 
+      <div
+        className="absolute inset-0 opacity-[0.03]"
         style={{
           backgroundImage: `
             linear-gradient(to right, #4ade80 1px, transparent 1px),
@@ -38,9 +38,9 @@ export default function TechBackground() {
       {/* ─── Animated Graph Lines (SVGs) ─── */}
       <div className="absolute inset-0 opacity-[0.06] overflow-hidden pointer-events-none hidden md:block">
         {/* Sine Wave */}
-        <motion.svg 
-          className="absolute top-[20%] w-[200vw] h-[100px]" 
-          viewBox="0 0 2000 100" 
+        <motion.svg
+          className="absolute top-[20%] w-[200vw] h-[100px]"
+          viewBox="0 0 2000 100"
           preserveAspectRatio="none"
           animate={{ x: ["0vw", "-100vw"] }}
           transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
@@ -50,9 +50,9 @@ export default function TechBackground() {
         </motion.svg>
 
         {/* Zigzag Data Line */}
-        <motion.svg 
-          className="absolute top-[60%] w-[200vw] h-[100px]" 
-          viewBox="0 0 2000 100" 
+        <motion.svg
+          className="absolute top-[60%] w-[200vw] h-[100px]"
+          viewBox="0 0 2000 100"
           preserveAspectRatio="none"
           animate={{ x: ["-100vw", "0vw"] }}
           transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
@@ -70,7 +70,7 @@ export default function TechBackground() {
         transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
         style={{ willChange: "transform" }}
       />
-      
+
       {/* Vertical Scanner */}
       <motion.div
         className="absolute top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-cyan-500/10 to-transparent"
@@ -82,7 +82,7 @@ export default function TechBackground() {
       {/* ─── Floating Geometric Tech Shapes ─── */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none hidden md:block">
         {/* Crosshair 1 */}
-        <motion.div 
+        <motion.div
           className="absolute top-[15%] left-[25%] opacity-[0.06] text-primary-400 font-mono text-xl"
           animate={{ rotate: 360, x: [0, 20, 0], y: [0, -20, 0] }}
           transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
@@ -92,7 +92,7 @@ export default function TechBackground() {
         </motion.div>
 
         {/* Crosshair 2 */}
-        <motion.div 
+        <motion.div
           className="absolute top-[75%] left-[75%] opacity-[0.04] text-cyan-400 font-mono text-xl"
           animate={{ rotate: -360, x: [0, -30, 0], y: [0, 20, 0] }}
           transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
@@ -102,7 +102,7 @@ export default function TechBackground() {
         </motion.div>
 
         {/* Concentric Circles */}
-        <motion.div 
+        <motion.div
           className="absolute top-[45%] left-[80%] w-32 h-32 opacity-[0.03] border-[1px] border-primary-400 rounded-full flex items-center justify-center"
           animate={{ scale: [1, 1.2, 1], rotate: [0, 90, 0] }}
           transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
@@ -112,7 +112,7 @@ export default function TechBackground() {
         </motion.div>
 
         {/* Hollow Box */}
-        <motion.div 
+        <motion.div
           className="absolute top-[80%] left-[15%] w-16 h-16 opacity-[0.05] border-[1px] border-cyan-400"
           animate={{ rotate: [0, 180, 360], x: [0, 40, 0] }}
           transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
@@ -166,7 +166,7 @@ export default function TechBackground() {
       <div className="absolute inset-0 hidden md:flex justify-between px-[5vw] opacity-60 pointer-events-none">
         {[...Array(5)].map((_, colIndex) => {
           // Deterministic speed per column
-          const duration = 25 + (colIndex % 3) * 10; 
+          const duration = 25 + (colIndex % 3) * 10;
           return (
             <div key={colIndex} className="relative w-32 h-full overflow-hidden">
               <motion.div
@@ -183,11 +183,10 @@ export default function TechBackground() {
               >
                 {/* Double array to ensure seamless loop */}
                 {[...techPhrases, ...techPhrases].map((phrase, i) => (
-                  <div 
-                    key={i} 
-                    className={`text-[10px] font-mono tracking-widest whitespace-nowrap ${
-                      (i + colIndex) % 2 === 0 ? 'text-primary-500/5' : 'text-white/5'
-                    }`}
+                  <div
+                    key={i}
+                    className={`text-[10px] font-mono tracking-widest whitespace-nowrap ${(i + colIndex) % 2 === 0 ? 'text-primary-500/5' : 'text-white/5'
+                      }`}
                     style={{
                       marginLeft: `${(i % 4) * 8}px`
                     }}

@@ -154,7 +154,8 @@ function NeuralPanel({ title, techs, index }: { title: string, techs: any[], ind
 
   return (
     <motion.div
-      className="relative w-full h-[360px] md:h-[400px] bg-[#0f141c]/40 backdrop-blur-sm md:backdrop-blur-[12px] border border-[rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.25)] rounded-[2rem] shadow-[0_8px_32px_rgba(0,0,0,0.3)] p-6 group"
+      className="relative w-full h-[360px] md:h-[400px] bg-[#0f141c]/95 md:bg-[#0f141c]/40 backdrop-blur-none md:backdrop-blur-[12px] border border-[rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.25)] rounded-[2rem] shadow-sm md:shadow-[0_8px_32px_rgba(0,0,0,0.3)] p-6 group transform-gpu"
+      style={{ willChange: "transform, opacity" }}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-50px' }}
@@ -210,7 +211,8 @@ function NeuralPanel({ title, techs, index }: { title: string, techs: any[], ind
                     strokeWidth="4"
                     strokeLinecap="round"
                     fill="none"
-                    className="drop-shadow-[0_0_8px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),1)]"
+                    className="hidden md:block drop-shadow-[0_0_8px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),1)] transform-gpu"
+                    style={{ willChange: "transform, opacity" }}
                     initial={{ pathLength: 0.05, pathOffset: 0, opacity: 0 }}
                     animate={{ pathOffset: 1, opacity: [0, 1, 1, 0] }}
                     transition={{
@@ -228,8 +230,8 @@ function NeuralPanel({ title, techs, index }: { title: string, techs: any[], ind
           {/* ── Central Core Hub ── */}
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
             <div className="relative flex items-center justify-center w-8 h-8">
-              <div className="absolute inset-0 bg-[var(--color-primary-400)] rounded-full blur-[8px] opacity-70 animate-pulse" />
-              <div className="relative w-4 h-4 bg-primary-300 rounded-full shadow-[0_0_15px_var(--color-primary-400)]" />
+              <div className="absolute inset-0 bg-[var(--color-primary-400)] rounded-full blur-[4px] md:blur-[8px] opacity-70 animate-pulse transform-gpu" style={{ willChange: "transform, opacity" }} />
+              <div className="relative w-4 h-4 bg-primary-300 rounded-full shadow-sm md:shadow-[0_0_15px_var(--color-primary-400)] transform-gpu" />
             </div>
           </div>
 
@@ -254,16 +256,18 @@ function NeuralPanel({ title, techs, index }: { title: string, techs: any[], ind
                   whileInView={{ scale: 1, opacity: 1 }}
                   viewport={{ once: true, margin: "50px" }}
                   transition={{ type: "spring", stiffness: 200, delay: 0.2 + (i * 0.1) }}
-                  className="relative flex flex-col items-center justify-center group"
+                  className="relative flex flex-col items-center justify-center group transform-gpu"
+                  style={{ willChange: "transform, opacity" }}
                 >
                   {/* Reactive Glow Box */}
                   <motion.div
-                    className="w-11 h-11 md:w-12 md:h-12 flex items-center justify-center bg-[#0f141c]/90 backdrop-blur-none md:backdrop-blur-md border border-[rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.25)] rounded-xl relative z-10 group-hover:scale-110 transition-transform duration-300 cursor-default"
+                    className="w-11 h-11 md:w-12 md:h-12 flex items-center justify-center bg-[#0f141c]/95 md:bg-[#0f141c]/90 backdrop-blur-none md:backdrop-blur-md border border-[rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.25)] rounded-xl relative z-10 group-hover:scale-110 transition-transform duration-300 cursor-default transform-gpu"
+                    style={{ willChange: "transform, opacity" }}
                     animate={{
                       boxShadow: [
-                        "0 0 15px rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.1)", // Base
-                        "0 0 30px rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),1)",   // Peak exactly when packet arrives
-                        "0 0 15px rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.1)"  // Fade down
+                        "0 0 5px rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.1)", // Base
+                        "0 0 15px rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.8)",   // Peak exactly when packet arrives
+                        "0 0 5px rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.1)"  // Fade down
                       ],
                       borderColor: [
                         "rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.25)",
@@ -279,7 +283,7 @@ function NeuralPanel({ title, techs, index }: { title: string, techs: any[], ind
                       ease: "easeInOut"
                     }}
                   >
-                    <tech.icon style={{ color: tech.color, fontSize: '1.25rem' }} className="drop-shadow-[0_0_5px_currentColor]" />
+                    <tech.icon style={{ color: tech.color, fontSize: '1.25rem' }} className="drop-shadow-sm md:drop-shadow-[0_0_5px_currentColor]" />
                   </motion.div>
 
                   {/* Label */}
@@ -312,7 +316,7 @@ export default function Skills() {
     <section className="relative w-full mx-auto py-24 px-4 sm:px-6 lg:px-8 overflow-hidden" id="skills">
 
       {/* Section Header */}
-      <div className="flex flex-col items-center justify-center py-4 px-10 bg-[#141923]/60 backdrop-blur-md md:backdrop-blur-xl border border-[var(--color-primary-400)]/20 rounded-2xl shadow-[0_0_20px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.15)] mx-auto max-w-fit mb-12 z-10 relative">
+      <div className="flex flex-col items-center justify-center py-4 px-10 bg-[#141923]/95 md:bg-[#141923]/60 backdrop-blur-none md:backdrop-blur-xl border border-[var(--color-primary-400)]/20 rounded-2xl shadow-sm md:shadow-[0_0_20px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.15)] mx-auto max-w-fit mb-12 z-10 relative">
         <h2 className="text-2xl md:text-3xl font-bold text-white tracking-[0.2em] uppercase text-center">
           SKILLS
         </h2>
