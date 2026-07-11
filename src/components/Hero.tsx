@@ -67,10 +67,12 @@ export default function Hero() {
             <p className="text-slate-300 text-base md:text-lg leading-relaxed mb-6">
               Passionate about building scalable automated software systems, modern web applications, and exploring the depths of cloud infrastructure, artificial intelligence and internet of things.
             </p>
-            <h3 className="text-emerald-400 font-semibold tracking-wider uppercase text-sm mb-2 mt-4">About Me</h3>
-            <p className="text-slate-400 text-sm md:text-base leading-relaxed">
-              BSc (Hons) in Electronics and Computer Science undergraduate with hands-on experience building real-time secure networks and AI-integrated platforms. Seeking a technical internship to utilize expertise in Software Engineering, API development, AI & ML and DevOps practices within a fast-paced technology environment.
-            </p>
+            <div className="p-5 md:p-6 rounded-xl bg-[#030508]/40 border border-white/5 shadow-[inset_0_4px_20px_rgba(0,0,0,0.5)] mb-8">
+              <h3 className="text-emerald-400 font-semibold tracking-wider uppercase text-sm mb-3">About Me</h3>
+              <p className="text-slate-400 text-sm md:text-base leading-relaxed">
+                BSc (Hons) in Electronics and Computer Science undergraduate with hands-on experience building real-time secure networks and AI-integrated platforms. Seeking a technical internship to utilize expertise in Software Engineering, API development, AI & ML and DevOps practices within a fast-paced technology environment.
+              </p>
+            </div>
           </div>
 
           {/* ── Action Buttons ── */}
