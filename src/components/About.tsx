@@ -100,9 +100,10 @@ function EducationTimeline() {
                 onClick={() => setActiveNode(index)}
                 aria-label={`Expand ${item.title}`}
                 className={`absolute left-0 top-[3px] w-4 h-4 rounded-full border-2 flex-shrink-0 transition-all duration-300 focus:outline-none ${isActive
-                  ? 'bg-emerald-400 border-emerald-400 shadow-[0_0_10px_#34d399] scale-110'
-                  : 'bg-slate-800 border-slate-600 hover:border-emerald-400/60'
+                  ? 'bg-primary-400 border-primary-400 scale-110'
+                  : 'bg-slate-800 border-slate-600 hover:border-primary-400/60'
                   }`}
+                style={isActive ? { boxShadow: '0 0 10px rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.8)' } : undefined}
               />
 
               {/* Header — clickable */}
@@ -117,7 +118,7 @@ function EducationTimeline() {
                   {item.title}
                 </h3>
                 <p
-                  className={`text-xs mt-0.5 transition-colors duration-300 ${isActive ? 'text-emerald-400' : 'text-slate-600'
+                  className={`text-xs mt-0.5 transition-colors duration-300 ${isActive ? 'text-primary-400' : 'text-slate-600'
                     }`}
                 >
                   {item.subtitle}
@@ -262,7 +263,7 @@ function ProjectCard({ project }: { project: any }) {
     >
       <div className="pointer-events-none">
         <span className={`absolute top-4 right-4 text-xs font-bold px-3 py-1 rounded-full border ${project.status === "Finished"
-          ? "bg-emerald-500/20 text-emerald-400 border-emerald-500/30"
+          ? "bg-primary-500/20 text-primary-400 border-primary-500/30"
           : "bg-yellow-500/20 text-yellow-400 border-yellow-500/30"
           }`}>
           {project.status}
@@ -342,7 +343,7 @@ function CertificationCard({ cert }: { cert: any }) {
         <span className="text-xs text-slate-500">
           {cert.date}
         </span>
-        <span className="text-xs text-emerald-400 font-medium group-hover:text-emerald-300 transition-colors flex items-center gap-1">
+        <span className="text-xs text-primary-400 font-medium group-hover:text-primary-300 transition-colors flex items-center gap-1">
           View Certificate ↗
         </span>
       </div>
@@ -412,7 +413,7 @@ export default function About() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
-            About <span className="text-emerald-400">Me</span>
+            About <span className="text-primary-400">Me</span>
           </h2>
           <p className="text-left text-slate-400 max-w-4xl mx-auto">
             BSc (Hons) in Electronics and Computer Science undergraduate with hands-on experience building real-time
@@ -439,12 +440,12 @@ export default function About() {
                     }`}
                 >
                   <div className={`w-14 h-14 md:w-16 md:h-16 flex items-center justify-center rounded-full border-4 transition-all duration-300 ${isActive
-                    ? 'bg-slate-900 border-emerald-400 text-emerald-400 shadow-[0_0_20px_rgba(52,211,153,0.5)] scale-110'
-                    : 'bg-slate-900 border-slate-700 text-slate-500 hover:border-emerald-400/50 hover:text-emerald-400/80'
+                    ? 'bg-slate-900 border-primary-400 text-primary-400 shadow-[0_0_20px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.5)] scale-110'
+                    : 'bg-slate-900 border-slate-700 text-slate-500 hover:border-primary-400/50 hover:text-primary-400/80'
                     }`}>
                     <Icon size={isActive ? 28 : 24} />
                   </div>
-                  <span className={`mt-3 text-sm font-semibold transition-colors duration-300 ${isActive ? 'text-emerald-400' : 'text-slate-500 group-hover:text-emerald-400/80'}`}>
+                  <span className={`mt-3 text-sm font-semibold transition-colors duration-300 ${isActive ? 'text-primary-400' : 'text-slate-500 group-hover:text-primary-400/80'}`}>
                     {tab.label}
                   </span>
                 </div>
@@ -525,7 +526,7 @@ export default function About() {
                   }
                 ].map((category, index) => (
                   <div key={index} className="bg-slate-800/30 p-4 rounded-xl border border-slate-700">
-                    <h3 className="text-emerald-400 font-semibold mb-3">{category.title}</h3>
+                    <h3 className="text-primary-400 font-semibold mb-3">{category.title}</h3>
                     <MarqueeTrack className="[mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
                       {/* Render first copy */}
                       <div className="flex gap-6 pr-6 shrink-0">
@@ -637,7 +638,7 @@ export default function About() {
                 <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
                   <div className="flex justify-between items-start flex-wrap gap-2 mb-4">
                     <h3 className="text-xl font-bold text-white">Membership Coordinator</h3>
-                    <span className="bg-emerald-500/10 text-emerald-400 text-xs px-3 py-1 rounded-full border border-emerald-500/20">
+                    <span className="bg-primary-500/10 text-primary-400 text-xs px-3 py-1 rounded-full border border-primary-500/20">
                       Mar 2025 - Aug 2025
                     </span>
                   </div>
@@ -652,7 +653,7 @@ export default function About() {
                 <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
                   <div className="flex justify-between items-start flex-wrap gap-2 mb-4">
                     <h3 className="text-xl font-bold text-white">Member</h3>
-                    <span className="bg-emerald-500/10 text-emerald-400 text-xs px-3 py-1 rounded-full border border-emerald-500/20">
+                    <span className="bg-primary-500/10 text-primary-400 text-xs px-3 py-1 rounded-full border border-primary-500/20">
                       Jun 2023 - Present
                     </span>
                   </div>

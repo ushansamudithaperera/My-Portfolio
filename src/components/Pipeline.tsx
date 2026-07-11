@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
@@ -8,7 +8,7 @@ import { useRef } from 'react';
  * ═══════════════════════════════════════════════════════════════════════ */
 export function CentralPipelineBackground() {
   return (
-    <div className="w-[24px] bg-[#0a0e14] h-full shadow-[0_0_20px_rgba(0,255,170,0.1)]" />
+    <div className="w-[24px] bg-[#0a0e14] h-full shadow-[0_0_20px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.1)]" />
   );
 }
 
@@ -23,14 +23,14 @@ const INTERVAL = FALL_DURATION / NUM_PACKETS;
 export function CentralPipelineTrace() {
   return (
     <div className="w-[24px] h-full flex justify-center relative pointer-events-none
-                    border-x-[2px] border-emerald-500/40 overflow-hidden">
+                    border-x-[2px] border-primary-500/40 overflow-hidden">
 
       {/* Vertical data packets ONLY — travel INSIDE the hollow channel */}
       {Array.from({ length: NUM_PACKETS }, (_, i) => (
         <motion.div
           key={`vp-${i}`}
           className="absolute left-1/2 -translate-x-1/2 w-[6px] h-[16px] rounded-full
-                     bg-emerald-400 shadow-[0_0_15px_rgba(52,211,153,1)] z-20"
+                     bg-primary-400 shadow-[0_0_15px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),1)] z-20"
           animate={{ top: ['-5%', '105%'] }}
           transition={{
             duration: FALL_DURATION,
@@ -82,8 +82,8 @@ export function PipelineBranch({
     >
       {/* Layer 1: Scaled background — entrance grow animation */}
       <motion.div
-        className="absolute inset-0 bg-[#0a0e14] border-y-[2px] border-emerald-500/40
-                   shadow-[0_0_15px_rgba(52,211,153,0.15)]"
+        className="absolute inset-0 bg-[#0a0e14] border-y-[2px] border-primary-500/40
+                   shadow-[0_0_15px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.15)]"
         style={{
           opacity,
           scaleX,
@@ -92,7 +92,7 @@ export function PipelineBranch({
       >
         {/* Inner faint track line */}
         <div className="absolute inset-0 flex items-center">
-          <div className="w-full h-[2px] bg-emerald-400/20" />
+          <div className="w-full h-[2px] bg-primary-400/20" />
         </div>
       </motion.div>
 
@@ -104,7 +104,7 @@ export function PipelineBranch({
         {/* Packet 1 (Only ONE packet per branch now to reduce visual noise) */}
         <motion.div
           className="absolute top-1/2 -translate-y-1/2 w-[12px] h-[6px] rounded-full
-                     bg-emerald-400 shadow-[0_0_15px_rgba(52,211,153,1)] z-10"
+                     bg-primary-400 shadow-[0_0_15px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),1)] z-10"
           animate={{
             left: isLeft ? ['100%', '-10%'] : ['-10%', '100%'],
           }}

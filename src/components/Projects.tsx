@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState, useRef, useEffect, MouseEvent } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -194,11 +194,11 @@ export default function Projects() {
     <section className="relative w-full max-w-[1400px] mx-auto py-24 px-4 sm:px-6 overflow-hidden" id="projects">
 
       {/* ── Main Glassmorphism Panel ── */}
-      <div className="relative z-10 bg-[#141923]/60 backdrop-blur-xl border border-[#00ffaa]/20 rounded-3xl py-12 md:py-16 shadow-[0_0_40px_rgba(0,255,170,0.1)] overflow-hidden">
+      <div className="relative z-10 bg-[#141923]/60 backdrop-blur-xl border border-[var(--color-primary-400)]/20 rounded-3xl py-12 md:py-16 shadow-[0_0_40px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.1)] overflow-hidden">
 
         {/* Section Header */}
         <div className="flex flex-col items-center justify-center mb-16 relative px-4">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-emerald-500/20 blur-[80px] rounded-full pointer-events-none" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-primary-500/20 blur-[80px] rounded-full pointer-events-none" />
           <h2 className="text-3xl md:text-5xl font-extrabold text-white tracking-[0.2em] uppercase text-center relative z-10">
             Projects
           </h2>
@@ -231,7 +231,7 @@ export default function Projects() {
             {marqueeProjects.map((project, idx) => (
               <div
                 key={`${project.id}-${idx}`}
-                className="w-[320px] md:w-[420px] shrink-0 group relative flex flex-col bg-[#0a0e14]/90 border border-slate-700/60 rounded-3xl overflow-hidden hover:border-emerald-500/50 hover:shadow-[0_0_30px_rgba(0,255,170,0.15)] transition-all duration-300 transform hover:-translate-y-2"
+                className="w-[320px] md:w-[420px] shrink-0 group relative flex flex-col bg-[#0a0e14]/90 border border-slate-700/60 rounded-3xl overflow-hidden hover:border-primary-500/50 hover:shadow-[0_0_30px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.15)] transition-all duration-300 transform hover:-translate-y-2"
               >
                 {/* ── Card Thumbnail Area ── */}
                 <div className="relative h-56 w-full bg-[#0a101d] overflow-hidden">
@@ -247,7 +247,7 @@ export default function Projects() {
 
                 {/* ── Card Details Area ── */}
                 <div className="p-6 md:p-8 flex flex-col flex-grow relative z-30 -mt-10">
-                  <h3 className="text-2xl font-bold text-white tracking-wide mb-3 group-hover:text-emerald-300 transition-colors duration-300">
+                  <h3 className="text-2xl font-bold text-white tracking-wide mb-3 group-hover:text-primary-300 transition-colors duration-300">
                     {project.title}
                   </h3>
 
@@ -259,7 +259,7 @@ export default function Projects() {
                   {/* Tech Tags */}
                   <div className="flex flex-wrap gap-2 mb-8">
                     {project.tags.map((tag) => (
-                      <span key={tag} className="text-[11px] font-mono tracking-wider text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 px-2 py-1 rounded-md shadow-[0_0_8px_rgba(0,255,170,0.05)]">
+                      <span key={tag} className="text-[11px] font-mono tracking-wider text-primary-300 bg-primary-500/10 border border-primary-500/20 px-2 py-1 rounded-md shadow-[0_0_8px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.05)]">
                         {tag}
                       </span>
                     ))}
@@ -273,7 +273,7 @@ export default function Projects() {
                         href={project.demoUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-3 rounded-xl bg-emerald-500/10 text-emerald-400 hover:bg-emerald-400 hover:text-slate-900 transition-colors"
+                        className="p-3 rounded-xl bg-primary-500/10 text-primary-400 hover:bg-primary-400 hover:text-slate-900 transition-colors"
                         title="Watch Demo"
                       >
                         <FaExternalLinkAlt size={16} />
@@ -294,7 +294,7 @@ export default function Projects() {
                     {/* View Full Details */}
                     <button
                       onClick={() => setSelectedProject(project)}
-                      className="flex-grow py-3 rounded-xl text-sm font-semibold tracking-wider text-slate-300 transition-all duration-300 bg-slate-800/50 border border-slate-600/50 hover:bg-emerald-500/10 hover:border-emerald-500/40 hover:text-emerald-300"
+                      className="flex-grow py-3 rounded-xl text-sm font-semibold tracking-wider text-slate-300 transition-all duration-300 bg-slate-800/50 border border-slate-600/50 hover:bg-primary-500/10 hover:border-primary-500/40 hover:text-primary-300"
                     >
                       View Details
                     </button>
@@ -326,7 +326,7 @@ export default function Projects() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="relative w-full max-w-6xl h-[85vh] md:h-[75vh] flex flex-col md:flex-row bg-[#0a0e14]/95 backdrop-blur-2xl border border-emerald-500/30 rounded-3xl shadow-[0_0_50px_rgba(0,255,170,0.2)] overflow-hidden"
+              className="relative w-full max-w-6xl h-[85vh] md:h-[75vh] flex flex-col md:flex-row bg-[#0a0e14]/95 backdrop-blur-2xl border border-primary-500/30 rounded-3xl shadow-[0_0_50px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.2)] overflow-hidden"
             >
               {/* Close Button */}
               <button
@@ -355,7 +355,7 @@ export default function Projects() {
 
                 <div className="flex flex-wrap gap-2 mb-8">
                   {selectedProject.tags.map((tag) => (
-                    <span key={tag} className="text-[11px] font-mono tracking-wider text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1.5 rounded-md">
+                    <span key={tag} className="text-[11px] font-mono tracking-wider text-primary-300 bg-primary-500/10 border border-primary-500/20 px-3 py-1.5 rounded-md">
                       {tag}
                     </span>
                   ))}
@@ -364,7 +364,7 @@ export default function Projects() {
                 <div className="space-y-6 flex-grow">
                   {selectedProject.details.map((point, i) => (
                     <div key={i} className="flex items-start gap-4 text-slate-300 text-sm md:text-base leading-relaxed">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500/80 mt-2.5 flex-shrink-0 shadow-[0_0_8px_rgba(0,255,170,0.8)]" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary-500/80 mt-2.5 flex-shrink-0 shadow-[0_0_8px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.8)]" />
                       <p>{point}</p>
                     </div>
                   ))}
@@ -377,7 +377,7 @@ export default function Projects() {
                       href={selectedProject.demoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-semibold tracking-wider text-slate-900 bg-emerald-400 hover:bg-emerald-300 transition-colors shadow-[0_0_20px_rgba(52,211,153,0.3)]"
+                      className="flex-1 flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-semibold tracking-wider text-slate-900 bg-primary-400 hover:bg-primary-300 transition-colors shadow-[0_0_20px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.3)]"
                     >
                       <FaExternalLinkAlt size={16} />
                       Watch Live Demo

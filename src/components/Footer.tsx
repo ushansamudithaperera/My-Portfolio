@@ -1,4 +1,4 @@
-import { FaGithub, FaLinkedin, FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
+﻿import { FaGithub, FaLinkedin, FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -15,8 +15,8 @@ export default function Footer() {
             <div>
               <div className="flex items-center gap-3 mb-4 group cursor-pointer w-fit">
                 {/* USP Monogram Icon matching the header */}
-                <div className="relative flex items-center justify-center px-2.5 h-8 rounded-lg border-[2px] border-emerald-400/50 shadow-[0_0_15px_rgba(52,211,153,0.3)] bg-emerald-950/20 group-hover:border-emerald-400 transition-colors duration-300">
-                  <span className="font-extrabold text-sm tracking-[0.2em] bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent ml-[0.2em]">
+                <div className="relative flex items-center justify-center px-2.5 h-8 rounded-lg border-[2px] border-primary-400/50 shadow-[0_0_15px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.3)] bg-emerald-950/20 group-hover:border-primary-400 transition-colors duration-300">
+                  <span className="font-extrabold text-sm tracking-[0.2em] bg-gradient-to-r from-primary-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent ml-[0.2em]">
                     Ushan Perera
                   </span>
                 </div>
@@ -35,7 +35,7 @@ export default function Footer() {
                 href="https://github.com/ushansamudithaperera"
                 target="_blank"
                 rel="noreferrer"
-                className="w-10 h-10 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:text-emerald-400 hover:border-emerald-400/50 hover:bg-emerald-400/10 hover:shadow-[0_0_15px_rgba(52,211,153,0.2)] transition-all duration-300"
+                className="w-10 h-10 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:text-primary-400 hover:border-primary-400/50 hover:bg-primary-400/10 hover:shadow-[0_0_15px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.2)] transition-all duration-300"
                 aria-label="GitHub"
               >
                 <FaGithub size={18} />
@@ -44,7 +44,7 @@ export default function Footer() {
                 href="https://www.linkedin.com/in/ushan-perera-16ab952b3/"
                 target="_blank"
                 rel="noreferrer"
-                className="w-10 h-10 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:text-emerald-400 hover:border-emerald-400/50 hover:bg-emerald-400/10 hover:shadow-[0_0_15px_rgba(52,211,153,0.2)] transition-all duration-300"
+                className="w-10 h-10 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:text-primary-400 hover:border-primary-400/50 hover:bg-primary-400/10 hover:shadow-[0_0_15px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.2)] transition-all duration-300"
                 aria-label="LinkedIn"
               >
                 <FaLinkedin size={18} />
@@ -66,7 +66,7 @@ export default function Footer() {
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-slate-400 hover:text-emerald-400 transition-colors text-sm block"
+                    className="text-slate-400 hover:text-primary-400 transition-colors text-sm block"
                   >
                     {link.name}
                   </a>
@@ -81,18 +81,18 @@ export default function Footer() {
             <div className="flex flex-col gap-4">
               <a
                 href="tel:+94711742319"
-                className="flex items-center gap-3 text-slate-400 hover:text-emerald-400 transition-colors text-sm group"
+                className="flex items-center gap-3 text-slate-400 hover:text-primary-400 transition-colors text-sm group"
               >
-                <div className="w-10 h-10 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-slate-300 group-hover:text-emerald-400 group-hover:border-emerald-400/50 group-hover:bg-emerald-400/10 group-hover:shadow-[0_0_15px_rgba(52,211,153,0.2)] transition-all duration-300">
+                <div className="w-10 h-10 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-slate-300 group-hover:text-primary-400 group-hover:border-primary-400/50 group-hover:bg-primary-400/10 group-hover:shadow-[0_0_15px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.2)] transition-all duration-300">
                   <FaPhoneAlt size={14} />
                 </div>
                 <span>+94 71 174 2319</span>
               </a>
               <a
                 href="mailto:samudithaperera01@gmail.com"
-                className="flex items-center gap-3 text-slate-400 hover:text-emerald-400 transition-colors text-sm group"
+                className="flex items-center gap-3 text-slate-400 hover:text-primary-400 transition-colors text-sm group"
               >
-                <div className="w-10 h-10 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-slate-300 group-hover:text-emerald-400 group-hover:border-emerald-400/50 group-hover:bg-emerald-400/10 group-hover:shadow-[0_0_15px_rgba(52,211,153,0.2)] transition-all duration-300">
+                <div className="w-10 h-10 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-slate-300 group-hover:text-primary-400 group-hover:border-primary-400/50 group-hover:bg-primary-400/10 group-hover:shadow-[0_0_15px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.2)] transition-all duration-300">
                   <FaEnvelope size={14} />
                 </div>
                 <span>samudithaperera01@gmail.com</span>

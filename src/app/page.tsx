@@ -1,4 +1,4 @@
-import Hero from "@/components/Hero";
+﻿import Hero from "@/components/Hero";
 import Education from "@/components/Education";
 import Skills from "@/components/Skills";
 import Contact from "@/components/Contact";
@@ -23,7 +23,7 @@ export default function Home() {
         }}
       />
       {/* Global radial glowing blur orbs */}
-      <div className="fixed top-0 left-1/2 -translate-x-1/2 w-[80vw] h-[80vw] max-w-[1000px] max-h-[1000px] bg-emerald-500/5 blur-[120px] rounded-full pointer-events-none z-0" />
+      <div className="fixed top-0 left-1/2 -translate-x-1/2 w-[80vw] h-[80vw] max-w-[1000px] max-h-[1000px] bg-primary-500/5 blur-[120px] rounded-full pointer-events-none z-0" />
       <div className="fixed top-[50vh] left-1/4 w-[50vw] h-[50vw] max-w-[600px] max-h-[600px] bg-blue-500/5 blur-[120px] rounded-full pointer-events-none z-0" />
 
 

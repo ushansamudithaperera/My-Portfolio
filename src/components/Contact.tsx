@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { motion } from 'framer-motion';
 import { FaWhatsapp } from 'react-icons/fa';
@@ -14,7 +14,7 @@ export default function Contact() {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, margin: "50px" }}
         transition={{ duration: 0.6 }}
-        className="relative bg-[#141923]/60 border border-[#00ffaa]/20 rounded-3xl p-6 md:p-10 shadow-[0_0_20px_rgba(0,255,170,0.15)] backdrop-blur-xl z-10"
+        className="relative bg-[#141923]/60 border border-[var(--color-primary-400)]/20 rounded-3xl p-6 md:p-10 shadow-[0_0_20px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.15)] backdrop-blur-xl z-10"
       >
 
         {/* ── Section Header ── */}
@@ -36,7 +36,7 @@ export default function Contact() {
               id="name"
               name="name"
               required
-              className="w-full bg-[#0a0e14]/50 border border-slate-700/80 rounded-xl px-5 py-4 text-white placeholder-slate-400 focus:outline-none focus:border-emerald-500/80 focus:ring-1 focus:ring-emerald-500/50 transition-colors"
+              className="w-full bg-[#0a0e14]/50 border border-slate-700/80 rounded-xl px-5 py-4 text-white placeholder-slate-400 focus:outline-none focus:border-primary-500/80 focus:ring-1 focus:ring-primary-500/50 transition-colors"
               placeholder="Name"
             />
           </div>
@@ -50,7 +50,7 @@ export default function Contact() {
                 id="email"
                 name="email"
                 required
-                className="w-full bg-[#0a0e14]/50 border border-slate-700/80 rounded-xl px-5 py-4 text-white placeholder-slate-400 focus:outline-none focus:border-emerald-500/80 focus:ring-1 focus:ring-emerald-500/50 transition-colors"
+                className="w-full bg-[#0a0e14]/50 border border-slate-700/80 rounded-xl px-5 py-4 text-white placeholder-slate-400 focus:outline-none focus:border-primary-500/80 focus:ring-1 focus:ring-primary-500/50 transition-colors"
                 placeholder="Email"
               />
             </div>
@@ -60,7 +60,7 @@ export default function Contact() {
                 type="tel"
                 id="phone"
                 name="phone"
-                className="w-full bg-[#0a0e14]/50 border border-slate-700/80 rounded-xl px-5 py-4 text-white placeholder-slate-400 focus:outline-none focus:border-emerald-500/80 focus:ring-1 focus:ring-emerald-500/50 transition-colors"
+                className="w-full bg-[#0a0e14]/50 border border-slate-700/80 rounded-xl px-5 py-4 text-white placeholder-slate-400 focus:outline-none focus:border-primary-500/80 focus:ring-1 focus:ring-primary-500/50 transition-colors"
                 placeholder="Phone"
               />
             </div>
@@ -74,7 +74,7 @@ export default function Contact() {
               name="message"
               rows={5}
               required
-              className="w-full bg-[#0a0e14]/50 border border-slate-700/80 rounded-xl px-5 py-4 text-white placeholder-slate-400 focus:outline-none focus:border-emerald-500/80 focus:ring-1 focus:ring-emerald-500/50 transition-colors resize-none"
+              className="w-full bg-[#0a0e14]/50 border border-slate-700/80 rounded-xl px-5 py-4 text-white placeholder-slate-400 focus:outline-none focus:border-primary-500/80 focus:ring-1 focus:ring-primary-500/50 transition-colors resize-none"
               placeholder="Message"
             ></textarea>
           </div>
@@ -83,7 +83,7 @@ export default function Contact() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
             <button
               type="submit"
-              className="w-full py-4 rounded-xl text-white font-semibold tracking-wider uppercase text-sm bg-slate-800/50 border border-slate-600 hover:bg-emerald-500/20 hover:border-emerald-400/80 hover:shadow-[0_0_20px_rgba(0,255,170,0.3)] transition-all duration-300"
+              className="w-full py-4 rounded-xl text-white font-semibold tracking-wider uppercase text-sm bg-slate-800/50 border border-slate-600 hover:bg-primary-500/20 hover:border-primary-400/80 hover:shadow-[0_0_20px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.3)] transition-all duration-300"
             >
               Send Message
             </button>
@@ -91,9 +91,9 @@ export default function Contact() {
               href="https://wa.me/94711742319"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full flex items-center justify-center gap-3 py-4 rounded-xl text-white font-semibold tracking-wider uppercase text-sm bg-slate-800/50 border border-slate-600 hover:bg-emerald-500/20 hover:border-emerald-400/80 hover:shadow-[0_0_20px_rgba(0,255,170,0.3)] transition-all duration-300"
+              className="w-full flex items-center justify-center gap-3 py-4 rounded-xl text-white font-semibold tracking-wider uppercase text-sm bg-slate-800/50 border border-slate-600 hover:bg-primary-500/20 hover:border-primary-400/80 hover:shadow-[0_0_20px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.3)] transition-all duration-300"
             >
-              <FaWhatsapp size={20} className="text-emerald-400" />
+              <FaWhatsapp size={20} className="text-primary-400" />
               WhatsApp Contact
             </a>
           </div>
@@ -103,10 +103,10 @@ export default function Contact() {
         <div className="mt-12 border-t border-slate-800/80 pt-6 flex flex-col items-center justify-center">
           <div className="flex items-center gap-3">
             <span className="relative flex h-3 w-3">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500 shadow-[0_0_10px_rgba(0,230,160,1)]"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-primary-500 shadow-[0_0_10px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),1)]"></span>
             </span>
-            <span className="text-emerald-400 text-xs font-mono tracking-[0.2em] uppercase">
+            <span className="text-primary-400 text-xs font-mono tracking-[0.2em] uppercase">
               Pipeline Status: Secure Connection
             </span>
           </div>
@@ -114,7 +114,7 @@ export default function Contact() {
       </motion.div>
 
       {/* ── Terminal Node Glow below panel ── */}
-      <div className="absolute left-1/2 bottom-0 w-32 h-10 bg-emerald-500/20 blur-3xl -translate-x-1/2 pointer-events-none" />
+      <div className="absolute left-1/2 bottom-0 w-32 h-10 bg-primary-500/20 blur-3xl -translate-x-1/2 pointer-events-none" />
     </section>
   );
 }

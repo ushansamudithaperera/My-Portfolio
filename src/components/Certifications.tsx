@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState, useRef, useEffect, MouseEvent } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -52,7 +52,7 @@ const certsData: Certification[] = [
     title: 'Introduction to Information Security',
     issuer: 'HashX',
     icon: FaShieldAlt,
-    color: 'text-emerald-500',
+    color: 'text-primary-500',
     pdfUrl: '/security.pdf'
   },
   {
@@ -160,7 +160,7 @@ export default function Certifications() {
     <section className="relative w-full max-w-[1400px] mx-auto py-24 px-4 sm:px-6 overflow-hidden" id="certifications">
 
       {/* ── Main Glassmorphism Panel Container ── */}
-      <div className="relative bg-[#141923]/60 border border-[#00ffaa]/20 rounded-3xl py-12 md:py-16 shadow-[0_0_40px_rgba(0,255,170,0.1)] backdrop-blur-xl z-10 overflow-hidden">
+      <div className="relative bg-[#141923]/60 border border-[var(--color-primary-400)]/20 rounded-3xl py-12 md:py-16 shadow-[0_0_40px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.1)] backdrop-blur-xl z-10 overflow-hidden">
 
         {/* ── Section Header ── */}
         <div className="flex flex-col items-center justify-center mb-16 relative px-4">
@@ -199,7 +199,7 @@ export default function Certifications() {
               return (
                 <div
                   key={`${cert.title}-${idx}`}
-                  className="w-[320px] md:w-[380px] shrink-0 group relative flex flex-col bg-[#0a0e14]/90 border border-slate-700/60 rounded-3xl overflow-hidden hover:border-emerald-500/50 hover:shadow-[0_0_30px_rgba(0,255,170,0.15)] transition-all duration-300 transform hover:-translate-y-2"
+                  className="w-[320px] md:w-[380px] shrink-0 group relative flex flex-col bg-[#0a0e14]/90 border border-slate-700/60 rounded-3xl overflow-hidden hover:border-primary-500/50 hover:shadow-[0_0_30px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.15)] transition-all duration-300 transform hover:-translate-y-2"
                 >
                   {/* ── PDF Thumbnail Area ── */}
                   <div className="relative h-56 w-full bg-[#1e2330] overflow-hidden border-b border-slate-800">
@@ -224,7 +224,7 @@ export default function Certifications() {
                       <Icon size={24} className={cert.color} />
                     </div>
 
-                    <h3 className="text-xl font-bold text-white tracking-wide mb-3 group-hover:text-emerald-300 transition-colors duration-300 line-clamp-2">
+                    <h3 className="text-xl font-bold text-white tracking-wide mb-3 group-hover:text-primary-300 transition-colors duration-300 line-clamp-2">
                       {cert.title}
                     </h3>
 
@@ -236,7 +236,7 @@ export default function Certifications() {
                     <div className="mt-auto pt-4 border-t border-slate-800/80">
                       <button
                         onClick={() => setSelectedCert(cert)}
-                        className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold tracking-wider text-slate-300 transition-all duration-300 bg-slate-800/50 border border-slate-600/50 hover:bg-emerald-500/10 hover:border-emerald-500/40 hover:text-emerald-300"
+                        className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold tracking-wider text-slate-300 transition-all duration-300 bg-slate-800/50 border border-slate-600/50 hover:bg-primary-500/10 hover:border-primary-500/40 hover:text-primary-300"
                       >
                         <FaExternalLinkAlt size={14} />
                         View Full Certificate
@@ -270,7 +270,7 @@ export default function Certifications() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="relative w-full max-w-5xl h-[85vh] flex flex-col bg-[#0a0e14]/95 backdrop-blur-2xl border border-emerald-500/30 rounded-3xl shadow-[0_0_50px_rgba(0,255,170,0.2)] overflow-hidden"
+              className="relative w-full max-w-5xl h-[85vh] flex flex-col bg-[#0a0e14]/95 backdrop-blur-2xl border border-primary-500/30 rounded-3xl shadow-[0_0_50px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.2)] overflow-hidden"
             >
               {/* Modal Header */}
               <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800/50 bg-[#0a0e14]/80">

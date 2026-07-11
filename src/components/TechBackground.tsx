@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { motion } from 'framer-motion';
 
@@ -63,7 +63,7 @@ export default function TechBackground() {
       {/* ─── Sweeping Scanner Lines (Radar Effect) ─── */}
       {/* Horizontal Scanner */}
       <motion.div
-        className="absolute left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-emerald-500/20 to-transparent"
+        className="absolute left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary-500/20 to-transparent"
         animate={{ top: ["-10%", "110%"] }}
         transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
       />
@@ -79,7 +79,7 @@ export default function TechBackground() {
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Crosshair 1 */}
         <motion.div 
-          className="absolute top-[15%] left-[25%] opacity-[0.06] text-emerald-400 font-mono text-xl"
+          className="absolute top-[15%] left-[25%] opacity-[0.06] text-primary-400 font-mono text-xl"
           animate={{ rotate: 360, x: [0, 20, 0], y: [0, -20, 0] }}
           transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
         >
@@ -97,11 +97,11 @@ export default function TechBackground() {
 
         {/* Concentric Circles */}
         <motion.div 
-          className="absolute top-[45%] left-[80%] w-32 h-32 opacity-[0.03] border-[1px] border-emerald-400 rounded-full flex items-center justify-center"
+          className="absolute top-[45%] left-[80%] w-32 h-32 opacity-[0.03] border-[1px] border-primary-400 rounded-full flex items-center justify-center"
           animate={{ scale: [1, 1.2, 1], rotate: [0, 90, 0] }}
           transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
         >
-          <div className="w-16 h-16 border-[1px] border-emerald-400 rounded-full border-dashed" />
+          <div className="w-16 h-16 border-[1px] border-primary-400 rounded-full border-dashed" />
         </motion.div>
 
         {/* Hollow Box */}
@@ -115,7 +115,7 @@ export default function TechBackground() {
 
       {/* Ambient Glowing Orbs */}
       <motion.div
-        className="absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] bg-emerald-900/20 rounded-full blur-[120px]"
+        className="absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] bg-primary-900/20 rounded-full blur-[120px]"
         animate={{
           x: [0, 100, 0],
           y: [0, 50, 0],
@@ -127,7 +127,7 @@ export default function TechBackground() {
         }}
       />
       <motion.div
-        className="absolute bottom-[-10%] right-[-10%] w-[40vw] h-[40vw] bg-emerald-900/20 rounded-full blur-[120px]"
+        className="absolute bottom-[-10%] right-[-10%] w-[40vw] h-[40vw] bg-primary-900/20 rounded-full blur-[120px]"
         animate={{
           x: [0, -100, 0],
           y: [0, -50, 0],
@@ -174,7 +174,7 @@ export default function TechBackground() {
                   <div 
                     key={i} 
                     className={`text-[10px] font-mono tracking-widest whitespace-nowrap ${
-                      (i + colIndex) % 2 === 0 ? 'text-emerald-500/5' : 'text-white/5'
+                      (i + colIndex) % 2 === 0 ? 'text-primary-500/5' : 'text-white/5'
                     }`}
                     style={{
                       marginLeft: `${(i % 4) * 8}px`

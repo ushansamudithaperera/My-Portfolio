@@ -1,7 +1,8 @@
-'use client';
+﻿'use client';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence, useMotionValueEvent, useScroll } from 'framer-motion';
+import { useTheme } from './ThemeProvider';
 
 /* ─── Navigation Config ──────────────────────────────────────────── */
 
@@ -17,32 +18,49 @@ const NAV_LINKS = [
 /* ─── Logo Component ─────────────────────────────────────────────── */
 
 function Logo() {
+  const { theme, toggleTheme } = useTheme();
+  const isBlue = theme === 'blue';
+
   return (
-    <motion.a
-      href="#home"
-      onClick={(e) => {
-        e.preventDefault();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }}
-      className="flex items-center gap-2.5 group cursor-pointer select-none"
-      initial={{ opacity: 0, x: -20 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
-    >
-      {/* USP Monogram Icon */}
-      <div className="relative flex items-center justify-center px-2.5 h-8 rounded-lg border-[2px] border-emerald-400/50 shadow-[0_0_15px_rgba(52,211,153,0.3)] bg-emerald-950/20 group-hover:border-emerald-400 transition-colors duration-300">
-        <span className="font-extrabold text-sm tracking-[0.2em] bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent ml-[0.2em]">
+    <div className="flex items-center gap-2.5 group select-none">
+      {/* Theme Toggle Badge — click to swap colors */}
+      <motion.button
+        onClick={toggleTheme}
+        title={`Switch to ${isBlue ? 'Green' : 'Blue'} theme`}
+        className="relative flex items-center justify-center px-2.5 h-8 rounded-lg border-[2px] cursor-pointer
+                   transition-all duration-500
+                   border-primary-400/50 shadow-[0_0_15px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.3)]
+                   bg-primary-900/20 hover:border-primary-400"
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+      >
+        <span className="font-extrabold text-sm tracking-[0.2em] bg-gradient-to-r from-primary-400 via-primary-300 to-cyan-400 bg-clip-text text-transparent ml-[0.2em]">
           Ushan Perera
         </span>
-      </div>
+        {/* Tiny theme-swap dot indicator */}
+        <span
+          className="absolute -top-1 -right-1 w-2 h-2 rounded-full border border-[#0a0e14] transition-colors duration-500"
+          style={{ backgroundColor: isBlue ? '#22d3ee' : 'rgb(var(--color-accent-r) var(--color-accent-g) var(--color-accent-b))' }}
+        />
+      </motion.button>
 
-      {/* Wordmark */}
-      <span className="text-[22px] font-bold tracking-[0.15em] text-slate-100 group-hover:text-white transition-colors duration-300">
-
-      </span>
-    </motion.a>
+      {/* Wordmark — still navigates home */}
+      <motion.a
+        href="#home"
+        onClick={(e) => {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+        className="text-[22px] font-bold tracking-[0.15em] text-slate-100 hover:text-white transition-colors duration-300 cursor-pointer"
+        initial={{ opacity: 0, x: -10 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6, delay: 0.1, ease: [0.4, 0, 0.2, 1] }}
+      >
+      </motion.a>
+    </div>
   );
 }
 
@@ -52,7 +70,7 @@ function HamburgerIcon({ isOpen, toggle }: { isOpen: boolean; toggle: () => void
   return (
     <motion.button
       onClick={toggle}
-      className="lg:hidden relative w-10 h-10 flex items-center justify-center rounded-lg hover:bg-slate-800/50 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/50"
+      className="lg:hidden relative w-10 h-10 flex items-center justify-center rounded-lg hover:bg-slate-800/50 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/50"
       aria-label={isOpen ? 'Close menu' : 'Open menu'}
       aria-expanded={isOpen}
       initial={{ opacity: 0, x: 20 }}
@@ -136,9 +154,9 @@ function PillNav({ activeSection }: { activeSection: string }) {
                   layoutId="active-pill"
                   className="absolute inset-0 rounded-full"
                   style={{
-                    border: '1px solid rgba(0,255,170,0.5)',
-                    background: 'rgba(0,255,170,0.08)',
-                    boxShadow: '0 0 12px rgba(0,255,170,0.15), inset 0 0 8px rgba(0,255,170,0.05)',
+                    border: '1px solid rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.5)',
+                    background: 'rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.08)',
+                    boxShadow: '0 0 12px rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.15), inset 0 0 8px rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.05)',
                   }}
                   transition={{
                     type: 'spring',
@@ -232,7 +250,7 @@ function MobileMenu({
                     exit={{ opacity: 0, x: 30 }}
                     transition={{ delay: idx * 0.05 + 0.1, duration: 0.3 }}
                     className={`relative flex items-center gap-3 py-4 px-4 rounded-xl text-[14px] font-medium tracking-[0.1em] transition-all duration-200 group ${isActive
-                      ? 'text-emerald-300'
+                      ? 'text-primary-300'
                       : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/30'
                       }`}
                   >
@@ -240,9 +258,9 @@ function MobileMenu({
                     {isActive && (
                       <motion.div
                         layoutId="mobile-active"
-                        className="absolute left-0 top-[25%] bottom-[25%] w-[3px] rounded-full bg-emerald-400"
+                        className="absolute left-0 top-[25%] bottom-[25%] w-[3px] rounded-full bg-primary-400"
                         style={{
-                          boxShadow: '0 0 8px rgba(0,255,170,0.4)',
+                          boxShadow: '0 0 8px rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.4)',
                         }}
                         transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                       />
@@ -250,7 +268,7 @@ function MobileMenu({
 
                     {/* Dot */}
                     <span
-                      className={`w-1.5 h-1.5 rounded-full flex-shrink-0 transition-colors duration-200 ${isActive ? 'bg-emerald-400' : 'bg-slate-600 group-hover:bg-slate-400'
+                      className={`w-1.5 h-1.5 rounded-full flex-shrink-0 transition-colors duration-200 ${isActive ? 'bg-primary-400' : 'bg-slate-600 group-hover:bg-slate-400'
                         }`}
                     />
 
@@ -278,8 +296,8 @@ function MobileMenu({
                 transition={{ delay: 0.4, duration: 0.3 }}
                 className="mt-2 flex items-center justify-center gap-2 py-3 px-6 rounded-full text-[13px] font-semibold tracking-[0.1em] text-slate-950 transition-all duration-300 hover:scale-[1.02]"
                 style={{
-                  background: 'linear-gradient(135deg, #00e6a0, #00ffaa)',
-                  boxShadow: '0 0 20px rgba(0,255,170,0.25)',
+                  background: 'linear-gradient(135deg, var(--color-primary-400), #00ffaa)',
+                  boxShadow: '0 0 20px rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.25)',
                 }}
               >
                 HIRE ME
@@ -376,7 +394,7 @@ export default function Header() {
           className="absolute inset-0 opacity-[0.03] pointer-events-none"
           style={{
             backgroundImage:
-              'linear-gradient(90deg, rgba(0,255,170,0.4) 1px, transparent 1px), linear-gradient(rgba(0,255,170,0.4) 1px, transparent 1px)',
+              'linear-gradient(90deg, rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.4) 1px, transparent 1px), linear-gradient(rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.4) 1px, transparent 1px)',
             backgroundSize: '40px 40px',
           }}
         />
@@ -386,7 +404,7 @@ export default function Header() {
           className="absolute bottom-0 left-0 right-0 h-[1px]"
           style={{
             background:
-              'linear-gradient(90deg, transparent 0%, rgba(0,255,170,0.15) 20%, rgba(0,255,170,0.25) 50%, rgba(0,255,170,0.15) 80%, transparent 100%)',
+              'linear-gradient(90deg, transparent 0%, rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.15) 20%, rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.25) 50%, rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.15) 80%, transparent 100%)',
           }}
           initial={{ opacity: 0 }}
           animate={{ opacity: hasScrolled ? 1 : 0 }}

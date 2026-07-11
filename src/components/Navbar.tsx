@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -25,7 +25,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-slate-950/80 backdrop-blur-md py-4 shadow-lg shadow-emerald-500/10' : 'bg-transparent py-6'
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-slate-950/80 backdrop-blur-md py-4 shadow-lg shadow-primary-500/10' : 'bg-transparent py-6'
         }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
@@ -53,7 +53,7 @@ export default function Navbar() {
             >
               <a
                 href={link.href}
-                className="text-slate-300 hover:text-emerald-400 font-medium transition-colors"
+                className="text-slate-300 hover:text-primary-400 font-medium transition-colors"
               >
                 {link.name}
               </a>
@@ -68,7 +68,7 @@ export default function Navbar() {
           >
             <a
               href="#contact"
-              className="border border-emerald-400 text-emerald-400 hover:bg-emerald-400 hover:text-slate-950 px-5 py-2 rounded-full font-semibold transition-all duration-300"
+              className="border border-primary-400 text-primary-400 hover:bg-primary-400 hover:text-slate-950 px-5 py-2 rounded-full font-semibold transition-all duration-300"
             >
               Hire Me
             </a>
@@ -79,7 +79,7 @@ export default function Navbar() {
         <div className="md:hidden">
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="text-slate-300 hover:text-emerald-400 focus:outline-none"
+            className="text-slate-300 hover:text-primary-400 focus:outline-none"
           >
             {isMobileMenuOpen ? <FaTimes size={28} /> : <FaBars size={28} />}
           </button>
@@ -111,7 +111,7 @@ export default function Navbar() {
                       }, 50);
                     }
                   }}
-                  className="text-slate-300 hover:text-emerald-400 text-lg font-medium transition-colors"
+                  className="text-slate-300 hover:text-primary-400 text-lg font-medium transition-colors"
                 >
                   {link.name}
                 </a>
@@ -128,7 +128,7 @@ export default function Navbar() {
                     }, 50);
                   }
                 }}
-                className="bg-emerald-400 text-slate-950 px-8 py-3 rounded-full font-bold w-[200px] text-center"
+                className="bg-primary-400 text-slate-950 px-8 py-3 rounded-full font-bold w-[200px] text-center"
               >
                 Hire Me
               </a>

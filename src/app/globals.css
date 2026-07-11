@@ -1,11 +1,61 @@
 @import "tailwindcss";
 
-@theme {
-  --color-emerald-300: #4dffc4;
-  --color-emerald-400: #00e6a0;
-  --color-emerald-500: #00ffaa;
-  --color-emerald-900: #004d33;
+/* ─── Dynamic Theme CSS Variables ───────────────────────────────── */
+
+:root {
+  /* Default: Emerald Green (emerald-400 = #00e6a0) */
+  --color-accent-r: 0;
+  --color-accent-g: 230;
+  --color-accent-b: 160;
 }
+
+/* Blue theme overrides */
+.theme-blue {
+  /* Cyan 400 (#22d3ee) */
+  --color-accent-r: 34;
+  --color-accent-g: 211;
+  --color-accent-b: 238;
+}
+
+/* ─── Tailwind v4 Theme Tokens ───────────────────────────────────── */
+/* These generate text-primary-400, bg-primary-400, border-primary-400, etc. */
+
+@theme inline {
+  --color-primary-300: rgb(
+    calc(var(--color-accent-r) + 30)
+    calc(var(--color-accent-g) + 15)
+    calc(var(--color-accent-b) + 40)
+  );
+  --color-primary-400: rgb(
+    var(--color-accent-r)
+    var(--color-accent-g)
+    var(--color-accent-b)
+  );
+  --color-primary-500: rgb(
+    calc(var(--color-accent-r) - 10)
+    calc(var(--color-accent-g) - 25)
+    var(--color-accent-b)
+  );
+  --color-primary-900: color-mix(
+    in srgb,
+    rgb(var(--color-accent-r) var(--color-accent-g) var(--color-accent-b)) 15%,
+    #000a0e
+  );
+}
+
+/* ─── Glow Utility (replaces hardcoded rgba shadow colors) ──────── */
+
+.glow-primary {
+  box-shadow: 0 0 15px rgba(var(--color-accent-r), var(--color-accent-g), var(--color-accent-b), 0.35);
+}
+.glow-primary-sm {
+  box-shadow: 0 0 8px rgba(var(--color-accent-r), var(--color-accent-g), var(--color-accent-b), 0.5);
+}
+.glow-primary-lg {
+  box-shadow: 0 0 30px rgba(var(--color-accent-r), var(--color-accent-g), var(--color-accent-b), 0.4);
+}
+
+/* (Legacy emerald values now handled by CSS variables + @theme inline above) */
 
 html,
 body {
@@ -15,4 +65,4 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-}
+}

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { motion } from 'framer-motion';
 import { PipelineBranch, CentralPipelineBackground, CentralPipelineTrace } from './Pipeline';
@@ -56,7 +56,7 @@ const categories = [
       { name: 'FastAPI', icon: SiFastapi, color: '#009688' },
       { name: 'Spring Boot', icon: SiSpringboot, color: '#6DB33F' },
       { name: '.NET', icon: SiDotnet, color: '#512BD4' },
-      { name: 'REST APIs', icon: FaNetworkWired, color: '#00E6A0' },
+      { name: 'REST APIs', icon: FaNetworkWired, color: 'rgb(var(--color-accent-r) var(--color-accent-g) var(--color-accent-b))' },
       { name: 'Pydantic', icon: FaCubes, color: '#E92063' },
     ]
   },
@@ -67,7 +67,7 @@ const categories = [
       { name: 'MySQL', icon: SiMysql, color: '#4479A1' },
       { name: 'Oracle', icon: FaDatabase, color: '#F80000' },
       { name: 'SQL Server', icon: FaServer, color: '#CC2927' },
-      { name: 'ChromaDB', icon: TbDatabase, color: '#00E6A0' },
+      { name: 'ChromaDB', icon: TbDatabase, color: 'rgb(var(--color-accent-r) var(--color-accent-g) var(--color-accent-b))' },
     ]
   },
   {
@@ -78,7 +78,7 @@ const categories = [
       { name: 'Docker', icon: SiDocker, color: '#2496ED' },
       { name: 'Kubernetes', icon: SiKubernetes, color: '#326CE5' },
       { name: 'Linux', icon: FaLinux, color: '#FCC624' },
-      { name: 'CI/CD', icon: FaSync, color: '#00E6A0' },
+      { name: 'CI/CD', icon: FaSync, color: 'rgb(var(--color-accent-r) var(--color-accent-g) var(--color-accent-b))' },
       { name: 'Prometheus', icon: SiPrometheus, color: '#E6522C' },
       { name: 'Grafana', icon: SiGrafana, color: '#F46800' },
     ]
@@ -91,8 +91,8 @@ const categories = [
       { name: 'LangChain', icon: FaLink, color: '#10B981' },
       { name: 'TensorFlow Lite', icon: SiTensorflow, color: '#FF6F00' },
       { name: 'Scikit-Learn', icon: SiScikitlearn, color: '#F7931E' },
-      { name: 'Joblib', icon: FaBriefcase, color: '#00E6A0' },
-      { name: 'NLP', icon: FaLanguage, color: '#00E6A0' },
+      { name: 'Joblib', icon: FaBriefcase, color: 'rgb(var(--color-accent-r) var(--color-accent-g) var(--color-accent-b))' },
+      { name: 'NLP', icon: FaLanguage, color: 'rgb(var(--color-accent-r) var(--color-accent-g) var(--color-accent-b))' },
     ]
   },
   {
@@ -102,7 +102,7 @@ const categories = [
       { name: 'GitHub', icon: SiGithub, color: '#ffffff' },
       { name: 'VS Code', icon: VscVscode, color: '#007ACC' },
       { name: 'IntelliJ IDEA', icon: FaLaptopCode, color: '#000000' },
-      { name: 'Antigravity', icon: FaSpaceShuttle, color: '#00E6A0' },
+      { name: 'Antigravity', icon: FaSpaceShuttle, color: 'rgb(var(--color-accent-r) var(--color-accent-g) var(--color-accent-b))' },
       { name: 'Android Studio', icon: SiAndroidstudio, color: '#3DDC84' },
       { name: 'Postman', icon: SiPostman, color: '#FF6C37' },
       { name: 'XAMPP', icon: SiXampp, color: '#FB7A24' },
@@ -112,7 +112,7 @@ const categories = [
     title: 'Electronics & IoT',
     techs: [
       { name: 'ESP32', icon: FaMicrochip, color: '#E7352C' },
-      { name: 'PIC Microcontroller', icon: TbCpu, color: '#00E6A0' },
+      { name: 'PIC Microcontroller', icon: TbCpu, color: 'rgb(var(--color-accent-r) var(--color-accent-g) var(--color-accent-b))' },
       { name: 'Arduino', icon: SiArduino, color: '#00979D' },
       { name: 'C++ (embedded)', icon: FaCogs, color: '#00599C' },
     ]
@@ -154,7 +154,7 @@ function NeuralPanel({ title, techs, index }: { title: string, techs: any[], ind
 
   return (
     <motion.div
-      className="relative w-full h-[360px] md:h-[400px] bg-[#0f141c]/40 backdrop-blur-[12px] border border-[rgba(0,230,160,0.25)] rounded-[2rem] shadow-[0_8px_32px_rgba(0,0,0,0.3)] p-6 group"
+      className="relative w-full h-[360px] md:h-[400px] bg-[#0f141c]/40 backdrop-blur-[12px] border border-[rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.25)] rounded-[2rem] shadow-[0_8px_32px_rgba(0,0,0,0.3)] p-6 group"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-50px' }}
@@ -199,18 +199,18 @@ function NeuralPanel({ title, techs, index }: { title: string, techs: any[], ind
                   {/* Base Spoke Line */}
                   <path
                     d={n.pathD}
-                    stroke="rgba(0,255,170,0.2)"
+                    stroke="rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.2)"
                     strokeWidth="1.5"
                     fill="none"
                   />
                   {/* Animated Data Packet (Pill) flowing OUTWARD from hub to node */}
                   <motion.path
                     d={n.pathD}
-                    stroke="#00e6a0"
+                    stroke="rgb(var(--color-accent-r) var(--color-accent-g) var(--color-accent-b))"
                     strokeWidth="4"
                     strokeLinecap="round"
                     fill="none"
-                    className="drop-shadow-[0_0_8px_rgba(0,255,170,1)]"
+                    className="drop-shadow-[0_0_8px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),1)]"
                     initial={{ pathLength: 0.05, pathOffset: 0, opacity: 0 }}
                     animate={{ pathOffset: 1, opacity: [0, 1, 1, 0] }}
                     transition={{
@@ -228,8 +228,8 @@ function NeuralPanel({ title, techs, index }: { title: string, techs: any[], ind
           {/* ── Central Core Hub ── */}
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
             <div className="relative flex items-center justify-center w-8 h-8">
-              <div className="absolute inset-0 bg-[#00e6a0] rounded-full blur-[8px] opacity-70 animate-pulse" />
-              <div className="relative w-4 h-4 bg-emerald-300 rounded-full shadow-[0_0_15px_#00e6a0]" />
+              <div className="absolute inset-0 bg-[var(--color-primary-400)] rounded-full blur-[8px] opacity-70 animate-pulse" />
+              <div className="relative w-4 h-4 bg-primary-300 rounded-full shadow-[0_0_15px_var(--color-primary-400)]" />
             </div>
           </div>
 
@@ -258,17 +258,17 @@ function NeuralPanel({ title, techs, index }: { title: string, techs: any[], ind
                 >
                   {/* Reactive Glow Box */}
                   <motion.div
-                    className="w-11 h-11 md:w-12 md:h-12 flex items-center justify-center bg-[#0f141c]/90 backdrop-blur-md border border-[rgba(0,230,160,0.25)] rounded-xl relative z-10 group-hover:scale-110 transition-transform duration-300 cursor-default"
+                    className="w-11 h-11 md:w-12 md:h-12 flex items-center justify-center bg-[#0f141c]/90 backdrop-blur-md border border-[rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.25)] rounded-xl relative z-10 group-hover:scale-110 transition-transform duration-300 cursor-default"
                     animate={{
                       boxShadow: [
-                        "0 0 15px rgba(0,230,160,0.1)", // Base
-                        "0 0 30px rgba(0,230,160,1)",   // Peak exactly when packet arrives
-                        "0 0 15px rgba(0,230,160,0.1)"  // Fade down
+                        "0 0 15px rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.1)", // Base
+                        "0 0 30px rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),1)",   // Peak exactly when packet arrives
+                        "0 0 15px rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.1)"  // Fade down
                       ],
                       borderColor: [
-                        "rgba(0,230,160,0.25)",
-                        "rgba(0,230,160,1)",
-                        "rgba(0,230,160,0.25)"
+                        "rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.25)",
+                        "rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),1)",
+                        "rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.25)"
                       ]
                     }}
                     transition={{
@@ -283,7 +283,7 @@ function NeuralPanel({ title, techs, index }: { title: string, techs: any[], ind
                   </motion.div>
 
                   {/* Label */}
-                  <p className="text-[9px] md:text-[10px] text-slate-300 mt-2 font-mono uppercase tracking-wider bg-[#0f141c]/90 px-1.5 py-0.5 rounded border border-[rgba(0,230,160,0.25)] shadow-lg text-center leading-tight whitespace-nowrap absolute top-[110%]">
+                  <p className="text-[9px] md:text-[10px] text-slate-300 mt-2 font-mono uppercase tracking-wider bg-[#0f141c]/90 px-1.5 py-0.5 rounded border border-[rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.25)] shadow-lg text-center leading-tight whitespace-nowrap absolute top-[110%]">
                     {tech.name}
                   </p>
                 </motion.div>
@@ -312,7 +312,7 @@ export default function Skills() {
     <section className="relative w-full mx-auto py-24 px-4 sm:px-6 lg:px-8 overflow-hidden" id="skills">
 
       {/* Section Header */}
-      <div className="flex flex-col items-center justify-center py-4 px-10 bg-[#141923]/60 backdrop-blur-xl border border-[#00ffaa]/20 rounded-2xl shadow-[0_0_20px_rgba(0,255,170,0.15)] mx-auto max-w-fit mb-12 z-10 relative">
+      <div className="flex flex-col items-center justify-center py-4 px-10 bg-[#141923]/60 backdrop-blur-xl border border-[var(--color-primary-400)]/20 rounded-2xl shadow-[0_0_20px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.15)] mx-auto max-w-fit mb-12 z-10 relative">
         <h2 className="text-2xl md:text-3xl font-bold text-white tracking-[0.2em] uppercase text-center">
           SKILLS
         </h2>

@@ -55,7 +55,7 @@ function MatrixCodeRain() {
         {Array.from({ length: columns }).map((_, colIdx) => (
           <motion.div
             key={colIdx}
-            className="flex-1 flex flex-col gap-1 text-[11px] font-mono text-emerald-400 whitespace-nowrap"
+            className="flex-1 flex flex-col gap-1 text-[11px] font-mono text-primary-400 whitespace-nowrap"
             initial={{ y: colIdx % 2 === 0 ? '-50%' : '0%' }}
             animate={{ y: colIdx % 2 === 0 ? '0%' : '-50%' }}
             transition={{
@@ -83,7 +83,7 @@ function ScanLine() {
       className="absolute left-0 right-0 h-[2px] pointer-events-none z-20"
       style={{
         background:
-          'linear-gradient(90deg, transparent, rgba(0,230,118,0.15), transparent)',
+          'linear-gradient(90deg, transparent, rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.15), transparent)',
       }}
       initial={{ top: '-2px' }}
       animate={{ top: '100%' }}
@@ -97,27 +97,28 @@ function ScanLine() {
 }
 
 /** The glowing progress bar */
-function ProgressBar({ progress }: { progress: number }) {
+function ProgressBar({ progress, accentColor }: { progress: number; accentColor: string }) {
   return (
     <div className="w-full max-w-lg mx-auto">
       {/* Label */}
       <div className="flex justify-between items-center mb-2 font-mono text-xs">
-        <span className="text-emerald-400/80">Progress Bar</span>
-        <span className="text-emerald-300 tabular-nums">
+        <span className="tabular-nums" style={{ color: `${accentColor}cc` }}>Progress Bar</span>
+        <span className="tabular-nums" style={{ color: accentColor }}>
           {Math.round(progress)}%
         </span>
       </div>
 
       {/* Track */}
-      <div className="relative h-[18px] rounded-full border border-emerald-500/30 bg-slate-900/60 backdrop-blur-sm overflow-hidden">
+      <div className="relative h-[18px] rounded-full border bg-slate-900/60 backdrop-blur-sm overflow-hidden"
+           style={{ borderColor: `${accentColor}55` }}>
         {/* Fill */}
         <motion.div
           className="absolute inset-y-0 left-0 rounded-full"
           style={{
             width: `${progress}%`,
-            background:
-              'linear-gradient(90deg, #059669, #00e676, #4ade80, #00e676)',
+            backgroundImage: `linear-gradient(90deg, ${accentColor}80, ${accentColor}, ${accentColor}cc, ${accentColor})`,
             backgroundSize: '200% 100%',
+            backgroundPosition: '0% 0%',
           }}
           animate={{
             backgroundPosition: ['0% 0%', '100% 0%'],
@@ -135,8 +136,7 @@ function ProgressBar({ progress }: { progress: number }) {
             className="absolute top-0 bottom-0 w-8 rounded-full"
             style={{
               left: `calc(${progress}% - 32px)`,
-              background:
-                'radial-gradient(ellipse at center, rgba(0,230,118,0.6), transparent)',
+              background: `radial-gradient(ellipse at center, ${accentColor}99, transparent)`,
               filter: 'blur(6px)',
             }}
             animate={{ opacity: [0.5, 1, 0.5] }}
@@ -168,14 +168,14 @@ function ProgressBar({ progress }: { progress: number }) {
             <div
               className={`w-[1px] h-1.5 ${
                 progress >= tick
-                  ? 'bg-emerald-400/80'
+                  ? 'bg-primary-400/80'
                   : 'bg-slate-600/40'
               }`}
             />
             <span
               className={`text-[9px] font-mono mt-0.5 ${
                 progress >= tick
-                  ? 'text-emerald-400/60'
+                  ? 'text-primary-400/60'
                   : 'text-slate-600/40'
               }`}
             >
@@ -221,8 +221,8 @@ function TerminalMessages({
             transition={{ duration: 0.3 }}
             className={`flex items-center gap-2 ${
               isSystemReady
-                ? 'text-emerald-300 font-bold'
-                : 'text-emerald-500/70'
+                ? 'text-primary-300 font-bold'
+                : 'text-primary-500/70'
             }`}
           >
             {/* Status indicator */}
@@ -230,7 +230,7 @@ function TerminalMessages({
               <span
                 className={`absolute inset-0 rounded-full ${
                   isSystemReady
-                    ? 'bg-emerald-400'
+                    ? 'bg-primary-400'
                     : isLast && !isComplete
                       ? 'bg-amber-400'
                       : 'bg-emerald-600'
@@ -250,7 +250,7 @@ function TerminalMessages({
             {/* Blinking cursor on the latest line */}
             {isLast && !isComplete && (
               <motion.span
-                className="inline-block w-[7px] h-[14px] bg-emerald-400 ml-0.5"
+                className="inline-block w-[7px] h-[14px] bg-primary-400 ml-0.5"
                 animate={{ opacity: [1, 0, 1] }}
                 transition={{ duration: 0.7, repeat: Infinity }}
               />
@@ -273,8 +273,19 @@ export default function Preloader({
   const [progress, setProgress] = useState(0);
   const [visibleMessages, setVisibleMessages] = useState(0);
   const [isFadingOut, setIsFadingOut] = useState(false);
+  const [accentColor, setAccentColor] = useState('rgb(var(--color-accent-r) var(--color-accent-g) var(--color-accent-b))'); // default emerald
   const startTimeRef = useRef<number>(0);
   const rafRef = useRef<number>(0);
+
+  // Read theme from localStorage immediately on mount
+  useEffect(() => {
+    const saved = localStorage.getItem('portfolio-theme');
+    if (saved === 'blue') {
+      setAccentColor('#22d3ee'); // cyan-400
+    } else {
+      setAccentColor('rgb(var(--color-accent-r) var(--color-accent-g) var(--color-accent-b))'); // primary-400
+    }
+  }, []);
 
   // Smooth progress animation via requestAnimationFrame
   const animateProgress = useCallback(() => {
@@ -344,7 +355,7 @@ export default function Preloader({
               className="absolute inset-0 opacity-[0.03] pointer-events-none"
               style={{
                 backgroundImage:
-                  'linear-gradient(rgba(0,230,118,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(0,230,118,0.3) 1px, transparent 1px)',
+                  'linear-gradient(rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.3) 1px, transparent 1px)',
                 backgroundSize: '60px 60px',
               }}
             />
@@ -373,7 +384,7 @@ export default function Preloader({
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 1, ease: 'easeOut' }}
               >
-                <div className="h-[1px] bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent" />
+                <div className="h-[1px] bg-gradient-to-r from-transparent via-primary-500/40 to-transparent" />
               </motion.div>
 
               {/* Terminal header bar */}
@@ -386,7 +397,7 @@ export default function Preloader({
                 <div className="flex items-center gap-2 bg-slate-800/40 border border-slate-700/30 rounded-t-lg px-4 py-2 backdrop-blur-sm">
                   <div className="w-3 h-3 rounded-full bg-red-500/80" />
                   <div className="w-3 h-3 rounded-full bg-amber-500/80" />
-                  <div className="w-3 h-3 rounded-full bg-emerald-500/80" />
+                  <div className="w-3 h-3 rounded-full bg-primary-500/80" />
                   <span className="ml-3 text-xs font-mono text-slate-500">
                     ushan@portfolio:~$
                   </span>
@@ -400,7 +411,7 @@ export default function Preloader({
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
                 style={{
-                  textShadow: '0 0 40px rgba(0,230,118,0.2), 0 0 80px rgba(0,230,118,0.1)',
+                  textShadow: '0 0 40px rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.2), 0 0 80px rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.1)',
                 }}
               >
                 System Initializing
@@ -419,7 +430,7 @@ export default function Preloader({
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
               >
-                <ProgressBar progress={progress} />
+                <ProgressBar progress={progress} accentColor={accentColor} />
               </motion.div>
 
               {/* Terminal messages */}
@@ -442,7 +453,7 @@ export default function Preloader({
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 1, delay: 0.5, ease: 'easeOut' }}
               >
-                <div className="h-[1px] bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent" />
+                <div className="h-[1px] bg-gradient-to-r from-transparent via-primary-500/40 to-transparent" />
               </motion.div>
 
               {/* Status badge */}
@@ -454,7 +465,7 @@ export default function Preloader({
               >
                 <motion.span
                   className={`w-1.5 h-1.5 rounded-full ${
-                    isComplete ? 'bg-emerald-400' : 'bg-amber-400'
+                    isComplete ? 'bg-primary-400' : 'bg-amber-400'
                   }`}
                   animate={{
                     opacity: isComplete ? 1 : [1, 0.3, 1],
