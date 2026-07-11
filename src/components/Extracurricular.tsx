@@ -49,7 +49,6 @@ export default function Extracurricular() {
         <div className="relative flex flex-col gap-8 pl-8 md:pl-12 z-10 mt-4">
           {activitiesData.map((activity, idx) => {
             const isLast = idx === activitiesData.length - 1;
-            const Icon = activity.icon;
             return (
               <motion.div
                 key={idx}
