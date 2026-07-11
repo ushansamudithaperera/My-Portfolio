@@ -10,7 +10,7 @@ const NAV_LINKS = [
   { name: 'EDUCATION', href: '#education' },
   { name: 'SKILLS', href: '#skills' },
   { name: 'PROJECTS', href: '#projects' },
-  { name: 'EXTRA', href: '#extra' },
+  { name: 'EXTRA', href: '#extracurricular' },
   { name: 'CONTACT', href: '#contact' },
 ];
 
