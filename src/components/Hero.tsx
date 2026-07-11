@@ -82,7 +82,7 @@ export default function Hero() {
             {/* ── Action Buttons ── */}
             <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
               <a
-                href="https://linkedin.com/in/ushan-perera-73a11b199"
+                href="https://www.linkedin.com/in/ushan-perera-16ab952b3/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-12 h-12 flex items-center justify-center rounded-full border border-slate-600 hover:border-primary-400 hover:text-primary-400 text-slate-300 transition-colors bg-[#141923]/50 shadow-lg"
@@ -92,7 +92,7 @@ export default function Hero() {
               </a>
 
               <a
-                href="https://github.com/ushan111"
+                href="https://github.com/ushansamudithaperera"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-12 h-12 flex items-center justify-center rounded-full border border-slate-600 hover:border-primary-400 hover:text-primary-400 text-slate-300 transition-colors bg-[#141923]/50 shadow-lg"
@@ -125,13 +125,13 @@ export default function Hero() {
               background: `conic-gradient(from 90deg at 50% 50%, #0a0f16 0%, #0a0f16 50%, rgb(var(--color-accent-r) var(--color-accent-g) var(--color-accent-b)) 100%)`
             }}
           />
-          
+
           {/* Inner Image Mask */}
           <div className="relative w-full h-full rounded-2xl overflow-hidden bg-[#0a0f16] z-10 flex items-center justify-center">
             {/* Ensure the img fills the container */}
-            <img 
-              src="/me.png" 
-              alt="Profile" 
+            <img
+              src="/me.png"
+              alt="Profile"
               className="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 transition-opacity duration-500"
               loading="eager"
             />
