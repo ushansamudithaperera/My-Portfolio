@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { FaWhatsapp } from 'react-icons/fa';
 
 export default function Contact() {
   return (
@@ -84,14 +85,16 @@ export default function Contact() {
               type="submit"
               className="w-full py-4 rounded-xl text-white font-semibold tracking-wider uppercase text-sm bg-slate-800/50 border border-slate-600 hover:bg-emerald-500/20 hover:border-emerald-400/80 hover:shadow-[0_0_20px_rgba(0,255,170,0.3)] transition-all duration-300"
             >
-              Contact
+              Send Message
             </button>
             <a
-              href="/resume.pdf"
-              download
-              className="w-full flex items-center justify-center py-4 rounded-xl text-white font-semibold tracking-wider uppercase text-sm bg-slate-800/50 border border-slate-600 hover:bg-emerald-500/20 hover:border-emerald-400/80 hover:shadow-[0_0_20px_rgba(0,255,170,0.3)] transition-all duration-300"
+              href="https://wa.me/94711742319"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full flex items-center justify-center gap-3 py-4 rounded-xl text-white font-semibold tracking-wider uppercase text-sm bg-slate-800/50 border border-slate-600 hover:bg-emerald-500/20 hover:border-emerald-400/80 hover:shadow-[0_0_20px_rgba(0,255,170,0.3)] transition-all duration-300"
             >
-              Download CV
+              <FaWhatsapp size={20} className="text-emerald-400" />
+              WhatsApp Contact
             </a>
           </div>
         </form>
