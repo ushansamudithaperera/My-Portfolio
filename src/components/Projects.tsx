@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useState, useRef, useEffect, MouseEvent } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -30,8 +30,8 @@ const projectsData: Project[] = [
       'Secured the application with JWT authentication, HTTP-only cookies, and Role-Based Access Control (RBAC); deployed the full infrastructure using Docker containerization.'
     ],
     image: '/Sentinel Stream.png',
-    githubUrl: '#',
-    demoUrl: '#'
+    githubUrl: 'https://github.com/ushansamudithaperera/Sentinel-Stream-System',
+    demoUrl: 'https://sentinel-stream-system.vercel.app'
   },
   {
     id: 2,
@@ -46,8 +46,8 @@ const projectsData: Project[] = [
       'Improved backend data retrieval speeds by ~30% through Redis caching and MongoDB aggregation pipelines; automated test workflows via GitHub Actions CI/CD.'
     ],
     image: '/Smart Inventory AI.png',
-    githubUrl: '#',
-    demoUrl: '#'
+    githubUrl: 'https://github.com/ushansamudithaperera/Smart-Inventory-System',
+    demoUrl: 'https://smart-inventory-system-ushansp.vercel.app'
   },
   {
     id: 3,
@@ -62,8 +62,8 @@ const projectsData: Project[] = [
       'Implemented a dynamic confidence guardrail (60% threshold) to intelligently route ambiguous requests to Level 2 support, and deployed the full interactive Streamlit interface using Docker containerization.'
     ],
     image: '/IT Support Agent.png',
-    githubUrl: '#',
-    demoUrl: '#'
+    githubUrl: 'https://github.com/ushansamudithaperera/Smart-IT-Service-Management-Agent',
+    demoUrl: 'https://www.linkedin.com/posts/ushan-perera-16ab952b3_ai-machinelearning-devops-ugcPost-7478136407664795649-qzaW/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEt1r6IBFpvmw_Pp9ai28E1LcuNjQmcgTRQ'
   },
   {
     id: 4,
@@ -77,8 +77,8 @@ const projectsData: Project[] = [
       'Built secure RESTful APIs with Spring Boot and optimized MongoDB queries, improving dynamic data retrieval efficiency.'
     ],
     image: '/Travel Commerce.png',
-    githubUrl: '#',
-    demoUrl: '#'
+    githubUrl: undefined,
+    demoUrl: 'https://travelcommerce.vercel.app'
   },
   {
     id: 5,
@@ -92,8 +92,8 @@ const projectsData: Project[] = [
       'Architected a centralized SQL Server database with role-based access control to manage multi-tier permissions for 2 user roles (teachers and students).'
     ],
     image: '/EDU QUIZ.png',
-    githubUrl: '#',
-    demoUrl: '#'
+    githubUrl: 'https://github.com/ushansamudithaperera/Quiz-Management-System',
+    demoUrl: 'https://www.linkedin.com/in/ushan-perera-16ab952b3/details/projects/'
   },
   {
     id: 6,
@@ -107,8 +107,8 @@ const projectsData: Project[] = [
       'Implemented SQL prepared statements across all user input fields, eliminating SQL injection vulnerabilities.'
     ],
     image: '/Happy Paws.png',
-    githubUrl: '#',
-    demoUrl: '#'
+    githubUrl: 'https://github.com/ushansamudithaperera/Veterinary-Clinic-System',
+    demoUrl: 'https://www.linkedin.com/in/ushan-perera-16ab952b3/details/projects/'
   },
   {
     id: 7,
@@ -128,8 +128,8 @@ const projectsData: Project[] = [
       'EEPROM storage so data survives power cuts'
     ],
     image: '/Creative Design.png',
-    githubUrl: '#',
-    demoUrl: '#'
+    githubUrl: 'https://github.com/ushansamudithaperera/Creative-Design-Project',
+    demoUrl: 'https://www.linkedin.com/posts/ushan-perera-16ab952b3_ai-machinelearning-devops-ugcPost-7478136407664795649-qzaW/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEt1r6IBFpvmw_Pp9ai28E1LcuNjQmcgTRQ'
   }
 ];
 
@@ -380,7 +380,7 @@ export default function Projects() {
                       className="flex-1 flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-semibold tracking-wider text-slate-900 bg-primary-400 hover:bg-primary-300 transition-colors shadow-[0_0_20px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.3)]"
                     >
                       <FaExternalLinkAlt size={16} />
-                      Watch Live Demo
+                      {selectedProject.demoUrl.includes('linkedin.com') ? 'View on LinkedIn' : 'Watch Live Demo'}
                     </a>
                   )}
                   {selectedProject.githubUrl && (
