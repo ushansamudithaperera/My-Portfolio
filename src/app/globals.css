@@ -57,6 +57,11 @@
 
 /* (Legacy emerald values now handled by CSS variables + @theme inline above) */
 
+html {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
 html,
 body {
   background: linear-gradient(to bottom, #0a0e14, #0d1117) !important;

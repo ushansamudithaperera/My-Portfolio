@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useState, useRef, useEffect, MouseEvent } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -194,7 +194,7 @@ export default function Projects() {
     <section className="relative w-full max-w-[1400px] mx-auto py-24 px-4 sm:px-6 overflow-hidden" id="projects">
 
       {/* ── Main Glassmorphism Panel ── */}
-      <div className="relative z-10 bg-[#141923]/60 backdrop-blur-xl border border-[var(--color-primary-400)]/20 rounded-3xl py-12 md:py-16 shadow-[0_0_40px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.1)] overflow-hidden">
+      <div className="relative z-10 bg-[#141923]/60 backdrop-blur-sm md:backdrop-blur-xl border border-[var(--color-primary-400)]/20 rounded-3xl py-12 md:py-16 shadow-[0_0_40px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.1)] overflow-hidden transform-gpu" style={{ willChange: 'transform' }}>
 
         {/* Section Header */}
         <div className="flex flex-col items-center justify-center mb-16 relative px-4">
@@ -231,15 +231,17 @@ export default function Projects() {
             {marqueeProjects.map((project, idx) => (
               <div
                 key={`${project.id}-${idx}`}
-                className="w-[320px] md:w-[420px] shrink-0 group relative flex flex-col bg-[#0a0e14]/90 border border-slate-700/60 rounded-3xl overflow-hidden hover:border-primary-500/50 hover:shadow-[0_0_30px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.15)] transition-all duration-300 transform hover:-translate-y-2"
+                className="w-[320px] md:w-[420px] shrink-0 group relative flex flex-col bg-[#0a0e14]/90 border border-slate-700/60 rounded-3xl overflow-hidden hover:border-primary-500/50 hover:shadow-[0_0_30px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.15)] transition-all duration-300 transform hover:-translate-y-2 transform-gpu"
+                style={{ willChange: 'transform' }}
               >
                 {/* ── Card Thumbnail Area ── */}
-                <div className="relative h-56 w-full bg-[#0a101d] overflow-hidden">
+                <div className="relative w-full h-48 md:h-64 lg:h-72 overflow-hidden rounded-t-xl bg-[#0a101d]">
                   {/* True Color Image with Scale Hover */}
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="relative z-10 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="relative z-10 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 transform-gpu"
+                    style={{ willChange: 'transform' }}
                   />
                   {/* Bottom fade into card body */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0a0e14] via-transparent to-transparent z-20 pointer-events-none" />
@@ -317,7 +319,8 @@ export default function Projects() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedProject(null)}
-              className="absolute inset-0 bg-slate-950/80 backdrop-blur-md"
+              className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm md:backdrop-blur-md transform-gpu"
+              style={{ willChange: 'opacity' }}
             />
 
             {/* Modal Content (50/50 Split View) */}
@@ -326,7 +329,8 @@ export default function Projects() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="relative w-full max-w-6xl h-[85vh] md:h-[75vh] flex flex-col md:flex-row bg-[#0a0e14]/95 backdrop-blur-2xl border border-primary-500/30 rounded-3xl shadow-[0_0_50px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.2)] overflow-hidden"
+              className="relative w-full max-w-6xl h-[85vh] md:h-[75vh] flex flex-col md:flex-row bg-[#0a0e14]/95 backdrop-blur-sm md:backdrop-blur-2xl border border-primary-500/30 rounded-3xl shadow-[0_0_50px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.2)] overflow-hidden transform-gpu"
+              style={{ willChange: 'transform, opacity' }}
             >
               {/* Close Button */}
               <button

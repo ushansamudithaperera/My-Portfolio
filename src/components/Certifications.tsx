@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useState, useRef, useEffect, MouseEvent } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -9,7 +9,8 @@ type Certification = {
   issuer: string;
   icon: any;
   color: string;
-  pdfUrl: string;
+  pdfLink: string;
+  thumbnail: string;
 };
 
 const certsData: Certification[] = [
@@ -18,89 +19,100 @@ const certsData: Certification[] = [
     issuer: 'Amazon Web Services',
     icon: FaAws,
     color: 'text-[#FF9900]',
-    pdfUrl: '/aws.pdf'
+    pdfLink: '/aws.pdf',
+    thumbnail: '/aws.png'
   },
   {
     title: 'Kubernetes for the Absolute Beginners with Hands-on Labs',
     issuer: 'KodeKloud',
     icon: FaServer,
     color: 'text-blue-500',
-    pdfUrl: '/kubernetes.pdf'
+    pdfLink: '/kubernetes.pdf',
+    thumbnail: '/kubernetes.png'
   },
   {
     title: 'Docker Training Course for the Absolute Beginner',
     issuer: 'KodeKloud',
     icon: FaDocker,
     color: 'text-[#2496ED]',
-    pdfUrl: '/docker.pdf'
+    pdfLink: '/docker.pdf',
+    thumbnail: '/docker.png'
   },
   {
     title: 'Hands-on Introduction to Linux Commands and Shell Scripting',
     issuer: 'IBM',
     icon: FaLinux,
     color: 'text-yellow-500',
-    pdfUrl: '/Linux.pdf'
+    pdfLink: '/Linux.pdf',
+    thumbnail: '/Linux.png'
   },
   {
     title: 'Developing Back-End Apps with Node.js and Express',
     issuer: 'IBM',
     icon: FaNodeJs,
     color: 'text-[#339933]',
-    pdfUrl: '/node.pdf'
+    pdfLink: '/node.pdf',
+    thumbnail: '/node.png'
   },
   {
     title: 'Introduction to Information Security',
     issuer: 'HashX',
     icon: FaShieldAlt,
     color: 'text-primary-500',
-    pdfUrl: '/security.pdf'
+    pdfLink: '/security.pdf',
+    thumbnail: '/security.png'
   },
   {
     title: '100 Days of Cloud - AWS',
     issuer: '100 Days of Cloud',
     icon: FaAws,
     color: 'text-[#FF9900]',
-    pdfUrl: '/100_Days_of_Cloud_AWS.pdf'
+    pdfLink: '/100_Days_of_Cloud_AWS.pdf',
+    thumbnail: '/100_Days_of_Cloud_AWS.png'
   },
   {
     title: '100 Days of Cloud - Azure',
     issuer: '100 Days of Cloud',
     icon: FaMicrosoft,
     color: 'text-[#00A4EF]',
-    pdfUrl: '/100_Days_of_Cloud_Azure.pdf'
+    pdfLink: '/100_Days_of_Cloud_Azure.pdf',
+    thumbnail: '/100_Days_of_Cloud_Azure.png'
   },
   {
     title: 'Introduction to Front-End Development',
     issuer: 'Meta',
     icon: FaCode,
     color: 'text-blue-400',
-    pdfUrl: '/Introduction to Front-End Development.pdf'
+    pdfLink: '/Introduction to Front-End Development.pdf',
+    thumbnail: '/Introduction to Front-End Development.png'
   },
   {
     title: 'Programming with JavaScript',
     issuer: 'Meta',
     icon: FaJs,
     color: 'text-yellow-400',
-    pdfUrl: '/Programming with Java Script.pdf'
+    pdfLink: '/Programming with Java Script.pdf',
+    thumbnail: '/Programming with Java Script.png'
   },
   {
     title: 'Python for Data Science, AI & Development',
     issuer: 'IBM',
     icon: FaPython,
     color: 'text-blue-500',
-    pdfUrl: '/Python for Data Science, AI & Development.pdf'
+    pdfLink: '/Python for Data Science, AI & Development.pdf',
+    thumbnail: '/Python for Data Science, AI & Development.png'
   },
   {
     title: 'React Basics',
     issuer: 'Meta',
     icon: FaReact,
     color: 'text-[#61DAFB]',
-    pdfUrl: '/React Basics.pdf'
+    pdfLink: '/React Basics.pdf',
+    thumbnail: '/React Basics.png'
   }
 ];
 
 export default function Certifications() {
-  const [selectedCert, setSelectedCert] = useState<Certification | null>(null);
 
   // --- Drag and Auto-scroll State ---
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -160,7 +172,7 @@ export default function Certifications() {
     <section className="relative w-full max-w-[1400px] mx-auto py-24 px-4 sm:px-6 overflow-hidden" id="certifications">
 
       {/* ── Main Glassmorphism Panel Container ── */}
-      <div className="relative bg-[#141923]/60 border border-[var(--color-primary-400)]/20 rounded-3xl py-12 md:py-16 shadow-[0_0_40px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.1)] backdrop-blur-xl z-10 overflow-hidden">
+      <div className="relative bg-[#141923]/60 border border-[var(--color-primary-400)]/20 rounded-3xl py-12 md:py-16 shadow-[0_0_40px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.1)] backdrop-blur-sm md:backdrop-blur-xl z-10 overflow-hidden transform-gpu" style={{ willChange: 'transform' }}>
 
         {/* ── Section Header ── */}
         <div className="flex flex-col items-center justify-center mb-16 relative px-4">
@@ -199,21 +211,12 @@ export default function Certifications() {
               return (
                 <div
                   key={`${cert.title}-${idx}`}
-                  className="w-[320px] md:w-[380px] shrink-0 group relative flex flex-col bg-[#0a0e14]/90 border border-slate-700/60 rounded-3xl overflow-hidden hover:border-primary-500/50 hover:shadow-[0_0_30px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.15)] transition-all duration-300 transform hover:-translate-y-2"
+                  className="w-[320px] md:w-[380px] shrink-0 group relative flex flex-col bg-[#0a0e14]/90 border border-slate-700/60 rounded-3xl overflow-hidden hover:border-primary-500/50 hover:shadow-[0_0_30px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.15)] transition-all duration-300 transform hover:-translate-y-2 transform-gpu"
+                  style={{ willChange: 'transform' }}
                 >
-                  {/* ── PDF Thumbnail Area ── */}
-                  <div className="relative h-56 w-full bg-[#1e2330] overflow-hidden border-b border-slate-800">
-                    <iframe
-                      src={`${cert.pdfUrl}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
-                      className="absolute inset-0 w-full h-[150%] -top-10 opacity-80 group-hover:opacity-100 transition-opacity duration-500"
-                      title={cert.title}
-                    />
-
-                    {/* Intercept pointer events so PDF iframe doesn't steal scroll/drag or clicks */}
-                    <div className="absolute inset-0 z-10 bg-transparent" />
-
-                    {/* Bottom fade */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0e14] via-[#0a0e14]/20 to-transparent z-20 pointer-events-none" />
+                  {/* ── Image Thumbnail Area ── */}
+                  <div className="relative w-full h-48 md:h-60 lg:h-64 overflow-hidden rounded-t-xl bg-[#05080c] flex items-center justify-center">
+                    <img src={cert.thumbnail} alt={cert.title} className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity duration-300" />
                   </div>
 
                   {/* ── Card Details Area ── */}
@@ -234,13 +237,15 @@ export default function Certifications() {
 
                     {/* Action Button */}
                     <div className="mt-auto pt-4 border-t border-slate-800/80">
-                      <button
-                        onClick={() => setSelectedCert(cert)}
+                      <a
+                        href={cert.pdfLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold tracking-wider text-slate-300 transition-all duration-300 bg-slate-800/50 border border-slate-600/50 hover:bg-primary-500/10 hover:border-primary-500/40 hover:text-primary-300"
                       >
                         <FaExternalLinkAlt size={14} />
                         View Full Certificate
-                      </button>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -249,67 +254,6 @@ export default function Certifications() {
           </div>
         </div>
       </div>
-
-      {/* ── Standard Full-Size PDF Modal ── */}
-      <AnimatePresence>
-        {selectedCert && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
-
-            {/* Overlay backdrop */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setSelectedCert(null)}
-              className="absolute inset-0 bg-slate-950/80 backdrop-blur-md"
-            />
-
-            {/* Modal Content */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="relative w-full max-w-5xl h-[85vh] flex flex-col bg-[#0a0e14]/95 backdrop-blur-2xl border border-primary-500/30 rounded-3xl shadow-[0_0_50px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.2)] overflow-hidden"
-            >
-              {/* Modal Header */}
-              <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800/50 bg-[#0a0e14]/80">
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-slate-900 border border-slate-700 flex items-center justify-center">
-                    {(() => {
-                      const Icon = selectedCert.icon;
-                      return <Icon size={20} className={selectedCert.color} />;
-                    })()}
-                  </div>
-                  <div>
-                    <h3 className="text-lg md:text-xl font-bold text-white tracking-wide">
-                      {selectedCert.title}
-                    </h3>
-                    <p className="text-slate-400 text-xs font-mono uppercase tracking-wider">
-                      {selectedCert.issuer}
-                    </p>
-                  </div>
-                </div>
-                <button
-                  onClick={() => setSelectedCert(null)}
-                  className="p-2.5 text-slate-400 hover:text-white hover:bg-slate-800/80 rounded-full transition-colors shrink-0"
-                >
-                  <FaTimes size={20} />
-                </button>
-              </div>
-
-              {/* PDF Viewer Body */}
-              <div className="flex-grow w-full h-full bg-[#1e2330] p-4 md:p-8">
-                <iframe
-                  src={`${selectedCert.pdfUrl}#toolbar=1&navpanes=0&scrollbar=1`}
-                  className="w-full h-full rounded-xl border border-slate-700 shadow-xl"
-                  title={selectedCert.title}
-                />
-              </div>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
     </section>
   );
 }
