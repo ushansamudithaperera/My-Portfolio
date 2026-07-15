@@ -32,7 +32,7 @@ export default function Footer() {
                 </button>
               </div>
               <p className="text-slate-400 text-sm mt-4 leading-relaxed max-w-sm">
-                Computer Science Undergraduate | DevOps & SRE Enthusiast
+                Full Stack Developer | DevOps & SRE Enthusiast | AI/ML Enthusiast | IoT Enthusiast
               </p>
             </div>
 
