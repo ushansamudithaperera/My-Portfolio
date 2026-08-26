@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { motion } from 'framer-motion';
 import { FaUserGraduate, FaUniversity } from 'react-icons/fa';
@@ -15,6 +15,7 @@ const educationData = [
     subText: null,
     badge: '2023 - PRESENT (EXPECTED 2027)',
     details: null,
+    longDescription: 'Currently in my 4th year reading for a joint honors degree in Electronics and Computer Science. While the program encompasses foundational electronics and hardware systems, my primary academic passion and professional focus are deeply centered on Computer Science principles, advanced software engineering, and scalable system architectures.',
     bullets: [],
   },
   {
@@ -28,6 +29,7 @@ const educationData = [
     subText: null,
     badge: '2021 (2022)',
     details: null,
+    longDescription: null,
     bullets: [
       'Combined Mathematics - B',
       'Physics - B',
@@ -45,6 +47,7 @@ const educationData = [
     subText: null,
     badge: '2017',
     details: 'Passed all subjects with excellent standing',
+    longDescription: null,
     bullets: [
       "2 A's",
       "4 B's",
@@ -189,6 +192,12 @@ export default function Education() {
                       {edu.details && (
                         <p className="text-sm md:text-base text-slate-400 mb-3">
                           {edu.details}
+                        </p>
+                      )}
+
+                      {edu.longDescription && (
+                        <p className="mt-4 text-[13px] md:text-sm text-slate-400 leading-relaxed">
+                          {edu.longDescription}
                         </p>
                       )}
 
