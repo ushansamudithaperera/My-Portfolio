@@ -77,14 +77,14 @@ const educationData = [
     institution: 'R/Ananda Vidyalaya',
     subText: null,
     badge: '2017',
-    details: 'Passed all subjects with excellent standing',
+    details: null,
     longDescription: null,
-    bullets: [
-      "2 A's",
-      "4 B's",
-      "3 C's"
-    ],
-    customContent: null,
+    bullets: [],
+    customContent: (
+      <p className="mt-4 text-[13px] md:text-sm text-slate-400 leading-relaxed">
+        Successfully completed the G.C.E. Ordinary Level examination with strong academic standing, achieving 2 A's, 4 B's, and 3 C's. This crucial early milestone built a solid educational foundation, sparking my initial interest in analytical problem-solving and effectively preparing me for the rigorous Mathematics stream at the Advanced Level and my subsequent journey into Computer Science.
+      </p>
+    ),
   },
 ];
 
