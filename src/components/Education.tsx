@@ -17,6 +17,7 @@ const educationData = [
     details: null,
     longDescription: 'Currently in my 4th year reading for a joint honors degree in Electronics and Computer Science. While the program encompasses foundational electronics and hardware systems, my primary academic passion and professional focus are deeply centered on Computer Science principles, advanced software engineering, and scalable system architectures.',
     bullets: [],
+    customContent: null,
   },
   {
     id: 2,
@@ -30,11 +31,41 @@ const educationData = [
     badge: '2021 (2022)',
     details: null,
     longDescription: null,
-    bullets: [
-      'Combined Mathematics - B',
-      'Physics - B',
-      'Chemistry - B'
-    ],
+    bullets: [],
+    customContent: (
+      <>
+        <p className="mt-4 mb-5 text-[13px] md:text-sm text-slate-400 leading-relaxed">
+          Successfully completed the G.C.E. Advanced Level examination in the Physical Science (Mathematics) stream from the Ratnapura District, establishing a strong analytical and quantitative foundation for my Computer Science journey.
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          {/* Subject 1 */}
+          <div className="flex items-center px-4 py-2.5 rounded-lg bg-[#030508]/40 border border-white/5">
+            <div className="w-1.5 h-1.5 rounded-full bg-cyan-500 mr-3 shadow-[0_0_8px_#06b6d4]" />
+            <span className="text-sm text-slate-300">Combined Mathematics <span className="font-semibold text-cyan-400 ml-2">B</span></span>
+          </div>
+          
+          {/* Subject 2 */}
+          <div className="flex items-center px-4 py-2.5 rounded-lg bg-[#030508]/40 border border-white/5">
+            <div className="w-1.5 h-1.5 rounded-full bg-cyan-500 mr-3 shadow-[0_0_8px_#06b6d4]" />
+            <span className="text-sm text-slate-300">Physics <span className="font-semibold text-cyan-400 ml-2">B</span></span>
+          </div>
+          
+          {/* Subject 3 */}
+          <div className="flex items-center px-4 py-2.5 rounded-lg bg-[#030508]/40 border border-white/5">
+            <div className="w-1.5 h-1.5 rounded-full bg-cyan-500 mr-3 shadow-[0_0_8px_#06b6d4]" />
+            <span className="text-sm text-slate-300">Chemistry <span className="font-semibold text-cyan-400 ml-2">B</span></span>
+          </div>
+
+          {/* Key Metrics (Z-Score & Rank) */}
+          <div className="flex flex-col justify-center px-4 py-2.5 rounded-lg bg-cyan-500/10 border border-cyan-500/20">
+             <div className="flex justify-between items-center w-full">
+                <span className="text-sm text-slate-300">Z-Score: <span className="font-semibold text-cyan-400">1.5000</span></span>
+                <span className="text-sm text-slate-300">District Rank: <span className="font-semibold text-cyan-400">110</span></span>
+             </div>
+          </div>
+        </div>
+      </>
+    ),
   },
   {
     id: 3,
@@ -53,6 +84,7 @@ const educationData = [
       "4 B's",
       "3 C's"
     ],
+    customContent: null,
   },
 ];
 
@@ -200,6 +232,8 @@ export default function Education() {
                           {edu.longDescription}
                         </p>
                       )}
+
+                      {edu.customContent}
 
                       {/* Result Pills */}
                       {edu.bullets && edu.bullets.length > 0 && (
