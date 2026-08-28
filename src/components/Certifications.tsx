@@ -79,6 +79,14 @@ const certsData: Certification[] = [
     thumbnail: '/100_Days_of_Cloud_Azure.png'
   },
   {
+    title: '100 Days of DevOps',
+    issuer: '100 Days of DevOps',
+    icon: FaCloud,
+    color: 'text-cyan-400',
+    pdfLink: '/100_Days_of_Devops.pdf',
+    thumbnail: '/100_Days_of_DevOps.jpg'
+  },
+  {
     title: 'Introduction to Front-End Development',
     issuer: 'Meta',
     icon: FaCode,
