@@ -151,7 +151,7 @@ export default function Education() {
 
         <div className="relative">
 
-          <div className="relative space-y-12 pl-16 md:pl-24 pr-4 md:pr-8 pb-4">
+          <div className="relative space-y-8 sm:space-y-10 pl-8 sm:pl-12 md:pl-24 pr-2 sm:pr-4 md:pr-8 pb-4">
 
             {educationData.map((edu, idx) => {
               const isLast = idx === educationData.length - 1;
@@ -176,63 +176,63 @@ export default function Education() {
                   )}
 
                   {/* Node on the timeline */}
-                  <div className="absolute -left-[45px] md:-left-[61px] top-[24px] w-4 h-4 rounded-full bg-primary-400 shadow-[0_0_15px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),1)] border-[3px] border-[#0a0e14] z-10 transition-transform duration-300 group-hover:scale-125" />
+                  <div className="absolute -left-[28px] sm:-left-[36px] md:-left-[61px] top-[24px] w-4 h-4 rounded-full bg-primary-400 shadow-[0_0_15px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),1)] border-[3px] border-[#0a0e14] z-10 transition-transform duration-300 group-hover:scale-125" />
 
                   {/* Connecting horizontal branch */}
-                  <div className="absolute -left-[29px] md:-left-[45px] top-[31px] w-[29px] md:w-[45px] h-[2px] bg-primary-500/30 shadow-[0_0_8px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.5)] z-0" />
+                  <div className="absolute -left-[15px] sm:-left-[20px] md:-left-[45px] top-[31px] w-[15px] sm:w-[20px] md:w-[45px] h-[2px] bg-primary-500/30 shadow-[0_0_8px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.5)] z-0" />
 
                   {/* ── Inner Card ("Card inside a card") ── */}
-                  <div className="bg-[#0a0e14]/80 border border-primary-400/50 shadow-[0_0_15px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.3)] rounded-2xl p-6 md:p-8 transition-all duration-300 group-hover:bg-[#0a0e14]/90 group-hover:shadow-[0_0_25px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.4)] relative overflow-hidden">
+                  <div className="bg-[#0a0e14]/80 border border-primary-400/50 shadow-[0_0_15px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.3)] rounded-2xl p-4 sm:p-5 md:p-8 transition-all duration-300 group-hover:bg-[#0a0e14]/90 group-hover:shadow-[0_0_25px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.4)] relative overflow-hidden">
 
                     {/* Subtle inner glow */}
                     <div className="absolute inset-0 bg-primary-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
                     {/* ── Flex Layout (Header & Date) ── */}
-                    <div className="flex flex-col md:flex-row md:justify-between items-start gap-4 mb-4">
+                    <div className="flex flex-col sm:flex-row sm:justify-between items-start gap-3 sm:gap-4 mb-4">
 
                       {/* Left Side: Title, Stream, Institution */}
-                      <div className="flex-1 flex flex-col gap-1">
-                        <div className="flex items-center gap-3 mb-1">
+                      <div className="flex-1 flex flex-col gap-1 min-w-0">
+                        <div className="flex items-center gap-3 mb-1 min-w-0">
                           <div className={edu.iconContainerClass}>
                             <Icon className={edu.iconClass} />
                           </div>
-                          <h3 className="text-slate-50 font-bold text-xl md:text-2xl tracking-wide">
+                          <h3 className="text-slate-50 font-bold text-xl md:text-2xl tracking-wide break-words leading-tight">
                             {edu.title}
                           </h3>
                         </div>
 
                         {/* Stream (Top line, Dim) */}
                         {edu.stream && (
-                          <h4 className="text-sm text-slate-500 ml-14 mt-1">
+                          <h4 className="text-sm text-slate-500 ml-0 sm:ml-14 mt-1">
                             {edu.stream}
                           </h4>
                         )}
 
                         {/* Institution (Bottom line, Bright) */}
-                        <h4 className="text-slate-300 text-sm md:text-base font-medium ml-14 mt-1">
+                        <h4 className="text-slate-300 text-sm md:text-base font-medium ml-0 sm:ml-14 mt-1">
                           {edu.institution}
                         </h4>
 
                         {/* Subtext (Additional Bottom line, Dim) */}
                         {edu.subText && (
-                          <p className="text-sm text-slate-500 ml-14 mt-1">
+                          <p className="text-sm text-slate-500 ml-0 sm:ml-14 mt-1">
                             {edu.subText}
                           </p>
                         )}
                       </div>
 
                       {/* Right Side: Premium Date Badge */}
-                      <div className="shrink-0 md:pl-4 self-start ml-14 md:ml-0 mt-2 md:mt-1">
-                        <span className="px-3 py-1 text-xs font-mono text-primary-300 bg-primary-500/10 border border-primary-500/20 rounded-full shadow-[0_0_10px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.15)] inline-block">
+                      <div className="shrink-0 self-start sm:self-center ml-0 sm:ml-4 mt-1 sm:mt-0">
+                        <span className="px-3 py-1 text-xs font-mono text-primary-300 bg-primary-500/10 border border-primary-500/20 rounded-full shadow-[0_0_10px_rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.15)] inline-block whitespace-nowrap">
                           {edu.badge}
                         </span>
                       </div>
 
                     </div>
 
-                    <div className="w-full h-px bg-slate-700/60 my-5 ml-0 md:ml-14 max-w-full md:max-w-[calc(100%-3.5rem)]" />
+                    <div className="w-full h-px bg-slate-700/60 my-4 sm:my-5 ml-0 sm:ml-14 max-w-full sm:max-w-[calc(100%-3.5rem)]" />
 
-                    <div className="ml-0 md:ml-14">
+                    <div className="ml-0 sm:ml-14">
                       {/* Description */}
                       {edu.details && (
                         <p className="text-sm md:text-base text-slate-400 mb-3">
