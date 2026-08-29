@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- Blue to Green Gradient for Text and Border -->
+    <linearGradient id="neonGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06b6d4;stop-opacity:1" /> <!-- Neon Cyan/Blue -->
+      <stop offset="100%" style="stop-color:#10b981;stop-opacity:1" /> <!-- Neon Green -->
+    </linearGradient>
+    
+    <!-- Dark Background Gradient matching your site -->
+    <linearGradient id="darkBg" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#020617;stop-opacity:1" /> 
+      <stop offset="100%" style="stop-color:#0f172a;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background Shape with rounded corners and glowing border -->
+  <rect width="512" height="512" rx="120" fill="url(#darkBg)" stroke="url(#neonGradient)" stroke-width="20" />
+  
+  <!-- "UP" Text -->
+  <text x="50%" y="55%" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="260" font-weight="900" fill="url(#neonGradient)" text-anchor="middle" dominant-baseline="middle" letter-spacing="-5">UP</text>
+</svg>
