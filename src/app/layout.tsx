@@ -5,6 +5,7 @@ import TechBackground from "@/components/TechBackground";
 import Header from "@/components/Header";
 import Preloader from "@/components/Preloader";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import SmoothScroll from "@/components/SmoothScroll";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -34,13 +35,15 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${inter.className} bg-slate-950 text-slate-300 antialiased overflow-x-hidden`}>
-        <ThemeProvider>
-          <TechBackground />
-          <Preloader>
-            <Header />
-            {children}
-          </Preloader>
-        </ThemeProvider>
+        <SmoothScroll>
+          <ThemeProvider>
+            <TechBackground />
+            <Preloader>
+              <Header />
+              {children}
+            </Preloader>
+          </ThemeProvider>
+        </SmoothScroll>
       </body>
     </html>
   );

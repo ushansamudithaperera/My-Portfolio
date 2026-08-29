@@ -189,7 +189,7 @@ export default function Certifications() {
             CERTIFICATIONS
           </h2>
           <p className="text-slate-400 font-mono text-sm tracking-widest mt-4 uppercase text-center">
-            STEP 5: PROFESSIONAL VALIDATION
+            STEP 6: PROFESSIONAL VALIDATION
           </p>
         </div>
 

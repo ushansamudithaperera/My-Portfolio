@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { motion } from 'framer-motion';
 import { FaWhatsapp } from 'react-icons/fa';
@@ -23,7 +23,7 @@ export default function Contact() {
             CONTACT
           </h2>
           <p className="text-xs md:text-sm text-slate-400 font-mono tracking-[0.1em] uppercase text-center mb-10">
-            STEP 7: INITIATE SECURE CONNECTION
+            STEP 8: INITIATE SECURE CONNECTION
           </p>
         </div>
         <form action="https://formspree.io/f/xrevnabz" method="POST" className="space-y-6">

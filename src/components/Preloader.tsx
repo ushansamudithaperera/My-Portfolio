@@ -6,15 +6,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 /* ─── Configuration ──────────────────────────────────────────────── */
 
 const BOOT_MESSAGES = [
-  { text: '> System Initializing...', delay: 0 },
-  { text: '> Loading kernel modules...', delay: 400 },
-  { text: '> Mounting file systems...', delay: 800 },
-  { text: '> Booting CI/CD Modules...', delay: 1400 },
-  { text: '> Compiling assets pipeline...', delay: 1900 },
-  { text: '> Loading Core Data...', delay: 2500 },
-  { text: '> Establishing secure connections...', delay: 3000 },
-  { text: '> Deploying containers...', delay: 3400 },
-  { text: '> Running health checks...', delay: 3900 },
+  { text: '> Loading Hero Section...', delay: 0 },
+  { text: '> Loading Education...', delay: 500 },
+  { text: '> Loading Skills...', delay: 1000 },
+  { text: '> Loading Projects...', delay: 1500 },
+  { text: '> Loading GitHub Contributions...', delay: 2200 },
+  { text: '> Loading Certifications...', delay: 2900 },
+  { text: '> Loading Extra-Curricular...', delay: 3500 },
+  { text: '> Loading Contact...', delay: 4000 },
   { text: '> System Ready. (100%)', delay: 4600 },
 ];
 
@@ -283,12 +282,13 @@ export default function Preloader({
     if (saved === 'blue') {
       setAccentColor('#22d3ee'); // cyan-400
     } else {
-      setAccentColor('rgb(var(--color-accent-r) var(--color-accent-g) var(--color-accent-b))'); // primary-400
+      setAccentColor('#34d399'); // generic green just for preloader before css vars load completely, actually css vars work best
+      setAccentColor('rgb(var(--color-accent-r) var(--color-accent-g) var(--color-accent-b))');
     }
   }, []);
 
   // Smooth progress animation via requestAnimationFrame
-  const animateProgress = useCallback(() => {
+  const animateProgress = useCallback(function tick() {
     const elapsed = Date.now() - startTimeRef.current;
     const raw = Math.min((elapsed / TOTAL_DURATION) * 100, 100);
 
@@ -300,7 +300,7 @@ export default function Preloader({
     setProgress(easedProgress);
 
     if (raw < 100) {
-      rafRef.current = requestAnimationFrame(animateProgress);
+      rafRef.current = requestAnimationFrame(tick);
     } else {
       // 100% reached — trigger fade-out after a short delay
       setTimeout(() => {
@@ -414,7 +414,7 @@ export default function Preloader({
                   textShadow: '0 0 40px rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.2), 0 0 80px rgba(var(--color-accent-r),var(--color-accent-g),var(--color-accent-b),0.1)',
                 }}
               >
-                System Initializing
+                Loading Portfolio
                 <motion.span
                   animate={{ opacity: [1, 0, 1] }}
                   transition={{ duration: 1, repeat: Infinity }}

@@ -5,6 +5,7 @@ import Contact from "@/components/Contact";
 import Spotlight from "@/components/Spotlight";
 import Footer from "@/components/Footer";
 import Projects from "@/components/Projects";
+import GithubActivity from "@/components/GithubActivity";
 import Certifications from "@/components/Certifications";
 import Extracurricular from "@/components/Extracurricular";
 import { CentralPipelineBackground, CentralPipelineTrace } from "@/components/Pipeline";
@@ -49,6 +50,7 @@ export default function Home() {
           <Education />
           <Skills />
           <Projects />
+          <GithubActivity />
           <Certifications />
           <Extracurricular />
           <Contact />

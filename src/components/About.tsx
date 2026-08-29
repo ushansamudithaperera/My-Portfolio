@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect, createContext, useContext } from 'react';
 import { motion, AnimatePresence, useMotionValue, animate, PanInfo } from 'framer-motion';
 import { FaGraduationCap, FaLaptopCode, FaProjectDiagram, FaAward, FaUsers, FaGithub, FaLinkedin, FaJava, FaAws, FaDatabase } from 'react-icons/fa';
+import GithubActivity from './GithubActivity';
 
 import { SiJavascript, SiTypescript, SiPython, SiC, SiCplusplus, SiSharp, SiPhp, SiReact, SiNextdotjs, SiHtml5, SiCss, SiTailwindcss, SiBootstrap, SiNodedotjs, SiExpress, SiSpringboot, SiDotnet, SiMongodb, SiMysql, SiDocker, SiKubernetes, SiLinux, SiPrometheus, SiGrafana, SiGit, SiGithub } from 'react-icons/si';
 // Education accordion data
@@ -356,6 +357,7 @@ const tabs = [
   { id: 'education', label: 'Education', icon: FaGraduationCap },
   { id: 'skills', label: 'Skills', icon: FaLaptopCode },
   { id: 'projects', label: 'Projects', icon: FaProjectDiagram },
+  { id: 'github', label: 'GitHub Activity', icon: FaGithub },
   { id: 'certifications', label: 'Certifications', icon: FaAward },
   { id: 'extra', label: 'Extra-Curricular', icon: FaUsers },
 ];
@@ -367,7 +369,7 @@ export default function About() {
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '');
-      const validTabs = ['education', 'skills', 'projects', 'certifications', 'extra'];
+      const validTabs = ['education', 'skills', 'projects', 'github', 'certifications', 'extra'];
       if (validTabs.includes(hash)) {
         setActiveTab(hash);
         setTimeout(() => {
@@ -595,7 +597,22 @@ export default function About() {
               </motion.div>
             )}
 
-            {/* 4. Certifications Content */}
+            {/* 4. GitHub Activity Content */}
+            {activeTab === 'github' && (
+              <motion.div
+                id="github"
+                key="github"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+                className="relative w-full min-h-[300px] md:min-h-[320px]"
+              >
+                <GithubActivity />
+              </motion.div>
+            )}
+
+            {/* 5. Certifications Content */}
             {activeTab === 'certifications' && (
               <motion.div
                 id="certifications"
@@ -624,7 +641,7 @@ export default function About() {
               </motion.div>
             )}
 
-            {/* 5. Extra-Curricular Content */}
+            {/* 6. Extra-Curricular Content */}
             {activeTab === 'extra' && (
               <motion.div
                 id="extra"

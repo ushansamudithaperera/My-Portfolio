@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { motion } from 'framer-motion';
 
@@ -41,7 +41,7 @@ export default function Extracurricular() {
             EXTRA-CURRICULAR
           </h2>
           <p className="text-xs md:text-sm text-slate-400 font-mono tracking-[0.1em] uppercase text-center">
-            STEP 6: COMMUNITY & LEADERSHIP
+            STEP 7: COMMUNITY & LEADERSHIP
           </p>
         </div>
 
